@@ -1,0 +1,1326 @@
+{
+  ".coveragerc": {
+    "commit_id": "",
+    "hash": "64e2266b757c27d46b4c2f90c9edaae6d8b04fa9615c3b46411f664c0fe65e8f"
+  },
+  ".gitignore": {
+    "commit_id": "",
+    "hash": "aed130ce2d25f5cca11e0dc6d4f7e30113622350cce150bdc7649aabe3b2505e"
+  },
+  ".pre-commit-config.yaml": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "e4740bb31117bcfa007fb2678656bca4b4304e80b74207aab65ccf80fa8c1924"
+  },
+  ".prettierrc.json": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "47c0916147b633132bd03ab44be96a7ebb61bd5f58ba47a006453d1540578cee"
+  },
+  "README.md": {
+    "commit_id": "",
+    "hash": "f3f118c3bdee1cc04bea2fc6f37a60aa9cea76a9eeb70fa0940012f5393efc4d"
+  },
+  "__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "api/__init__.py": {
+    "commit_id": "",
+    "hash": "9dfc30eaf4825b56a361f313a3cb77be25b1d4c9b2ae45788338bff80741a0a8"
+  },
+  "api/endpoint/__init__.py": {
+    "commit_id": "",
+    "hash": "40228d5007707f21e94ec41578169600d50d425f4529db6bdf5286eba24feccd"
+  },
+  "api/endpoint/adhoc_job_request_resource.py": {
+    "commit_id": "",
+    "hash": "3e0f5f6435741e9aaaccf4f562f28dac1ba424a3886ae822d0f07d4e1e790b5c"
+  },
+  "api/endpoint/download_ti_resource.py": {
+    "commit_id": "",
+    "hash": "02e89f87a70bc1dc5720bc9be7a95efdd055ad0b3a579a4588bd15a9a14839d0"
+  },
+  "api/endpoint/enrichment_response.py": {
+    "commit_id": "",
+    "hash": "c61a31c088677581d4181e87a866335fdd63394800e827d2ea2485f1b1cfa62b"
+  },
+  "api/spec_tags.py": {
+    "commit_id": "",
+    "hash": "cb6d09497518162c3f94632ff6e33746dbd3a7c60fa43fa768ab541a9a2f8ecf"
+  },
+  "api/ui_config_builder.py": {
+    "commit_id": "",
+    "hash": "6a44276a0efb4e9d1fcf86b8240c40d76ab948ed51949e0b3c4d99fb794d8d25"
+  },
+  "api_service_app.py": {
+    "commit_id": "",
+    "hash": "800d650d6bd85e750b21c95c3a3f64c9413f7a97e9fe9a03405620352c305a76"
+  },
+  "app.py": {
+    "commit_id": "",
+    "hash": "8eb0d6928142b97840a4ae2e16f75f05970a9534b6cba811592051f57f483990"
+  },
+  "app_inputs.py": {
+    "commit_id": "",
+    "hash": "bb01b7ff753ad214d656965f91050f897cd991798fd9767935706dc0b207d6ca"
+  },
+  "app_spec.yml": {
+    "commit_id": "",
+    "hash": "8d3701ae8a3c874b526fcd32f8797ce3fef61912245589e8b2883dc7a34a1101"
+  },
+  "attributes.json": {
+    "commit_id": "",
+    "hash": "4b6b0d1759790bf478926325c01021cf7cb1511cea440180153cf6e9f5a66f63"
+  },
+  "core/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/api/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "deeaa42ea23c69148b762a798f55698d8b9f5fb9431a22a370e45fd5e9420407"
+  },
+  "core/api/endpoint/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "78412caa8b8123ea7c716cd2a01a66cbc1455b86efa5ae278cd818a1fc18b1bd"
+  },
+  "core/api/endpoint/endpoint_base_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "df26111273a6b5f55ffcdaf6ccf59cf5148d26c6d24ec99d58233bdeeae76383"
+  },
+  "core/api/endpoint/tc_app_config.py": {
+    "commit_id": "e9c53c654906396aa8b3f0318301b07b03eb576a",
+    "hash": "c9289ca5ca3b475de0299f094c967e40aa5faa2274f32c16b16e6d3f35eafac0"
+  },
+  "core/api/endpoint/tcva/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/api/endpoint/tcva/discovery_response.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "be2fc40d5ccd01609f2718b267f5274245790079f0ab7ca7af7c504476f5a8d3"
+  },
+  "core/api/endpoint/tcvf/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "78412caa8b8123ea7c716cd2a01a66cbc1455b86efa5ae278cd818a1fc18b1bd"
+  },
+  "core/api/endpoint/tcvf/batch_error_collection.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "23b7b1c011508d48c7bdd62f3e1bd7c421db2aca367228576fd1b72e06f9fd31"
+  },
+  "core/api/endpoint/tcvf/batch_error_counts_collection.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0aa50043b1f55cb8b1456e9a7cddd3ab1c2ea65bf02098c2aa5b9aa540434055"
+  },
+  "core/api/endpoint/tcvf/download_files_resource.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "17cbd7c68df964cfb23c4cb2e98649a1a2de73d912664e2fbc25e127e95b0529"
+  },
+  "core/api/endpoint/tcvf/endpoint_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "e9bbe338b8f14084cd305e2787e4989123cfc457bbb479ebf602938f0edbaaa7"
+  },
+  "core/api/endpoint/tcvf/job_file_download.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "ded0c93f33c3bee526378a06dc323ae8899d29bdebb4cdbbbd0b099505f75a60"
+  },
+  "core/api/endpoint/tcvf/job_files.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "b179bf3df06f3f1298f5ebab06fb4b96aeb2febb26309ea7c1c3c183fac89731"
+  },
+  "core/api/endpoint/tcvf/job_retry_resource.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "3b6c3a1c810b3a8b4a4e19541f519ba420afccfe59af365244553cb4b0f3b220"
+  },
+  "core/api/endpoint/tcvf/metric_processing_collection.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "0387b799b33d36de3e0272bb6f5fe7094742590c8588ac18f7a34eb0fed6ab6c"
+  },
+  "core/api/endpoint/tcvf/metric_task_resource.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "a7075b43257c129b72802f82dc6e8501c98cf5a66750039f490cd836949fa55f"
+  },
+  "core/api/endpoint/tcvf/report_pdf_tracker_collection.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "309a935f753aef7bff96f7b2f1fe0c25bc2b8f56c7731c73535568d52cd026fc"
+  },
+  "core/api/endpoint/tcvf/request_collection.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "54e4fd5e46be237c006d670cf8ac9334a626d071a81acb74c0de9063970897cb"
+  },
+  "core/api/endpoint/tcvf/support_log_search_resource.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "4a026defdfcbf8778868253056f2913ebffc3587c7b9594f613dd1462fe66735"
+  },
+  "core/api/endpoint/tcvf/task_collection.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "0df4b8f38573d6bd9411d7318ac31460c2dfe9f0dc51e732dde6735c4576a5fa"
+  },
+  "core/api/endpoint/tcvf/task_item.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "45ebd9cf9dea202719ac86a6ab42b6f161eb973c1b69fbfc14739bb6f162a57e"
+  },
+  "core/api/endpoint/tcvf/task_status_collection.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "6142e2d2199cf5f34534e0218896457f45c384053bc67d1267b1eaaa251301ae"
+  },
+  "core/api/error/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "15e87aa5e8f81162bbc81496561f24b24b1f142caacaa8eef1011d4cd61bce8d"
+  },
+  "core/api/error/custom_error_handler.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "19ca78ded144d1163dba7b8e32db3a914953a72015d2dcccba3a38199dd043df"
+  },
+  "core/api/error/middleware.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "df92f7692d4cf2c24576a601b8604dee49f068ba94b0507e2aae74b2544fa5fe"
+  },
+  "core/api/error/util.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "619da045086c5a37954d7592918f9bf39a313db3e0f66fc08cd7976f0bf4d41a"
+  },
+  "core/api/falcon_app.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "e6eb7bbd5532856dc0ba97ccf88cb69171a327c88a6f7f817c93cd02334c384f"
+  },
+  "core/api/falcon_request.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "89c527aab559ad7e20edf26076add0cc14db3c3085b36c26586cae0392570840"
+  },
+  "core/api/falcon_response.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "fe04c5e9d17ede7abf86b6827c8738cadaeade471fab834d422a35f74a8856d4"
+  },
+  "core/api/injectable/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9975f503b98c522aafc9656c679b043b1ff5b93460932dcc0dfad414ff3ec461"
+  },
+  "core/api/injectable/middleware.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "8aef3d8f2268172f266b1c9ead5bcf0b62a50442344cae3a5b190a341b9b03ed"
+  },
+  "core/api/injectable/middleware_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "860c31dc66bdc23e2134da939bf7e15fe93a5c3711777b0f876952dcad13e1a4"
+  },
+  "core/api/middleware_abc.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "d0b34e6bc22eac541dd1423488eeb27f6f69b5d8544cb953bffee4d8c2adb9f3"
+  },
+  "core/api/model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "3222a49ca64897d86ab9509ec1f491e4366a0a5d398e124ee6f9e3c265f3e9e2"
+  },
+  "core/api/spec.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9afa91916451f1d47da5d6f8c277de15a8d1397b2862cbfb4f8d61b1eef909fc"
+  },
+  "core/api/tcex/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "3b1778b08f6d71645f56d511f851e21ae98f42dc790ae9da99328df87fb9087d"
+  },
+  "core/api/tcex/middleware.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "e3976d006aa811c00dc086467f9518451361d427eba06f1b4b03435ba4751e85"
+  },
+  "core/api/ui_config_builder_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "dbdf905b52046da06fcbbd279bdd89c368f899fc0450e84c47fe4b2e1f9532de"
+  },
+  "core/api/validation/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "d12f78d226b2ac5d1c864a45efd4a11cd9c23d6205b6f6188d278e5a6b85822e"
+  },
+  "core/api/validation/middleware.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "01dafabe1dadb4cc3eb1c02dc19f80139172545173b0edafd6e34633144473b7"
+  },
+  "core/api/validation/models/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "b13ae07386c0853114cd25fe6b546110186caba0a741116924acd5d95269886a"
+  },
+  "core/api/validation/models/multipart_form_data_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "c2a13770fc470cd428dba38d4369f34d0f6e1474740766f697bd30e67f63b807"
+  },
+  "core/api/validation/models/query_param_filter_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "db0a6b31dd90281467ba62c55a7293a66c669628bed6c2bc9ccb71361c1a2e3b"
+  },
+  "core/api/validation/models/query_param_filter_pagination_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "d249e46e5747ee57daca933c7a9322bf22d26b93bd4e23686f0da8f97ed1ee1f"
+  },
+  "core/api/validation/models/query_param_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "6ed45fc941aefb40de7f6639e9aa9b4d7764f5441e0a84d9ddba9f4f949e09ae"
+  },
+  "core/api/validation/util.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "a962f1b4c77b61f259d03ea18866cd76745380a8df47eac63b1f990d8e40c6c9"
+  },
+  "core/app/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "6f1c568783e9dbaf17e899a52c8374b0a9a11087fd61ad72e3b68743cc1ec509"
+  },
+  "core/app/api_service_app_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "b08605f0f57cec9c6603cb3022064fe4b256197d63ed8c7b192a7a25064752e2"
+  },
+  "core/app/api_service_falcon_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "29510b78b989d16146ec6d216d1dd69b9c8d32cc9a6a116988503d05a376e4e4"
+  },
+  "core/app/app_lib.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "de0712de9a66c202578f6de108310fbb4f6235245f921f381cd11cd6a17997fa"
+  },
+  "core/app/enums.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "fb1364ad0965282c3e4f5f1fb2df776af18e572cbc6f7b7c17ac5d5fefee3434"
+  },
+  "core/beacon/__init__.py": {
+    "commit_id": "",
+    "hash": "e07348e2de13833c628a13d1aaee1ecbfd5c787b374aed4c8066d8c1bf7bad23"
+  },
+  "core/beacon/beacon.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "10cb36cf6fde5da2b31ba503a3cd68c233250c65057fed015e3548073ab21680"
+  },
+  "core/beacon/proxy.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "951b442ea99c0ba71a5ca7c29db421ba318ceea54458ea1139ad336e96e4a52e"
+  },
+  "core/beacon/transpose.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "90b76698168d5d510c00b7adc58ddede65fd6201f925166e56090f9d452065b5"
+  },
+  "core/dao/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "3d67a7334d97ad067ce6a727ba2278dad70d3693a45ea4fb3db4f12afe9e8f66"
+  },
+  "core/dao/tcvf/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/dao/tcvf/batch_error_dao.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "475758110fa2b772ce12b74b89010b6e2acb1362372cd7ff813300d2c4ed368a"
+  },
+  "core/dao/tcvf/job_dao.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "08892b0e6717e563a96c6ea6f1d4b7f0a5903463b1d9df2f7a598c544273f459"
+  },
+  "core/dao/tcvf/report_pdf_tracker_dao.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "8860c82814e00eac8a6c00d0ce213ecdafb9404f3df61407d2e19268d66727b2"
+  },
+  "core/json_db/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "d665d42f35c9764be9b824d3e3a8103fec9eb36d4d294a2c1cba89340cc52c1d"
+  },
+  "core/json_db/dao.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "cbb2cc5822217645e085721f41e84fdc7bef342dc9b05e0248bc09f84ec4c60b"
+  },
+  "core/json_db/json_db.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0f199e584c8e3ddea9a20ca4a9a95424c1200c1e8b566d16d3395958eac15b79"
+  },
+  "core/json_db/where/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "589a1e0d67b94331fd79408da06f770b47672c9d7650d480336d425de59fb0b6"
+  },
+  "core/json_db/where/filtering.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "a081e7923039509db2947d2c96a44522a36d82b18296b0a8a1edd69ebf4921a7"
+  },
+  "core/json_db/where/where_abc.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "6d8120ac12dcdbcb07beda9ccf2d1f74f8d2735541211dc7e725588040f37cd0"
+  },
+  "core/maybe/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "f624b9dcc6aa8d8f78fb80df4c89872e060a6c6f4dca1140ef43777a5057ebf9"
+  },
+  "core/message_service/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "57a0231f3e994d2f92a0600a909697d3a6f6857806c756a1829b52d18291e802"
+  },
+  "core/message_service/message_handler/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/message_service/message_handler/discovery_handler.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "22eb9eb5a6b903cdcb2332cc374a589587d6462d47edf6ed4ee17a07eb3c1358"
+  },
+  "core/message_service/message_handler/message_handler_abc.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "502bd1bedae3bc092bf8aa8158e68307297bc73dde8fa755e00cd74ac8685b27"
+  },
+  "core/message_service/message_service.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "021010f36e76225121bf57a1da366914fec12eab753a069a17485c8333ffac8c"
+  },
+  "core/message_service/model/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "57a0231f3e994d2f92a0600a909697d3a6f6857806c756a1829b52d18291e802"
+  },
+  "core/message_service/model/tcva/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "57a0231f3e994d2f92a0600a909697d3a6f6857806c756a1829b52d18291e802"
+  },
+  "core/message_service/model/tcva/block_acknowledge_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "34156aa61df558286cd01080ededd4b3302c3c833ed5ce3e0fbb285696f10bea"
+  },
+  "core/message_service/model/tcva/block_request_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "ac712a1558fbd8cbf33bda307fb44da367d5aed4f576937fa1817a04e8407fb0"
+  },
+  "core/message_service/model/tcva/block_response_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "5e4bc292af3c273cc8b3b378aecc035171162574fc9a9b700862135fe6c8eaf0"
+  },
+  "core/message_service/model/tcva/discovery_request_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "76c59fa56cc1e3d1fc0c9b819bc7a9cfbf95a6ac9caadac4aff7f9cec826217e"
+  },
+  "core/message_service/model/tcva/discovery_response_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "705c8b45adc97d0f998e971e4adbd9ff6cefb835d360670cf62d23b271dd0275"
+  },
+  "core/message_service/model/tcva/enrichment_acknowledge_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "5247cc33ab0b8b2bb8db83714a633d46f8ed308d686050f83ba8bf020556d623"
+  },
+  "core/message_service/model/tcva/enrichment_request_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "6e5144e8f2de2b22d748a33a5f30a1ed70dfbf5b36f872805e94ebc7a48574b8"
+  },
+  "core/message_service/model/tcva/enrichment_response_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "1f10b3ed952ffa29197c5392f6b09fd47f68f06c5fa3637bc4bd017d364e9724"
+  },
+  "core/message_service/model/tcva/enrichment_timeline_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "b79ffc6da494c046fc2c90ea5cc4cc89d475f472fea15a70cbb083639617688e"
+  },
+  "core/message_service/model/tcva/investigate_acknowledge_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "3fd00896825e1321b211eebe22802d8a778c6ad98bc301927c0e54403d969dc2"
+  },
+  "core/message_service/model/tcva/investigate_request_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "5b96c2ceccec1c85efc8178cb601608bbad331d6c3322b8ec041b4da3c07eea7"
+  },
+  "core/message_service/model/tcva/investigate_response_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "981f43092adc48072ad935255f21b1a2601c26a9019829517536748b12a86a09"
+  },
+  "core/message_service/model/tcva/message_types.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "12dd1076c52b1c24febfed2359ca9196cab59680651ad3db57b221fb854afd70"
+  },
+
+  # same commit_id -> SKIP
+  # Different commit_id BUT hash in existing project is same as old hash -> OVERWRITE NO PROMPT
+  # DIFFERENT commit_id AND DIFFERENT hash -> PROMPT
+  "core/model/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "11aa672bc7ff16f785a60256b7fe43b15bdd0d8286998cfddbefd1250b4b5899"
+  },
+  "core/model/log_event_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "6826a8cfa8d3ecd7314f9558c260cee06dc410cda0b6fc8d8e0f5ff9574ffe24"
+  },
+  "core/model/model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "7f1784e557c8c5eff6310f618c7e5688187149038fd221b656f32b9fb962ec4f"
+  },
+  "core/model/multipart_form_data_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "4eaf7b1a433f765d80a77cf7d1108c6d6601cfda44f45486914102aa68001900"
+  },
+  "core/model/paginator_response_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "077b040b2a9a9051f590d04a5b33caac963ff83d2060b483005b9c65da492bbf"
+  },
+  "core/model/response/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "c2f99c1c2e05da8cc4d94c5c6b8b8f60c6acc305e2c3b0c57ed647223f6e66a3"
+  },
+  "core/model/response/paginated_response.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "f0513dcd4ba4b7a6f8801f794651479dfae11bafa57010fb2431ebb0026fb5ab"
+  },
+  "core/model/response/response_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "d7d8141c88ce28f4a5cd4765010746e1569fa810e00ebc0590016ab8f436612a"
+  },
+  "core/model/scheduled_action_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9e8b63eb0b7a29f27e0c9d4f15b5971f815ce8f927543678d61259583247ef80"
+  },
+  "core/model/settings_model_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "d7146a098b08d2749d77d8ed0018a72d8e156948439504d3f5a0f89fef778827"
+  },
+  "core/model/tcva/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/model/tcva/advanced_settings_model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9cfaf4f8065216ffa81a7db6aaa2c94c2ec48444b8fd7f4c5d5ba7f75725c33c"
+  },
+  "core/model/tcva/settings_model_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "8a17697a84f9ee2e750a47f4abafb040be58dd9a9dd97b48e7c162fe925fceac"
+  },
+  "core/model/tcve/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/model/tcve/advanced_settings_model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9bb3efd532bf387613b6ec80039c875be84d1a29f49301ec174a244fedb10b91"
+  },
+  "core/model/tcve/settings_model_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0728333f0c017d291e0aa42c60540812d51c79b53cb5dfc40d51f4d461ffd331"
+  },
+  "core/model/tcvf/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/model/tcvf/advanced_settings_model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9bb3efd532bf387613b6ec80039c875be84d1a29f49301ec174a244fedb10b91"
+  },
+  "core/model/tcvf/settings_model_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0728333f0c017d291e0aa42c60540812d51c79b53cb5dfc40d51f4d461ffd331"
+  },
+  "core/model/tcvp/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/model/tcvp/advanced_settings_model_base.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9bb3efd532bf387613b6ec80039c875be84d1a29f49301ec174a244fedb10b91"
+  },
+  "core/model/tcvp/settings_model_base.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0728333f0c017d291e0aa42c60540812d51c79b53cb5dfc40d51f4d461ffd331"
+  },
+  "core/model/tie/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "35b5d312f38b360cd2ac517715c063916a0db400d35d617ad737816834ba2af0"
+  },
+  "core/model/tie/batch_error_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "ae98b86ba99094d6c7033974da18f3b7942be019ed16e4295a4ec0396e19e30e"
+  },
+  "core/model/tie/item_model.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "a7e7f8fef2edd27c6086731d02eaedddb2a2c9561c5d48f8f07179f905a39aee"
+  },
+  "core/model/tie/job_request_base_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "baf68e48ec400553477ab2562b93a938a18fa975cca47d6bbcac3f916ba98847"
+  },
+  "core/model/tie/report_pdf_tracker_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "d51bd9d5769ea0a903f41ecdf534cf1f0b2d7648121cda908b663d1fb86cc424"
+  },
+  "core/model/tie/task_setting_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "8e4473e3e03645535325fe6f175895b6de2f6005754d4b81feb0f35326dbbb25"
+  },
+  "core/model/tie/task_setting_pipe_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "b6346bb30c8ecaa0c3bc32894b98e9d2fa79f127aab54a117372056c4dbd5541"
+  },
+  "core/model/tie/ti_processing_metric_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "cc0f4447165e6d83468e2f1442377aa91bf39a6fac8333f381695b82c0af9057"
+  },
+  "core/model/tie/version_manager_model.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "df03468670c04b9e0df939e340cfc2899ab4061f239e3c98707565e986214357"
+  },
+  "core/more/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "d602a4d51733db0dd61353dbf24a94dbe3017e8e25646686ef1655d3c701089c"
+  },
+  "core/more/db_util.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "485428e5863eee865226557d7db200b6dc2e080dfa64dd6fdf3a48428fab62cd"
+  },
+  "core/more/error.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "0e720b87f307ed9b982bff571d44070b519b0eb20a4dc5532d829e5dcc3b7cea"
+  },
+  "core/more/paginator.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "b5df35473cdb1d4d9588b8fa5ff6f41244a4d90e39d28823f8ffe69fd6b4b282"
+  },
+  "core/more/transform/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "9f73010324f69578cac243491acad42adef67a20afe46b5e731f4d15cd270c1d"
+  },
+  "core/more/transform/transform_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "b20ccdffb9f6a49471fa4481faa52cbb5de851b78b9190c79bc7f13ad72abdf3"
+  },
+  "core/more/validation.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "ec7cc3ee70caefb2abe35b1f14f4b7816b147e6850979dc7d5b795c540a27fca"
+  },
+  "core/service/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "f588f8d61c4480b3dd780a6229f2b83167e0306a660c431def8325c6c37da699"
+  },
+  "core/service/callback_handler_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "57849873c261f960b19713659ac77e74865822d48bd661880e1a3e6dec0a07bd"
+  },
+  "core/service/error_handling.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "2522276075aa7c30fd13c4ec14549db57a88dfdb342098f4c17f9d80b9a5cb23"
+  },
+  "core/service/preflight_check_service.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "94e26dd7ff23af3f200a77aabec783b3f13529259be5aec46232dc9a9711cddb"
+  },
+  "core/service/tcvf/__init__.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "core/service/tcvf/managers/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "17e3c8a499347a67df536f3a665523141a1c4e046e6b516b5210ef2dca84e825"
+  },
+  "core/service/tcvf/managers/operation_managers.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "6ea502c2a12c27d8c0456b90a4dc2d8dae1b96d542fa5d28d1e1ec741f5606bb"
+  },
+  "core/service/tcvf/metrics.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "9c35fa2e8354aad2e4acf59027d58ef6f8e2f24c590cd439e4234918e7cf358d"
+  },
+  "core/service/tcvf/migration_service.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "60d1f37abac66a1fb9d1f2bdc2e85f351b5c938b44cf9491ef0b89cf43d8e03f"
+  },
+  "core/service/tcvf/sqlite_migration_service.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "82bf2110f83d47d1915d4f187195b2f41494098166d1b0dfa85b41276b002fb4"
+  },
+  "core/service/tcvf/writing_service.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "2206128b98d856be30f3ae769d1855a59d70e3927caccc4e74b92cdeba922058"
+  },
+  "core/task/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "91d2c42cb69f23416ed0398f16a09f31fc21d119f4510ec24b01b91951ab1476"
+  },
+  "core/task/backfill_missing_report_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "513e055dee03eddaf38696d7bce9f20996c0065ea873f4c44909aef0f8fcef4c"
+  },
+  "core/task/cleaner.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "9bf0e8c2f21c21438447b6979e47971fc471fb70cf9d07d4b85ce831a7e3a913"
+  },
+  "core/task/download_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "72967610015efbd19820c53ecf95590dc371bb6bc7f47a9812e12f3473864224"
+  },
+  "core/task/task_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "431da88a856a7d89e8307c5d84886596042690f33063ce4102ee8db75f56fa93"
+  },
+  "core/task/task_path_pipe_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "6fc3898ea2b5a990d3fec9b0caf4f32c30985fa28b1b174eb3296a0fa197dba4"
+  },
+  "core/task/task_path_pipe_injectables.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "8c3461620a6cf1dd654af99ac42f6c48705503ff05e86a0cae5f8835081868c9"
+  },
+  "core/task/tasks.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "bc71a4e2f826b374fae0422245ebc501e406ae24194021daa0467223673dba37"
+  },
+  "core/task/upload_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "ac5c2c6e85447599ca57c8a7a00e0fb625e8ff13edaccd6541d70c904dd6440b"
+  },
+  "core/task/upload_egress_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "3db713e0be9d5260503b7d225fffb3172354836e40ce4f0f383360d7fb328dd1"
+  },
+  "core/task/upload_ingest_abc.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "a0edff379ffb411f3a22d2b3faeeb56065520bfd2aa371fdbea30ece713f5edc"
+  },
+  "core/util/__init__.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "cd93206919f9f19ca85e3f9dbadc5b7819c1effc1165ce4bb38d323abde23ec2"
+  },
+  "core/util/custom_handler.py": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "25716fd030568e09d9e37ef53fa58c6e215627429e77fe6259ab7dc79f07b28a"
+  },
+  "core/util/func_utils.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "dc44227e21df4a2fe4751dd23e5f4240f3683f5c437d1f0ab8757f72e2f74643"
+  },
+  "core/util/process_metadata.py": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "62225da2312a42bd54ff44ac972cf0b20a3c1e853f24e0d2b2b7d2b87f6a75af"
+  },
+  "file_commits.json": {
+    "commit_id": "",
+    "hash": "ab13941601de89340c4ff34d41ec66c8841071ccb1dc8a6bb8dbd75c4ea52ca3"
+  },
+  "install.json": {
+    "commit_id": "",
+    "hash": "c94fac105a164f083694de47b061f43cc7fbadf9f601d3729ed12ef4e9f78ec5"
+  },
+  "message_service/message_handler/__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "message_service/message_handler/enrichment_handler.py": {
+    "commit_id": "",
+    "hash": "2050ebe69221f7ab6dc123b5b6f8cea875fa51c5f0be3de994176fead132ccc8"
+  },
+  "migrations.py": {
+    "commit_id": "",
+    "hash": "f1460718f53f3dbdbd6eb905ab5099b7e76ddef6a1a5e7dce0d2509afc1b21b9"
+  },
+  "model/__init__.py": {
+    "commit_id": "",
+    "hash": "da8b7c0f5337df99acea0f7445e1bbc5b0857bf74b02dff4a006ac3163f0e9d9"
+  },
+  "model/job_request_model.py": {
+    "commit_id": "",
+    "hash": "12e3acf7ec47e058512d13e76f4f97e239dfe6bb5a1753985a40480c45c03eb5"
+  },
+  "model/settings_model.py": {
+    "commit_id": "",
+    "hash": "a9f1debc222c785c44d2a98a24f1f758ef7bb82dbf514d15068b43fde08b32b5"
+  },
+  "more/__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "more/transform/__init__.py": {
+    "commit_id": "",
+    "hash": "9f73010324f69578cac243491acad42adef67a20afe46b5e731f4d15cd270c1d"
+  },
+  "more/transform/custom_transform_abc.py": {
+    "commit_id": "",
+    "hash": "baf1591e221a8a40f94b6be71c8b07fe72974c2ab038a2d1171d9393f1d1e489"
+  },
+  "more/transform/sample_transform.py": {
+    "commit_id": "",
+    "hash": "71983045a84f5d9454dd40e67d7b68e368ce356a7f22926c1759ce0683269918"
+  },
+  "pyproject.toml": {
+    "commit_id": "905e863d6cee0e5340b8246ca3a7b7870551e8ed",
+    "hash": "51b2838a578e31b0af442dfa1b7e3bbd26465e6d49217d71795b479673bf91b1"
+  },
+  "requirements.lock": {
+    "commit_id": "",
+    "hash": "090852026cc6da21efa1bd2d26037e8b481fb3b4f7b433c6d45dfa9c28dfc224"
+  },
+  "requirements.txt": {
+    "commit_id": "",
+    "hash": "f9b3f14ce8945615c6e301a4dda3defce8cefe6bd3fe58efefe7344a2336ee01"
+  },
+  "run.py": {
+    "commit_id": "",
+    "hash": "8424f5eb6b8fdea05060e3983cb5a909a15cf81c5644c6807d2f22f28bf75339"
+  },
+  "scheduled_action/__init__.py": {
+    "commit_id": "",
+    "hash": "37ede2d8e6404a481fda8e8585d1c59e7525eb36b11ff900e5407e47755c3657"
+  },
+  "scheduled_action/actions.py": {
+    "commit_id": "",
+    "hash": "6646e59468ba5f175aa178757339e504f7311a8b0d6644cda03ada4f52306f3f"
+  },
+  "sdk/__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "sdk/egress_sdk.py": {
+    "commit_id": "",
+    "hash": "4e9a6aa002f3e671dd5ded662cac885cd5651ec553f69b63a2ae8dfc3b31aab0"
+  },
+  "sdk/sdk.py": {
+    "commit_id": "",
+    "hash": "c95dc2a696fa2fba35656b5b2279b202152e9ff1059e5203763675da7adcd6db"
+  },
+  "service.job.json": {
+    "commit_id": "",
+    "hash": "7689b8322f0ec6a951a41978faf24dab09ec8e2be2e627e8a20ca5b8b73e895c"
+  },
+  "task/__init__.py": {
+    "commit_id": "",
+    "hash": "ac8ef5fea01e7e45b97e93bfc2074aeb641569e2902315ac67fba09a3288fb40"
+  },
+  "task/backfill_missing_report.py": {
+    "commit_id": "",
+    "hash": "b7a50fc61e91adf8c142fb04688c9df932da1a9be25658e2657458fdc0a82339"
+  },
+  "task/egress/__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "task/egress/convert.py": {
+    "commit_id": "",
+    "hash": "bbf48a0efed3ae991095af3dd26713d71e6fc5960a0437132a867643989cb8a7"
+  },
+  "task/egress/download.py": {
+    "commit_id": "",
+    "hash": "5cc15d7689bd93020da7d0ec7fdfa5940deb5cdfe89f2bbe8fbe3d136900407f"
+  },
+  "task/egress/scheduler.py": {
+    "commit_id": "",
+    "hash": "1d78d4b069cb408de8ea8a692980b2d868145791536485f811b8acb140f2b8df"
+  },
+  "task/egress/upload.py": {
+    "commit_id": "",
+    "hash": "d3d22572ad0f82d54646896bfa3963a8e4df6053118b346c163142e55fd1e647"
+  },
+  "task/ingest/__init__.py": {
+    "commit_id": "",
+    "hash": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232"
+  },
+  "task/ingest/convert.py": {
+    "commit_id": "",
+    "hash": "14dcb1ad2a52f437219e8ecbda43544aa79af52f00853d4265e5a1c070b10b7d"
+  },
+  "task/ingest/download.py": {
+    "commit_id": "",
+    "hash": "98cba7fd377934414bbb4ed8b215f1f88a9ebb156bc0eacfd09983297fda4978"
+  },
+  "task/ingest/scheduler.py": {
+    "commit_id": "",
+    "hash": "f57c34527baec6de8db3cff903e51339824b2cdae90bf425f861af0f966a56b7"
+  },
+  "task/ingest/upload.py": {
+    "commit_id": "",
+    "hash": "0c1d3266046b499c096b904f4a075d898363c6e5091c95026cde3ecd5dcd10ea"
+  },
+  "tcex.json": {
+    "commit_id": "d21ca196bbf24faa34b58faa297cf2e2d541a53e",
+    "hash": "c7c1ac828868553eeb24e1fe2613c37e3c3f2e38a7470f3040b7c88660cd34b9"
+  },
+  "temp.py": {
+    "commit_id": "",
+    "hash": "0ec3328f6c1317caa085f9027cf3f0653c244e04211a7afea12336ecaba0c3a4"
+  },
+  "ui/.eslintrc.json": {
+    "commit_id": "",
+    "hash": "ab701bd60cfc34205490dc89576b9ed4cbc1efb3ab0528c445558e2243fa7ce1"
+  },
+  "ui/.npmrc": {
+    "commit_id": "",
+    "hash": "3753a29acc71e1df94f307ce5713703ca844de985a347cbaa2d8d34816827fca"
+  },
+  "ui/angular.json": {
+    "commit_id": "",
+    "hash": "4e1166585793e1514515e4d62a92b97726deb466fc68116b7c99861b02062aa4"
+  },
+  "ui/cache/18.3.4-nx.darwin-arm64.node": {
+    "commit_id": "",
+    "hash": "92cfd029f484cec5c20f7ad04139bbcd5221e30eb88db413cc88d454f9d6dbc4"
+  },
+  "ui/cache/18.3.4-nx.darwin-x64.node": {
+    "commit_id": "",
+    "hash": "4bbd95bb41a394ea3d9a02d61c7da6a30d96c9d794f39efe968f1e47e0c5b498"
+  },
+  "ui/errors.txt": {
+    "commit_id": "",
+    "hash": "114cdb8ec21402eb8f3c8c43d43248c9245abe2fd19b31461460f99d0bd2c544"
+  },
+  "ui/karma.conf.js": {
+    "commit_id": "",
+    "hash": "3ccea16b262ba12a608be71c71b47d052bbeba02ba07a9af5d232c3f7f20611e"
+  },
+  "ui/package-lock.json": {
+    "commit_id": "",
+    "hash": "be1d059b97325deb4bccfd29c3ba7b09833a2d788888d973adbd882b70b90b9f"
+  },
+  "ui/package.json": {
+    "commit_id": "",
+    "hash": "c5be64054c323965da4ae06e630547d9e05212b06478aeff58a33371c2b554b7"
+  },
+  "ui/src/app/app-routing.module.ts": {
+    "commit_id": "",
+    "hash": "480d0a95cf26b76691222a65fa8a1b25ec34f8d69a6246e0eb36456720c8eb75"
+  },
+  "ui/src/app/app.component.html": {
+    "commit_id": "",
+    "hash": "74d158930ac07f3f7ef85d88a0123ed621ffeb26f50b68aa34d3bd6072f89b90"
+  },
+  "ui/src/app/app.component.scss": {
+    "commit_id": "",
+    "hash": "6b26752cb9bce8724bd03caa00f9acd477fa32e77ef8cc7f07b0bed82325519c"
+  },
+  "ui/src/app/app.component.spec.ts": {
+    "commit_id": "",
+    "hash": "3d394f5b4f79f3fd4ba553fc58e4a619ac1002690713af59ca612b4c5a7e2ae8"
+  },
+  "ui/src/app/app.component.ts": {
+    "commit_id": "",
+    "hash": "93bccb70a6d354485727e5c2e1c95e1121171c1c27ae80e6bc3ed986c5dab79b"
+  },
+  "ui/src/app/app.module.ts": {
+    "commit_id": "",
+    "hash": "ddf85df707689fe3a5defe83291e25e2682b9f7440a106a5aa67fd68437a5c24"
+  },
+  "ui/src/app/components/error-message/error-message.component.html": {
+    "commit_id": "",
+    "hash": "99646206858dcae4db060681f8039785130526e755a9080d60efd9114f04028f"
+  },
+  "ui/src/app/components/error-message/error-message.component.scss": {
+    "commit_id": "",
+    "hash": "b751333df2cfdf54b60b4c921e33547280052531dec14786abc8575484c59130"
+  },
+  "ui/src/app/components/error-message/error-message.component.spec.ts": {
+    "commit_id": "",
+    "hash": "913e83f4f9ebc047a622dd5608c635ede1e4744c5df0a14dee112d2e7184c642"
+  },
+  "ui/src/app/components/error-message/error-message.component.ts": {
+    "commit_id": "",
+    "hash": "7e19955e58bd911c77f1405bd61060441afca11f619f884189985c435625a901"
+  },
+  "ui/src/app/components/formatted-field/formatted-field.component.html": {
+    "commit_id": "",
+    "hash": "1bdbb90e7a3dbe60c3df25582149288661e7bbbe0e735c6d4b3fea5937d001e4"
+  },
+  "ui/src/app/components/formatted-field/formatted-field.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/components/formatted-field/formatted-field.component.ts": {
+    "commit_id": "",
+    "hash": "1a7e91d35b75215f994e07a2241beda11236b7f723c667059200afbfe9543608"
+  },
+  "ui/src/app/components/generated-form/generated-form.component.html": {
+    "commit_id": "",
+    "hash": "55192293018494ae7dd9428b057da5df04228ff82036f485560f83c12c798c01"
+  },
+  "ui/src/app/components/generated-form/generated-form.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/components/generated-form/generated-form.component.ts": {
+    "commit_id": "",
+    "hash": "7a8597edef0c32a87afd07d6840e84d7a067edfef0d836bee35640d932fca7de"
+  },
+  "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.html": {
+    "commit_id": "",
+    "hash": "440e5fc77a1984c2ec283dd79d7323918f12428b58dceaf7fbb8812ac0c4ba4e"
+  },
+  "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.ts": {
+    "commit_id": "",
+    "hash": "bda2a8e477e4cb4b8340950d0c55e5df6e7dbeaed1d6bb890c80a308955b4e29"
+  },
+  "ui/src/app/components/rule-card/rule-card.component.html": {
+    "commit_id": "",
+    "hash": "e4979d3d223680de1126144ad70dadb45c7a90b910c5f1c0485178724290641a"
+  },
+  "ui/src/app/components/rule-card/rule-card.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/components/rule-card/rule-card.component.spec.ts": {
+    "commit_id": "",
+    "hash": "78aa69cede1ef5f7af385a04c84adb88b71902a6d47cabb002843ceda3b8e358"
+  },
+  "ui/src/app/components/rule-card/rule-card.component.ts": {
+    "commit_id": "",
+    "hash": "319e81fe7bd34db2050f7127ee1473c1185d15742e4b9b24e10e218d620979bf"
+  },
+  "ui/src/app/components/sidenav-menu/sidenav-menu.component.html": {
+    "commit_id": "",
+    "hash": "7d2b1cbb82e1266900e0e9c30b7df980c9f9cbc452273742165a14615f8b9893"
+  },
+  "ui/src/app/components/sidenav-menu/sidenav-menu.component.scss": {
+    "commit_id": "",
+    "hash": "4093364f6aa3280e21db5d5205ca5c936f402943093e462dc471242c137d7a38"
+  },
+  "ui/src/app/components/sidenav-menu/sidenav-menu.component.ts": {
+    "commit_id": "",
+    "hash": "06371133bb97a7bf893ecb17ff9e73aaa0b351af97ed2e9bc3799696f21d21cf"
+  },
+  "ui/src/app/download-ti.service.ts": {
+    "commit_id": "",
+    "hash": "775df22c9bb54f10b02a1ab295c6daf1715905562f1cd4eb7776445eacd09db4"
+  },
+  "ui/src/app/error-handler/error-handler.provider.ts": {
+    "commit_id": "",
+    "hash": "7e8a08544634b92612a42e14e4533707bc04d154eb5e089169e8e3277d4764ce"
+  },
+  "ui/src/app/error-handler/global-error-handler.ts": {
+    "commit_id": "",
+    "hash": "5166c23039aaf00cbb0b3b93fb5997ac3edbd39b8eb0fcee888a136bf8ea30e6"
+  },
+  "ui/src/app/interceptors/auth-interceptor-service/auth.interceptor.ts": {
+    "commit_id": "",
+    "hash": "7443d6264b415e569553e887bf3c2bb4daa41ad17d815a0f3d0fa899fb9751b1"
+  },
+  "ui/src/app/interceptors/http-interceptor-providers.ts": {
+    "commit_id": "",
+    "hash": "d911eb836d3e0bfcf6307c142169757a70f121e520d2152668d0c8e003dfe7e4"
+  },
+  "ui/src/app/interceptors/http-interceptor-service/http-interceptor.service.ts": {
+    "commit_id": "",
+    "hash": "a0d981ef2d94a7376a028c291b256ad94f9833a4906abb237110c91a35c59cd1"
+  },
+  "ui/src/app/models/alerts/alert-message.model.ts": {
+    "commit_id": "",
+    "hash": "158ea3521b9a531c44d46ccfd38c5680d8aa08d1860b08a81dd056e4288273f0"
+  },
+  "ui/src/app/models/monaco-editor-options.interface.ts": {
+    "commit_id": "",
+    "hash": "939de6bccf2831cd22680fe20c139fcac457ce356af41b3b0c731dfe85f2cf4d"
+  },
+  "ui/src/app/modules/nx-utils/nx-paginator.ts": {
+    "commit_id": "",
+    "hash": "6810411f5eccade4ef5a4508cf99738e57b655e3ed1a42ca801dbf235a084415"
+  },
+  "ui/src/app/modules/nx-utils/nx-table.ts": {
+    "commit_id": "",
+    "hash": "d4c3ff9c0267e16b9abaa93e5ab46547026474c24a17c06ba77f348fd602533e"
+  },
+  "ui/src/app/pages/batch-errors-table/batch-errors-table.component.html": {
+    "commit_id": "",
+    "hash": "185a7468566454416eeb3d98b9084d3fa13f1b1ed006725e1b974967eae7c201"
+  },
+  "ui/src/app/pages/batch-errors-table/batch-errors-table.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/batch-errors-table/batch-errors-table.component.ts": {
+    "commit_id": "",
+    "hash": "8753c785b0190d4bca7905bf350c0ab7087bb5e25f0b6968837e15e407489211"
+  },
+  "ui/src/app/pages/batch-errors/batch-errors.component.html": {
+    "commit_id": "",
+    "hash": "15bda01289bf8e568f908cd9e6b68bc29c58d6a6f9592a5e3d3d16ad70276986"
+  },
+  "ui/src/app/pages/batch-errors/batch-errors.component.scss": {
+    "commit_id": "",
+    "hash": "ba2d9458e59c5a93dfe83fefa5306c7c8dd350ee0994d030a1cd7cb36ca82f3e"
+  },
+  "ui/src/app/pages/batch-errors/batch-errors.component.ts": {
+    "commit_id": "",
+    "hash": "fd5ef7af7d11ec03a534fd5bcb74fda1e3f0f79f0bd4f0ffb497c9ed3aca572e"
+  },
+  "ui/src/app/pages/dashboard/dashboard.component.html": {
+    "commit_id": "",
+    "hash": "1b357c259c821ad0d7716de3b0809c9af577defc1c4846b2c3808693661386b0"
+  },
+  "ui/src/app/pages/dashboard/dashboard.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/dashboard/dashboard.component.ts": {
+    "commit_id": "",
+    "hash": "66f69bf1a6254fd411ac5c62335fb5ddbdb019422ee228cf83aadcb3ec4d7880"
+  },
+  "ui/src/app/pages/download/download.component.html": {
+    "commit_id": "",
+    "hash": "dd27b202649b5ee60a5f1eb75137b18bcf4031da05e60222abd881c281952f83"
+  },
+  "ui/src/app/pages/download/download.component.scss": {
+    "commit_id": "",
+    "hash": "75bddea312ca506e6d4b8cdd1092359548442c1f3c1cbfa7bdc6cac36047f2e1"
+  },
+  "ui/src/app/pages/download/download.component.ts": {
+    "commit_id": "",
+    "hash": "9fb53673e72f793d07bc1d2fe11525e927d3807cb6133dcbe5ae97c2324568ad"
+  },
+  "ui/src/app/pages/jobs/jobs.component copy.ts": {
+    "commit_id": "",
+    "hash": "36715ad116a84b4b9db3800f3488caf0da7ef42661089dbd4723c521ca618168"
+  },
+  "ui/src/app/pages/jobs/jobs.component.html": {
+    "commit_id": "",
+    "hash": "8aaef695de1e864cf853ff6d25984ae71b7fd817c7037873c82302cb7b1ad435"
+  },
+  "ui/src/app/pages/jobs/jobs.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/jobs/jobs.component.ts": {
+    "commit_id": "",
+    "hash": "ce41a1433d9569c7303a42c65957a9c2e9382c0daaea43d4f208c59b8baacf7a"
+  },
+  "ui/src/app/pages/pdf-uploads/pdf-uploads.component.html": {
+    "commit_id": "",
+    "hash": "c1dc6da35134734dbd82fc17d11949a0a9c4d8513c98c974fc9ddc7b079d591f"
+  },
+  "ui/src/app/pages/pdf-uploads/pdf-uploads.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/pdf-uploads/pdf-uploads.component.spec.ts": {
+    "commit_id": "",
+    "hash": "40d2adacb9f09872f4c534ab33f0ee6f0996a16d5eaf6bcc64d8a596d3c81525"
+  },
+  "ui/src/app/pages/pdf-uploads/pdf-uploads.component.ts": {
+    "commit_id": "",
+    "hash": "e2fd75ef11c4656c649e31046be2c08a4493565949d14f855a3edef70d8cb3cc"
+  },
+  "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.html": {
+    "commit_id": "",
+    "hash": "4a2502c9c9a5fdbc7c9a0ccf84449e22360095c3d5961074ec0095a6927d7721"
+  },
+  "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.ts": {
+    "commit_id": "",
+    "hash": "09db5bc7c1cc7dd57378f6ee6a16520c33a4e34379027f7e1e883d51599beeb7"
+  },
+  "ui/src/app/pages/tasks/tasks.component.html": {
+    "commit_id": "",
+    "hash": "f0ada33b453e1cb64fa09c16f5e853c174412f4a19db6ad76cdacdeadbf545dd"
+  },
+  "ui/src/app/pages/tasks/tasks.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/pages/tasks/tasks.component.ts": {
+    "commit_id": "",
+    "hash": "1b0d52c4baaa7d4cbc9c52333ea7ad7162b15795b1e61497a973c53218d23fda"
+  },
+  "ui/src/app/pipes/json-format/json-format.pipe.ts": {
+    "commit_id": "",
+    "hash": "dbf0dd5d5023b3d0704bb928453ec6c75edfa19409e10df324234bc4defafcaf"
+  },
+  "ui/src/app/pipes/safe-html/safe-html.pipe.ts": {
+    "commit_id": "",
+    "hash": "9ddeb1d76989ee0c8aee3aeff0c2038cd08aa57d6331205cb6d06e746129b35f"
+  },
+  "ui/src/app/pipes/string-append/string-append.pipe.spec.ts": {
+    "commit_id": "",
+    "hash": "b3c0232ee587713879ff921650fa5c4eacc79d0162af495d7e2c33db95e49aeb"
+  },
+  "ui/src/app/pipes/string-append/string-append.pipe.ts": {
+    "commit_id": "",
+    "hash": "b3876dcaf96f6871c5cd1bf0b236b0c6df60b63be7862abaf4c6c76b16dcdde7"
+  },
+  "ui/src/app/pipes/string-truncate/string-truncate.pipe.spec.ts": {
+    "commit_id": "",
+    "hash": "8856680d3a79b450c3c27c346a6455666801903bd86611ea6bf86bb799eb73f6"
+  },
+  "ui/src/app/pipes/string-truncate/string-truncate.pipe.ts": {
+    "commit_id": "",
+    "hash": "4641f27767a96099c70e832f3379231ffa69e7613097d6b1e0eb5ffb65354a57"
+  },
+  "ui/src/app/service/alert-message-service/alert-message-interface.ts": {
+    "commit_id": "",
+    "hash": "67ed28fe176beb1b1d9abfef9c162cb6259e2e8226b668c11997ece9690f5a1a"
+  },
+  "ui/src/app/service/alert-message-service/alert-message.service.ts": {
+    "commit_id": "",
+    "hash": "0c57bf8fe51c343ff305c27be39d4ca79bc7f88873c10bc5687319e41d0f12c8"
+  },
+  "ui/src/app/service/api-response-interface.ts": {
+    "commit_id": "",
+    "hash": "1c5d4fec0cea238da477ef9c2f8af8fcfff693b4cd7074ae73f0a11951e26468"
+  },
+  "ui/src/app/service/app-service/app.service.ts": {
+    "commit_id": "",
+    "hash": "dfd25bb3717b5920f1cedd2e2b371be26a04ae1af17f7691dc85736d7071e091"
+  },
+  "ui/src/app/service/base-service/base-http-error-response.ts": {
+    "commit_id": "",
+    "hash": "b492134d31c84ae119595488a66b4393cbcf191121b59ba81ca8a27488802d64"
+  },
+  "ui/src/app/service/base-service/base.service.ts": {
+    "commit_id": "",
+    "hash": "a244e58c9df9eed229b1443656ebd69ab127ec60774a474cdd690a9461246da4"
+  },
+  "ui/src/app/service/batch-errors-service/batch-error-interface.ts": {
+    "commit_id": "",
+    "hash": "afea3e01e82ce68668c00024912eabf8615994eaef77cc45ec057c9bf4796213"
+  },
+  "ui/src/app/service/batch-errors-service/batch-error.service.ts": {
+    "commit_id": "",
+    "hash": "8fe0f2e8be3077c01c92a7355980bef71507d6e7a737dbe77e7110af083039fc"
+  },
+  "ui/src/app/service/download-ti-service/download-ti.service.ts": {
+    "commit_id": "",
+    "hash": "105a8d829045d7000f223974523f54067e14bd88e1d0df89af780db7b20e8faf"
+  },
+  "ui/src/app/service/jobs-service/jobs-interface.ts": {
+    "commit_id": "",
+    "hash": "b4b11065c26c47aa7caa1014aad56b1455e2002e38d8e556dbda8bfb7e2ceeae"
+  },
+  "ui/src/app/service/jobs-service/jobs.service.ts": {
+    "commit_id": "",
+    "hash": "112ebd8d0f3315864ba4cbc9e1a0fc03cf163c8ea8eb872cd96a3fc5bfda7713"
+  },
+  "ui/src/app/service/metrics-service/metric-interface.ts": {
+    "commit_id": "",
+    "hash": "2eaeb2cde953b82ba6d02ad604ec3dea6c7f1321539c9d62534eba3b7ca22fa7"
+  },
+  "ui/src/app/service/metrics-service/metrics.service.ts": {
+    "commit_id": "",
+    "hash": "5ac9e4ffa1fb699929251d5c9e65e7f5d127eb3ba3576641fdf72efa8a9f4e19"
+  },
+  "ui/src/app/service/pages/job-executions/job-executions.component.html": {
+    "commit_id": "",
+    "hash": "63b9840b2b1e75a99d1d93055903f1adcdffcf7e37f569d953447ba76b1d9da4"
+  },
+  "ui/src/app/service/pages/job-executions/job-executions.component.scss": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/app/service/pages/job-executions/job-executions.component.spec.ts": {
+    "commit_id": "",
+    "hash": "e0acbc3c211ff6f4e026dbdf1b92ad4ce2bc1c1338c4b134a0070c1b382592d4"
+  },
+  "ui/src/app/service/pages/job-executions/job-executions.component.ts": {
+    "commit_id": "",
+    "hash": "1d7120211bba352d11e230ee487df455c3e37be6dc3538ae5cce4a4a08832213"
+  },
+  "ui/src/app/service/pendo-service/pendo.service.ts": {
+    "commit_id": "",
+    "hash": "4ff08beec541091ec41a1cf13c1736ad963a76e3401d9debd6c52196999ba04c"
+  },
+  "ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker-interface.ts": {
+    "commit_id": "",
+    "hash": "74448af7e0fd7e1c3fb728839931f1d6afafb1ee3ac4ebdfd4f850a74f0a947b"
+  },
+  "ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker.service.ts": {
+    "commit_id": "",
+    "hash": "01b4150cd8a65935648073596ba25f10e22359e2c230d49c3c86f31cb07c4981"
+  },
+  "ui/src/app/service/tasks-service/taks.service.ts": {
+    "commit_id": "",
+    "hash": "304ce161b77878582a01034a96ef85449600e6699f1962c65bb4ffaa3dcf6909"
+  },
+  "ui/src/app/service/tasks-service/task-interface.ts": {
+    "commit_id": "",
+    "hash": "f44a67cd0d4dc3b0e26d65ce221bc45ed8004b7b58858c55eae03214704267c5"
+  },
+  "ui/src/app/service/tc-service/tc.service.ts": {
+    "commit_id": "",
+    "hash": "a42764daa43444011665e7381f23ebb45a3041b085b70851a0414cd2d9c659bf"
+  },
+  "ui/src/app/service/theme-service/theme.service.ts": {
+    "commit_id": "",
+    "hash": "e64d8a786aa678b5e2755e723f354fd2a5667da5d2b3db4457fea0f1f5831232"
+  },
+  "ui/src/app/service/validators-service/validators.service.ts": {
+    "commit_id": "",
+    "hash": "cc1d93a2d51434587c602a9d2da34d6e22e27fdba7152cee296e60c411bcdb00"
+  },
+  "ui/src/app/service/window-service/window.service.ts": {
+    "commit_id": "",
+    "hash": "68cbc3f651155eb9af3caec2d75f1c17a74436f7cb2700e6fa5e39e1be10bcb0"
+  },
+  "ui/src/assets/.gitkeep": {
+    "commit_id": "",
+    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "ui/src/assets/images/TCLogo_DarkTheme.svg": {
+    "commit_id": "",
+    "hash": "f8f990d5fa8ad17e1367a9ba7aaf50032ce6abd119995d7604a1ad2bcc1b9d0c"
+  },
+  "ui/src/assets/images/TCLogo_LightTheme.svg": {
+    "commit_id": "",
+    "hash": "4fe511832ce29219f6799d4dfa46722da234904ef56c039d51ac71d0f14c9ac5"
+  },
+  "ui/src/environments/environment.prod.ts": {
+    "commit_id": "",
+    "hash": "4f2a236857c6d2889996d00dbd102628c44dcee1f38883eb09956df87e9a007b"
+  },
+  "ui/src/environments/environment.ts": {
+    "commit_id": "",
+    "hash": "b02ad5d6084f317fd4b35a1838f0882c3c5412dc717b429feae519f60b47ddae"
+  },
+  "ui/src/favicon.ico": {
+    "commit_id": "",
+    "hash": "ddd4af618f627c0e5738834c3a02d2c4cab00fe88fcd317cf349e29c773f1ed5"
+  },
+  "ui/src/favicon.png": {
+    "commit_id": "",
+    "hash": "123e049e3f1b6ceea6f0a558525b19ff8cc37a9053b3994c6148c28cd7daa4b6"
+  },
+  "ui/src/index.html": {
+    "commit_id": "",
+    "hash": "fba15b64b04c5f41f4be52d749c7c005eceba3c8a2054f3ac73e67715de0d6ac"
+  },
+  "ui/src/main.ts": {
+    "commit_id": "",
+    "hash": "3b1b89361b8a8487cd34a997d2971151bb7f3cd629ba38c75dc96e62dcbae1ce"
+  },
+  "ui/src/nx-dark-theme.scss": {
+    "commit_id": "",
+    "hash": "e1f299babb4435729384d91d036dfbbfcfab63c523c039633e50de1058f1b856"
+  },
+  "ui/src/nx-light-theme.scss": {
+    "commit_id": "",
+    "hash": "c1e1fed1f739fad8fe5cc11dc47fbf1210b4add945a957025002284d07b77846"
+  },
+  "ui/src/nx-theme.scss": {
+    "commit_id": "",
+    "hash": "812752db29f26c25c011f838c066ca3429bda5817c4a9d5fa78e727acdf97ad0"
+  },
+  "ui/src/polyfills.ts": {
+    "commit_id": "",
+    "hash": "76bb0a414ce720a899dbc637ed3593942652ba3105a9e3a20b91db7525ed7022"
+  },
+  "ui/src/proxy.conf.json": {
+    "commit_id": "",
+    "hash": "ef77de9afb34115a2700518786833717c3dc52aa8e465e2528cc58d2a06e2df2"
+  },
+  "ui/src/styles.scss": {
+    "commit_id": "",
+    "hash": "3f87b187f8be78864e98dec369e933e61b093c88f9c727efbab9bf995485231e"
+  },
+  "ui/src/tc-global.scss": {
+    "commit_id": "",
+    "hash": "387a2c1f2fc21b0b8faeaf79b7b811b9f1b38b24d2a7018f520026c1896398fe"
+  },
+  "ui/src/tcl-global.css": {
+    "commit_id": "",
+    "hash": "a9f49270b12569ddaaea5e9e2e03482e4e527ca522d08a23dfc3de576291064a"
+  },
+  "ui/src/test.ts": {
+    "commit_id": "",
+    "hash": "656aae07f04fa5f356990572f7b4d5dd6e97aba182911fd33adea771d8e43213"
+  },
+  "ui/tsconfig.app.json": {
+    "commit_id": "",
+    "hash": "e4dfd95b3bf640e5cc44a4b65a794b67d694ea9c828257fbc8b0eda785e7278f"
+  },
+  "ui/tsconfig.json": {
+    "commit_id": "",
+    "hash": "1452c6c3960ef97378b01550951f51979646f36d2ac2a865a2c72e9c55f2b9bb"
+  },
+  "ui/tsconfig.spec.json": {
+    "commit_id": "",
+    "hash": "58cf41a67b1abe3a523f1c6dc31c10ced8874155e3c3b26f888e965a486316cc"
+  }
+}

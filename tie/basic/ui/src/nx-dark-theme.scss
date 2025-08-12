@@ -1,0 +1,86 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@include mat.core();
+
+// Background palette for dark themes.
+$light-focused: rgb(0, 0, 0, 0);
+$dark-theme-background-palette: (
+    status-bar: rgb(0, 0, 0, 0),
+    app-bar: rgb(0, 0, 0, 0),
+    background: rgb(0, 0, 0, 0),
+    hover: rgb(0, 0, 0, 0),
+    card: rgb(0, 0, 0, 0),
+    dialog: rgb(0, 0, 0, 0),
+    disabled-button: rgb(0, 0, 0, 0),
+    raised-button: rgb(0, 0, 0, 0),
+    focused-button: rgb(0, 0, 0, 0),
+    selected-button: rgb(0, 0, 0, 0),
+    selected-disabled-button: rgb(0, 0, 0, 0),
+    disabled-button-toggle: rgb(0, 0, 0, 0),
+    unselected-chip: rgb(0, 0, 0, 0),
+    disabled-list-option: rgb(0, 0, 0, 0),
+    tooltip: rgb(0, 0, 0, 0),
+);
+
+$tc-primary-color: #00000000;
+$tc-primary-color-contrast: black;
+$mat-dark-theme-primary: mat.m2-define-palette(
+    (
+        50: $tc-primary-color,
+        100: $tc-primary-color,
+        200: $tc-primary-color,
+        300: $tc-primary-color,
+        400: $tc-primary-color,
+        500: $tc-primary-color,
+        600: $tc-primary-color,
+        700: $tc-primary-color,
+        800: $tc-primary-color,
+        900: $tc-primary-color,
+        contrast: (
+            50: $tc-primary-color-contrast,
+            100: $tc-primary-color-contrast,
+            200: $tc-primary-color-contrast,
+            300: $tc-primary-color-contrast,
+            400: $tc-primary-color-contrast,
+            500: $tc-primary-color-contrast,
+            600: $tc-primary-color-contrast,
+            700: $tc-primary-color-contrast,
+            800: $tc-primary-color-contrast,
+            900: $tc-primary-color-contrast,
+        ),
+    )
+);
+
+$tc-accent-color: #336cf9;
+$tc-accent-color-contrast: white;
+
+$mat-dark-theme-accent: mat.m2-define-palette(
+    (
+        50: $tc-accent-color,
+        100: $tc-accent-color,
+        200: $tc-accent-color,
+        300: $tc-accent-color,
+        400: $tc-accent-color,
+        500: $tc-accent-color,
+        600: $tc-accent-color,
+        700: $tc-accent-color,
+        800: $tc-accent-color,
+        900: $tc-accent-color,
+        contrast: (
+            50: $tc-accent-color-contrast,
+            100: $tc-accent-color-contrast,
+            200: $tc-accent-color-contrast,
+            300: $tc-accent-color-contrast,
+            400: $tc-accent-color-contrast,
+            500: $tc-accent-color-contrast,
+            600: $tc-accent-color-contrast,
+            700: $tc-accent-color-contrast,
+            800: $tc-accent-color-contrast,
+            900: $tc-accent-color-contrast,
+        ),
+    ),
+    700
+);
+
+$mat-dark-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);

@@ -1,0 +1,24 @@
+{
+    "package": {
+        "app_name": "TCVF_-_Sample_Threat_Intel_Engine",
+        "excludes": [
+            ".cspell",
+            ".gitignore",
+            ".pre-commit-config.yaml",
+            ".vscode",
+            "PAUSE",
+            "app_spec.yaml",
+            "local-*",
+            "log",
+            "pyproject.toml",
+            "setup.cfg",
+            "src",
+            "target",
+            "tcex.json",
+            "ui"
+        ]
+    },
+    "template_name": "basic",
+    "template_repo_hash": null,
+    "template_type": "api_service"
+}

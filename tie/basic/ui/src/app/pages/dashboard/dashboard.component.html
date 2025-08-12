@@ -1,0 +1,11 @@
+<div class="page-container pb-medium-large px-medium-large d-flex flex-column">
+    <div class="d-flex pt-medium-large justify-content-between align-items-center mb-medium">
+        <h3>Dashboard</h3>
+    </div>
+    <ngx-charts-number-card
+        cardColor="var(--tcl-base02)"
+        textColor="var(--tcl-textBody)"
+        [results]="metrics$ | async"
+        [view]="view">
+    </ngx-charts-number-card>
+</div>

@@ -1,0 +1,75 @@
+:host {
+  min-height: 100%;
+}
+
+$sidenav-left-min-width: 250px;
+$sidenav-left-max-width: 350px;
+$sidenav-right-min-width: 40rem;
+
+.parent {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'sidenav sidenav-action main-content';
+  //        'footer footer footer';
+  grid-template-columns: min-content 1rem 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  height: auto;
+  min-height: 100%;
+}
+
+.header {
+  grid-area: header;
+  z-index: 1000;
+}
+
+.sidenav {
+  grid-area: sidenav;
+}
+
+.sidenav-action {
+  grid-area: sidenav-action;
+  &:hover {
+    background: var(--tcl-hoverMain);
+  }
+
+  .sidenav-action-button {
+    height: 100%;
+  }
+}
+
+.main-content {
+  grid-area: main-content;
+}
+
+// start nx-side-nav
+.sidenav-container {
+  height: 100%;
+  overflow: hidden;
+
+  .sidenav-content {
+    height: 100%;
+    overflow-x: hidden;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    position: relative;
+  }
+
+  .sidenav-left {
+    max-width: $sidenav-left-max-width;
+    min-width: $sidenav-left-min-width;
+    padding-top: 1rem;
+  }
+
+  .sidenav-right {
+    min-width: $sidenav-right-min-width;
+    padding: 1rem;
+
+    .mat-drawer-inner-container {
+      overflow-x: hidden !important; // hide horizontal scrollbar
+    }
+  }
+}
+// end nx-side-nav

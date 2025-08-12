@@ -1,0 +1,56 @@
+<div #container class="pb-medium-large px-medium-large d-flex flex-column">
+    <div class="d-flex pt-medium-large justify-content-between align-items-center mb-medium">
+        <h3>Batch Errors</h3>
+    </div>
+
+    <div class="align-items-end d-flex mb-small">
+        <tcl-text-input
+            class="mr-medium"
+            label="Job ID"
+            [style]="{ minWidth: '300px' }"
+            [showClearTextIcon]="true"
+            [showCount]="false"
+            [value]="jobId"
+            (onChange)="handleJobIdChanged($event)"
+            (onClearText)="handleClearClick()"
+        ></tcl-text-input>
+        <tcl-button
+            class="mr-medium pl-small"
+            theme="primary"
+            [disabled]="
+                !jobId ||
+                jobId.length <= 3 ||
+                dataLoading ||
+                (searchedJobId && searchedJobId === jobId)
+            "
+            [featureVersion]="featureVersion"
+            [style.width.px]="600"
+            (onClick)="handleSearchClick()"
+            >Search</tcl-button
+        >
+    </div>
+
+    @if (dataLoading) {
+        <tcl-loading-spinner text="Loading batch errors..." size="large"></tcl-loading-spinner>
+    } @else {
+        <ngx-charts-number-card
+            [view]="view"
+            [results]="counts$ | async"
+            (select)="onCountCardClicked($event)"
+            cardColor="var(--tcl-base02)"
+            textColor="var(--tcl-textBody)"
+        >
+        </ngx-charts-number-card>
+    }
+</div>
+
+<tcl-side-drawer
+    side="right"
+    [open]="showSideDrawer"
+    [titleText]="sidebarTitle"
+    (openChange)="showSideDrawer = false"
+>
+    @if (selectedErrorCode !== undefined) {
+        <batch-errors-table [errorCode]="selectedErrorCode" [jobId]="jobId"></batch-errors-table>
+    }
+</tcl-side-drawer>

@@ -1,0 +1,101 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use 'nx-dark-theme.scss' as dark-theme;
+@use 'nx-light-theme.scss' as light-theme;
+@import 'tcl-global.css';
+
+@include mat.core();
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+// global properties
+$mat-density: 0;
+$toolbar-height: 64px;
+
+$tc-typography: mat.m2-define-typography-config(
+  $font-family: Inter,
+);
+
+$mat-dark-theme: mat.m2-define-dark-theme(
+  (
+    color: (
+      primary: dark-theme.$mat-dark-theme-primary,
+      accent: dark-theme.$mat-dark-theme-accent,
+      warn: dark-theme.$mat-dark-theme-warn,
+    ),
+    typography: $tc-typography,
+    density: $mat-density,
+  )
+);
+
+$mat-light-theme: mat.m2-define-light-theme(
+  (
+    color: (
+      primary: light-theme.$mat-light-theme-primary,
+      accent: light-theme.$mat-light-theme-accent,
+      warn: light-theme.$mat-light-theme-warn,
+    ),
+    typography: $tc-typography,
+    density: $mat-density,
+  )
+);
+
+/*
+        Set background color palette for theme.  You *must* do this manually, and can't just
+        pass to mat.define-*theme (it will ignore it).
+*/
+@function set-theme-background-palette($theme, $background-palette) {
+  $color: map.get($theme, 'color');
+  $color: map.set($color, 'background', $background-palette);
+  @return map.set($theme, 'color', $color);
+}
+
+// https://vugar-005.medium.com/generate-css-classes-and-variables-from-angular-material-palette-4c86318212c3
+@mixin generateColors($prefix, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      $map: ();
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+      $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  @each $key, $value in $colors-map {
+    --mat-#{$prefix}-#{$key}: #{$value};
+    // @debug "color: --mat-#{$prefix}-#{$key}: #{$value}";
+  }
+}
+
+// include light theme
+$mat-theme: set-theme-background-palette($mat-light-theme, light-theme.$light-theme-background-palette);
+@include mat.all-component-themes($mat-theme);
+
+// include mat theme pallette
+:root {
+  @include generateColors(primary, light-theme.$mat-light-theme-primary);
+  @include generateColors(accent, light-theme.$mat-light-theme-accent);
+  @include generateColors(warning, light-theme.$mat-light-theme-warn);
+
+  // override for material components
+  --mdc-theme-text-primary-on-background: var(--tc-body-text);
+}
+
+.dark {
+  // include mat theme pallette
+  @include generateColors(primary, dark-theme.$mat-dark-theme-primary);
+  @include generateColors(accent, dark-theme.$mat-dark-theme-accent);
+  @include generateColors(warning, dark-theme.$mat-dark-theme-warn);
+
+  // include dark theme
+  $mat-theme: set-theme-background-palette($mat-dark-theme, dark-theme.$dark-theme-background-palette);
+  @include mat.all-component-colors($mat-theme);
+
+  // override for material components
+  --mdc-theme-text-primary-on-background: var(--tc-body-text, white);
+}
