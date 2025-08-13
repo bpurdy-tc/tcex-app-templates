@@ -7,14 +7,9 @@ summary: A template of a working TIE App.
 # These are files that the App developer "should" not be
 # editing and will be overwritten without prompt during updating.
 template_files:
-  - core
-  - ui
-  - model
-  - message_service
-  - more
-  - scheduled_action
-  - sdk
-  - task
+  - app.py
+  - app_inputs.py
+  - app_spec.yml
 # One or more parent templates for the current template. The parent
 # template files will be pulled in the order that they are defined with
 # the later templates having precedent over the prior templates.

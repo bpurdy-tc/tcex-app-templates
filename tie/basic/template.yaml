@@ -15,10 +15,21 @@ template_files:
   - scheduled_action
   - sdk
   - task
+  - __init__.py
+  - .coveragerc
+  - .gitignore
+  - .pre-commit-config.yaml
+  - .prettierrc.json
+  - app_service_api.py
+  - attributes.json
+  - migrations.py
+  - pyproject.toml
+  - requirements.txt
+  - run.py
+  - service.job.json
+
 # One or more parent templates for the current template. The parent
 # template files will be pulled in the order that they are defined with
 # the later templates having precedent over the prior templates.
-template_parents:
-  - basic
 # The current version number of this template.
 version: 1.0.0
