@@ -20,7 +20,7 @@ template_files:
   - .gitignore
   - .pre-commit-config.yaml
   - .prettierrc.json
-  - app_service_app.py
+  - api_service_app.py
   - attributes.json
   - migrations.py
   - pyproject.toml
