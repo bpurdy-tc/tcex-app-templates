@@ -278,6 +278,13 @@ def main() -> None:
     # Write consolidated keys to a file for inspection
     files_ordered = [consolidated[k] for k in sorted(consolidated.keys())]
     manifest = build_manifest_map(files_ordered, root_dir=root_dir)
+    # Remove the first directory from each key in the manifest
+    manifest = {
+        "/".join(k.split("/")[1:]): v
+        for k, v in manifest.items()
+        if len(k.split("/")) > 1
+    }
+
 
     # Write manifest.json inside input directory
     output_path = input_dir / "manifest.json"
