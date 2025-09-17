@@ -92,8 +92,6 @@ class App(ApiServiceFalconABC):
 
     def register_custom_middleware(self):
         """Register middleware."""
-        # Should always inject db, settings tcex and logger?
-        # TODO: Make this just a list of obj
         self.register_middleware(
             [
                 InjectableMiddleware(
@@ -109,7 +107,6 @@ class App(ApiServiceFalconABC):
 
     def register_custom_routes(self):
         """Register routes."""
-        # TODO: Make this more explicit? Ask team
         self.register_routes(
             {
                 '/api/discovery': DiscoveryResponse(self.discovery_handler),

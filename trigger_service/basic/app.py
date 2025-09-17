@@ -1,4 +1,5 @@
 """ThreatConnect Trigger Service App"""
+
 # standard library
 from typing import TYPE_CHECKING
 
@@ -27,17 +28,7 @@ class App(ServiceApp):
     def trigger_callback(
         self, playbook: 'Playbook', trigger_id: int, config: dict, **kwargs
     ) -> None:
-        """Execute trigger callback for all current configs.
-
-        Args:
-            playbook: An instance of Playbooks used to write output
-                variables to be used in downstream Apps.
-            trigger_id: The ID of the Playbook Trigger.
-            config: The trigger input configuration data.
-
-        Returns:
-            bool: True if playbook should trigger, False if not.
-        """
+        """Execute trigger callback for all current configs."""
         # "extra" args passed to the fire_event method are available in kwargs
         my_data: str = kwargs.get('my_data')
         self.log.debug(f'my_data: {my_data}')

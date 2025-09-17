@@ -75,6 +75,12 @@ repos:
         args: ['--max-average=B', '-e=tests*']
   - repo: local
     hooks:
+      - id: build-manifest-and-stage
+        name: Build and stage manifest.json before commit
+        entry: scripts/build_and_stage_manifest.sh
+        language: script
+        types: [python]
+        files: ^tie/tcv/
       - id: pylint
         entry: pylint
         language: system
