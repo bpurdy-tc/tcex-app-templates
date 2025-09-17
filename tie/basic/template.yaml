@@ -15,6 +15,7 @@ template_files:
   - scheduled_action
   - sdk
   - task
+  - api
   - __init__.py
   - .coveragerc
   - .gitignore

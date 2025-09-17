@@ -9,23 +9,51 @@
   },
   ".pre-commit-config.yaml": {
     "md5": "5eed33083e61e5f98424bcf7cbcd465f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   ".prettierrc.json": {
     "md5": "7f10ad4845c49aba3a19cb93767124a0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
     "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
   },
+  "api/__init__.py": {
+    "md5": "66394e9abd5a1379c059ce48fc7ba102",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
+  "api/endpoint/__init__.py": {
+    "md5": "7be7d7e37115d14f97d34469fde99461",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
+  "api/endpoint/adhoc_job_request_resource.py": {
+    "md5": "d66e83f71fe5960da14e8d991a151b10",
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+  },
+  "api/endpoint/download_ti_resource.py": {
+    "md5": "3983cd187e4faeeb5555fe80c1668947",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
+  "api/endpoint/enrichment_response.py": {
+    "md5": "982cd7c9e968ff71c124af22160ce980",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
+  "api/spec_tags.py": {
+    "md5": "37f02f3e44739164f5e4c9371031348b",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
+  "api/ui_config_builder.py": {
+    "md5": "0a2fb02dbaf2aadb3858e078fa9ca588",
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+  },
   "api_service_app.py": {
     "md5": "92a2fd0182c0820d076371a6dbf8b317",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "attributes.json": {
     "md5": "a3a61f9f710128383c59203460111cb5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
@@ -61,15 +89,15 @@
   },
   "core/api/endpoint/tcvf/batch_error_collection.py": {
     "md5": "d59ac70b478aa5cf8f7044f06d963569",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/batch_error_counts_collection.py": {
     "md5": "f97a895978f49a89c90e03b546e57d20",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/download_files_resource.py": {
     "md5": "fafa72f15d480281715d6c74404ffc6f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/endpoint_base.py": {
     "md5": "1b718d4b943642a1bc34db0b1d627f98",
@@ -85,7 +113,7 @@
   },
   "core/api/endpoint/tcvf/job_retry_resource.py": {
     "md5": "1b7c0686a7cd199f361c572e1131fca1",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/metric_processing_collection.py": {
     "md5": "55d823dd6776854a493e1175eedc8bd0",
@@ -101,11 +129,11 @@
   },
   "core/api/endpoint/tcvf/request_collection.py": {
     "md5": "a1fa8243fef9906f303edf6e507e3bfe",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/support_log_search_resource.py": {
     "md5": "b160c6ded8654679adf07b9a21a37cd6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/api/endpoint/tcvf/task_collection.py": {
     "md5": "2321a50914eff84d2c0dcf20f4e5e236",
@@ -225,15 +253,15 @@
   },
   "core/app/api_service_falcon_abc.py": {
     "md5": "457528f1b4a9a7f842e7f1741d82b183",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/app/app_lib.py": {
     "md5": "7b42804e2b1987c70e81c335df81c54c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/app/enums.py": {
     "md5": "1687f02991d8ecb1bd987c8ab15b4c1d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/beacon/__init__.py": {
     "md5": "818bf782446f24c10b9213cc15429093",
@@ -241,11 +269,11 @@
   },
   "core/beacon/beacon.py": {
     "md5": "7c3345b78e621ca251a2d50827bad032",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/beacon/proxy.py": {
     "md5": "44476d54cf84832953970436b2c3af46",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/beacon/transpose.py": {
     "md5": "f1a9f9359f198fbb95585d1318230768",
@@ -253,31 +281,31 @@
   },
   "core/dao/__init__.py": {
     "md5": "c824402b7119f81b0b42c77921657f82",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/batch_error_dao.py": {
     "md5": "38a142b13970565e969a854d8b0a7ac9",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/doc_analysis_processed_items_dao.py": {
     "md5": "491d7716ee90925a08e61511c202a34f",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/doc_analysis_throttled_dao.py": {
     "md5": "a3def27e724c2ba35a5fc6c84c9e3882",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/doc_analysis_tracker_dao.py": {
     "md5": "8cd450a97972d1c300d6d3303d7925c2",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/job_dao.py": {
     "md5": "9eeacd7752907839951a3bdc2a7cb3e0",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/dao/report_pdf_tracker_dao.py": {
     "md5": "6cd83e8c9edb19f929cd467f90008991",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/json_db/__init__.py": {
     "md5": "2343331668d9aa21bbe107b8542a7c63",
@@ -289,7 +317,7 @@
   },
   "core/json_db/json_db.py": {
     "md5": "64893a5dc785bd9a940aa135b2ecdd8c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/json_db/where/__init__.py": {
     "md5": "760991619d12afead06cf48cdaa70287",
@@ -485,15 +513,15 @@
   },
   "core/model/tie/doc_analysis_processed_items_model.py": {
     "md5": "ea87951ead9caa04a8ecc3f5b17964ce",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/model/tie/doc_analysis_throttle_model.py": {
     "md5": "40b2bf8d312046c1a528280ed35340d5",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/model/tie/doc_analysis_tracker_model.py": {
     "md5": "124b305c99d53f55f7f6cecc4066b77a",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/model/tie/item_model.py": {
     "md5": "3eecf163acc996988c4d8d9c15f127f3",
@@ -509,7 +537,7 @@
   },
   "core/model/tie/task_setting_model.py": {
     "md5": "823a5df11166841dec23df69d68cc5f9",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/model/tie/task_setting_pipe_model.py": {
     "md5": "105c3bda44f099b5eaa029988d55bd7c",
@@ -525,7 +553,7 @@
   },
   "core/more/__init__.py": {
     "md5": "b5c3d3a162e5fca3b3c3d5dee4bbf95f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/more/db_util.py": {
     "md5": "1e9caaf8586aa0bc5643ad85af2472cd",
@@ -561,7 +589,7 @@
   },
   "core/service/current_running_process.py": {
     "md5": "0d9503690223ed759bd8342ceefe052d",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/error_handling.py": {
     "md5": "efb5a6106c22abec764959fedc501c5e",
@@ -569,31 +597,31 @@
   },
   "core/service/managers/__init__.py": {
     "md5": "c5e31562ca753d392cfd0a0366f8d74d",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/managers/operation_managers.py": {
     "md5": "0a0a61c6ac3abd203c89f58ccb7d1230",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/metrics.py": {
     "md5": "ea987d0c8c04db6a0fbe4472379fcaa8",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/migration_service.py": {
     "md5": "24579e8db81f69d0b68c2f93190ba6fc",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/preflight_check_service.py": {
     "md5": "d2f40e82d6dde4541efbdd1746ffc96b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/sqlite_migration_service.py": {
     "md5": "a538c0ac3d1fb8201e06697a73b11fcc",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/service/writing_service.py": {
     "md5": "8199ff2b3c27cb37dfba79a7c61f9519",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/__init__.py": {
     "md5": "68b653514167d4cbd8c84127529b57d6",
@@ -601,23 +629,23 @@
   },
   "core/task/backfill_missing_report_abc.py": {
     "md5": "adc253e654e81116df7d0feb362a3f0d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/cleaner.py": {
     "md5": "f9675f82ce091ff543ef2b4be169dbe4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/doc_analysis_abc.py": {
     "md5": "f78f2702959ab6fbb5c9bf8ab1cb9f08",
-    "last_commit": null
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/download_abc.py": {
     "md5": "14d78e20aaada46dcfcfc104f4b8b910",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/task_abc.py": {
     "md5": "99cbf6ca49239f2a3ebf1c0820064ca2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/task_path_pipe_abc.py": {
     "md5": "42f7353b6853306ed737b722ee126e32",
@@ -633,19 +661,19 @@
   },
   "core/task/upload_abc.py": {
     "md5": "ac7b3b0f75ac03dc66b5050c645b09ec",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/upload_egress_abc.py": {
     "md5": "326cb8ec7594c4460e2881910a490efe",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/task/upload_ingest_abc.py": {
     "md5": "c9bbc312c3a1867235d5482cff210ac8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/util/__init__.py": {
     "md5": "5ca14b367e80215ac19dd51cb9e3f4ff",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "core/util/custom_handler.py": {
     "md5": "de16ce68d1d2678b8f9062f7dff95c20",
@@ -661,7 +689,7 @@
   },
   "message_service/message_handler/__init__.py": {
     "md5": "4b582f8f3a90f59a4f42469549eea025",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "message_service/message_handler/enrichment_handler.py": {
     "md5": "108809fe40307904ecb2e906b1b481d6",
@@ -669,7 +697,7 @@
   },
   "migrations.py": {
     "md5": "33e59367c227a85c72f76954e19d8f21",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "model/__init__.py": {
     "md5": "c039879184c8a81027bcb9f01da38c9e",
@@ -701,15 +729,15 @@
   },
   "pyproject.toml": {
     "md5": "ab99609495f02e5713d329e01433055a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "requirements.txt": {
     "md5": "0690c81b862e859670a0f17c24a6ba46",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "run.py": {
     "md5": "28389da439d9bf3aac12161b9705b2c2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "scheduled_action/__init__.py": {
     "md5": "7c70ddabd70d6bcc99353c82ef8265fc",
@@ -717,7 +745,7 @@
   },
   "scheduled_action/actions.py": {
     "md5": "45e0b3df40448d8dc8b3482f2e1f72a0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "sdk/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
@@ -733,7 +761,7 @@
   },
   "service.job.json": {
     "md5": "1bc88a9dfc0981a12e64f8d58ac24383",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/__init__.py": {
     "md5": "18ac67d1b695c8c0ad42c8ecff868797",
@@ -749,11 +777,11 @@
   },
   "task/egress/convert.py": {
     "md5": "4c8cc1dcd7ad618f3dc1bf25e5329452",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/egress/download.py": {
     "md5": "b3cc5300541dbbc9710fdbd58360a3f6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/egress/scheduler.py": {
     "md5": "1d3aee79aaeb25c748bb8469e40c0139",
@@ -769,15 +797,15 @@
   },
   "task/ingest/convert.py": {
     "md5": "4a8290b6aeb2efeca28c36d6f0b41763",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/ingest/download.py": {
     "md5": "9637d623ed34f437d06c8bd79353843f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/ingest/scheduler.py": {
     "md5": "db829e5b19f158c594f976d5eff5791a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "task/ingest/upload.py": {
     "md5": "7a7feb18c8065dae98af51757fa02d0b",
@@ -798,14 +826,6 @@
   "ui/angular.json": {
     "md5": "8a9a95a70d6db5ca6c8ac86448e045a4",
     "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
-  },
-  "ui/cache/18.3.4-nx.darwin-arm64.node": {
-    "md5": "80b3ed7c7eef7b71d2b958736d997e0f",
-    "last_commit": "a56ae8014fa50619baef6117d20b315dfdd50cf3"
-  },
-  "ui/cache/18.3.4-nx.darwin-x64.node": {
-    "md5": "1429887e6c3fb501eca70a597340d8d8",
-    "last_commit": "a56ae8014fa50619baef6117d20b315dfdd50cf3"
   },
   "ui/errors.txt": {
     "md5": "f4876945bb081ee3345562de4b69f860",
@@ -1289,11 +1309,11 @@
   },
   "app.py": {
     "md5": "cc081dc0ed4b4fde472f4c7772687123",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "app_inputs.py": {
     "md5": "63a386d42e8f95c0799f140f546b02de",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "app_spec.yml": {
     "md5": "788e8a14c6f12b4f31562a76cb97d5f1",
@@ -1301,11 +1321,11 @@
   },
   "install.json": {
     "md5": "e6dc778bf458fef0352893928eb39efb",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "manifest.json": {
-    "md5": "bf4d82b9bb52893751764544ab437a68",
-    "last_commit": "ac35e3659a34d3b1d5b5a2f9790a17ced7610238"
+    "md5": "58a7548ee1bc82c69fb883f4ae1b15cb",
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "tcex.json": {
     "md5": "23ce8073ade12da3db409098cc4b7b1d",
