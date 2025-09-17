@@ -1,13 +1,9 @@
 """Query Param Filter Pagination Model."""
 
 # third-party
-from typing import ClassVar
-
-from pydantic import Field, validator
-
-# first-party
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.json_db import SortBy, SortOrder
+from pydantic import Field, validator
 
 
 # pylint: disable=no-self-argument
@@ -15,19 +11,21 @@ from core.json_db import SortBy, SortOrder
 class QueryParamFilterPaginationModel(QueryParamFilterModel):
     """Query Param Filter Pagination Model."""
 
-    _not_unset_capable: ClassVar[list] = [
-        'by_alias',
-        'exclude',
-        'exclude_defaults',
-        'exclude_none',
-        'exclude_unset',
-        'extra',
-        'include',
-        'limit',
-        'offset',
-        'sort',
-        'sort_order',
-    ]
+    _not_unset_capable: list[str] = Field(
+        default=[
+            'by_alias',
+            'exclude',
+            'exclude_defaults',
+            'exclude_none',
+            'exclude_unset',
+            'extra',
+            'include',
+            'limit',
+            'offset',
+            'sort',
+            'sort_order',
+        ]
+    )
 
     limit: int = Field(50, ge=0, le=500)
     offset: int = Field(0, ge=0)

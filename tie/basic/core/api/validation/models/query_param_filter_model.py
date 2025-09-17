@@ -6,15 +6,13 @@ import re
 from typing import Any, ClassVar
 
 # third-party
-from pydantic import Field, validator
-
-# first-party
 from core.api.validation.models.query_param_model import (
     QueryParamModel,
     param_to_list,
     values_to_snake,
 )
 from core.json_db.where import ToWhere, WhereDict
+from pydantic import Field, validator
 
 # get primary API logger
 logger = logging.getLogger('tcex')
@@ -126,14 +124,17 @@ class ParamModelFilter:
 class QueryParamFilterModel(QueryParamModel, ToWhere):
     """Model and validation for on_get() method."""
 
-    _not_unset_capable: ClassVar[list] = [
-        'by_alias',
-        'exclude',
-        'exclude_defaults',
-        'exclude_none',
-        'exclude_unset',
-        'include',
-    ]
+    _not_unset_capable: list[str] = Field(
+        default=[
+            'by_alias',
+            'exclude',
+            'exclude_defaults',
+            'exclude_none',
+            'exclude_unset',
+            'include',
+        ],
+        description='Fields that are not unset capable.',
+    )
 
     exclude: list[str] | None = Field(
         None, description='One or more fields to exclude from response.'

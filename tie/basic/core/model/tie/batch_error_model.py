@@ -5,12 +5,10 @@ from datetime import UTC, datetime
 from typing import ClassVar
 
 # third-party
-from pydantic import Field
-
-# first-party
 from core.json_db import Index
 from core.model.model_base import ModelBase
 from core.model.response.paginated_response import PaginatedResponseModel
+from pydantic import Field
 
 error_codes_name_map = {
     '0x1001': 'General Error',
@@ -138,4 +136,4 @@ class JobBatchErrorIndexModel(ModelBase):
     """Model Definition"""
 
     request_id: str = Index()
-    error_ids: ClassVar[list[str]] = []
+    error_ids: list[str] = Field(default_factory=list)
