@@ -1312,8 +1312,8 @@
     "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
   },
   "app.py": {
-    "md5": "cc081dc0ed4b4fde472f4c7772687123",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "md5": "ca1f6669a2426b1e874211dffff64e3b",
+    "last_commit": "db5dfd1697e92ead7abdb840f814b4d41e3488c6"
   },
   "app_inputs.py": {
     "md5": "63a386d42e8f95c0799f140f546b02de",
@@ -1328,8 +1328,8 @@
     "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
   },
   "manifest.json": {
-    "md5": "08b78fb78033909d5e3ae6eb951cd3f5",
-    "last_commit": "99dbb41c7063d2734ecf30dd9f596365142f7edb"
+    "md5": "6465c1f6a9c05534d27ed4df2c202161",
+    "last_commit": "8c477c91f5b19eec0784a9251346e4ee1a83891e"
   },
   "tcex.json": {
     "md5": "23ce8073ade12da3db409098cc4b7b1d",
