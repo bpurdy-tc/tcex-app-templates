@@ -45,11 +45,10 @@ class AppLib:
         if self._lib_directories is None:
             self._lib_directories = []
             app_path = Path.cwd()
-            contents = os.listdir(app_path)
-            for c in contents:
+            for c in app_path.iterdir():
                 # ensure content starts with lib, is directory, and is readable
-                if c.startswith('lib') and Path.is_dir(c) and (os.access(c, os.R_OK)):
-                    self._lib_directories.append(c)
+                if c.name.startswith('lib') and c.is_dir() and os.access(c, os.R_OK):
+                    self._lib_directories.append(c.name)
         return sorted(self._lib_directories, reverse=True)
 
     def update_path(self) -> None:

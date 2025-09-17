@@ -18,8 +18,8 @@ from core.json_db import JsonDB
 
 # from more import Metrics
 from core.model.tie.job_request_base_model import JobRequestBaseModel
-from core.service.tcvf.metrics import Metrics
-from core.service.tcvf.writing_service import WritingModel, WritingService
+from core.service.metrics import Metrics
+from core.service.writing_service import WritingModel, WritingService
 from core.task.task_path_pipe_abc import TaskPathPipeABC
 from core.task.tasks import Tasks
 
@@ -83,6 +83,8 @@ class DownloadABC(TaskPathPipeABC):
                 return
             next_job = self.job_dao.get_next_for_task(self)
             if not next_job:
+                return
+            if next_job.pipeline != self.pipeline:
                 return
 
             for check in self.preflight_checks:

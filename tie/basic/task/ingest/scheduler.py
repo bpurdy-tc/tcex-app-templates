@@ -40,7 +40,8 @@ class Scheduler(TaskABC):
 
         if not most_recent_scheduled_job:
             self.tcex.log.info('task-event=schedule-download, action=schedule-backfill-downloads')
-            self._add_backfill_jobs(now)
+            start_time = now - self.backfill
+            self._add_backfill_jobs(start_time, now)
             return
 
         end_time = most_recent_scheduled_job.end_time
@@ -53,15 +54,12 @@ class Scheduler(TaskABC):
 
         if (now - end_time) < self.frequency:
             self.tcex.log.info('task-event=schedule-download, action=skip-schedule')
+            return
 
-        while (now - end_time) > self.frequency:
-            self.tcex.log.info('task-event=schedule-download, action=schedule-next-download')
-            self._add_job(end_time, end_time + self.frequency)
-            end_time += self.frequency
+        self._add_backfill_jobs(end_time, now)
 
-    def _add_backfill_jobs(self, end_date: datetime):
+    def _add_backfill_jobs(self, start_time: datetime, end_date: datetime):
         """Add backfill jobs to the database."""
-        start_time = end_date - self.backfill
         while start_time < end_date:
             end_time = min(start_time + self.backfill_frequency, end_date)
             self._add_job(start_time, end_time)

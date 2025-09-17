@@ -13,7 +13,7 @@ from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 
 
 # pylint: disable=unused-argument

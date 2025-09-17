@@ -11,15 +11,16 @@ from typing import TYPE_CHECKING, NoReturn
 current_dir = Path(__file__).resolve().parent
 sys.path.insert(0, str(current_dir))
 
-# first-party
+# third-party
 from core.app.app_lib import AppLib  # noqa: E402
 
 if TYPE_CHECKING:
     # third-party
     # third-party
-    # first-party
+    # third-party
     from tcex import TcEx  # must be imported later, but also needed typing hints
 
+    # first-party
     from app import App  # must be imported later, but also needed typing hints
 
 

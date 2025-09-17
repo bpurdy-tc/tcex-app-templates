@@ -31,8 +31,12 @@ class UploadEgressABC(UploadABC, ABC):
     def process_file(self, file: Path, request: JobRequestModel):
         """Process the batch file and return the BatchSubmit instance and batch ID."""
 
-    #  pylint: disable=unused-argument
-    def process_file_wrapper(self, file: Path, request: JobRequestModel, output_dir: Path) -> bool:  # noqa: ARG002
+    def process_file_wrapper(
+        self,
+        file: Path,
+        request: JobRequestModel,
+        output_dir: Path,  # noqa: ARG002
+    ) -> bool:
         """Handle batch file processing."""
         # Return True if successfully processed, False if not.
         try:

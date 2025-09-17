@@ -1,7 +1,7 @@
 """ThreatConnect API Service App"""
 
-# first-party
-from core.service.tcvf.migration_service import MigrationService
+# third-party
+from core.service.migration_service import MigrationService
 
 # from core.tcvf.service.sqlite_migration_service import SQLiteMigrationModel
 

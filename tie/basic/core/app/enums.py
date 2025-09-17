@@ -95,6 +95,7 @@ class PREFLIGHT_CHECKS(Enum):  # noqa: N801
 
     FILESYSTEM = 'filesystem'
     TC_API = 'tc_api'
+    DUPLICATE_PROCESSES_RUNNING = 'duplicate_processes_running'
 
 
 class MESSAGE_HANDLERS(Enum):  # noqa: N801

@@ -10,6 +10,7 @@ from tcex.logger.trace_logger import TraceLogger
 
 # first-party
 from core.app.enums import PREFLIGHT_CHECKS
+from core.service.current_running_process import CurrentRunningProcess
 
 logger = logging.getLogger('tcex')
 
@@ -24,6 +25,7 @@ class PreflightCheckService:
         self.mapping = {
             PREFLIGHT_CHECKS.FILESYSTEM: self._check_filesystem,
             PREFLIGHT_CHECKS.TC_API: self._check_tc_api,
+            PREFLIGHT_CHECKS.DUPLICATE_PROCESSES_RUNNING: self._check_duplicate_service,
         }
         self.preflight_checks = set()
 
@@ -42,8 +44,8 @@ class PreflightCheckService:
         try:
             preflight_check_file.write_text('preflight check')
             self.log.info(
-                f'action=check_filesystem, '
-                f'message=Preflight check for filesystem passed, '
+                'action=check_filesystem, '
+                'message=Preflight check for filesystem passed, '
                 f'file={preflight_check_file}'
             )
         except Exception as ex:
@@ -80,3 +82,14 @@ class PreflightCheckService:
             self.log.exception('Failed to fetch attributes from ThreatConnect API.')
             msg = 'Could not fetch attributes from ThreatConnect API.'
             raise RuntimeError(msg) from ex
+
+    def _check_duplicate_service(self):
+        """Check for duplicate services and shutdown all services if found."""
+        current_running_processes = CurrentRunningProcess(self.tcex)
+        current_running_processes.load()
+
+        if current_running_processes.should_write():
+            current_running_processes.write()
+        else:
+            current_running_processes.file.unlink()
+            current_running_processes.shutdown_existing_service()

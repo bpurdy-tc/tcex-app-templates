@@ -15,7 +15,7 @@ from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_util
 from core.api.validation.models.query_param_model import QueryParamModel
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 
 
 # pylint: disable=unused-argument

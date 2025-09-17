@@ -13,13 +13,15 @@ from enum import Enum
 from functools import cached_property, lru_cache
 from pathlib import Path
 from types import GenericAlias
-from typing import Any, ParamSpec, TypeVar, cast
+from typing import TYPE_CHECKING, Any, ParamSpec, TypeVar, cast
 
 # third-party
 import uuid6
 from pydantic import BaseModel, Field
 from pydantic.fields import Undefined
-from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, NoArgAnyCallable
+
+if TYPE_CHECKING:
+    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, NoArgAnyCallable
 
 SortBy = Enum('SortBy', ['CREATED', 'MODIFIED', 'INDEX'])
 SortOrder = Enum('SortOrder', {'ASC': 'asc', 'DESC': 'desc'})
@@ -28,12 +30,12 @@ SortOrder = Enum('SortOrder', {'ASC': 'asc', 'DESC': 'desc'})
 def Embedded(  # noqa: N802, PLR0913
     default: Any = Undefined,
     *,
-    default_factory: NoArgAnyCallable | None = None,
+    default_factory: 'NoArgAnyCallable | None' = None,
     alias: str | None = None,
     title: str | None = None,
     description: str | None = None,
-    exclude: AbstractSetIntStr | MappingIntStrAny | Any | None = None,
-    include: AbstractSetIntStr | MappingIntStrAny | Any | None = None,
+    exclude: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
+    include: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
     const: bool | None = None,
     gt: float | None = None,
     ge: float | None = None,
@@ -93,12 +95,12 @@ def Embedded(  # noqa: N802, PLR0913
 def Index(  # noqa: N802, PLR0913
     default: Any = Undefined,
     *,
-    default_factory: NoArgAnyCallable | None = lambda: str(uuid6.uuid7()),
+    default_factory: 'NoArgAnyCallable | None' = lambda: str(uuid6.uuid7()),
     alias: str | None = None,
     title: str | None = None,
     description: str | None = None,
-    exclude: AbstractSetIntStr | MappingIntStrAny | Any | None = None,
-    include: AbstractSetIntStr | MappingIntStrAny | Any | None = None,
+    exclude: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
+    include: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
     const: bool | None = None,
     gt: float | None = None,
     ge: float | None = None,

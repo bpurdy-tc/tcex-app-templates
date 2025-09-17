@@ -18,8 +18,14 @@ from core.task.task_path_pipe_abc import TaskPathPipeABC, UploadError, UploadRet
 
 T = TypeVar('T')
 
+
 # Named tuple for write types
-WriteTypes = NamedTuple('WriteTypes', ['attribute', 'tag', 'security_label'])
+class WriteTypes(NamedTuple):
+    """Named tuple for write types."""
+
+    attribute: str
+    tag: str
+    security_label: str
 
 
 class UploadABC(TaskPathPipeABC, ABC):

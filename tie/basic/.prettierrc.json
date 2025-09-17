@@ -1,52 +1,52 @@
 {
-  "attributeGroups": [
-    "$ANGULAR_STRUCTURAL_DIRECTIVE",
-    "$CLASS",
-    "$ANGULAR_ELEMENT_REF",
-    "$ID",
-    "$DEFAULT",
-    "$ANGULAR_ANIMATION",
-    "$ANGULAR_ANIMATION_INPUT",
-    "$ANGULAR_INPUT",
-    "$ANGULAR_TWO_WAY_BINDING",
-    "$ANGULAR_OUTPUT"
-  ],
-  "attributeIgnoreCase": true,
-  "attributeSort": "ASC",
-  "bracketSameLine": true,
-  "cssDeclarationSorterKeepOverrides": true,
-  "cssDeclarationSorterOrder": "alphabetical",
-  "importOrder": [
-    "^(rxjs)$",
-    "",
-    "^(@angular)(/.*)$",
-    "",
-    "<THIRD_PARTY_MODULES>",
-    "",
-    "^[.]"
-  ],
-  "importOrderParserPlugins": [
-    "typescript",
-    "decorators-legacy"
-  ],
-  "importOrderTypeScriptVersion": "5.1.0",
-  "overrides": [
-    {
-      "files": "*.json",
-      "options": {
-        "tabWidth": 2
-      }
-    }
-  ],
-  "plugins": [
-    "prettier-plugin-css-order",
-    "prettier-plugin-organize-attributes",
-    "@ianvs/prettier-plugin-sort-imports"
-  ],
-  "printWidth": 100,
-  "semi": true,
-  "singleAttributePerLine": true,
-  "singleQuote": true,
-  "tabWidth": 4,
-  "trailingComma": "all"
+    "attributeGroups": [
+        "$ANGULAR_STRUCTURAL_DIRECTIVE",
+        "$CLASS",
+        "$ANGULAR_ELEMENT_REF",
+        "$ID",
+        "$DEFAULT",
+        "$ANGULAR_ANIMATION",
+        "$ANGULAR_ANIMATION_INPUT",
+        "$ANGULAR_INPUT",
+        "$ANGULAR_TWO_WAY_BINDING",
+        "$ANGULAR_OUTPUT"
+    ],
+    "attributeIgnoreCase": true,
+    "attributeSort": "ASC",
+    "bracketSameLine": true,
+    "cssDeclarationSorterKeepOverrides": true,
+    "cssDeclarationSorterOrder": "alphabetical",
+    "importOrder": [
+        "^(rxjs)$",
+        "",
+        "^(@angular)(/.*)$",
+        "",
+        "<THIRD_PARTY_MODULES>",
+        "",
+        "^[.]"
+    ],
+    "importOrderParserPlugins": [
+        "typescript",
+        "decorators-legacy"
+    ],
+    "importOrderTypeScriptVersion": "5.1.0",
+    "overrides": [
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ],
+    "plugins": [
+        "prettier-plugin-css-order",
+        "prettier-plugin-organize-attributes",
+        "@ianvs/prettier-plugin-sort-imports"
+    ],
+    "printWidth": 100,
+    "semi": true,
+    "singleAttributePerLine": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "all"
 }

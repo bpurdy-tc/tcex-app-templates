@@ -2,12 +2,13 @@
 
 # third-party
 # third-party
-# first-party
+# third-party
 from pydantic import ValidationError
 from tcex import TcEx
 from tcex.input.input import Input
 from tcex.logger.trace_logger import TraceLogger
 
+# first-party
 from app_inputs import AppInputs
 
 

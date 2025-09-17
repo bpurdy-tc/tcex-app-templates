@@ -1,13 +1,13 @@
 """Extremely late-binding and update-propogating dependency injection"""
 
 # standard library
+import contextlib
 import inspect
 import os
 import threading
 import weakref
 from collections import defaultdict
 from collections.abc import Callable
-from contextlib import suppress
 from typing import Any, TypeVar
 
 from .proxy import InjectionProxy
@@ -37,7 +37,7 @@ class Injector:
         self._values: dict[type, Any] = {}
         self._factories = {}
         self._pid = os.getpid()
-        self._proxies: dict[str, list[weakref.ref]] = defaultdict(list)
+        self._proxies: dict[str, weakref.ref] = defaultdict(list)
 
     def factory(
         self,
@@ -57,8 +57,8 @@ class Injector:
             if (return_type := annotations.get('return')) and isinstance(return_type, type):
                 type_ = return_type
             else:
-                msg = 'Factory function must have a return type annotation'
-                raise TypeError(msg)
+                ex_msg = 'Factory function must have a return type annotation'
+                raise TypeError(ex_msg)
 
         self._factories[type_] = (factory_fn, singleton)
 
@@ -69,7 +69,7 @@ class Injector:
                 if proxy := proxy_ref():
                     new_value = self._resolve(type_)
                     if old_value is not None:
-                        with suppress(AttributeError):
+                        with contextlib.suppress(AttributeError):
                             old_value.__transpose__(new_value, type_)
                     object.__setattr__(proxy, '__resolved', new_value)
 
@@ -99,10 +99,10 @@ class Injector:
         self,
         key: type[B],
         *,
-        use_proxy: bool = True,
+        proxy: bool = True,
     ) -> B:
         """Get a value or factory from the injector."""
-        if not use_proxy:
+        if not proxy:
             return self._resolve(key)
 
         proxy = InjectionProxy(key, lambda: self._resolve(key))
@@ -112,8 +112,8 @@ class Injector:
         def remove_proxy_ref(key, ref):
             self._proxies[key] = [r for r in self._proxies[key] if r is not ref]
 
-        weakref.finalize(use_proxy, remove_proxy_ref, key, ref)
-        return proxy  # type: ignore
+        weakref.finalize(proxy, remove_proxy_ref, key, ref)
+        return proxy
 
     def _store_new_value(self, key: type[B], value: Any):
         """Store a new value in the injector."""
@@ -128,8 +128,9 @@ class Injector:
         if key in self._values:
             return self._values[key]
         if key in self._factories:
-            factory, singleton = self._factories[key]
-            value = factory()
+            fact, singleton = self._factories[key]
+            with contextlib.suppress(Exception):
+                value = fact()
             if singleton:
                 self._values[key] = value
             return value

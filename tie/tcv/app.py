@@ -4,7 +4,7 @@
 from datetime import timedelta
 from functools import cached_property
 
-# first-party
+# third-party
 from api.endpoint.enrichment_response import EnrichmentResponse
 from core.api.endpoint.tcva.discovery_response import DiscoveryResponse
 from core.api.injectable.middleware import InjectableMiddleware
@@ -122,7 +122,11 @@ class App(ApiServiceFalconABC):
         """Register preflight checks."""
         self.register_preflight_checks(
             preflight_checks=[self._check_api],
-            default=[self.preflight_checks.FILESYSTEM, self.preflight_checks.TC_API],
+            default=[
+                self.preflight_checks.FILESYSTEM,
+                self.preflight_checks.TC_API,
+                self.preflight_checks.DUPLICATE_PROCESSES_RUNNING,
+            ],
         )
 
     @cached_property

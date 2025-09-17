@@ -8,7 +8,7 @@ from packaging.version import parse
 
 # first-party
 from core.model.tie.version_manager_model import VersionManagerModel
-from core.service.tcvf.sqlite_migration_service import SQLiteMigration
+from core.service.sqlite_migration_service import SQLiteMigration
 
 
 class MigrationService:

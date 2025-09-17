@@ -11,7 +11,7 @@ from pydantic import Field, validator
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 from core.model.model_base import ModelBase
 
 from model.job_request_model import AdHocJobRequestModel  # isort:skip
@@ -38,7 +38,7 @@ class AdHocRequestResource(EndpointBaseABC):
         """Return the dao."""
         return JobRequestDAO(self.db, self.settings)
 
-    def on_post(
+    def post(
         self,
         _req: FalconRequest,
         _: FalconResponse,

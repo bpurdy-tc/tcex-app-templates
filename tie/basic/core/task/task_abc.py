@@ -24,11 +24,11 @@ from tcex.logger.trace_logger import TraceLogger  # pylint: disable=no-name-in-m
 
 # first-party
 from core.beacon import inject, provide
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
 from core.model.tie.job_request_base_model import JobRequestBaseModel
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
-from core.service.tcvf.writing_service import WritingService
+from core.service.writing_service import WritingService
 from core.task.task_path_pipe_injectables import UpdateHeartbeat
 from core.util.process_metadata import Metadata, ProcessMetadata
 
@@ -151,9 +151,8 @@ class TaskABC(ABC, Generic[T]):
             self.task_settings.paused_file_global = False
 
             # check if global pause is enabled
-            global_pause_file = Path(Path.cwd() / 'PAUSE')
-            if Path.isfile(global_pause_file):
-                self.task_settings.paused_file_global = True
+            global_pause_file = Path.cwd() / 'PAUSE'
+            self.task_settings.paused_file_global = global_pause_file.is_file()
 
     def _db_increment_counts(self, request, counts: dict):
         """Update the counts in the self.db."""

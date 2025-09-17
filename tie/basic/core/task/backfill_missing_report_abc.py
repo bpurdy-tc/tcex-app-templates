@@ -2,7 +2,7 @@
 
 # standard library
 from abc import abstractmethod
-from typing import NamedTuple
+from typing import Callable, NamedTuple
 
 from model import SettingModel
 
@@ -13,7 +13,7 @@ from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 from tcex.pleb.cached_property import cached_property
 
 # first-party
-from core.dao.tcvf.report_pdf_tracker_dao import ReportPdfTrackerDAO
+from core.dao.report_pdf_tracker_dao import ReportPdfTrackerDAO
 from core.json_db import JsonDB
 from core.model.tie.report_pdf_tracker_model import ReportPdfTrackerModel
 from core.model.tie.task_setting_model import TaskSettingModel
@@ -52,7 +52,12 @@ class TaskSettingCustomModel(TaskSettingModel):
     max_attempts: int
 
 
-CustomTag = NamedTuple('CustomTag', ['name', 'processor', 'cleaner'], defaults=[None])
+class CustomTag(NamedTuple):
+    """Named tuple for custom tag processing."""
+
+    name: str
+    processor: Callable
+    cleaner: Callable | None = None
 
 
 class BackfillMissingReportABC(TaskABC):

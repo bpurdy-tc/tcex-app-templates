@@ -337,6 +337,8 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         self.log.debug(f'action=loop-forever, shutdown=True, max_delay_time={delay_time}')
         while self.tasks_obj.alive() != 0 and time() < deadline:
             sleep(1)
+
+        self.tasks_obj.kill_all()
         self.tcex.exit.exit(ExitCode.SUCCESS, 'App has been successfully Stopped')
 
     def _remove_pending_jobs(self):

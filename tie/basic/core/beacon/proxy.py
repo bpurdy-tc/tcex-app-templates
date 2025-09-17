@@ -173,7 +173,11 @@ class InjectionProxy(Generic[A]):
                 namespace[name] = make_method(name)
         return type(f'{cls.__name__}({theclass.__name__})', (cls,), namespace)
 
-    def __new__(cls, type_: A) -> 'type[InjectionProxy[A]]':
+    def __new__(
+        cls,
+        type_: A,
+        factory,  # noqa: ARG003
+    ) -> 'type[InjectionProxy[A]]':
         """Create an proxy instance referencing `obj`."""
         return object.__new__(cls._create_class_proxy(type_))
 

@@ -22,7 +22,7 @@ from model.job_request_model import JobRequestModel
 from core.beacon import inject
 from core.json_db.dao import JsonDBDAO
 from core.json_db.json_db import JsonDB
-from core.service.tcvf.metrics import Metrics
+from core.service.metrics import Metrics
 from core.task.task_path_pipe_injectables import CurrentJob, TaskOutputDir
 from core.util.custom_handler import CustomHandler
 from core.util.func_utils import combine_context_managers

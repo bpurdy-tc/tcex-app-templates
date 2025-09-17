@@ -3,6 +3,7 @@
 # standard library
 import gzip
 import re
+import sys
 from pathlib import Path
 from typing import IO
 
@@ -154,10 +155,7 @@ class SupportLogSearchResource(EndpointBase):
                 self.line_number_matched += 1
             except Exception:
                 # print to stderr instead of log to prevent erroring on this line
-                # print(f'Failed to parse log event: "{line}"', file=sys.stderr)
-                self.log.exception(
-                    f'Failed to parse log event: "{line}"',
-                )
+                print(f'Failed to parse log event: "{line}"', file=sys.stderr)  # noqa: T201
                 continue
 
             events.append(_event)

@@ -10,7 +10,7 @@ from pathlib import Path
 from tcex import TcEx
 
 # first-party
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB, where
 from core.json_db.dao import JsonDBDAO
 from core.model.tcvf.settings_model_base import SettingModelBase

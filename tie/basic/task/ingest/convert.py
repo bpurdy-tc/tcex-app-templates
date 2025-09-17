@@ -8,7 +8,7 @@ from pathlib import Path
 
 # first-party
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
-from core.service.tcvf.writing_service import WritingModel
+from core.service.writing_service import WritingModel
 from core.task.task_path_pipe_abc import TaskPathPipeABC
 from more.transform.sample_transform import SampleTransform
 

@@ -24,8 +24,14 @@ from core.task.upload_abc import UploadABC
 
 T = TypeVar('T')
 
+
 # Named tuple for write types
-WriteTypes = NamedTuple('WriteTypes', ['attribute', 'tag', 'security_label'])
+class WriteTypes(NamedTuple):
+    """Named tuple for write types."""
+
+    attribute: str
+    tag: str
+    security_label: str
 
 
 # Custom exceptions

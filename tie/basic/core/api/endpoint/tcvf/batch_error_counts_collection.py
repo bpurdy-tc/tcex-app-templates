@@ -15,7 +15,7 @@ from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
-from core.dao.tcvf.batch_error_dao import BatchErrorDAO
+from core.dao.batch_error_dao import BatchErrorDAO
 from core.model.model_base import ModelBase
 from core.model.response.response_model import ResponseModel
 

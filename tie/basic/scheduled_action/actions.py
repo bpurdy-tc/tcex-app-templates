@@ -4,7 +4,7 @@
 from tcex.logger.trace_logger import TraceLogger  # pylint: disable=no-name-in-module
 
 # first-party
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
 from core.task.tasks import Tasks
 from model.settings_model import SettingModel

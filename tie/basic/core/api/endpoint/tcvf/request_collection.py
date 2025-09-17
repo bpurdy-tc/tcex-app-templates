@@ -20,7 +20,7 @@ from core.api.spec import spec, tag_job
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
-from core.dao.tcvf.job_dao import JobRequestDAO
+from core.dao.job_dao import JobRequestDAO
 from core.json_db import SortBy, where
 
 

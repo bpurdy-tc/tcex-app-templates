@@ -1,12 +1,14 @@
 """App Inputs"""
 
 # third-party
+
+# third-party
 from pydantic import BaseModel, Extra, Field, validator
 from tcex.input.model.app_feed_api_service_model import AppFeedApiServiceModel
 
 # pylint: disable=no-self-argument
 
-ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host'}
+ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
 
 
 class AdvancedSettingsModel(BaseModel):

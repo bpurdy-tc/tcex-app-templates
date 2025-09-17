@@ -41,7 +41,7 @@ class TaskSettingModel(ItemModel):
     task_type: str = Field('standalone', description='The type of task (e.g., pipe, single).')
 
     @validator('slug', always=True, pre=True)
-    def _create_slug(self, _, values):  # pylint: disable=no-self-argument
+    def _create_slug(cls, _, values):  # noqa: N805
         return values.get('name').lower().replace(' ', '-')
 
     class Config:
