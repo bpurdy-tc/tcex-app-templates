@@ -20,7 +20,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import logging
 import os
 import subprocess
 import sys
@@ -39,14 +38,15 @@ except Exception:  # pragma: no cover
     sys.exit(1)
 
 
-
 # ---------------------------------
 # Data model
 # ---------------------------------
 
+
 @dataclass(frozen=True)
 class TemplateInfo:
     """Information about a template directory and its parsed config."""
+
     dir_path: Path
     config: dict
 
@@ -54,6 +54,7 @@ class TemplateInfo:
 # ---------------------------------
 # YAML / Template resolution
 # ---------------------------------
+
 
 class TemplateResolver:
     """Resolves template inheritance and loads template.yaml files."""
@@ -118,11 +119,15 @@ class TemplateResolver:
 # File discovery
 # ---------------------------------
 
+
 class FileExpander:
     """Expands template file entries to concrete file paths."""
+
     EXCLUDED_DIRS = {'.git', '__pycache__', '.venv', 'node_modules'}
 
-    def iter_template_files(self, template_dir: Path, relative_paths: Sequence[str]) -> Iterator[Path]:
+    def iter_template_files(
+        self, template_dir: Path, relative_paths: Sequence[str]
+    ) -> Iterator[Path]:
         """
         Yield absolute file Paths for each entry:
           - If entry is a file: yield it.
@@ -147,6 +152,7 @@ class FileExpander:
 # ---------------------------------
 # Hashing / Git helpers
 # ---------------------------------
+
 
 class GitHelper:
     """Encapsulates Git root resolution and last-commit lookups."""
@@ -181,7 +187,17 @@ class GitHelper:
 
         try:
             out = subprocess.check_output(
-                ['git', '-C', str(self.repo_root), 'log', '-n', '1', '--pretty=format:%H', '--', str(rel)],
+                [
+                    'git',
+                    '-C',
+                    str(self.repo_root),
+                    'log',
+                    '-n',
+                    '1',
+                    '--pretty=format:%H',
+                    '--',
+                    str(rel),
+                ],
                 text=True,
                 stderr=subprocess.STDOUT,
             )
@@ -208,6 +224,7 @@ class HashHelper:
 # Manifest builder
 # ---------------------------------
 
+
 class ManifestBuilder:
     """
     Builds the manifest map:
@@ -233,16 +250,14 @@ class ManifestBuilder:
             md5 = HashHelper.md5(abs_path)
             last_commit = self.git.last_commit(abs_path)
 
-            raw_manifest[key] = {'md5': md5, 'last_commit': last_commit}
+            raw_manifest[key] = {'md5': md5, 'last_commit': last_commit, 'template_path': key}
 
         # 2) Stable order by key
         ordered = {k: raw_manifest[k] for k in sorted(raw_manifest.keys())}
 
         # 3) Remove the first directory from each key in the manifest (preserve original behavior)
         trimmed = {
-            '/'.join(k.split('/')[1:]): v
-            for k, v in ordered.items()
-            if len(k.split('/')) > 1
+            '/'.join(k.split('/')[1:]): v for k, v in ordered.items() if len(k.split('/')) > 1
         }
         return trimmed
 
@@ -250,6 +265,7 @@ class ManifestBuilder:
 # ---------------------------------
 # Application Orchestrator
 # ---------------------------------
+
 
 class BuildManifestApp:
     """High-level application that wires all components and preserves CLI behavior."""
@@ -312,6 +328,7 @@ class BuildManifestApp:
 # CLI
 # ---------------------------------
 
+
 def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     ap = argparse.ArgumentParser(
         description='Build manifest.json for a template directory and its parent templates.'
@@ -321,6 +338,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
         '--root', default='.', help='Templates root (default: current working directory)'
     )
     return ap.parse_args(argv)
+
 
 def main() -> None:
     args = parse_args()

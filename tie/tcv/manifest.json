@@ -1,1338 +1,1672 @@
 {
   ".coveragerc": {
     "md5": "d51ce32ae5bc397f95e4e6bf225210fb",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/.coveragerc"
   },
   ".gitignore": {
     "md5": "3d61150bbcc55cce0d7b6535153445f1",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/.gitignore"
   },
   ".pre-commit-config.yaml": {
     "md5": "5eed33083e61e5f98424bcf7cbcd465f",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/.pre-commit-config.yaml"
   },
   ".prettierrc.json": {
     "md5": "7f10ad4845c49aba3a19cb93767124a0",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/.prettierrc.json"
   },
   "__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/__init__.py"
   },
   "api/__init__.py": {
     "md5": "66394e9abd5a1379c059ce48fc7ba102",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/__init__.py"
   },
   "api/endpoint/__init__.py": {
     "md5": "7be7d7e37115d14f97d34469fde99461",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/endpoint/__init__.py"
   },
   "api/endpoint/adhoc_job_request_resource.py": {
     "md5": "d66e83f71fe5960da14e8d991a151b10",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/api/endpoint/adhoc_job_request_resource.py"
   },
   "api/endpoint/download_ti_resource.py": {
     "md5": "3983cd187e4faeeb5555fe80c1668947",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/endpoint/download_ti_resource.py"
   },
   "api/endpoint/enrichment_response.py": {
     "md5": "982cd7c9e968ff71c124af22160ce980",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/endpoint/enrichment_response.py"
   },
   "api/spec_tags.py": {
     "md5": "37f02f3e44739164f5e4c9371031348b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/spec_tags.py"
   },
   "api/ui_config_builder.py": {
     "md5": "0a2fb02dbaf2aadb3858e078fa9ca588",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/api/ui_config_builder.py"
   },
   "api_service_app.py": {
     "md5": "92a2fd0182c0820d076371a6dbf8b317",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/api_service_app.py"
   },
   "attributes.json": {
     "md5": "a3a61f9f710128383c59203460111cb5",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/attributes.json"
   },
   "core/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/__init__.py"
   },
   "core/api/__init__.py": {
     "md5": "ec9e1793089887eb1a6027cb753b6fbe",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/__init__.py"
   },
   "core/api/endpoint/__init__.py": {
     "md5": "cbd244f253c39c07449972dac9a258d5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/__init__.py"
   },
   "core/api/endpoint/endpoint_base_abc.py": {
     "md5": "356a0ce829687bb453286d8a10420138",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/endpoint_base_abc.py"
   },
   "core/api/endpoint/tc_app_config.py": {
     "md5": "7e61ce1d168c53ae3eabffb9e8e37f38",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tc_app_config.py"
   },
   "core/api/endpoint/tcva/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcva/__init__.py"
   },
   "core/api/endpoint/tcva/discovery_response.py": {
     "md5": "edeb515e1532ee4ef9a9f30b51bef24d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcva/discovery_response.py"
   },
   "core/api/endpoint/tcvf/__init__.py": {
     "md5": "cbd244f253c39c07449972dac9a258d5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/__init__.py"
   },
   "core/api/endpoint/tcvf/batch_error_collection.py": {
     "md5": "d59ac70b478aa5cf8f7044f06d963569",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/batch_error_collection.py"
   },
   "core/api/endpoint/tcvf/batch_error_counts_collection.py": {
     "md5": "f97a895978f49a89c90e03b546e57d20",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/batch_error_counts_collection.py"
   },
   "core/api/endpoint/tcvf/download_files_resource.py": {
     "md5": "fafa72f15d480281715d6c74404ffc6f",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/download_files_resource.py"
   },
   "core/api/endpoint/tcvf/endpoint_base.py": {
     "md5": "1b718d4b943642a1bc34db0b1d627f98",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/endpoint_base.py"
   },
   "core/api/endpoint/tcvf/job_file_download.py": {
     "md5": "6e1a95569b08c71ed0262c8ad09ea88e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/job_file_download.py"
   },
   "core/api/endpoint/tcvf/job_files.py": {
     "md5": "4099835787991e8078de908ee4353c0c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/job_files.py"
   },
   "core/api/endpoint/tcvf/job_retry_resource.py": {
     "md5": "1b7c0686a7cd199f361c572e1131fca1",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/job_retry_resource.py"
   },
   "core/api/endpoint/tcvf/metric_processing_collection.py": {
     "md5": "55d823dd6776854a493e1175eedc8bd0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/metric_processing_collection.py"
   },
   "core/api/endpoint/tcvf/metric_task_resource.py": {
     "md5": "6504cf65ca12cf58f883378212552dad",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/metric_task_resource.py"
   },
   "core/api/endpoint/tcvf/report_pdf_tracker_collection.py": {
     "md5": "c3f6ca7c61ab430c3393af1c6efce9b7",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/report_pdf_tracker_collection.py"
   },
   "core/api/endpoint/tcvf/request_collection.py": {
     "md5": "a1fa8243fef9906f303edf6e507e3bfe",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/request_collection.py"
   },
   "core/api/endpoint/tcvf/support_log_search_resource.py": {
     "md5": "b160c6ded8654679adf07b9a21a37cd6",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/api/endpoint/tcvf/support_log_search_resource.py"
   },
   "core/api/endpoint/tcvf/task_collection.py": {
     "md5": "2321a50914eff84d2c0dcf20f4e5e236",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/task_collection.py"
   },
   "core/api/endpoint/tcvf/task_item.py": {
     "md5": "1777c9764cb29cfa85fd3a46261b4b54",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/task_item.py"
   },
   "core/api/endpoint/tcvf/task_status_collection.py": {
     "md5": "4ce98c259087836d2cfa41eb447554e2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/endpoint/tcvf/task_status_collection.py"
   },
   "core/api/error/__init__.py": {
     "md5": "3a6cc3e0f2b865695209061abd011cfb",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/error/__init__.py"
   },
   "core/api/error/custom_error_handler.py": {
     "md5": "f7becfe6b1835c8d84a76ebfb50676f0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/error/custom_error_handler.py"
   },
   "core/api/error/middleware.py": {
     "md5": "959cc28e2f0d0892800b4f906ee08115",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/error/middleware.py"
   },
   "core/api/error/util.py": {
     "md5": "d6cce06fc9d7abd2c7452e3faabc7c1d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/error/util.py"
   },
   "core/api/falcon_app.py": {
     "md5": "370919eba6b1366cf0d098294c68187c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/falcon_app.py"
   },
   "core/api/falcon_request.py": {
     "md5": "df431fbbfeff968743076405b96783d6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/falcon_request.py"
   },
   "core/api/falcon_response.py": {
     "md5": "ea097c22bd4f00a0ee7f2e30a260ec42",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/falcon_response.py"
   },
   "core/api/injectable/__init__.py": {
     "md5": "48ec2c09f905216f1be2720814e65e92",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/injectable/__init__.py"
   },
   "core/api/injectable/middleware.py": {
     "md5": "955122885ab15e826bad27c3d3456e71",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/injectable/middleware.py"
   },
   "core/api/injectable/middleware_abc.py": {
     "md5": "ce920d68d79a35f646d8ce7dda373eb0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/injectable/middleware_abc.py"
   },
   "core/api/middleware_abc.py": {
     "md5": "6fc34bb8dbd35852878fe782406497e1",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/middleware_abc.py"
   },
   "core/api/model_base.py": {
     "md5": "6e2f0b798029dbb7d34ad82d165b57f8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/model_base.py"
   },
   "core/api/spec.py": {
     "md5": "cf8fe0cd3f9bc9ddcfcdee53a2f8973b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/spec.py"
   },
   "core/api/tcex/__init__.py": {
     "md5": "5643d7616f7eaa4758e9cbf092d14991",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/tcex/__init__.py"
   },
   "core/api/tcex/middleware.py": {
     "md5": "91eb864e0c5a5503acc16d2381125f02",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/tcex/middleware.py"
   },
   "core/api/ui_config_builder_abc.py": {
     "md5": "65fceceb6227861346086f4470c34645",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/ui_config_builder_abc.py"
   },
   "core/api/validation/__init__.py": {
     "md5": "3187c36d6f4d82576fa341ab1c7dce7c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/__init__.py"
   },
   "core/api/validation/middleware.py": {
     "md5": "4285db29d0a688c6466466b93038c97a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/middleware.py"
   },
   "core/api/validation/models/__init__.py": {
     "md5": "87c04e1bfe13ebeb9f842351b6aef114",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/models/__init__.py"
   },
   "core/api/validation/models/multipart_form_data_model.py": {
     "md5": "e54a754d345cbf76271f252ae06262f2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/models/multipart_form_data_model.py"
   },
   "core/api/validation/models/query_param_filter_model.py": {
     "md5": "2421f47065c07c157c80d1a1ddc32e92",
-    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a"
+    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a",
+    "template_path": "basic/core/api/validation/models/query_param_filter_model.py"
   },
   "core/api/validation/models/query_param_filter_pagination_model.py": {
     "md5": "3c9afa82f0413f28f38aa88d25afdcaf",
-    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a"
+    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a",
+    "template_path": "basic/core/api/validation/models/query_param_filter_pagination_model.py"
   },
   "core/api/validation/models/query_param_model.py": {
     "md5": "2b3a8585a6d84fede9d0467170dc5455",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/models/query_param_model.py"
   },
   "core/api/validation/util.py": {
     "md5": "611626bbdbfa151218c53a1e5a8f68a2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/api/validation/util.py"
   },
   "core/app/__init__.py": {
     "md5": "a05edc849f804e6963131437d11f1ff3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/app/__init__.py"
   },
   "core/app/api_service_app_abc.py": {
     "md5": "b4eb681d7894fecd88a999995157b44f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/app/api_service_app_abc.py"
   },
   "core/app/api_service_falcon_abc.py": {
     "md5": "457528f1b4a9a7f842e7f1741d82b183",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/app/api_service_falcon_abc.py"
   },
   "core/app/app_lib.py": {
     "md5": "7b42804e2b1987c70e81c335df81c54c",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/app/app_lib.py"
   },
   "core/app/enums.py": {
     "md5": "1687f02991d8ecb1bd987c8ab15b4c1d",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/app/enums.py"
   },
   "core/beacon/__init__.py": {
     "md5": "818bf782446f24c10b9213cc15429093",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/beacon/__init__.py"
   },
   "core/beacon/beacon.py": {
     "md5": "7c3345b78e621ca251a2d50827bad032",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/beacon/beacon.py"
   },
   "core/beacon/proxy.py": {
     "md5": "44476d54cf84832953970436b2c3af46",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/beacon/proxy.py"
   },
   "core/beacon/transpose.py": {
     "md5": "f1a9f9359f198fbb95585d1318230768",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/beacon/transpose.py"
   },
   "core/dao/__init__.py": {
     "md5": "c824402b7119f81b0b42c77921657f82",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/__init__.py"
   },
   "core/dao/batch_error_dao.py": {
     "md5": "38a142b13970565e969a854d8b0a7ac9",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/batch_error_dao.py"
   },
   "core/dao/doc_analysis_processed_items_dao.py": {
     "md5": "491d7716ee90925a08e61511c202a34f",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/doc_analysis_processed_items_dao.py"
   },
   "core/dao/doc_analysis_throttled_dao.py": {
     "md5": "a3def27e724c2ba35a5fc6c84c9e3882",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/doc_analysis_throttled_dao.py"
   },
   "core/dao/doc_analysis_tracker_dao.py": {
     "md5": "8cd450a97972d1c300d6d3303d7925c2",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/doc_analysis_tracker_dao.py"
   },
   "core/dao/job_dao.py": {
     "md5": "9eeacd7752907839951a3bdc2a7cb3e0",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/job_dao.py"
   },
   "core/dao/report_pdf_tracker_dao.py": {
     "md5": "6cd83e8c9edb19f929cd467f90008991",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/dao/report_pdf_tracker_dao.py"
   },
   "core/json_db/__init__.py": {
     "md5": "2343331668d9aa21bbe107b8542a7c63",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/json_db/__init__.py"
   },
   "core/json_db/dao.py": {
     "md5": "f4e026ee4ebf250adf38996dcf28986b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/json_db/dao.py"
   },
   "core/json_db/json_db.py": {
     "md5": "64893a5dc785bd9a940aa135b2ecdd8c",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/json_db/json_db.py"
   },
   "core/json_db/where/__init__.py": {
     "md5": "760991619d12afead06cf48cdaa70287",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/json_db/where/__init__.py"
   },
   "core/json_db/where/filtering.py": {
     "md5": "c833cfc3d3071abe2038daed18bf3a76",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/json_db/where/filtering.py"
   },
   "core/json_db/where/where_abc.py": {
     "md5": "79eb89ce6dcd9c7f3633fb7419a1548d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/json_db/where/where_abc.py"
   },
   "core/maybe/__init__.py": {
     "md5": "389adfb89701df9f6ff377e6fc1d74b4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/maybe/__init__.py"
   },
   "core/message_service/__init__.py": {
     "md5": "4c5487b48492d92da8b9ede3826b2fb8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/__init__.py"
   },
   "core/message_service/message_handler/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/message_handler/__init__.py"
   },
   "core/message_service/message_handler/discovery_handler.py": {
     "md5": "576dbf60308f98d354ffa4ee808d2b97",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/message_handler/discovery_handler.py"
   },
   "core/message_service/message_handler/message_handler_abc.py": {
     "md5": "3994491208a47b32e361369a05bb6a11",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/message_handler/message_handler_abc.py"
   },
   "core/message_service/message_service.py": {
     "md5": "1fdad36f0396960a92e785bc4e346ff0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/message_service.py"
   },
   "core/message_service/model/__init__.py": {
     "md5": "4c5487b48492d92da8b9ede3826b2fb8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/__init__.py"
   },
   "core/message_service/model/tcva/__init__.py": {
     "md5": "4c5487b48492d92da8b9ede3826b2fb8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/__init__.py"
   },
   "core/message_service/model/tcva/block_acknowledge_model.py": {
     "md5": "d56102ff3ab8de60e6fb8f26ffca5814",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/block_acknowledge_model.py"
   },
   "core/message_service/model/tcva/block_request_model.py": {
     "md5": "c997ce46c0bf4d8488b74923a9c3616c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/block_request_model.py"
   },
   "core/message_service/model/tcva/block_response_model.py": {
     "md5": "06bd55aec590c5eb42e0e0bcb94081c4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/block_response_model.py"
   },
   "core/message_service/model/tcva/discovery_request_model.py": {
     "md5": "ba19ef9ff48e0a9bf9eeef45f26e7bb6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/discovery_request_model.py"
   },
   "core/message_service/model/tcva/discovery_response_model.py": {
     "md5": "29923e521054d8c1b9d136bee43f2f80",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/discovery_response_model.py"
   },
   "core/message_service/model/tcva/enrichment_acknowledge_model.py": {
     "md5": "93dea0678a2930600e6686d9e3d3aacd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/enrichment_acknowledge_model.py"
   },
   "core/message_service/model/tcva/enrichment_request_model.py": {
     "md5": "e9170b1994c3346daf41fe4c1d1d47bd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/enrichment_request_model.py"
   },
   "core/message_service/model/tcva/enrichment_response_model.py": {
     "md5": "ce474f61d9a51eb9a0a7db03419642a3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/enrichment_response_model.py"
   },
   "core/message_service/model/tcva/enrichment_timeline_model.py": {
     "md5": "f6eeb17de0736ee7fc4f6c53b6d46c6a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/enrichment_timeline_model.py"
   },
   "core/message_service/model/tcva/investigate_acknowledge_model.py": {
     "md5": "515b7e621549fbaeca5236ffcd69a169",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/investigate_acknowledge_model.py"
   },
   "core/message_service/model/tcva/investigate_request_model.py": {
     "md5": "c2d4b9119a67fc6b22a7e53e27c9d41a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/investigate_request_model.py"
   },
   "core/message_service/model/tcva/investigate_response_model.py": {
     "md5": "98bb502bcbcfbde5ebab38e8ab61e876",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/investigate_response_model.py"
   },
   "core/message_service/model/tcva/message_types.py": {
     "md5": "2c65a6c36c0a6dc667c8c9699d16d013",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/message_service/model/tcva/message_types.py"
   },
   "core/model/__init__.py": {
     "md5": "12bc9d92ccc65de81cfdd34337bb96ed",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/__init__.py"
   },
   "core/model/log_event_model.py": {
     "md5": "c71b5b87529e89c34a1a62be345cfb75",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/log_event_model.py"
   },
   "core/model/model_base.py": {
     "md5": "7ea679505244a2144db847713acf5240",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/model_base.py"
   },
   "core/model/multipart_form_data_model.py": {
     "md5": "29efe8ed44388b5819238e282c5a661e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/multipart_form_data_model.py"
   },
   "core/model/paginator_response_model.py": {
     "md5": "fb98255823ccbf1ef8055ab05bcdaffd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/paginator_response_model.py"
   },
   "core/model/response/__init__.py": {
     "md5": "cc4334f765ba0a739ac9d50bf076dc58",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/response/__init__.py"
   },
   "core/model/response/paginated_response.py": {
     "md5": "eaaffb3ce8b61e54e9c46d90b4292af4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/response/paginated_response.py"
   },
   "core/model/response/response_model.py": {
     "md5": "27e63f0b4230eed47a3ccf5f39681865",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/response/response_model.py"
   },
   "core/model/scheduled_action_model.py": {
     "md5": "b82d32fc17a85e3d878df5e3bd4ff6a7",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/scheduled_action_model.py"
   },
   "core/model/settings_model_base.py": {
     "md5": "8c8e1e0e6b012fa7018927fb02479a01",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/settings_model_base.py"
   },
   "core/model/tcva/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcva/__init__.py"
   },
   "core/model/tcva/advanced_settings_model_base.py": {
     "md5": "368cd5d359858aef0465c76511770482",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcva/advanced_settings_model_base.py"
   },
   "core/model/tcva/settings_model_base.py": {
     "md5": "89112a74102b196dff8134c0100e7d5d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcva/settings_model_base.py"
   },
   "core/model/tcve/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcve/__init__.py"
   },
   "core/model/tcve/advanced_settings_model_base.py": {
     "md5": "557e28818163c3d62545f4ee4e530c10",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcve/advanced_settings_model_base.py"
   },
   "core/model/tcve/settings_model_base.py": {
     "md5": "f3de9c36f3f8f6bd11515b7f54f8a18f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcve/settings_model_base.py"
   },
   "core/model/tcvf/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvf/__init__.py"
   },
   "core/model/tcvf/advanced_settings_model_base.py": {
     "md5": "557e28818163c3d62545f4ee4e530c10",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvf/advanced_settings_model_base.py"
   },
   "core/model/tcvf/settings_model_base.py": {
     "md5": "f3de9c36f3f8f6bd11515b7f54f8a18f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvf/settings_model_base.py"
   },
   "core/model/tcvp/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvp/__init__.py"
   },
   "core/model/tcvp/advanced_settings_model_base.py": {
     "md5": "557e28818163c3d62545f4ee4e530c10",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvp/advanced_settings_model_base.py"
   },
   "core/model/tcvp/settings_model_base.py": {
     "md5": "f3de9c36f3f8f6bd11515b7f54f8a18f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tcvp/settings_model_base.py"
   },
   "core/model/tie/__init__.py": {
     "md5": "003adb6e1b8607add211037ad62f4887",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/__init__.py"
   },
   "core/model/tie/batch_error_model.py": {
     "md5": "86ccda2ef955da8a67216392964f0a6d",
-    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a"
+    "last_commit": "0e89c2a5df7dc4c1522e320e348c4040a78e397a",
+    "template_path": "basic/core/model/tie/batch_error_model.py"
   },
   "core/model/tie/doc_analysis_processed_items_model.py": {
     "md5": "ea87951ead9caa04a8ecc3f5b17964ce",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/model/tie/doc_analysis_processed_items_model.py"
   },
   "core/model/tie/doc_analysis_throttle_model.py": {
     "md5": "40b2bf8d312046c1a528280ed35340d5",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/model/tie/doc_analysis_throttle_model.py"
   },
   "core/model/tie/doc_analysis_tracker_model.py": {
     "md5": "124b305c99d53f55f7f6cecc4066b77a",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/model/tie/doc_analysis_tracker_model.py"
   },
   "core/model/tie/item_model.py": {
     "md5": "3eecf163acc996988c4d8d9c15f127f3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/item_model.py"
   },
   "core/model/tie/job_request_base_model.py": {
     "md5": "e3a37c3be4cab6e0a217aa21302dd1b6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/job_request_base_model.py"
   },
   "core/model/tie/report_pdf_tracker_model.py": {
     "md5": "545dfd0f9e74f3fb019f486c79969302",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/report_pdf_tracker_model.py"
   },
   "core/model/tie/task_setting_model.py": {
     "md5": "823a5df11166841dec23df69d68cc5f9",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/model/tie/task_setting_model.py"
   },
   "core/model/tie/task_setting_pipe_model.py": {
     "md5": "105c3bda44f099b5eaa029988d55bd7c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/task_setting_pipe_model.py"
   },
   "core/model/tie/ti_processing_metric_model.py": {
     "md5": "1b92c6203c9256b553f13eb0c1099061",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/ti_processing_metric_model.py"
   },
   "core/model/tie/version_manager_model.py": {
     "md5": "d03122db8f559006afa3683ae75607a4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/model/tie/version_manager_model.py"
   },
   "core/more/__init__.py": {
     "md5": "b5c3d3a162e5fca3b3c3d5dee4bbf95f",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/more/__init__.py"
   },
   "core/more/db_util.py": {
     "md5": "1e9caaf8586aa0bc5643ad85af2472cd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/db_util.py"
   },
   "core/more/error.py": {
     "md5": "324b991e99d78cd1fc7362bf261534f6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/error.py"
   },
   "core/more/paginator.py": {
     "md5": "290abba53b36d6db87c8192ff13cbd53",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/paginator.py"
   },
   "core/more/transform/__init__.py": {
     "md5": "191d2c067b1dcc6804d250e0f76509ea",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/transform/__init__.py"
   },
   "core/more/transform/transform_abc.py": {
     "md5": "04be3d7efff76341a70bb2b2b67a0eff",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/transform/transform_abc.py"
   },
   "core/more/validation.py": {
     "md5": "88e068ba25b0f9781482d4f993eddd2e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/more/validation.py"
   },
   "core/service/__init__.py": {
     "md5": "6db27b0ecf506cb78098abae8345060f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/service/__init__.py"
   },
   "core/service/callback_handler_abc.py": {
     "md5": "2210a4fd09e531db8243d47972817385",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/service/callback_handler_abc.py"
   },
   "core/service/current_running_process.py": {
     "md5": "0d9503690223ed759bd8342ceefe052d",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/current_running_process.py"
   },
   "core/service/error_handling.py": {
     "md5": "efb5a6106c22abec764959fedc501c5e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/service/error_handling.py"
   },
   "core/service/managers/__init__.py": {
     "md5": "c5e31562ca753d392cfd0a0366f8d74d",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/managers/__init__.py"
   },
   "core/service/managers/operation_managers.py": {
     "md5": "0a0a61c6ac3abd203c89f58ccb7d1230",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/managers/operation_managers.py"
   },
   "core/service/metrics.py": {
     "md5": "ea987d0c8c04db6a0fbe4472379fcaa8",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/metrics.py"
   },
   "core/service/migration_service.py": {
     "md5": "24579e8db81f69d0b68c2f93190ba6fc",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/migration_service.py"
   },
   "core/service/preflight_check_service.py": {
     "md5": "d2f40e82d6dde4541efbdd1746ffc96b",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/preflight_check_service.py"
   },
   "core/service/sqlite_migration_service.py": {
     "md5": "a538c0ac3d1fb8201e06697a73b11fcc",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/sqlite_migration_service.py"
   },
   "core/service/writing_service.py": {
     "md5": "8199ff2b3c27cb37dfba79a7c61f9519",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/service/writing_service.py"
   },
   "core/task/__init__.py": {
     "md5": "68b653514167d4cbd8c84127529b57d6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/task/__init__.py"
   },
   "core/task/backfill_missing_report_abc.py": {
     "md5": "adc253e654e81116df7d0feb362a3f0d",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/backfill_missing_report_abc.py"
   },
   "core/task/cleaner.py": {
     "md5": "f9675f82ce091ff543ef2b4be169dbe4",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/cleaner.py"
   },
   "core/task/doc_analysis_abc.py": {
     "md5": "f78f2702959ab6fbb5c9bf8ab1cb9f08",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/doc_analysis_abc.py"
   },
   "core/task/download_abc.py": {
     "md5": "14d78e20aaada46dcfcfc104f4b8b910",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/download_abc.py"
   },
   "core/task/task_abc.py": {
     "md5": "99cbf6ca49239f2a3ebf1c0820064ca2",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/task_abc.py"
   },
   "core/task/task_path_pipe_abc.py": {
     "md5": "42f7353b6853306ed737b722ee126e32",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/task/task_path_pipe_abc.py"
   },
   "core/task/task_path_pipe_injectables.py": {
     "md5": "024dc0962b123ef94dd24a15a255b570",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/task/task_path_pipe_injectables.py"
   },
   "core/task/tasks.py": {
     "md5": "93caf16200182047319b8c778a7b5178",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/task/tasks.py"
   },
   "core/task/upload_abc.py": {
     "md5": "ac7b3b0f75ac03dc66b5050c645b09ec",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/upload_abc.py"
   },
   "core/task/upload_egress_abc.py": {
     "md5": "326cb8ec7594c4460e2881910a490efe",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/upload_egress_abc.py"
   },
   "core/task/upload_ingest_abc.py": {
     "md5": "c9bbc312c3a1867235d5482cff210ac8",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/task/upload_ingest_abc.py"
   },
   "core/util/__init__.py": {
     "md5": "5ca14b367e80215ac19dd51cb9e3f4ff",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/core/util/__init__.py"
   },
   "core/util/custom_handler.py": {
     "md5": "de16ce68d1d2678b8f9062f7dff95c20",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/util/custom_handler.py"
   },
   "core/util/func_utils.py": {
     "md5": "7c3e9c28684e6f563494251a75b7dfd6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/util/func_utils.py"
   },
   "core/util/process_metadata.py": {
     "md5": "56d4946534c851a571e8329c61bdbe1e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/core/util/process_metadata.py"
   },
   "mapping/sample_transform.json": {
     "md5": "9998e71817e072b744585923d43b55a5",
-    "last_commit": "7da83319efd4a8f89fa648ae696eeb1ca1b6d666"
+    "last_commit": "7da83319efd4a8f89fa648ae696eeb1ca1b6d666",
+    "template_path": "basic/mapping/sample_transform.json"
   },
   "message_service/message_handler/__init__.py": {
     "md5": "4b582f8f3a90f59a4f42469549eea025",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/message_service/message_handler/__init__.py"
   },
   "message_service/message_handler/enrichment_handler.py": {
     "md5": "108809fe40307904ecb2e906b1b481d6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/message_service/message_handler/enrichment_handler.py"
   },
   "migrations.py": {
     "md5": "33e59367c227a85c72f76954e19d8f21",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/migrations.py"
   },
   "model/__init__.py": {
     "md5": "c039879184c8a81027bcb9f01da38c9e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/model/__init__.py"
   },
   "model/job_request_model.py": {
     "md5": "e902e82bf2f12e5e03ad6313b490c708",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/model/job_request_model.py"
   },
   "model/settings_model.py": {
     "md5": "eff45e9df32d9c13a4f0462bf81d529d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/model/settings_model.py"
   },
   "more/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/more/__init__.py"
   },
   "more/transform/__init__.py": {
     "md5": "191d2c067b1dcc6804d250e0f76509ea",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/more/transform/__init__.py"
   },
   "more/transform/custom_transform_abc.py": {
     "md5": "5e6e36e6edc7839adcc5d983452ef528",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/more/transform/custom_transform_abc.py"
   },
   "more/transform/sample_transform.py": {
     "md5": "4dc42a59f60a642a606e3702b1559993",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/more/transform/sample_transform.py"
   },
   "pyproject.toml": {
     "md5": "ab99609495f02e5713d329e01433055a",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/pyproject.toml"
   },
   "requirements.txt": {
     "md5": "0690c81b862e859670a0f17c24a6ba46",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/requirements.txt"
   },
   "run.py": {
     "md5": "28389da439d9bf3aac12161b9705b2c2",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/run.py"
   },
   "scheduled_action/__init__.py": {
     "md5": "7c70ddabd70d6bcc99353c82ef8265fc",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/scheduled_action/__init__.py"
   },
   "scheduled_action/actions.py": {
     "md5": "45e0b3df40448d8dc8b3482f2e1f72a0",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/scheduled_action/actions.py"
   },
   "sdk/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/sdk/__init__.py"
   },
   "sdk/egress_sdk.py": {
     "md5": "4c419d06fc8e15003835ee0708029b0f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/sdk/egress_sdk.py"
   },
   "sdk/sdk.py": {
     "md5": "58c8b0eb15de3599d034a71a413915ec",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/sdk/sdk.py"
   },
   "service.job.json": {
     "md5": "1bc88a9dfc0981a12e64f8d58ac24383",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/service.job.json"
   },
   "task/__init__.py": {
     "md5": "18ac67d1b695c8c0ad42c8ecff868797",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/__init__.py"
   },
   "task/backfill_missing_report.py": {
     "md5": "ae0ba2e621c03e8e85625e3a4d4828ff",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/backfill_missing_report.py"
   },
   "task/egress/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/egress/__init__.py"
   },
   "task/egress/convert.py": {
     "md5": "4c8cc1dcd7ad618f3dc1bf25e5329452",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/task/egress/convert.py"
   },
   "task/egress/download.py": {
     "md5": "b3cc5300541dbbc9710fdbd58360a3f6",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/task/egress/download.py"
   },
   "task/egress/scheduler.py": {
     "md5": "1d3aee79aaeb25c748bb8469e40c0139",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/egress/scheduler.py"
   },
   "task/egress/upload.py": {
     "md5": "c6a55c479a080250cde73bcf36a1539c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/egress/upload.py"
   },
   "task/ingest/__init__.py": {
     "md5": "ce1c820848e3b5ec95085845175a214c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/ingest/__init__.py"
   },
   "task/ingest/convert.py": {
     "md5": "4a8290b6aeb2efeca28c36d6f0b41763",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/task/ingest/convert.py"
   },
   "task/ingest/download.py": {
     "md5": "9637d623ed34f437d06c8bd79353843f",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/task/ingest/download.py"
   },
   "task/ingest/scheduler.py": {
     "md5": "db829e5b19f158c594f976d5eff5791a",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "basic/task/ingest/scheduler.py"
   },
   "task/ingest/upload.py": {
     "md5": "7a7feb18c8065dae98af51757fa02d0b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/task/ingest/upload.py"
   },
   "ui/.eslintrc.json": {
     "md5": "d5c04ca1a6cd8f9fe2758fa540f3b7ed",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/.eslintrc.json"
   },
   "ui/.npmrc": {
     "md5": "90ae1b3fb7383282972b085c01889c54",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/.npmrc"
   },
   "ui/.nx/cache/18.3.5-nx.darwin-arm64.node": {
     "md5": "ab13a301847332960ce5c63ca9288c93",
-    "last_commit": null
+    "last_commit": null,
+    "template_path": "basic/ui/.nx/cache/18.3.5-nx.darwin-arm64.node"
   },
   "ui/angular.json": {
     "md5": "8a9a95a70d6db5ca6c8ac86448e045a4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/angular.json"
   },
   "ui/errors.txt": {
     "md5": "f4876945bb081ee3345562de4b69f860",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/errors.txt"
   },
   "ui/karma.conf.js": {
     "md5": "952c2fa8354b98da34400c18c61a335d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/karma.conf.js"
   },
   "ui/package-lock.json": {
     "md5": "32b5a925732f5b785db5b7001b2c1f6c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/package-lock.json"
   },
   "ui/package.json": {
     "md5": "4bf70f9167b7614b3e80e7e7f928547d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/package.json"
   },
   "ui/src/app/app-routing.module.ts": {
     "md5": "80c6f129a33fbce8817f7ab05decf200",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app-routing.module.ts"
   },
   "ui/src/app/app.component.html": {
     "md5": "908635ed4bcd8571fad7108776069305",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app.component.html"
   },
   "ui/src/app/app.component.scss": {
     "md5": "11614de6009facbfd356928e87ea536e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app.component.scss"
   },
   "ui/src/app/app.component.spec.ts": {
     "md5": "8e78fc3ee5ce80fc1256297f7a6c38e1",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app.component.spec.ts"
   },
   "ui/src/app/app.component.ts": {
     "md5": "bcb07d36c16341640f11d21820f2f659",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app.component.ts"
   },
   "ui/src/app/app.module.ts": {
     "md5": "3c5a2d8e92a7ad5ff40a3e661b3351a2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/app.module.ts"
   },
   "ui/src/app/components/error-message/error-message.component.html": {
     "md5": "22fbba82c4ac97382b33cbb2a88ab4dd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/error-message/error-message.component.html"
   },
   "ui/src/app/components/error-message/error-message.component.scss": {
     "md5": "cd31cf0709e2756ff1f313f324aa377c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/error-message/error-message.component.scss"
   },
   "ui/src/app/components/error-message/error-message.component.spec.ts": {
     "md5": "11cecdff381079c83ed2f0d7ed6dd618",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/error-message/error-message.component.spec.ts"
   },
   "ui/src/app/components/error-message/error-message.component.ts": {
     "md5": "ee813b032571b7add3dfa60ae8548f32",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/error-message/error-message.component.ts"
   },
   "ui/src/app/components/formatted-field/formatted-field.component.html": {
     "md5": "bb5cf5f06a0b0c34a48b91c3219310e5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/formatted-field/formatted-field.component.html"
   },
   "ui/src/app/components/formatted-field/formatted-field.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/formatted-field/formatted-field.component.scss"
   },
   "ui/src/app/components/formatted-field/formatted-field.component.ts": {
     "md5": "8b7fc6a00568f9d524407b6cfbe5ff61",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/formatted-field/formatted-field.component.ts"
   },
   "ui/src/app/components/generated-form/generated-form.component.html": {
     "md5": "7d0c0215881185a297c5a560f53fdd6b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/generated-form/generated-form.component.html"
   },
   "ui/src/app/components/generated-form/generated-form.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/generated-form/generated-form.component.scss"
   },
   "ui/src/app/components/generated-form/generated-form.component.ts": {
     "md5": "ce25b5d8349ed2f4187d30a187acdb66",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/generated-form/generated-form.component.ts"
   },
   "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.html": {
     "md5": "d09dff43ebd5401b80371fca619b5762",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/monitor-status-badge/monitor-status-badge.component.html"
   },
   "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/monitor-status-badge/monitor-status-badge.component.scss"
   },
   "ui/src/app/components/monitor-status-badge/monitor-status-badge.component.ts": {
     "md5": "22a01fbda40d2b2a0a28c274dd953783",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/monitor-status-badge/monitor-status-badge.component.ts"
   },
   "ui/src/app/components/rule-card/rule-card.component.html": {
     "md5": "41239975164429295efb3598915c3cba",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/rule-card/rule-card.component.html"
   },
   "ui/src/app/components/rule-card/rule-card.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/rule-card/rule-card.component.scss"
   },
   "ui/src/app/components/rule-card/rule-card.component.spec.ts": {
     "md5": "94152bf7d1f3d48eb54a5150648a3a63",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/rule-card/rule-card.component.spec.ts"
   },
   "ui/src/app/components/rule-card/rule-card.component.ts": {
     "md5": "254f6106be10c6680a6eb8576b1c47a0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/rule-card/rule-card.component.ts"
   },
   "ui/src/app/components/sidenav-menu/sidenav-menu.component.html": {
     "md5": "60106ad0c55f93a414e8778b3a07c890",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/sidenav-menu/sidenav-menu.component.html"
   },
   "ui/src/app/components/sidenav-menu/sidenav-menu.component.scss": {
     "md5": "fb12e9544ec5e450b673cce7affd617c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/sidenav-menu/sidenav-menu.component.scss"
   },
   "ui/src/app/components/sidenav-menu/sidenav-menu.component.ts": {
     "md5": "a30ce2c6806cc93cbcaccf7b6883a25e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/components/sidenav-menu/sidenav-menu.component.ts"
   },
   "ui/src/app/download-ti.service.ts": {
     "md5": "1319d37e9c3ba03f65aca92a0bb04416",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/download-ti.service.ts"
   },
   "ui/src/app/error-handler/error-handler.provider.ts": {
     "md5": "755d7645ef5922cd65e05ed83fb6d3ff",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/error-handler/error-handler.provider.ts"
   },
   "ui/src/app/error-handler/global-error-handler.ts": {
     "md5": "af9c333a6f5c5126e9bd66fe9491d94c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/error-handler/global-error-handler.ts"
   },
   "ui/src/app/interceptors/auth-interceptor-service/auth.interceptor.ts": {
     "md5": "ff5ef5766e89cc11c4ce351ac7cbfccb",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/interceptors/auth-interceptor-service/auth.interceptor.ts"
   },
   "ui/src/app/interceptors/http-interceptor-providers.ts": {
     "md5": "c8d4cfa5682cf01d639e6d52787ce77b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/interceptors/http-interceptor-providers.ts"
   },
   "ui/src/app/interceptors/http-interceptor-service/http-interceptor.service.ts": {
     "md5": "a34eceabae31f7b0fca3622c1bb7f1cd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/interceptors/http-interceptor-service/http-interceptor.service.ts"
   },
   "ui/src/app/models/alerts/alert-message.model.ts": {
     "md5": "3cb2fd34f3d5bc71fc9ad5c079f88489",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/models/alerts/alert-message.model.ts"
   },
   "ui/src/app/models/monaco-editor-options.interface.ts": {
     "md5": "e9cb5e7cc8e41ea9e86dbcd00f36cf0b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/models/monaco-editor-options.interface.ts"
   },
   "ui/src/app/modules/nx-utils/nx-paginator.ts": {
     "md5": "e9a75e6835a8d2259a5b5af2cd23a540",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/modules/nx-utils/nx-paginator.ts"
   },
   "ui/src/app/modules/nx-utils/nx-table.ts": {
     "md5": "beae30fae142c0eba724be0b20efa6bc",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/modules/nx-utils/nx-table.ts"
   },
   "ui/src/app/pages/batch-errors-table/batch-errors-table.component.html": {
     "md5": "be4b6560b01b040d93d0ef6368aff37f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors-table/batch-errors-table.component.html"
   },
   "ui/src/app/pages/batch-errors-table/batch-errors-table.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors-table/batch-errors-table.component.scss"
   },
   "ui/src/app/pages/batch-errors-table/batch-errors-table.component.ts": {
     "md5": "64bbc34fc9167060e75d739189efbcb7",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors-table/batch-errors-table.component.ts"
   },
   "ui/src/app/pages/batch-errors/batch-errors.component.html": {
     "md5": "950a10985be9c3931848229c7d074bdd",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors/batch-errors.component.html"
   },
   "ui/src/app/pages/batch-errors/batch-errors.component.scss": {
     "md5": "9714723d90db97348fcf0fc5ba558fc8",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors/batch-errors.component.scss"
   },
   "ui/src/app/pages/batch-errors/batch-errors.component.ts": {
     "md5": "96a270798666773b9088dc1a171cccc5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/batch-errors/batch-errors.component.ts"
   },
   "ui/src/app/pages/dashboard/dashboard.component.html": {
     "md5": "d8689d057932722fcf33a7180072e177",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/dashboard/dashboard.component.html"
   },
   "ui/src/app/pages/dashboard/dashboard.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/dashboard/dashboard.component.scss"
   },
   "ui/src/app/pages/dashboard/dashboard.component.ts": {
     "md5": "c4bdde4a5e4f23950debef163418365e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/dashboard/dashboard.component.ts"
   },
   "ui/src/app/pages/download/download.component.html": {
     "md5": "6522d689cd8d16873fe930d7b8d23e80",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/download/download.component.html"
   },
   "ui/src/app/pages/download/download.component.scss": {
     "md5": "9f083c2064f82734e4ac3948091f7c0e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/download/download.component.scss"
   },
   "ui/src/app/pages/download/download.component.ts": {
     "md5": "309e7a8a25927532741660c1f3a4f5b9",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/download/download.component.ts"
   },
   "ui/src/app/pages/jobs/jobs.component copy.ts": {
     "md5": "70f7e85ce3a8beae27177edbbf93e898",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/jobs/jobs.component copy.ts"
   },
   "ui/src/app/pages/jobs/jobs.component.html": {
     "md5": "c5de750d6fa8258a74a5b86893dfb09d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/jobs/jobs.component.html"
   },
   "ui/src/app/pages/jobs/jobs.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/jobs/jobs.component.scss"
   },
   "ui/src/app/pages/jobs/jobs.component.ts": {
     "md5": "3c706d415200c2024a0469752d237688",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/jobs/jobs.component.ts"
   },
   "ui/src/app/pages/pdf-uploads/pdf-uploads.component.html": {
     "md5": "7bc5eb3cf90c76c8f11049069bdd7092",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/pdf-uploads/pdf-uploads.component.html"
   },
   "ui/src/app/pages/pdf-uploads/pdf-uploads.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/pdf-uploads/pdf-uploads.component.scss"
   },
   "ui/src/app/pages/pdf-uploads/pdf-uploads.component.spec.ts": {
     "md5": "fb26ee86847141dcc201ac5bc51aa24f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/pdf-uploads/pdf-uploads.component.spec.ts"
   },
   "ui/src/app/pages/pdf-uploads/pdf-uploads.component.ts": {
     "md5": "42c79a13e32f206e3cc604f1fb944ab3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/pdf-uploads/pdf-uploads.component.ts"
   },
   "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.html": {
     "md5": "58d0ab0d257c04baf5d092c546708814",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.html"
   },
   "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.scss"
   },
   "ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.ts": {
     "md5": "ac18c4050cbf4b5934eac877147ca29a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.ts"
   },
   "ui/src/app/pages/tasks/tasks.component.html": {
     "md5": "f82c03d1e92ea419bc6a17b7dad29756",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/tasks/tasks.component.html"
   },
   "ui/src/app/pages/tasks/tasks.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/tasks/tasks.component.scss"
   },
   "ui/src/app/pages/tasks/tasks.component.ts": {
     "md5": "fc985b8ca62e5b11706738add601c0c0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pages/tasks/tasks.component.ts"
   },
   "ui/src/app/pipes/json-format/json-format.pipe.ts": {
     "md5": "27067e5c968d318b7a2784426502d529",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/json-format/json-format.pipe.ts"
   },
   "ui/src/app/pipes/safe-html/safe-html.pipe.ts": {
     "md5": "1c04caa7c895c67b6993f21e629c87ae",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/safe-html/safe-html.pipe.ts"
   },
   "ui/src/app/pipes/string-append/string-append.pipe.spec.ts": {
     "md5": "a460fa38524124108d61583e15ed8774",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/string-append/string-append.pipe.spec.ts"
   },
   "ui/src/app/pipes/string-append/string-append.pipe.ts": {
     "md5": "413c9f0b154e530e51bfeef86aed5b4f",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/string-append/string-append.pipe.ts"
   },
   "ui/src/app/pipes/string-truncate/string-truncate.pipe.spec.ts": {
     "md5": "00357d4b6edb728fe0223d38e80d9a94",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/string-truncate/string-truncate.pipe.spec.ts"
   },
   "ui/src/app/pipes/string-truncate/string-truncate.pipe.ts": {
     "md5": "39da495f9ad900f3bec5ebaa6e08cf12",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/pipes/string-truncate/string-truncate.pipe.ts"
   },
   "ui/src/app/service/alert-message-service/alert-message-interface.ts": {
     "md5": "8ecafe280cbb880a2c7497af33cf90ae",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/alert-message-service/alert-message-interface.ts"
   },
   "ui/src/app/service/alert-message-service/alert-message.service.ts": {
     "md5": "b28a1bc4145c00aa33f094aac41ce8be",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/alert-message-service/alert-message.service.ts"
   },
   "ui/src/app/service/api-response-interface.ts": {
     "md5": "c1ae374adb957b3a367c7f1606e1c913",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/api-response-interface.ts"
   },
   "ui/src/app/service/app-service/app.service.ts": {
     "md5": "875909bd467afb4ee04abec17afdc446",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/app-service/app.service.ts"
   },
   "ui/src/app/service/base-service/base-http-error-response.ts": {
     "md5": "eb8068fb3a0f9400b6934b2845b95c8d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/base-service/base-http-error-response.ts"
   },
   "ui/src/app/service/base-service/base.service.ts": {
     "md5": "9860f7e69d6041ac205dee853cd8562b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/base-service/base.service.ts"
   },
   "ui/src/app/service/batch-errors-service/batch-error-interface.ts": {
     "md5": "9dab5a105ebb7f718d4dbfa0fd03ea8d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/batch-errors-service/batch-error-interface.ts"
   },
   "ui/src/app/service/batch-errors-service/batch-error.service.ts": {
     "md5": "0eedd472c3c47cc2edb6ba1ffec3b550",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/batch-errors-service/batch-error.service.ts"
   },
   "ui/src/app/service/download-ti-service/download-ti.service.ts": {
     "md5": "2a5fe7ab1fbe38054058e38d4ba3f782",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/download-ti-service/download-ti.service.ts"
   },
   "ui/src/app/service/jobs-service/jobs-interface.ts": {
     "md5": "a73cfc523790caf6846c0850e7c64dd2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/jobs-service/jobs-interface.ts"
   },
   "ui/src/app/service/jobs-service/jobs.service.ts": {
     "md5": "f34903b52c75db2e6be4ccac6219c57d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/jobs-service/jobs.service.ts"
   },
   "ui/src/app/service/metrics-service/metric-interface.ts": {
     "md5": "bb1d19500b86a8fd2874449d1c0345b0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/metrics-service/metric-interface.ts"
   },
   "ui/src/app/service/metrics-service/metrics.service.ts": {
     "md5": "3b5b1b54fdf545c9db346e2fb6987ddc",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/metrics-service/metrics.service.ts"
   },
   "ui/src/app/service/pages/job-executions/job-executions.component.html": {
     "md5": "eeb6df824c9ea72c398b03e65e5e8081",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/pages/job-executions/job-executions.component.html"
   },
   "ui/src/app/service/pages/job-executions/job-executions.component.scss": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/pages/job-executions/job-executions.component.scss"
   },
   "ui/src/app/service/pages/job-executions/job-executions.component.spec.ts": {
     "md5": "8f403e4c19d65006465e520973fed00e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/pages/job-executions/job-executions.component.spec.ts"
   },
   "ui/src/app/service/pages/job-executions/job-executions.component.ts": {
     "md5": "18fd452a6c6310d2c969fbf4c08495e6",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/pages/job-executions/job-executions.component.ts"
   },
   "ui/src/app/service/pendo-service/pendo.service.ts": {
     "md5": "4ce1169f38a57116f95c65a9fe66447b",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/pendo-service/pendo.service.ts"
   },
   "ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker-interface.ts": {
     "md5": "1b14c9d0bbceb2f715e9ba3f2d66f152",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker-interface.ts"
   },
   "ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker.service.ts": {
     "md5": "0c27b7df073d49454d6ec637759f13f3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/report-pdf-tracker-service/report-pdf-tracker.service.ts"
   },
   "ui/src/app/service/tasks-service/taks.service.ts": {
     "md5": "f93b69cabd4f674b58092f02e865f3e4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/tasks-service/taks.service.ts"
   },
   "ui/src/app/service/tasks-service/task-interface.ts": {
     "md5": "e787f1e7635c9a56fc8f58f1fd683388",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/tasks-service/task-interface.ts"
   },
   "ui/src/app/service/tc-service/tc.service.ts": {
     "md5": "52f7ac6d27a830b7ec81d2e4aa23d121",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/tc-service/tc.service.ts"
   },
   "ui/src/app/service/theme-service/theme.service.ts": {
     "md5": "8033de074a0cd4bc620d56c774e96cc2",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/theme-service/theme.service.ts"
   },
   "ui/src/app/service/validators-service/validators.service.ts": {
     "md5": "4102ec21368fde05282f5fc02facade1",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/validators-service/validators.service.ts"
   },
   "ui/src/app/service/window-service/window.service.ts": {
     "md5": "82e839b37f8eda54a485cbb28995e371",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/app/service/window-service/window.service.ts"
   },
   "ui/src/assets/.gitkeep": {
     "md5": "d41d8cd98f00b204e9800998ecf8427e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/assets/.gitkeep"
   },
   "ui/src/assets/images/TCLogo_DarkTheme.svg": {
     "md5": "37a210ab7096f065807613ca0a7a9ec0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/assets/images/TCLogo_DarkTheme.svg"
   },
   "ui/src/assets/images/TCLogo_LightTheme.svg": {
     "md5": "10f8c21fc5239a7ba1f545fd406c86a0",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/assets/images/TCLogo_LightTheme.svg"
   },
   "ui/src/environments/environment.prod.ts": {
     "md5": "71d9028e38da0584f801a90b5eaf714e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/environments/environment.prod.ts"
   },
   "ui/src/environments/environment.ts": {
     "md5": "fd5a0b0a2ff17880f2defcedf7c62e1a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/environments/environment.ts"
   },
   "ui/src/favicon.ico": {
     "md5": "f064f1348d6da8af0386611c8cb19fd9",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/favicon.ico"
   },
   "ui/src/favicon.png": {
     "md5": "c92e3437c76c6e1831a652c5b92f271e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/favicon.png"
   },
   "ui/src/index.html": {
     "md5": "e5bbb3592aa00b505f341c2156680a7e",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/index.html"
   },
   "ui/src/main.ts": {
     "md5": "96efddfd4b0774d105808fc048d9cdbb",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/main.ts"
   },
   "ui/src/nx-dark-theme.scss": {
     "md5": "68c0542dfdb760456a4069558210158a",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/nx-dark-theme.scss"
   },
   "ui/src/nx-light-theme.scss": {
     "md5": "e93844d17b6433400bc12c07108eb055",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/nx-light-theme.scss"
   },
   "ui/src/nx-theme.scss": {
     "md5": "7cc3e58a28019a79c1972e3e903e6525",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/nx-theme.scss"
   },
   "ui/src/polyfills.ts": {
     "md5": "149b6cf26b1b4d266a8713203ebc1ece",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/polyfills.ts"
   },
   "ui/src/proxy.conf.json": {
     "md5": "c246f442466a0b6044310c624ab990d3",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/proxy.conf.json"
   },
   "ui/src/styles.scss": {
     "md5": "7b6f826a463c4b8c09863bde5b2239e7",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/styles.scss"
   },
   "ui/src/tc-global.scss": {
     "md5": "d024d4c27f2a4e2a4e541d52d90325f5",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/tc-global.scss"
   },
   "ui/src/tcl-global.css": {
     "md5": "b8a68fdaa7dd9b5311a56a18829c5169",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/tcl-global.css"
   },
   "ui/src/test.ts": {
     "md5": "85be7be2d4e49a55e0351d79cf198e67",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/src/test.ts"
   },
   "ui/tsconfig.app.json": {
     "md5": "17a672fc8362c3caa61758757e0a2b02",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/tsconfig.app.json"
   },
   "ui/tsconfig.json": {
     "md5": "53683602ddebc13119373f78ac68f8c4",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/tsconfig.json"
   },
   "ui/tsconfig.spec.json": {
     "md5": "36fa7a5dea128570366df19cfd361ec7",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "basic/ui/tsconfig.spec.json"
   },
   "README.md": {
     "md5": "7cbf28bd528ebf4f5d03bb5980ea4b8c",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "tcv/README.md"
   },
   "app.py": {
     "md5": "ca1f6669a2426b1e874211dffff64e3b",
-    "last_commit": "db5dfd1697e92ead7abdb840f814b4d41e3488c6"
+    "last_commit": "db5dfd1697e92ead7abdb840f814b4d41e3488c6",
+    "template_path": "tcv/app.py"
   },
   "app_inputs.py": {
     "md5": "63a386d42e8f95c0799f140f546b02de",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "tcv/app_inputs.py"
   },
   "app_spec.yml": {
     "md5": "788e8a14c6f12b4f31562a76cb97d5f1",
-    "last_commit": "1aca7fb473f3c49c11ce0bf9dbfbacc25b00a5dd"
+    "last_commit": "1aca7fb473f3c49c11ce0bf9dbfbacc25b00a5dd",
+    "template_path": "tcv/app_spec.yml"
   },
   "install.json": {
     "md5": "e6dc778bf458fef0352893928eb39efb",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166"
+    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "template_path": "tcv/install.json"
   },
   "manifest.json": {
-    "md5": "6465c1f6a9c05534d27ed4df2c202161",
-    "last_commit": "8c477c91f5b19eec0784a9251346e4ee1a83891e"
+    "md5": "c9e28a47f4a39508cc47a1e923dfe208",
+    "last_commit": "59fd751147c7ae5a80ee0a3d897837ffba395398",
+    "template_path": "tcv/manifest.json"
   },
   "tcex.json": {
     "md5": "23ce8073ade12da3db409098cc4b7b1d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c"
+    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "template_path": "tcv/tcex.json"
   }
 }
