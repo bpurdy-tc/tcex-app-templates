@@ -123,7 +123,7 @@ class TemplateResolver:
 class FileExpander:
     """Expands template file entries to concrete file paths."""
 
-    EXCLUDED_DIRS = {'.git', '__pycache__', '.venv', 'node_modules'}
+    EXCLUDED_DIRS = {'.git', '__pycache__', '.venv', 'node_modules', '.nx'}
 
     def iter_template_files(
         self, template_dir: Path, relative_paths: Sequence[str]

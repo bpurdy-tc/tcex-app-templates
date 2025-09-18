@@ -1029,11 +1029,6 @@
     "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
     "template_path": "basic/ui/.npmrc"
   },
-  "ui/.nx/cache/18.3.5-nx.darwin-arm64.node": {
-    "md5": "ab13a301847332960ce5c63ca9288c93",
-    "last_commit": null,
-    "template_path": "basic/ui/.nx/cache/18.3.5-nx.darwin-arm64.node"
-  },
   "ui/angular.json": {
     "md5": "8a9a95a70d6db5ca6c8ac86448e045a4",
     "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
@@ -1660,8 +1655,8 @@
     "template_path": "tcv/install.json"
   },
   "manifest.json": {
-    "md5": "c9e28a47f4a39508cc47a1e923dfe208",
-    "last_commit": "59fd751147c7ae5a80ee0a3d897837ffba395398",
+    "md5": "6cee8eecfcf65d0ea8a5f3922e931dcc",
+    "last_commit": "8400524ce78291ac8021f73bb13ca8d40fd32877",
     "template_path": "tcv/manifest.json"
   },
   "tcex.json": {
