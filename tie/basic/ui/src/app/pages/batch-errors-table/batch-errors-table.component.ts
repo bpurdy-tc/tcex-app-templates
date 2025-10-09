@@ -3,12 +3,13 @@ import { catchError, mergeMap, tap } from 'rxjs';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Table } from '@tc-eng/component-library';
+import { MenuItem, Table } from '@tc-eng/component-library';
 import { FeatureVersion } from '@tc-eng/component-library/utils/featureFlags';
 import { NxPaginator } from 'src/app/modules/nx-utils/nx-paginator';
 import { NxTable } from 'src/app/modules/nx-utils/nx-table';
 import { BaseHttpErrorResponse } from 'src/app/service/base-service/base-http-error-response';
 import { BatchErrorService } from 'src/app/service/batch-errors-service/batch-error.service';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
     selector: 'batch-errors-table',
@@ -38,6 +39,21 @@ export class BatchErrorsTableComponent implements OnChanges, OnInit {
     });
 
     dataSubscription = null;
+
+    // export
+    exportLoading: boolean = false;
+    exportMenuItems: MenuItem[] = [
+        {
+            value: 'Export as CSV',
+            // icon: 'file_download',
+            command: () => this.handleExportClick('csv'),
+        },
+        {
+            value: 'Export as JSON',
+            // icon: 'file_download',
+            command: () => this.handleExportClick('json'),
+        },
+    ];
 
     private initialized = false;
 
@@ -84,6 +100,34 @@ export class BatchErrorsTableComponent implements OnChanges, OnInit {
             .pipe(
                 catchError((error: BaseHttpErrorResponse) => {
                     return [];
+                }),
+            )
+            .subscribe();
+    }
+
+    handleExportClick(format: 'csv' | 'json') {
+        this.batchErrorService
+            .export({
+                errorCode: this.errorCode !== 'All' ? this.errorCode : undefined,
+                reason: this.reason,
+                request_id: this.jobId,
+                format,
+            })
+            .pipe(
+                tap((response: HttpResponse<Blob>) => {
+                    this.exportLoading = true;
+                    const contentDisposition = response.headers.get('content-disposition');
+
+                    const filename = contentDisposition.split('filename')[1].split('=')[1].trim();
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = window.URL.createObjectURL(
+                        new Blob([response.body], { type: response.body.type }),
+                    );
+                    downloadLink.setAttribute('download', filename);
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                    this.exportLoading = false;
                 }),
             )
             .subscribe();

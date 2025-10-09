@@ -1655,8 +1655,8 @@
     "template_path": "tcv/install.json"
   },
   "manifest.json": {
-    "md5": "6cee8eecfcf65d0ea8a5f3922e931dcc",
-    "last_commit": "8400524ce78291ac8021f73bb13ca8d40fd32877",
+    "md5": "6f59892c5773ef46f9da530471a1ce47",
+    "last_commit": "8bac991e98e366a2c54256890bf24ee6363499e9",
     "template_path": "tcv/manifest.json"
   },
   "tcex.json": {

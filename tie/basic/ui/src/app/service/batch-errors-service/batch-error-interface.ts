@@ -8,6 +8,22 @@ export interface BatchError {
     requestId: string;
 }
 
+
+export interface BatchErrorCollectionPaginationParams extends ApiPaginationParams {
+    errorCode?: string;
+    messages?: string[];
+    reason?: string;
+    request_id?: string;
+}
+
+export interface BatchErrorExportParams extends ApiStandardParams {
+    errorCode?: string;
+    messages?: string[];
+    reason?: string;
+    request_id?: string;
+    format: 'csv' | 'json';
+}
+
 export interface BatchErrorCollectionPaginationParams extends ApiPaginationParams {
     errorCode?: string;
     messages?: string[];

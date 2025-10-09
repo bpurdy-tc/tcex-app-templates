@@ -1,8 +1,6 @@
 <div class="page-container pb-medium-large px-medium-large d-flex flex-column">
     @if (!table.dataLoaded) {
-        <tcl-loading-spinner
-            size="large"
-            text="Loading batch errors..."></tcl-loading-spinner>
+        <tcl-loading-spinner size="large" text="Loading batch errors..."></tcl-loading-spinner>
     } @else {
         <div class="align-items-end d-flex mb-small">
             <tcl-text-input
@@ -10,7 +8,8 @@
                 label="Reason"
                 [showCount]="false"
                 [(value)]="reason"
-                (onChange)="handleReasonInput($event)"></tcl-text-input>
+                (onChange)="handleReasonInput($event)"
+            ></tcl-text-input>
             <tcl-button
                 class="mr-medium pl-small"
                 theme="primary"
@@ -19,6 +18,20 @@
                 (onClick)="handleSearchClick()"
                 >Search</tcl-button
             >
+            <div class="d-flex align-items-end">
+                @if (exportLoading) {
+                    <tcl-loading-icon [size]="'24px'"></tcl-loading-icon>
+                }
+
+                <tcl-dropdown-button
+                    class="ml-small"
+                    theme="primary"
+                    label="Export"
+                    [disabled]="exportLoading"
+                    [items]="exportMenuItems"
+                    >export</tcl-dropdown-button
+                >
+            </div>
         </div>
 
         <tcl-table
@@ -37,14 +50,11 @@
             [value]="table.data"
             (closeSpinner)="table.dataLoaded = true"
             (onPage)="paginator.pageChangedTcl($event)"
-            (onPageSelectionOnlyActive)="paginator.pageChanged($event)">
+            (onPageSelectionOnlyActive)="paginator.pageChanged($event)"
+        >
             <ng-template tclTemplate="empty-message">
                 <tr>
-                    <td
-                        class="empty-message"
-                        colSpan="6">
-                        No jobs found
-                    </td>
+                    <td class="empty-message" colSpan="6">No jobs found</td>
                 </tr>
             </ng-template>
             <!-- Headers -->
@@ -56,9 +66,7 @@
                 </tr>
             </ng-template>
             <!-- Rows -->
-            <ng-template
-                let-value
-                tclTemplate="body">
+            <ng-template let-value tclTemplate="body">
                 <tr>
                     @for (row of table.dataColumns; track row) {
                         @switch (row.field) {
@@ -68,9 +76,7 @@
                                 </td>
                             }
                             @case ('message') {
-                                <td
-                                    class="text-wrap"
-                                    style="vertical-align: top">
+                                <td class="text-wrap" style="vertical-align: top">
                                     [{{ value['code'] }}] {{ value[row.field] }}
                                 </td>
                             }
@@ -80,7 +86,8 @@
                                         white-space: pre-line;
                                         vertical-align: top;
                                         line-break: anywhere;
-                                    ">
+                                    "
+                                >
                                     {{ value[row.field] }}
                                 </td>
                             }

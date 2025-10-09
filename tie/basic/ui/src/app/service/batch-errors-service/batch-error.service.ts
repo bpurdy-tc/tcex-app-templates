@@ -1,8 +1,7 @@
 import { Observable } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { BaseService } from '../base-service/base.service';
 import { ApiResponseCollection } from '../api-response-interface';
@@ -10,6 +9,7 @@ import {
     BatchError,
     BatchErrorCollectionPaginationParams,
     BatchErrorCountsParams,
+    BatchErrorExportParams,
 } from './batch-error-interface';
 
 @Injectable({
@@ -33,5 +33,14 @@ export class BatchErrorService extends BaseService {
                 params: this.convertToHttpParams(params),
             },
         );
+    }
+
+    export(params: BatchErrorExportParams): Observable<HttpResponse<Blob>> {
+        const httpParams = this.convertToHttpParams(params);
+        return this.http.get(`${this.apiUrl}/export`, {
+            params: httpParams,
+            responseType: 'blob',
+            observe: 'response',
+        });
     }
 }

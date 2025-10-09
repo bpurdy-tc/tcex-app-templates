@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-build_manifest.py (OO refactor)
+build_manifest.py
 
 Behavior preserved exactly from the original script:
 - Loads `template.yaml` from the input template and recursively from parent templates.
@@ -320,7 +320,7 @@ class BuildManifestApp:
 
         # Write manifest.json inside input directory
         output_path = self.input_dir / 'manifest.json'
-        output_path.write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+        output_path.write_text(json.dumps(manifest, indent=4), encoding='utf-8')
         print(f'Wrote {output_path} ({len(manifest)} entries)')
 
 

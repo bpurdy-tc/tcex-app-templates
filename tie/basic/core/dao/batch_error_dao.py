@@ -9,7 +9,7 @@ import contextlib
 from collections.abc import Iterable
 from pathlib import Path
 
-# first-party
+# third-party
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
@@ -119,6 +119,41 @@ class BatchErrorDAO(JsonDBDAO[BatchErrorModel]):
             'count': len(page_data),
             'data': page_data,
         }
+
+    def get_all_for_query_params(
+        self,
+        query_params: QueryParamFilterPaginationModel,
+        *,
+        request_id: str | None = None,
+        error_code: str | None = None,
+    ):
+        """Get a page of data for the given filters."""
+
+        model = BatchErrorModel
+        if error_code:
+            model = error_codes_model_map.get(error_code, UnknownBatchErrorModel)
+
+        # pylint: disable=isinstance-second-argument-not-valid-type
+        error_paths = self.db.get_paths(model)
+        if request_id:
+            error_paths = self._filter_errors_by_request(request_id, error_paths)
+
+        where = query_params.to_where() or {}
+        if isinstance(where, dict) and len([v for v in where.values() if v is not None]) == 0:
+            where = None
+        else:
+            where = where_m.where(where)
+
+        if where:  # Trying to avoid checking where(error) for every iteration if possible
+            errors = []
+            for path in error_paths:
+                error = self.db.load_from_path(model, path)
+                if where(error):
+                    errors.append(error)
+        else:
+            errors = [self.db.load_from_path(model, path) for path in error_paths]
+
+        return errors
 
     def get_error_counts_by_code(self, request_id: str | None = None):
         """Get error counts by code."""

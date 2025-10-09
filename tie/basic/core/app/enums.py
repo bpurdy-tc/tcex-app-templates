@@ -5,10 +5,11 @@ import logging
 from enum import Enum
 from typing import Any
 
-# first-party
+# third-party
 from core.api.endpoint.tc_app_config import TcAppConfig
 from core.api.endpoint.tcvf.batch_error_collection import BatchErrorCollection
 from core.api.endpoint.tcvf.batch_error_counts_collection import BatchErrorCountsCollection
+from core.api.endpoint.tcvf.batch_error_export_resource import BatchErrorExportResource
 from core.api.endpoint.tcvf.download_files_resource import DownloadFilesResource
 from core.api.endpoint.tcvf.job_file_download import JobFileDownload
 from core.api.endpoint.tcvf.job_files import JobFiles
@@ -27,14 +28,14 @@ from core.api.validation.middleware import ValidationMiddleware
 from core.task.cleaner import Cleaner
 
 try:
-    # first-party
+    # third-party
     from api.endpoint.adhoc_job_request_resource import AdHocRequestResource
 except ImportError:
     AdHocRequestResource = None
     # print('AdHocRequestResource not found')
 
 try:
-    # first-party
+    # third-party
     from api.endpoint.download_ti_resource import DownloadTiResource
 except ImportError:
     DownloadTiResource = None
@@ -128,6 +129,7 @@ class ROUTES(Enum):
             '/api/report/batch-error-counts', BatchErrorCountsCollection
         )
         BATCH_ERROR_COLLECTION = Route('/api/report/batch-error', BatchErrorCollection)
+        BATCH_ERROR_EXPORT = Route('/api/report/batch-error/export', BatchErrorExportResource)
         METRIC_PROCESSING_COLLECTION = Route('/api/metric/processing', MetricProcessingCollection)
         METRIC_TASK_RESOURCE = Route('/api/metric/task', MetricTaskResource)
         SUPPORT_LOG_SEARCH_RESOURCE = Route('/api/support/log-search', SupportLogSearchResource)
