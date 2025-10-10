@@ -320,8 +320,8 @@
         "template_path": "basic/core/app/api_service_app_abc.py"
     },
     "core/app/api_service_falcon_abc.py": {
-        "md5": "457528f1b4a9a7f842e7f1741d82b183",
-        "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+        "md5": "e344014e55f214d9a6191b908c2f311b",
+        "last_commit": "436c2fb60a5a6d15c900e67585cd93753b3064d6",
         "template_path": "basic/core/app/api_service_falcon_abc.py"
     },
     "core/app/app_lib.py": {
@@ -400,8 +400,8 @@
         "template_path": "basic/core/json_db/dao.py"
     },
     "core/json_db/json_db.py": {
-        "md5": "64893a5dc785bd9a940aa135b2ecdd8c",
-        "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+        "md5": "169d757c884f6238d53e50c840ef137e",
+        "last_commit": "436c2fb60a5a6d15c900e67585cd93753b3064d6",
         "template_path": "basic/core/json_db/json_db.py"
     },
     "core/json_db/where/__init__.py": {
@@ -1665,8 +1665,8 @@
         "template_path": "tcv/install.json"
     },
     "manifest.json": {
-        "md5": "df1eb16646a0cb44f7ab3816d27b429d",
-        "last_commit": "5a0885d9045298fc228eb9cb2cddc0e342c170c5",
+        "md5": "895d5c4aea73c59bba26358de8e0b09a",
+        "last_commit": "831db4f5560a2b45a9bd72fae85df8c5ed670db9",
         "template_path": "tcv/manifest.json"
     },
     "tcex.json": {
