@@ -19,8 +19,10 @@ from typing import TYPE_CHECKING, Any, ParamSpec, TypeVar, cast
 import uuid6
 from pydantic import BaseModel, Field
 from pydantic.fields import Undefined
+from tcex.logger.trace_logger import TraceLogger
 
 if TYPE_CHECKING:
+    # third-party
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, NoArgAnyCallable
 
 SortBy = Enum('SortBy', ['CREATED', 'MODIFIED', 'INDEX'])
@@ -185,6 +187,7 @@ class JsonDB:
     def __init__(
         self,
         path: str | Path,
+        log: TraceLogger,
         *,
         gzip: bool = True,
         json_args=None,
@@ -194,6 +197,7 @@ class JsonDB:
         """Initialize JsonDB."""
         self.allow_multiprocess_write = allow_multiprocess_write
         self.allow_multithread_write = allow_multithread_write
+        self.log = log
         self.gzip = gzip
         self.json_args = json_args if json_args is not None else {}
         self.path = Path(path)
@@ -288,6 +292,45 @@ class JsonDB:
 
         return self.load_from_path(cls, path)  # type: ignore
 
+    def _file_text_preview(
+        self, p: Path, head_len: int = 100, tail_len: int = 100
+    ) -> tuple[str, str]:
+        """Safely read a file for logging previews: returns (head, tail)."""
+        try:
+            if any(suf == '.gz' for suf in p.suffixes):
+                with gz.open(p, 'rt', encoding='utf-8', errors='ignore') as fh:
+                    content = fh.read()
+            else:
+                content = p.read_text(encoding='utf-8', errors='ignore')
+        except Exception:
+            # Preview read failed; log and return empty previews.
+            self.log.exception(f'event=preview-read-failed file="{p}"')
+            return '', ''
+        if not content:
+            return '', ''
+        return content[:head_len], content[-tail_len:]
+
+    def _handle_invalid_json_file(
+        self,
+        p: Path,
+        err: Exception,
+        *,
+        head_len: int = 100,
+        tail_len: int = 100,
+    ) -> None:
+        """Log an invalid JSON file with previews and then delete it."""
+
+        head, tail = self._file_text_preview(p, head_len=head_len, tail_len=tail_len)
+        content = [head, tail]
+        content = [c for c in content if c]
+        content = '...'.join(content)
+        self.log.warning(f'event=invalid-json file="{p}" error="{err}" content="{content}"')
+        try:
+            p.unlink()
+            self.log.info(f'event=invalid-json-removed file="{p}"')
+        except Exception:
+            self.log.exception(f'event=invalid-json-remove-failed file="{p}"')
+
     def load_all(
         self,
         cls: type[P],
@@ -307,7 +350,11 @@ class JsonDB:
         yielded = 0
 
         for p in paths:
-            entity = self.load_from_path(cls, p)
+            try:
+                entity = self.load_from_path(cls, p)
+            except (json.JSONDecodeError, UnicodeDecodeError) as e:
+                self._handle_invalid_json_file(p, e)  # <- central handler
+                continue
             if where is None or where(entity):
                 yield entity
                 yielded += 1
