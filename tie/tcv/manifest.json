@@ -320,8 +320,8 @@
         "template_path": "basic/core/app/api_service_app_abc.py"
     },
     "core/app/api_service_falcon_abc.py": {
-        "md5": "e344014e55f214d9a6191b908c2f311b",
-        "last_commit": "436c2fb60a5a6d15c900e67585cd93753b3064d6",
+        "md5": "aac02ff563f43bcaa3a51aa753955bde",
+        "last_commit": "d04355446e70d08a60f895d8dfec35148ff4461f",
         "template_path": "basic/core/app/api_service_falcon_abc.py"
     },
     "core/app/app_lib.py": {
@@ -1665,8 +1665,8 @@
         "template_path": "tcv/install.json"
     },
     "manifest.json": {
-        "md5": "895d5c4aea73c59bba26358de8e0b09a",
-        "last_commit": "831db4f5560a2b45a9bd72fae85df8c5ed670db9",
+        "md5": "882d542aa3afd7459642211484aa0cce",
+        "last_commit": "3ee2e8a32ecfa8b40f017fe5e8de147707556b52",
         "template_path": "tcv/manifest.json"
     },
     "tcex.json": {
