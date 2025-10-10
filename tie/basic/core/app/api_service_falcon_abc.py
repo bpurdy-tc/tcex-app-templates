@@ -10,7 +10,6 @@ from typing import cast
 
 # third-party
 import schedule
-from core.api.endpoint.tc_app_config import AdhocRequestModel
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC
@@ -37,7 +36,7 @@ try:
 except ImportError:
     Migrations = None
 
-logger: TraceLogger = cast(TraceLogger, logging.getLogger('tcex'))
+logger: TraceLogger = cast('TraceLogger', logging.getLogger('tcex'))
 
 
 class ApiServiceFalconABC(ApiServiceAppABC, ABC):
@@ -172,7 +171,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
     @property
     def message_broker_settings(self):
         """Return the message broker settings."""
-
         ex_msg = (
             'message_broker_settings property if message broker is '
             'being used must be implemented in child class.'
@@ -193,8 +191,8 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
 
     def register_message_handlers(
         self,
-        handlers: dict[str, object] = None,
-        default: list[MESSAGE_HANDLERS] = None,
+        handlers: dict[str, object] | None = None,
+        default: list[MESSAGE_HANDLERS] | None = None,
     ):
         """Register message handlers."""
         handlers = handlers or {}
@@ -216,7 +214,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
     @cached_property
     def all_supported_routes(self) -> dict[Enum, dict[Enum, object]]:
         """Dynamically returns all supported routes categorized by type."""
-
         supported_routes = {}
 
         # Iterate over all top-level categories in ROUTES (e.g., TIE, MESSAGE_HANDLERS)
@@ -256,7 +253,8 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
     @property
     def falcon_app(self):
         """Return the App Name."""
-        raise NotImplementedError('falcon_app property must be implemented in child class.')
+        msg = 'falcon_app property must be implemented in child class.'
+        raise NotImplementedError(msg)
 
     @property
     def sdk(self):
@@ -289,7 +287,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
     @cached_property
     def db(self):
         """Return database object."""
-        return JsonDB(self.db_path, self.tcex.log, json_args={'cls': CustomHandler})
+        return JsonDB(self.db_path, json_args={'cls': CustomHandler})
 
     @abstractmethod
     def initialize_app(self):
@@ -339,6 +337,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         self.log.debug(f'action=loop-forever, shutdown=True, max_delay_time={delay_time}')
         while self.tasks_obj.alive() != 0 and time() < deadline:
             sleep(1)
+
         self.tasks_obj.kill_all()
         self.tcex.exit.exit(ExitCode.SUCCESS, 'App has been successfully Stopped')
 
@@ -347,7 +346,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
 
         # remove any pending jobs
         def _is_pending(job_request):
-            return job_request.status == self.settings.job.status_pending
+            return job_request.status.lower() == self.settings.job.status_pending
 
         def _is_download_in_progress(job_request):
             if (
@@ -358,9 +357,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
             return False
 
         for request in self.db.load_all(JobRequestBaseModel):
-            if not isinstance(request, AdhocRequestModel) and (
-                _is_pending(request) or _is_download_in_progress(request)
-            ):
+            if _is_pending(request) or _is_download_in_progress(request):
                 self.log.info(f'action=remove-pending-jobs, job-request-id={request.request_id}')
                 self.db.delete(request)
 
@@ -375,5 +372,4 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
             return owner.model.id
 
         ex_msg = f'Can not find owner {owner_name} in ThreatConnect instance.'
-        raise RuntimeError(ex_msg)
         raise RuntimeError(ex_msg)
