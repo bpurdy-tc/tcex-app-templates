@@ -2,9 +2,8 @@
 
 # standard library
 from abc import abstractmethod
-from typing import Callable, NamedTuple
-
-from model import SettingModel
+from collections.abc import Callable
+from typing import NamedTuple
 
 # third-party
 from tcex import TcEx
@@ -18,6 +17,7 @@ from core.json_db import JsonDB
 from core.model.tie.report_pdf_tracker_model import ReportPdfTrackerModel
 from core.model.tie.task_setting_model import TaskSettingModel
 from core.task.task_abc import TaskABC
+from model import SettingModel
 
 
 class DocumentRetrievalError(Exception):
