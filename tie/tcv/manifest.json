@@ -15,8 +15,8 @@
     "template_path": "basic/.pre-commit-config.yaml"
   },
   ".prettierrc.json": {
-    "md5": "7f10ad4845c49aba3a19cb93767124a0",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "8b4333da14f4d6b3f6e7ceefe01d77fa",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "basic/.prettierrc.json"
   },
   "__init__.py": {
@@ -65,8 +65,8 @@
     "template_path": "basic/api_service_app.py"
   },
   "attributes.json": {
-    "md5": "a3a61f9f710128383c59203460111cb5",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "1e597e77ba6f4ed6838202e6d7d9b272",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "basic/attributes.json"
   },
   "core/__init__.py": {
@@ -155,8 +155,8 @@
     "template_path": "basic/core/api/endpoint/tcvf/metric_processing_collection.py"
   },
   "core/api/endpoint/tcvf/metric_task_resource.py": {
-    "md5": "6504cf65ca12cf58f883378212552dad",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "md5": "4851e92ee8623cad92faa37402b0235f",
+    "last_commit": "c6b6b19410eb9e9683977752e43529f8d393c8a4",
     "template_path": "basic/core/api/endpoint/tcvf/metric_task_resource.py"
   },
   "core/api/endpoint/tcvf/report_pdf_tracker_collection.py": {
@@ -345,8 +345,8 @@
     "template_path": "basic/core/beacon/beacon.py"
   },
   "core/beacon/proxy.py": {
-    "md5": "44476d54cf84832953970436b2c3af46",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "0fd2557bca0727bf3e523c355e00c9ad",
+    "last_commit": "c6b6b19410eb9e9683977752e43529f8d393c8a4",
     "template_path": "basic/core/beacon/proxy.py"
   },
   "core/beacon/transpose.py": {
@@ -795,8 +795,8 @@
     "template_path": "basic/core/task/__init__.py"
   },
   "core/task/backfill_missing_report_abc.py": {
-    "md5": "adc253e654e81116df7d0feb362a3f0d",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "f5e9935b00bfc8f57e6dec52a4fd6209",
+    "last_commit": "f62d4ac7a2d709db2e80667a49e7e645aeb8e464",
     "template_path": "basic/core/task/backfill_missing_report_abc.py"
   },
   "core/task/cleaner.py": {
@@ -935,8 +935,8 @@
     "template_path": "basic/requirements.txt"
   },
   "run.py": {
-    "md5": "28389da439d9bf3aac12161b9705b2c2",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "e73485cd4f5490f35ef7bde160cd81ed",
+    "last_commit": "c6b6b19410eb9e9683977752e43529f8d393c8a4",
     "template_path": "basic/run.py"
   },
   "scheduled_action/__init__.py": {
@@ -965,13 +965,13 @@
     "template_path": "basic/sdk/sdk.py"
   },
   "service.job.json": {
-    "md5": "1bc88a9dfc0981a12e64f8d58ac24383",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "c8e8a405b220552fb884db8414b84cf5",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "basic/service.job.json"
   },
   "task/__init__.py": {
-    "md5": "18ac67d1b695c8c0ad42c8ecff868797",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "md5": "6e0e2862c64f3b461082005762513a9d",
+    "last_commit": "c6b6b19410eb9e9683977752e43529f8d393c8a4",
     "template_path": "basic/task/__init__.py"
   },
   "task/backfill_missing_report.py": {
@@ -1660,18 +1660,18 @@
     "template_path": "tcv/app_spec.yml"
   },
   "install.json": {
-    "md5": "e6dc778bf458fef0352893928eb39efb",
-    "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
+    "md5": "546b4d7d8353c722ecb668766379b96d",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "tcv/install.json"
   },
   "manifest.json": {
-    "md5": "882d542aa3afd7459642211484aa0cce",
-    "last_commit": "3ee2e8a32ecfa8b40f017fe5e8de147707556b52",
+    "md5": "54939623850dde7837113067fa38a742",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "tcv/manifest.json"
   },
   "tcex.json": {
-    "md5": "23ce8073ade12da3db409098cc4b7b1d",
-    "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
+    "md5": "7d201aeb954c3b8f88d4f6bb06fefb21",
+    "last_commit": "6602aee9281c7b8eff8e46eb709eeb356cfd0b04",
     "template_path": "tcv/tcex.json"
   }
 }
