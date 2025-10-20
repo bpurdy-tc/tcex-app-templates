@@ -1,44 +1,44 @@
 {
-    "allowOnDemand": true,
-    "appId": "eb5addd0-b322-4852-b0fb-db0fd0c68d14",
-    "category": "Threat Intelligence",
-    "displayName": "Sample Threat Intelligence Engine",
-    "displayPath": "sample_path",
-    "features": [
-        "fileParams",
-        "linkApiPath",
-        "redisPasswordSupport"
-    ],
-    "feeds": [
-        {
-            "attributesFile": "attributes.json",
-            "documentStorageLimitMb": 10240,
-            "indicatorLimit": 10000000,
-            "jobFile": "service.job.json",
-            "sourceCategory": "Premium",
-            "sourceDescription": "Sample Threat Intelligence Engine",
-            "sourceName": "Sample Threat Intelligence"
-        }
-    ],
-    "labels": [
-        "sample"
-    ],
-    "languageVersion": "3.11",
-    "listDelimiter": "|",
-    "minServerVersion": "7.2.0",
-    "note": "Sample Notes\n",
-    "params": [
-        {
-            "hidden": true,
-            "label": "Advanced Settings",
-            "name": "advanced_settings",
-            "sequence": 1,
-            "type": "String"
-        }
-    ],
-    "programLanguage": "PYTHON",
-    "programMain": "run.py",
-    "programVersion": "1.0.0",
-    "runtimeLevel": "FeedApiService",
-    "sdkVersion": "4.0.7"
+  "allowOnDemand": true,
+  "appId": "eb5addd0-b322-4852-b0fb-db0fd0c68d14",
+  "category": "Threat Intelligence",
+  "displayName": "Sample Threat Intelligence Engine",
+  "displayPath": "sample_path",
+  "features": [
+    "fileParams",
+    "linkApiPath",
+    "redisPasswordSupport"
+  ],
+  "feeds": [
+    {
+      "attributesFile": "attributes.json",
+      "documentStorageLimitMb": 10240,
+      "indicatorLimit": 10000000,
+      "jobFile": "service.job.json",
+      "sourceCategory": "Premium",
+      "sourceDescription": "Sample Threat Intelligence Engine",
+      "sourceName": "Sample Threat Intelligence"
+    }
+  ],
+  "labels": [
+    "sample"
+  ],
+  "languageVersion": "3.11",
+  "listDelimiter": "|",
+  "minServerVersion": "7.2.0",
+  "note": "Sample Notes\n",
+  "params": [
+    {
+      "hidden": true,
+      "label": "Advanced Settings",
+      "name": "advanced_settings",
+      "sequence": 1,
+      "type": "String"
+    }
+  ],
+  "programLanguage": "PYTHON",
+  "programMain": "run.py",
+  "programVersion": "1.0.0",
+  "runtimeLevel": "FeedApiService",
+  "sdkVersion": "4.0.7"
 }
