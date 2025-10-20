@@ -16,12 +16,9 @@ from core.app.app_lib import AppLib  # noqa: E402
 
 if TYPE_CHECKING:
     # third-party
-    # third-party
-    # third-party
-    from tcex import TcEx  # must be imported later, but also needed typing hints
-
     # first-party
     from app import App  # must be imported later, but also needed typing hints
+    from tcex import TcEx  # must be imported later, but also needed typing hints
 
 
 class Run:
@@ -36,7 +33,7 @@ class Run:
     def app(self) -> 'App':
         """Return a properly configured App instance."""
         # first-party
-        from app import App
+        from app import App  # noqa: PLC0415
 
         return App(self.tcex)
 
@@ -48,7 +45,7 @@ class Run:
     def tcex(self) -> 'TcEx':
         """Return a properly configured TcEx instance."""
         # third-party
-        from tcex import TcEx
+        from tcex import TcEx  # noqa: PLC0415
 
         tcex = TcEx()
 

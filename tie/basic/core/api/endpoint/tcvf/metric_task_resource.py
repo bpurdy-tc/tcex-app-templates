@@ -5,17 +5,15 @@ import json
 from datetime import UTC, datetime, timedelta
 from functools import cached_property, lru_cache
 
-from model import JobRequestModel
-
-# third-party
 from spectree import Response
 
-# first-party
+# third-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_metric
 from core.json_db.dao import JsonDBDAO
+from model import JobRequestModel
 
 
 # pylint: disable=unused-argument
@@ -134,7 +132,7 @@ class MetricTaskResource(EndpointBase):
         except Exception:
             # TODO: @bsummers - update this
             # standard library
-            import traceback  # pylint: disable=import-outside-toplevel
+            import traceback  # noqa: PLC0415
 
             resp.text = traceback.format_exc()
 

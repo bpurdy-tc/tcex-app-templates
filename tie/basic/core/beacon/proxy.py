@@ -176,7 +176,7 @@ class InjectionProxy(Generic[A]):
     def __new__(
         cls,
         type_: A,
-        factory,  # noqa: ARG003
+        factory,  # noqa: ARG004
     ) -> 'type[InjectionProxy[A]]':
         """Create an proxy instance referencing `obj`."""
         return object.__new__(cls._create_class_proxy(type_))
