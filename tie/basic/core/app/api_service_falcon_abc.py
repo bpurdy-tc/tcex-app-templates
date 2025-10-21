@@ -10,6 +10,13 @@ from typing import cast
 
 # third-party
 import schedule
+
+# first-party
+from app_inputs import AppBaseModel
+from tcex.api.tc.v3.tql.tql_operator import TqlOperator
+from tcex.exit import ExitCode
+from tcex.logger.trace_logger import TraceLogger
+
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC
@@ -23,12 +30,6 @@ from core.service.preflight_check_service import PreflightCheckService
 from core.task.tasks import Tasks
 from core.util.custom_handler import CustomHandler
 from model.settings_model import SettingModel
-from tcex.api.tc.v3.tql.tql_operator import TqlOperator
-from tcex.exit import ExitCode
-from tcex.logger.trace_logger import TraceLogger
-
-# first-party
-from app_inputs import AppBaseModel
 
 try:
     # third-party
@@ -287,7 +288,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
     @cached_property
     def db(self):
         """Return database object."""
-        return JsonDB(self.db_path, json_args={'cls': CustomHandler})
+        return JsonDB(self.db_path, self.log, json_args={'cls': CustomHandler})
 
     @abstractmethod
     def initialize_app(self):
