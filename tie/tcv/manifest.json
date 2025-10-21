@@ -125,8 +125,8 @@
         "template_path": "basic/core/api/endpoint/tcvf/batch_error_counts_collection.py"
     },
     "core/api/endpoint/tcvf/batch_error_export_resource.py": {
-        "md5": "eeabd8d081d4b8c17bfac8aa11426873",
-        "last_commit": "5a0885d9045298fc228eb9cb2cddc0e342c170c5",
+        "md5": "99938594a4685352c9be817f848c1c38",
+        "last_commit": "abcef4c41a044200c6208d4c27b719c89faf43de",
         "template_path": "basic/core/api/endpoint/tcvf/batch_error_export_resource.py"
     },
     "core/api/endpoint/tcvf/download_files_resource.py": {
@@ -1670,8 +1670,8 @@
         "template_path": "tcv/install.json"
     },
     "manifest.json": {
-        "md5": "b84543ec2098a7b7e205fb3c90cdd0ba",
-        "last_commit": "e1f849cc43e9f66fea75ee48089ce55decfad807",
+        "md5": "fd34289c34faf8007c2b0b986333caa7",
+        "last_commit": "f8761f3ee3c7558e4a5d2d62ed6a1e361a9ac257",
         "template_path": "tcv/manifest.json"
     },
     "tcex.json": {
