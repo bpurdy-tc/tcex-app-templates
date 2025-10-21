@@ -9,6 +9,11 @@
         "last_commit": "4e3c70125b384362193e6e4d820a0aad4fe0298c",
         "template_path": "basic/.gitignore"
     },
+    ".gitlab-ci.yml": {
+        "md5": "daa97d26544dc470e7172a4197335dfe",
+        "last_commit": "c37b3f216f7fabca4f7732665e12af970a6a5c8e",
+        "template_path": "basic/.gitlab-ci.yml"
+    },
     ".pre-commit-config.yaml": {
         "md5": "5eed33083e61e5f98424bcf7cbcd465f",
         "last_commit": "c0f6383aa318e158532c229a19a5f6e988e68166",
@@ -1665,8 +1670,8 @@
         "template_path": "tcv/install.json"
     },
     "manifest.json": {
-        "md5": "7a54e056271069122e4db531e7f1725a",
-        "last_commit": "4ba8d9eea5012a57cf29c7d97620344fb2ee5c49",
+        "md5": "77ec4dce2734a45e9b3ee5de54816abe",
+        "last_commit": "441599b844aad556f3e7e46c560e4f209df8a5ae",
         "template_path": "tcv/manifest.json"
     },
     "tcex.json": {
