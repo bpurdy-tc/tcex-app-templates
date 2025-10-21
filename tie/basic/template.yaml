@@ -22,6 +22,7 @@ template_files:
   - .gitignore
   - .pre-commit-config.yaml
   - .prettierrc.json
+  - .gitlab-ci.yml
   - api_service_app.py
   - attributes.json
   - migrations.py
