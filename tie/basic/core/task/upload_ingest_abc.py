@@ -2,6 +2,7 @@
 
 # standard library
 import gzip
+import inspect
 import json
 import re
 from abc import ABC, abstractmethod
@@ -10,7 +11,6 @@ from typing import NamedTuple, TypeVar
 
 # third-party
 import uuid6
-from model import JobRequestModel
 from tcex.api.tc.v2.batch import BatchSubmit
 
 # first-party
@@ -21,6 +21,7 @@ from core.model.tie.batch_error_model import (
     error_codes_name_map,
 )
 from core.task.upload_abc import UploadABC
+from model import JobRequestModel
 
 T = TypeVar('T')
 
@@ -89,6 +90,9 @@ class UploadIngestABC(UploadABC, ABC):
         """Handle batch errors."""
         try:
             batch_errors = self.get_batch_errors(batch_submit, batch_id)
+        except Exception as e:
+            raise BatchError from e
+        try:
             self.report_batch_errors(batch_errors, request)
             self.write_batch_errors(batch_errors, request, output_dir)
         except Exception:
@@ -181,7 +185,13 @@ class UploadIngestABC(UploadABC, ABC):
                 content = json.load(file)
 
             if content:
-                batch_response = batch_submit.submit_data(batch_id=batch_id, content=content)
+                kwargs = {'batch_id': batch_id, 'content': content}
+                # clean_content is only supported in newer versions of tcex,
+                # check the signature to avoid breaking older installations
+                sig = inspect.signature(batch_submit.submit_data)
+                if 'clean_content' in sig.parameters:
+                    kwargs['clean_content'] = self.clean_content
+                batch_response = batch_submit.submit_data(**kwargs)
                 self.log.trace(
                     f'action="submit-batch", status="job-submit", response="{batch_response}"'
                 )

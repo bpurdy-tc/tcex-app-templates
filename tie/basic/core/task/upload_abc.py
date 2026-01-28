@@ -6,15 +6,14 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import NamedTuple, TypeVar
 
-from model import JobRequestModel
-from model.settings_model import SettingModel
-
 # third-party
 from tcex import TcEx
 
 # first-party
 from core.json_db import JsonDB
 from core.task.task_path_pipe_abc import TaskPathPipeABC, UploadError, UploadRetryError
+from model import JobRequestModel
+from model.settings_model import SettingModel
 
 T = TypeVar('T')
 
@@ -138,6 +137,11 @@ class UploadABC(TaskPathPipeABC, ABC):
             f'date_batch_failure="{request.date_upload_failure}"'
         )
         raise UploadRetryError(msg)
+
+    @property
+    def clean_content(self) -> bool:
+        """Return whether to clean content during batch submit."""
+        return False
 
     @property
     def fields_to_reset(self) -> list[str]:
