@@ -80,7 +80,7 @@ class UiModel(ItemModel, extra=Extra.allow):
 
     adhocRequest: AdhocRequestModel | None = None  # noqa: N815
     downloadTI: DownloadTiModel | None = None # noqa: N815
-    jobTable: JobTableModel  | None = None # noqa: N815
+    jobTable: JobTableModel | None = None # noqa: N815
     owner: str
     title: str
     version: str
