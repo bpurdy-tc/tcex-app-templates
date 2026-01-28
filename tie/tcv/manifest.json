@@ -114,10 +114,10 @@
         "mtime": 1769625576.2177436
     },
     "core/api/endpoint/tc_app_config.py": {
-        "sha256": "fc8bc4a5b0d566ada4da968fe3d2c058e9c40e598fe287592c3e741336c67a71",
-        "last_commit": "94172659d443982ac6e0f542dbae530a34d7876e",
+        "sha256": "cf0bb2a5df6ff59d60988bfbf49e6f0a8878ded441eebc710ffec51d10ba5565",
+        "last_commit": "528d4b62e232abaf92ca89af6b464b92095556f1",
         "template_path": "basic/core/api/endpoint/tc_app_config.py",
-        "mtime": 1769633389.5438542
+        "mtime": 1769634770.7362719
     },
     "core/api/endpoint/tcva/__init__.py": {
         "sha256": "c4a7c7eb13edc7dc982bd3e713f16ad6f6f7e736a08f38d4c7bafb9f1a06c232",
@@ -2082,10 +2082,10 @@
         "mtime": 1761053941.7683663
     },
     "manifest.json": {
-        "sha256": "787303dff921b1fd35dbe833c46bcd60aa7087b80d87322a5ada47914cbd79f8",
-        "last_commit": "6d83984d6421032dafcdfdc208ae465c89b1ead4",
+        "sha256": "008cde0f10506135983d3f3377efaeb360d4e60298e71d9de56352ef94f58dd9",
+        "last_commit": "c03aa89e52b516c01941edd1a9b98e9633b25931",
         "template_path": "tcv/manifest.json",
-        "mtime": 1769633123.8581002
+        "mtime": 1769633441.877952
     },
     "tcex.json": {
         "sha256": "a20551f72e4e1023b5f953b0607d4d591e90369fc7eec4731f3b8418d82de996",
