@@ -78,9 +78,9 @@ class JobTableModel(ItemModel, extra=Extra.allow):
 class UiModel(ItemModel, extra=Extra.allow):
     """UI Model"""
 
-    adhocRequest: AdhocRequestModel  # noqa: N815
-    downloadTI: DownloadTiModel  # noqa: N815
-    jobTable: JobTableModel  # noqa: N815
+    adhocRequest: AdhocRequestModel | None = None  # noqa: N815
+    downloadTI: DownloadTiModel | None = None # noqa: N815
+    jobTable: JobTableModel  | None = None # noqa: N815
     owner: str
     title: str
     version: str
