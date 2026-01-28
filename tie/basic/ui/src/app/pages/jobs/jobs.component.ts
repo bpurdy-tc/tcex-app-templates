@@ -130,7 +130,7 @@ export class JobsComponent implements OnDestroy, OnInit {
                     this.table = this.buildTable(uiConfig?.ui?.jobTable?.columns);
                     this.detailsData = uiConfig?.ui?.jobTable?.details;
                     this.adhocFormConfig = uiConfig?.ui?.adhocRequest?.form;
-                    this.filterFormConfig = uiConfig.ui.jobTable.filters;
+                    this.filterFormConfig = uiConfig?.ui?.jobTable?.filters;
                     // Read feature flag, default to true if not specified
                     this.enableAddJob = uiConfig?.ui?.global?.featureFlags?.enableAddJob ?? true;
                 }),

@@ -149,6 +149,7 @@ class GitHelper:
     def __init__(self, start_dir: Path) -> None:
         """Initialize with the start directory to find the Git repo root."""
         self.repo_root: Path | None = self._git_repo_root(start_dir)
+        self._commit_map: dict[str, str] | None = None
 
     def _git_repo_root(self, start_dir: Path) -> Path | None:
         """Return the Git repository root, or None if not in a repo."""
@@ -162,8 +163,51 @@ class GitHelper:
         except Exception:
             return None
 
+    def _build_commit_map(self) -> dict[str, str]:
+        """Build a map of rel_path -> most recent commit SHA in one git call."""
+        if not self.repo_root:
+            return {}
+
+        try:
+            out = subprocess.check_output(
+                [
+                    'git', '-C', str(self.repo_root),
+                    'log', '--format=%H', '--name-only',
+                ],
+                text=True,
+                stderr=subprocess.STDOUT,
+            )
+        except Exception:
+            return {}
+
+        commit_map: dict[str, str] = {}
+        current_sha: str | None = None
+        for line in out.splitlines():
+            if not line:
+                continue
+            # SHA-1 hashes are exactly 40 hex chars
+            if len(line) == 40 and os.sep not in line and '.' not in line:
+                try:
+                    int(line, 16)
+                    current_sha = line
+                    continue
+                except ValueError:
+                    pass
+            # It's a file path — record first occurrence only (most recent commit)
+            if current_sha and line not in commit_map:
+                commit_map[line] = current_sha
+
+        return commit_map
+
+    @property
+    def commit_map(self) -> dict[str, str]:
+        """Lazily built map of relative path -> last commit SHA."""
+        if self._commit_map is None:
+            self._commit_map = self._build_commit_map()
+        return self._commit_map
+
     def last_commit(self, file_path: Path) -> str | None:
-        """Return last commit SHA for file_path using local Git, or None if unavailable."""
+        """Return last commit SHA for file_path using the pre-built commit map."""
         if not self.repo_root:
             return None
 
@@ -172,26 +216,7 @@ class GitHelper:
         except Exception:
             return None
 
-        try:
-            out = subprocess.check_output(
-                [
-                    'git',
-                    '-C',
-                    str(self.repo_root),
-                    'log',
-                    '-n',
-                    '1',
-                    '--pretty=format:%H',
-                    '--',
-                    str(rel),
-                ],
-                text=True,
-                stderr=subprocess.STDOUT,
-            )
-            sha = out.strip()
-            return sha or None
-        except Exception:
-            return None
+        return self.commit_map.get(rel.as_posix())
 
 
 class HashHelper:
@@ -219,13 +244,19 @@ class ManifestBuilder:
     value -> {"sha256": <sha256>, "last_commit": <sha or None>, "template_path": <key>}
     """
 
-    def __init__(self, root_dir: Path, git: GitHelper) -> None:
-        """Initialize with root_dir and GitHelper."""
+    def __init__(self, root_dir: Path, git: GitHelper, cache: dict | None = None) -> None:
+        """Initialize with root_dir, GitHelper, and optional previous manifest cache."""
         self.root_dir = root_dir.resolve()
         self.git = git
+        self._cache = cache or {}
 
     def build(self, files: list[Path]) -> dict[str, dict[str, str | None]]:
-        """Build the manifest from the given list of absolute file Paths."""
+        """Build the manifest from the given list of absolute file Paths.
+
+        Uses mtime + cached sha256 to skip re-hashing unchanged files.
+        """
+        reused = 0
+
         # 1) Build initial manifest keyed by POSIX path relative to root_dir
         raw_manifest: dict[str, dict[str, str | None]] = {}
         for abs_path in files:
@@ -236,6 +267,16 @@ class ManifestBuilder:
                 continue
 
             key = key_path.as_posix()
+            trimmed_key = '/'.join(key.split('/')[1:])
+            mtime = abs_path.stat().st_mtime
+
+            # Check cache: reuse entry if mtime unchanged
+            cached = self._cache.get(trimmed_key)
+            if cached and cached.get('mtime') == mtime:
+                raw_manifest[key] = cached
+                reused += 1
+                continue
+
             sha256 = HashHelper.sha256(abs_path)
             last_commit = self.git.last_commit(abs_path)
 
@@ -243,7 +284,11 @@ class ManifestBuilder:
                 'sha256': sha256,
                 'last_commit': last_commit,
                 'template_path': key,
+                'mtime': mtime,
             }
+
+        if reused:
+            print(f'Cache: reused {reused}/{len(files)} unchanged entries')
 
         # 2) Stable order by key
         ordered = {k: raw_manifest[k] for k in sorted(raw_manifest.keys())}
@@ -272,7 +317,20 @@ class BuildManifestApp:
         self.resolver = TemplateResolver(self.root_dir)
         self.expander = FileExpander()
         self.git = GitHelper(self.root_dir)
-        self.manifest_builder = ManifestBuilder(self.root_dir, self.git)
+
+        # Load existing manifest as cache for incremental builds
+        cache = self._load_existing_manifest()
+        self.manifest_builder = ManifestBuilder(self.root_dir, self.git, cache=cache)
+
+    def _load_existing_manifest(self) -> dict:
+        """Load existing manifest.json for cache, or return empty dict."""
+        manifest_path = self.input_dir / 'manifest.json'
+        if not manifest_path.is_file():
+            return {}
+        try:
+            return json.loads(manifest_path.read_text(encoding='utf-8'))
+        except Exception:
+            return {}
 
     def run(self) -> None:
         """Execute the manifest building process."""
