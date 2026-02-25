@@ -43,32 +43,11 @@ class App(ApiServiceFalconABC):
         self.register_custom_message_handlers()
         self.register_custom_scheduled_actions()
         self.register_custom_migration_actions()
-        self.register_custom_cache_warmers()
 
     # TODO: Should this follow the same pattern as the other methods?
     def register_custom_migration_actions(self):
         """Register migration actions."""
         return
-
-    def register_custom_cache_warmers(self):
-        """Register cache warmers to execute before forking worker processes.
-
-        Use ``default`` to select built-in warmers (or ``self.cache_warmers.ALL``
-        to warm every built-in cache).  Pass additional ``CacheWarmer`` instances
-        via ``cache_warmers`` for app-specific cached properties:
-
-            from core.app.enums import CacheWarmer
-
-            self.register_cache_warmers(
-                default=[self.cache_warmers.ALL],
-                cache_warmers=[
-                    CacheWarmer(lambda tcex: tcex.api.tc.v3.ti.indicator_types),
-                ],
-            )
-        """
-        self.register_cache_warmers(
-            default=[self.cache_warmers.ALL],
-        )
 
     def register_custom_scheduled_actions(self):
         """Register scheduled actions."""

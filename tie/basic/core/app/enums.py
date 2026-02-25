@@ -106,31 +106,6 @@ class PREFLIGHT_CHECKS(Enum):  # noqa: N801
 class MESSAGE_HANDLERS(Enum):  # noqa: N801
     """Enum for message handler types."""
 
-
-class CacheWarmer:
-    """Represents a tcex cache to warm before forking worker processes."""
-
-    def __init__(self, warm_fn):
-        self.warm_fn = warm_fn
-        self.log = logger
-
-    def warm(self, tcex):
-        """Warm the cache using the provided tcex instance."""
-        self.warm_fn(tcex)
-
-
-class CACHE_WARMERS(Enum):  # noqa: N801
-    """Enum for tcex cache warmers to execute before forking."""
-
-    class TCEX(Enum):
-        """Built-in tcex cache warmers."""
-
-        MITRE_TAGS = CacheWarmer(lambda tcex: tcex.api.tc.v3.ti.mitre_tags)
-        ATTRIBUTE_TYPES = CacheWarmer(lambda tcex: tcex.api.tc.v3.attribute_types)
-
-    ALL = TCEX
-
-
 class Route(BaseResource):
     """Represents an API route with its corresponding resource class and optional init args."""
 

@@ -19,7 +19,7 @@ from app_inputs import AppBaseModel
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC
-from core.app.enums import CACHE_WARMERS, MESSAGE_HANDLERS, MIDDLEWARE, PREFLIGHT_CHECKS, ROUTES, TASKS
+from core.app.enums import MESSAGE_HANDLERS, MIDDLEWARE, PREFLIGHT_CHECKS, ROUTES, TASKS
 from core.beacon import provide
 from core.json_db import JsonDB
 from core.message_service.message_service import MessageService
@@ -51,7 +51,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         self._tasks = {'pipe': [], 'standalone': []}
         self._middleware = []
         self._message_handlers = {}
-        self._cache_warmers = []
         self._jobs = {}
         self.log = logger
         self.model: AppBaseModel = self.inputs.model  # type: ignore
@@ -170,35 +169,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         for middleware in self._middleware:
             if middleware:
                 self.app.add_middleware(middleware)
-
-    def register_cache_warmers(
-        self,
-        cache_warmers: list | None = None,
-        default: list[CACHE_WARMERS] | None = None,
-    ):
-        """Register cache warmers to execute before forking worker processes."""
-        cache_warmers = cache_warmers or []
-        default = default or []
-
-        for warmer in default[:]:
-            if warmer == CACHE_WARMERS.ALL:
-                for cw in CACHE_WARMERS.TCEX:
-                    self._cache_warmers.append(cw.value)
-                default.remove(warmer)
-
-        for warmer in default:
-            self._cache_warmers.append(warmer.value)
-
-        self._cache_warmers.extend(cache_warmers)
-
-    def _warm_caches(self):
-        """Warm registered caches before forking worker processes."""
-        for warmer in self._cache_warmers:
-            try:
-                self.log.info(f'action=warm-cache, warmer={warmer.warm_fn.__name__}')
-                warmer.warm(self.tcex)
-            except Exception:
-                self.log.exception('action=warm-cache-failed')
 
     @property
     def message_broker_settings(self):
@@ -346,11 +316,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         return MESSAGE_HANDLERS
 
     @property
-    def cache_warmers(self) -> type[CACHE_WARMERS]:
-        """Return the cache warmers."""
-        return CACHE_WARMERS
-
-    @property
     def routes(self) -> type[ROUTES]:
         """Return the routes."""
         return ROUTES
@@ -363,7 +328,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         if self.migrations:
             self.migrations.migration_service.preform_migrations()
 
-        self._warm_caches()
         self._remove_pending_jobs()
 
         while self.tcex.app.service.message_broker.shutdown is False:
