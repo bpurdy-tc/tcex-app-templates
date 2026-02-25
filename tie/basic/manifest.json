@@ -335,8 +335,8 @@
         "template_path": "tie/basic/core/app/api_service_app_abc.py"
     },
     "core/app/api_service_falcon_abc.py": {
-        "sha256": "cf3bc71d736809f10137c9bc7d32f6b4a0822f055145e66f2b4156ac742f0967",
-        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
+        "sha256": "bab34b2ef51f8bbe86f9d4d83edfb3020f8000df74d6e7157038147966126449",
+        "last_commit": "8b3286f736759b9842f97ffcae300db9a6061d2b",
         "template_path": "tie/basic/core/app/api_service_falcon_abc.py"
     },
     "core/app/app_lib.py": {
@@ -345,8 +345,8 @@
         "template_path": "tie/basic/core/app/app_lib.py"
     },
     "core/app/enums.py": {
-        "sha256": "d1d07cd184a48fad638781ce9f0965b9b978f807ed8f6b24581f870df74b0eb4",
-        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
+        "sha256": "04d397d75e7cae75570dc6bd1119e9c157b30c43b97c858dea4af66c56d3dd13",
+        "last_commit": "8b3286f736759b9842f97ffcae300db9a6061d2b",
         "template_path": "tie/basic/core/app/enums.py"
     },
     "core/beacon/__init__.py": {
