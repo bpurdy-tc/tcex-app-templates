@@ -1,0 +1,165 @@
+<div class="page-container pb-medium-large px-medium-large d-flex flex-column">
+    <div class="d-flex pt-medium-large justify-content-between align-items-center mb-medium">
+        <h3>Jobs</h3>
+
+        <tcl-button
+            tclPendo
+            theme="primary"
+            [featureVersion]="featureVersion"
+            [disabled]="!enableAddJob"
+            (click)="enableAddJob && handleAddJobClick()">
+            Add Job
+        </tcl-button>
+    </div>
+    <div class="align-items-end d-flex mb-small">
+        @if (filterFormConfig) {
+            <app-generated-form
+                class="d-flex"
+                #filterForm
+                [formConfig]="filterFormConfig"></app-generated-form>
+        }
+
+        <tcl-button
+            class="mr-medium pl-small"
+            theme="primary"
+            [featureVersion]="featureVersion"
+            [style.width.px]="600"
+            (onClick)="handleSearchClick()"
+            >Search</tcl-button
+        >
+    </div>
+    @if (table) {
+        <tcl-table
+            class="tc-new-tables table-layout-auto"
+            #dataTable
+            [autoLayout]="true"
+            [lazy]="true"
+            [pageSelectionOnly]="false"
+            [paginator]="true"
+            [paginatorOpenAbove]="false"
+            [resizableColumns]="false"
+            [rows]="paginator.pageSize"
+            [rowsPerPageOptions]="paginator.pageSizeOptions"
+            [scrollable]="false"
+            [showSpinningLoader]="!table.dataLoaded"
+            [totalRecords]="paginator.pageTotal"
+            [value]="table.data"
+            (closeSpinner)="table.dataLoaded = true"
+            (onPage)="paginator.pageChangedTcl($event)"
+            (onPageSelectionOnlyActive)="paginator.pageChanged($event)">
+            <ng-template tclTemplate="empty-message">
+                <tr>
+                    <td
+                        class="empty-message"
+                        colSpan="6">
+                        No jobs found
+                    </td>
+                </tr>
+            </ng-template>
+            <!-- Headers -->
+            <ng-template tclTemplate="header">
+                <tr>
+                    @for (col of table.dataColumns; track col) {
+                        <th innerHTML="{{ col.header }}"></th>
+                    }
+                    <th><!--Placeholder for nested menu--></th>
+                </tr>
+            </ng-template>
+            <!-- Rows -->
+            <ng-template
+                let-value
+                tclTemplate="body">
+                <tr>
+                    @for (row of table.dataColumns; track row) {
+                        <td>
+                            <app-formatted-field
+                                [field]="row.fieldDisplay"
+                                [value]="value[row.field]"></app-formatted-field>
+                        </td>
+                    }
+                    <td>
+                        <tcl-nested-menu
+                            class="attack-view-options"
+                            buttonIcon="more-horizontal"
+                            buttonLabel="Options"
+                            menuSide="left"
+                            [buttonHeight]="28"
+                            [featureVersion]="featureVersion"
+                            [itemHeight]="40"
+                            [list]="menuItemsWithDownload"
+                            (selected)="handleNestedMenuSelection($event, value)">
+                        </tcl-nested-menu>
+                    </td>
+                </tr>
+            </ng-template>
+        </tcl-table>
+    }
+</div>
+
+<tcl-side-drawer
+    side="right"
+    [open]="showSideDrawer"
+    [titleText]="showSideDrawerTitle"
+    (openChange)="handleSidenavChange($event)">
+    @switch (sideDrawerContent) {
+        @case (SideDrawerContent.DETAILS) {
+            <div
+                class="container mt"
+                style="width: 95%">
+                @for (field of detailsData; track $index) {
+                    @if (selectedJob[field.field]) {
+                        <div class="row mb-small">
+                            <div
+                                class="col-4"
+                                style="text-align: right">
+                                <b>{{ field.label }}</b>
+                            </div>
+                            <div class="col-8">
+                                <app-formatted-field
+                                    [field]="field"
+                                    [value]="selectedJob[field.field]"></app-formatted-field>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+        @case (SideDrawerContent.DOWNLOAD) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-5)' }">
+                @for (group of downloadFiles$ | async; track $index) {
+                    <h6>{{ group.group }}</h6>
+                    <div
+                        class="d-flex flex-column"
+                        [style]="{ gap: 'var(--tcl-spacing-3)' }">
+                        @for (item of group.files; track $index) {
+                            <a href="{{ item.href }}">{{ item.name }}</a>
+                        }
+                    </div>
+                }
+            </div>
+        }
+        @case (SideDrawerContent.ADD_JOB) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-5)' }">
+                <app-generated-form
+                    class="d-flex flex-column"
+                    #form
+                    [formConfig]="adhocFormConfig"></app-generated-form>
+
+                <div class="d-flex justify-content-end w-100">
+                    <tcl-button
+                        class="mr-medium pl-small"
+                        theme="primary"
+                        [disabled]="(form.valid$ | async) === false"
+                        [featureVersion]="featureVersion"
+                        (onClick)="addJob()"
+                        >Submit</tcl-button
+                    >
+                </div>
+            </div>
+        }
+    }
+</tcl-side-drawer>

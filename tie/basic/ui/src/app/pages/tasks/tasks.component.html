@@ -1,0 +1,212 @@
+<div class="page-container pb-medium-large px-medium-large d-flex flex-column">
+    <div class="d-flex pt-medium-large justify-content-between align-items-center mb-medium">
+        <h3>Tasks</h3>
+    </div>
+
+    <tcl-table
+        class="tc-new-tables table-layout-auto"
+        #dataTable
+        [autoLayout]="true"
+        [lazy]="true"
+        [pageSelectionOnly]="false"
+        [paginator]="false"
+        [resizableColumns]="false"
+        [scrollable]="false"
+        [showSpinningLoader]="!table.dataLoaded"
+        [value]="table.data"
+        (closeSpinner)="table.dataLoaded = true">
+        <ng-template tclTemplate="empty-message">
+            <tr>
+                <td
+                    class="empty-message"
+                    colSpan="6">
+                    No Tasks found
+                </td>
+            </tr>
+        </ng-template>
+        <!-- Headers -->
+        <ng-template tclTemplate="header">
+            <tr>
+                <th><!--Placeholder for unning pill--></th>
+                @for (col of table.dataColumns; track col) {
+                    <th>{{ col.header }}</th>
+                }
+                <th><!--Placeholder for nested menu--></th>
+            </tr>
+        </ng-template>
+        <!-- Rows -->
+        <ng-template
+            let-value
+            tclTemplate="body">
+            <tr>
+                <td>
+                    @if (isTaskRunning(value)) {
+                        <tcl-badge
+                            [backgroundColor]="'var(--tcl-primary)'"
+                            [textColor]="'var(--tcl-textOnPrimary)'">
+                            Running
+                        </tcl-badge>
+                    } @else if (value.paused) {
+                        <tcl-badge
+                            [backgroundColor]="'var(--tcl-warning)'"
+                            [textColor]="'var(--tcl-textOnPrimary)'">
+                            Paused
+                        </tcl-badge>
+                    } @else {
+                        <tcl-badge
+                            [backgroundColor]="'var(--tcl-info)'"
+                            [textColor]="'var(--tcl-textOnPrimary)'">
+                            Idle
+                        </tcl-badge>
+                    }
+                </td>
+                @for (row of table.dataColumns; track row) {
+                    @switch (row.field) {
+                        @case ('schedule') {
+                            <td>
+                                {{ formatSchedule(value) }}
+                            </td>
+                        }
+                        @default {
+                            <td>{{ value[row.field] }}</td>
+                        }
+                    }
+                }
+
+                <td>
+                    <tcl-nested-menu
+                        class="attack-view-options"
+                        buttonIcon="more-horizontal"
+                        buttonLabel="Options"
+                        menuSide="left"
+                        [buttonHeight]="28"
+                        [featureVersion]="featureVersion"
+                        [itemHeight]="40"
+                        [list]="value.menuItems"
+                        (selected)="handleNestedMenuSelection($event, value)">
+                    </tcl-nested-menu>
+                </td>
+            </tr>
+        </ng-template>
+    </tcl-table>
+    <ngx-charts-number-card
+        cardColor="var(--tcl-base02)"
+        textColor="var(--tcl-textBody)"
+        [results]="metrics$ | async"
+        [view]="view">
+    </ngx-charts-number-card>
+</div>
+
+<tcl-side-drawer
+    side="right"
+    [open]="showSideDrawer"
+    [titleText]="showSideDrawerTitle"
+    (openChange)="handleSidenavChange($event)">
+    @switch (sideDrawerContent) {
+        @case (SideDrawerContent.PAUSE) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                <div>
+                    Paused tasks will no longer pick up jobs from the queue. Are you sure you want
+                    to pause this task?
+                </div>
+                <div
+                    class="d-flex justify-content-end"
+                    [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                    <tcl-button
+                        theme="secondary"
+                        [featureVersion]="featureVersion"
+                        (click)="closeSideDrawer()">
+                        Cancel
+                    </tcl-button>
+
+                    <tcl-button
+                        theme="primary"
+                        [featureVersion]="featureVersion"
+                        (click)="pauseTask(selectedTask)">
+                        Pause Task
+                    </tcl-button>
+                </div>
+            </div>
+        }
+        @case (SideDrawerContent.RESUME) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                <div>Are you sure you want to resume this paused task?</div>
+                <div
+                    class="d-flex justify-content-end"
+                    [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                    <tcl-button
+                        theme="secondary"
+                        [featureVersion]="featureVersion"
+                        (click)="closeSideDrawer()">
+                        Cancel
+                    </tcl-button>
+
+                    <tcl-button
+                        theme="primary"
+                        [featureVersion]="featureVersion"
+                        (click)="resumeTask(selectedTask)">
+                        Resume Task
+                    </tcl-button>
+                </div>
+            </div>
+        }
+        @case (SideDrawerContent.RUN) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                <div>
+                    Task are configured on a schedule and should only be run adhoc if necessary. Are
+                    you sure you want to run this task
+                </div>
+                <div
+                    class="d-flex justify-content-end"
+                    [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                    <tcl-button
+                        theme="secondary"
+                        [featureVersion]="featureVersion"
+                        (click)="closeSideDrawer()">
+                        Cancel
+                    </tcl-button>
+
+                    <tcl-button
+                        theme="primary"
+                        [featureVersion]="featureVersion"
+                        (click)="runTask(selectedTask)">
+                        Run Task
+                    </tcl-button>
+                </div>
+            </div>
+        }
+        @case (SideDrawerContent.KILL) {
+            <div
+                class="d-flex flex-column"
+                [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                <div>
+                    Running task are actively processing data. Are you sure you want to kill this
+                    task?
+                </div>
+                <div
+                    class="d-flex justify-content-end"
+                    [style]="{ gap: 'var(--tcl-spacing-8)' }">
+                    <tcl-button
+                        theme="secondary"
+                        [featureVersion]="featureVersion"
+                        (click)="closeSideDrawer()">
+                        Cancel
+                    </tcl-button>
+
+                    <tcl-button
+                        theme="primary"
+                        [featureVersion]="featureVersion"
+                        (click)="killTask(selectedTask)">
+                        Kill Task
+                    </tcl-button>
+                </div>
+            </div>
+        }
+    }
+</tcl-side-drawer>

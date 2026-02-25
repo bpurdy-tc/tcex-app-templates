@@ -1,0 +1,17 @@
+@switch (status?.toLowerCase()) {
+    @case ('pass') {
+        <tcl-badge backgroundColor="#2a9d75" textColor="white">
+            <tcl-svg-icon name="check" [tclTooltip]="tooltip" />
+        </tcl-badge>
+    }
+    @case ('fail') {
+        <tcl-badge backgroundColor="#d42534" textColor="white" [tclTooltip]="tooltip">
+            <tcl-svg-icon name="alert" />
+        </tcl-badge>
+    }
+    @default {
+        <tcl-badge backgroundColor="#808ca8" textColor="white" [tclTooltip]="tooltip">
+            <tcl-svg-icon name="more-horizontal" />
+        </tcl-badge>
+    }
+}

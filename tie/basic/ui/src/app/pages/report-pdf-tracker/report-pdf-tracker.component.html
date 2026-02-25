@@ -1,0 +1,83 @@
+<div class="page-container pb-medium-large px-medium-large d-flex flex-column">
+    <div class="d-flex pt-medium-large justify-content-between align-items-center mb-medium">
+        <h3>Attachment Status</h3>
+    </div>
+    <div class="align-items-end d-flex mb-small">
+        <tcl-text-input
+            class="mr-medium"
+            label="Group ID"
+            [showCount]="false"
+            [(value)]="groupId"
+            (onChange)="this.groupId = $event"></tcl-text-input>
+        <tcl-text-input
+            class="mr-medium"
+            label="Status"
+            [showCount]="false"
+            [(value)]="attemptResult"
+            (onChange)="this.attemptResult = $event"></tcl-text-input>
+        <tcl-button
+            class="mr-medium pl-small"
+            theme="primary"
+            [featureVersion]="featureVersion"
+            [style.width.px]="600"
+            (onClick)="handleSearchClick()"
+            >Search</tcl-button
+        >
+    </div>
+
+    <tcl-table
+        class="tc-new-tables table-layout-auto"
+        #dataTable
+        [autoLayout]="true"
+        [lazy]="true"
+        [pageSelectionOnly]="false"
+        [paginator]="true"
+        [resizableColumns]="false"
+        [rows]="paginator.pageSize"
+        [rowsPerPageOptions]="paginator.pageSizeOptions"
+        [scrollable]="false"
+        [showSpinningLoader]="!table.dataLoaded"
+        [totalRecords]="paginator.pageTotal"
+        [value]="table.data"
+        (closeSpinner)="table.dataLoaded = true"
+        (onPage)="paginator.pageChangedTcl($event)"
+        (onPageSelectionOnlyActive)="paginator.pageChanged($event)">
+        <ng-template tclTemplate="empty-message">
+            <tr>
+                <td
+                    class="empty-message"
+                    colSpan="6">
+                    No jobs found
+                </td>
+            </tr>
+        </ng-template>
+        <!-- Headers -->
+        <ng-template tclTemplate="header">
+            <tr>
+                @for (col of table.dataColumns; track col) {
+                    <th>{{ col.header }}</th>
+                }
+                <th><!--Placeholder for nested menu--></th>
+            </tr>
+        </ng-template>
+        <!-- Rows -->
+        <ng-template
+            let-value
+            tclTemplate="body">
+            <tr>
+                @for (row of table.dataColumns; track row) {
+                    @switch (row.field) {
+                        @case ('dateLastAttempt') {
+                            <td>
+                                {{ value[row.field] | date: 'MMM d, y, h:mm:ss a z' : 'GMT' }}
+                            </td>
+                        }
+                        @default {
+                            <td>{{ value[row.field] }}</td>
+                        }
+                    }
+                }
+            </tr>
+        </ng-template>
+    </tcl-table>
+</div>

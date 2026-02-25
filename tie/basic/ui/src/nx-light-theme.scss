@@ -1,0 +1,99 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+@include mat.core();
+
+$tc-primary-color: white;
+$tc-primary-color-contrast: black;
+
+// Background palette for light themes.
+$dark-focused: $tc-primary-color;
+$light-theme-background-palette: (
+    status-bar: $tc-primary-color,
+    app-bar: $tc-primary-color,
+    background: $tc-primary-color,
+    hover: $tc-primary-color,
+    card: $tc-primary-color,
+    dialog: $tc-primary-color,
+    disabled-button: $tc-primary-color,
+    raised-button: $tc-primary-color,
+    focused-button: $tc-primary-color,
+    selected-button: $tc-primary-color,
+    selected-disabled-button: $tc-primary-color,
+    disabled-button-toggle: $tc-primary-color,
+    unselected-chip: $tc-primary-color,
+    disabled-list-option: $tc-primary-color,
+    tooltip: $tc-primary-color,
+);
+
+// copied from ./app-registry-ui/node_modules/@angular/material/core/theming/_palette.scss
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$mat-light-theme-primary: mat.m2-define-palette(
+    (
+        50: $tc-primary-color,
+        100: $tc-primary-color,
+        200: $tc-primary-color,
+        300: $tc-primary-color,
+        400: $tc-primary-color,
+        500: $tc-primary-color,
+        600: $tc-primary-color,
+        700: $tc-primary-color,
+        800: $tc-primary-color,
+        900: $tc-primary-color,
+        contrast: (
+            50: $tc-primary-color-contrast,
+            100: $tc-primary-color-contrast,
+            200: $tc-primary-color-contrast,
+            300: $tc-primary-color-contrast,
+            400: $tc-primary-color-contrast,
+            500: $tc-primary-color-contrast,
+            600: $tc-primary-color-contrast,
+            700: $tc-primary-color-contrast,
+            800: $tc-primary-color-contrast,
+            900: $tc-primary-color-contrast,
+        ),
+    )
+);
+
+$tc-accent-color: #336cf9;
+$tc-accent-color-contrast: white;
+
+$mat-light-theme-accent: mat.m2-define-palette(
+    (
+        50: $tc-accent-color,
+        100: $tc-accent-color,
+        200: $tc-accent-color,
+        300: $tc-accent-color,
+        400: $tc-accent-color,
+        500: $tc-accent-color,
+        600: $tc-accent-color,
+        700: $tc-accent-color,
+        800: $tc-accent-color,
+        900: $tc-accent-color,
+        contrast: (
+            50: $tc-accent-color-contrast,
+            100: $tc-accent-color-contrast,
+            200: $tc-accent-color-contrast,
+            300: $tc-accent-color-contrast,
+            400: $tc-accent-color-contrast,
+            500: $tc-accent-color-contrast,
+            600: $tc-accent-color-contrast,
+            700: $tc-accent-color-contrast,
+            800: $tc-accent-color-contrast,
+            900: $tc-accent-color-contrast,
+        ),
+    ),
+    700
+);
+
+$mat-light-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);

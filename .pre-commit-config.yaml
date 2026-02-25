@@ -46,3 +46,25 @@ repos:
       - id: pyupgrade
         args:
           - --py311-plus
+  - repo: https://github.com/yunojuno/pre-commit-xenon
+    rev: v0.1
+    hooks:
+      - id: xenon
+        args: ['--max-average=B', '-e=tests*']
+  - repo: local
+    hooks:
+      - id: update-manifest-after-template-change
+        name: Update manifest after template change
+        language: python
+        entry: python scripts/update_manifest_post_commit.py
+        pass_filenames: false
+        always_run: true
+        stages: [post-commit]
+        additional_dependencies:
+          - pyyaml>=6.0
+      - id: pylint
+        entry: pylint
+        language: system
+        name: pylint
+        types: [python]
+        args: ['--jobs=3']

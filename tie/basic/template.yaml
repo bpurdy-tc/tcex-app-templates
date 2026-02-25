@@ -1,0 +1,39 @@
+# The contributor of this template (company name or user alias).
+contributor: ThreatConnect
+# A full description of the template and it's functionality.
+description: A template that provides a basic example of a TIE TCV App that starts up a TIE TCV server, connects to it, and performs basic operations.
+# A short summary of the Template
+summary: A template of a working TIE App.
+# These are files that the App developer "should" not be
+# editing and will be overwritten without prompt during updating.
+template_files:
+  - core
+  - ui
+  - model
+  - message_service
+  - more
+  - scheduled_action
+  - sdk
+  - task
+  - api
+  - tests
+  - mapping
+  - __init__.py
+  - .coveragerc
+  - .gitignore
+  - .pre-commit-config.yaml
+  - .prettierrc.json
+  - .gitlab-ci.yml
+  - api_service_app.py
+  - attributes.json
+  - migrations.py
+  - pyproject.toml
+  - requirements.txt
+  - run.py
+  - service.job.json
+
+# One or more parent templates for the current template. The parent
+# template files will be pulled in the order that they are defined with
+# the later templates having precedent over the prior templates.
+# The current version number of this template.
+version: 1.0.0

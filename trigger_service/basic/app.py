@@ -1,4 +1,5 @@
 """ThreatConnect Trigger Service App"""
+
 # standard library
 import datetime
 from typing import cast

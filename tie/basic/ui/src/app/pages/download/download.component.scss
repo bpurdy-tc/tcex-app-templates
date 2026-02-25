@@ -1,0 +1,86 @@
+.gap-medium {
+    gap: var(--tcl-spacing-medium);
+}
+
+tcl-side-drawer::ng-deep .tcl-side-drawer .side-drawer-container {
+    top: 0 !important;
+    height: 100vh !important;
+}
+
+.syntax-overlay {
+    z-index: 1;
+    top: -1rem;
+    max-height: 500px;
+    overflow-y: auto;
+    width: calc(100% - 30px);
+}
+
+.editor-grid {
+    display: grid;
+    grid-template-areas: 'left-side left-side left-side left-side right-side right-side right-side';
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: var(--tcl-spacing-medium);
+}
+
+.left-side {
+    grid-area: left-side;
+}
+
+.right-side {
+    grid-area: right-side;
+}
+
+.monaco-editor-results {
+    height: 65vh;
+    border: 1px solid var(--tcl-border01);
+    border-radius: 0.25rem;
+    &:focus,
+    &:focus-within {
+        background: var(--tcl-base01) !important;
+        outline: 2px solid var(--tcl-borderFocus);
+        border: 1px solid var(--tcl-textLink) !important;
+    }
+}
+
+.monaco-editor-container {
+    min-height: 10vh;
+    height: 100%;
+    overflow-y: auto;
+    resize: vertical;
+    border: 1px solid var(--tcl-border01);
+    border-radius: 0.25rem;
+    &.error-outline {
+        border: 1px solid var(--tcl-error);
+    }
+    &:focus,
+    &:focus-within {
+        background: var(--tcl-base01) !important;
+        outline: 2px solid var(--tcl-borderFocus);
+        border: 1px solid var(--tcl-textLink) !important;
+    }
+}
+
+ngx-monaco-editor.monaco-editor-json {
+    height: 100%;
+}
+
+tcl-text-input::ng-deep {
+    input {
+        font-family: monospace;
+    }
+}
+
+.workbench-textarea {
+    resize: vertical;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    &.error-outline {
+        outline: 1px solid var(--tcl-error);
+    }
+    &:focus,
+    &:focus-within {
+        background: var(--tcl-base01) !important;
+        outline: 2px solid var(--tcl-borderFocus);
+        border: 1px solid var(--tcl-textLink) !important;
+    }
+}

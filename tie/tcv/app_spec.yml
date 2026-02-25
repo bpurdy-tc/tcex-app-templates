@@ -1,0 +1,58 @@
+allowOnDemand: true
+category: Threat Intelligence
+displayName: Sample Threat Intelligence Engine
+displayPath: sample_path
+features:
+- fileParams
+- linkApiPath
+- redisPasswordSupport
+internalNotes:
+- Vault - xxx
+- Docs - xxx
+- API - xxx
+labels:
+- sample
+languageVersion: '3.11'
+listDelimiter: '|'
+minServerVersion: 7.2.0
+note: Sample Notes
+notePerAction: []
+organization:
+  feeds:
+  - attributesFile: attributes.json
+    documentStorageLimitMb: 10240
+    indicatorLimit: 10000000
+    job:
+      allowOnDemand: true
+      enableNotifications: false
+      jobName: Sample Threat Intelligence Engine
+      notifyEmail: ''
+      notifyIncludeLogFiles: true
+      notifyOnComplete: false
+      notifyOnFailure: true
+      notifyOnPartialFailure: false
+      params: []
+      publishAuth: false
+      scheduleCronFormat: 00 00 0 * * ? *
+      scheduleStartDate: 1484858999000
+      scheduleType: Daily
+    jobFile: service.job.json
+    sourceCategory: Premium
+    sourceDescription: Sample Threat Intelligence Engine
+    sourceName: Sample Threat Intelligence
+packageName: TCVF_-_Sample_Threat_Intel_Engine
+programLanguage: PYTHON
+programMain: run.py
+programVersion: 1.0.0
+releaseNotes:
+- notes:
+  - Initial Release
+  version: 1.0.0 (202x-xx-xx)
+runtimeLevel: FeedApiService
+schemaVersion: 1.1.0
+sections:
+- params:
+  - hidden: true
+    label: Advanced Settings
+    name: advanced_settings
+  sectionName: Advanced

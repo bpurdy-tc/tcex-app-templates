@@ -32,7 +32,7 @@ repos:
       - id: pretty-format-json
         args:
           - --autofix
-        exclude: ^tests/.+/profiles.d/.*
+        exclude: '^tests/.+/profiles.d/.*|^tests/.+/staged_requests/.*'
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: https://github.com/pycqa/bandit
