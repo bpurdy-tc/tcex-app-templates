@@ -1,47 +1,47 @@
 {
-    ".appbuilderconfig": {
-        "sha256": "e996cae890a4a6c830e300e7b9e57fc99f05e00939833911a726f22c030cee0e",
-        "last_commit": "7a40bf67f2048d22140dfd7f06bfcf08dffcb95e",
-        "template_path": "playbook/basic/.appbuilderconfig"
-    },
     "README.md": {
-        "sha256": "31402e6ce04a0a3175e006cfba2ef3b458cce3ca158421f998149bea8b3df476",
-        "last_commit": "7a40bf67f2048d22140dfd7f06bfcf08dffcb95e",
+        "sha256": "93433328ebbe2182d449738c16bc5d592796a647112553a94aa72819a05ce37d",
+        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
         "template_path": "playbook/basic/README.md"
     },
-    "__main__.py": {
-        "sha256": "045c261e42a6b29f5dd52214cf95667bf8a192fcfcc484d382ba2ce39a7b9e9c",
-        "last_commit": "4ce81e707a9c8aaa1b3f02c42274239c2cb65fbc",
-        "template_path": "playbook/basic/__main__.py"
-    },
     "app.py": {
-        "sha256": "ceb1ae56f9a22ad41c52dde85f8f63901c4e5e3e494933fba8e1baab101ca465",
-        "last_commit": "7a40bf67f2048d22140dfd7f06bfcf08dffcb95e",
+        "sha256": "5ec30ef7e402243cc979e02e6653dfd78815a7762f4696b20ddc047d6db00c7f",
+        "last_commit": "80072834613280f1b323333baa81b67b89414110",
         "template_path": "playbook/basic/app.py"
     },
+    "app_inputs.json": {
+        "sha256": "5de386148fecfb8b227fe539f91dde07a59deb14c2965729e683d4d6a049b58d",
+        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+        "template_path": "playbook/basic/app_inputs.json"
+    },
     "app_inputs.py": {
-        "sha256": "1ec4aa683fb0d0dd795aadd78d183a0a04bd47e65fc6cf00c69b61c10ccd78b4",
-        "last_commit": "80f6acafab9389e0c2a2cd987c699793b186e5e6",
+        "sha256": "2eabcadaf302691807fa9bdc84f6ae85158036d363d2126e29babcf7bf6a3280",
+        "last_commit": "ecf4428a4cddbe903fcc7b9da35a02fce3bfd6ab",
         "template_path": "playbook/basic/app_inputs.py"
     },
+    "app_spec.yml": {
+        "sha256": "cbf2de3dc15cfbb984798789aa92db2e8421711ee2007945c2f70b3e845cb773",
+        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+        "template_path": "playbook/basic/app_spec.yml"
+    },
     "install.json": {
-        "sha256": "e6a1fed49d01a032ebd9a4a4a9f77ab6a1755dd935ec4e3a4b1f1013d55d0bb8",
-        "last_commit": "7f2cd82a392da08c1ba52b166de2eb6ca61d69fa",
+        "sha256": "9b639f7ffd6ca749530daaf93923f5612952623c1888f554457edd1f3ebf1466",
+        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
         "template_path": "playbook/basic/install.json"
     },
     "playbook_app.py": {
-        "sha256": "183e646aac7877521eaf07c9cdcaf0420e60901483d9aa6e3b010b0d3ae2cbf5",
-        "last_commit": "8807b92a0676f4f2a6e6b586b1cdec85da72177b",
+        "sha256": "819cb8292ee766e142867a2dddb9fc30173cfeff2bff77bf55df61aef87c9e29",
+        "last_commit": "4da5f7ba2afca3dd2995cebe1836338c657ab13d",
         "template_path": "playbook/basic/playbook_app.py"
     },
     "run.py": {
-        "sha256": "c951852441a8e42a8e9ccc2095c935b31707bc706801122e7cba35ed861cec61",
-        "last_commit": "f86b12b909231d5e396e2b38bbeebd09739aadad",
+        "sha256": "bdf4d7d46bf302fe77d2b2300e67ce980b10cd72c10c0156693010c8bc0c88e1",
+        "last_commit": "80072834613280f1b323333baa81b67b89414110",
         "template_path": "playbook/basic/run.py"
     },
     "tcex.json": {
-        "sha256": "e80c56e5ddf74373cdfc1d348c00cb09a6636b4973daa13451a1242df0060081",
-        "last_commit": "9ed9ab3156322ab32b6c21b159634950e4998110",
+        "sha256": "0e241eb9cd35eeafd386ae43c48e882ea6804cac3647c936e26c8871993ed0af",
+        "last_commit": "43a236aa2454ffd38c9665fe86feebacb358290f",
         "template_path": "playbook/basic/tcex.json"
     }
 }
