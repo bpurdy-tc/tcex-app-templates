@@ -336,7 +336,7 @@
     },
     "core/app/api_service_falcon_abc.py": {
         "sha256": "cf3bc71d736809f10137c9bc7d32f6b4a0822f055145e66f2b4156ac742f0967",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/app/api_service_falcon_abc.py"
     },
     "core/app/app_lib.py": {
@@ -346,7 +346,7 @@
     },
     "core/app/enums.py": {
         "sha256": "d1d07cd184a48fad638781ce9f0965b9b978f807ed8f6b24581f870df74b0eb4",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/app/enums.py"
     },
     "core/beacon/__init__.py": {
@@ -416,7 +416,7 @@
     },
     "core/json_db/json_db.py": {
         "sha256": "6fcda5f07096e3f249d77e390a1e33ad7c41f07b7e2e314390b5ef1bc4c6d9d4",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/json_db/json_db.py"
     },
     "core/json_db/where/__init__.py": {
@@ -886,17 +886,17 @@
     },
     "core/task/upload_abc.py": {
         "sha256": "70be4a0777c9f8e88be4387a5190c81fbec0d4c7f929e9582653d5ef3342e266",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/task/upload_abc.py"
     },
     "core/task/upload_egress_abc.py": {
         "sha256": "ae3c08cb94810d052500683bcf82e705cb5626a7e689b91832bf15fbe8f9120d",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/task/upload_egress_abc.py"
     },
     "core/task/upload_ingest_abc.py": {
         "sha256": "06442e867fbb4248d9acf9286e21f408d2c50ad83a0440e19d0bd42b908a0e5e",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/core/task/upload_ingest_abc.py"
     },
     "core/util/__init__.py": {
@@ -1076,7 +1076,7 @@
     },
     "task/ingest/upload.py": {
         "sha256": "8556458572aba919fcaf8a81528daba8c0698bb75b66b55b1bc3ee107913e5bf",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/task/ingest/upload.py"
     },
     "template.json": {
@@ -1121,7 +1121,7 @@
     },
     "ui/angular.json": {
         "sha256": "dfc230e9e2d519b15f0638fbb45db16236c24c52bb107430597a602ac540a077",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/basic/ui/angular.json"
     },
     "ui/errors.txt": {

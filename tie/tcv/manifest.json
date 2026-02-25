@@ -11,7 +11,7 @@
     },
     "app.py": {
         "sha256": "a4f54f01d89781c47667744d6858f4080e680c339c7d043b9fa6ae58e9e687ce",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/tcv/app.py"
     },
     "app_inputs.json": {
@@ -36,7 +36,7 @@
     },
     "tcex.json": {
         "sha256": "0c8eb45192a0fe5f7ee4f9129a17e9465634f01f7a2542100b3d83002a1441b8",
-        "last_commit": "0ef21cfd1fa9f7d0a39b89ba743151f6bf40fc74",
+        "last_commit": "5b3b90b0303430d2360d8110edacc21c97ed2298",
         "template_path": "tie/tcv/tcex.json"
     }
 }
