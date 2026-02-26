@@ -1,9 +1,7 @@
 """Supervisor configuration model."""
 
-# standard library
 from datetime import datetime
 
-# third-party
 from pydantic import BaseModel, Field, root_validator
 
 

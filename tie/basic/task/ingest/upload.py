@@ -1,18 +1,13 @@
 """Batch Submit"""
 
-# standard library
 import re
 from functools import cached_property
 from pathlib import Path
 
-from tcex.api.tc.v2.batch import BatchSubmit
-
-# first-party
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
 from core.task.upload_ingest_abc import UploadIngestABC, WriteTypes
-
-# third-party
 from model import JobRequestModel
+from tcex.api.tc.v2.batch import BatchSubmit
 
 
 # TODO: Fix spelling to be consistent

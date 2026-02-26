@@ -1,11 +1,9 @@
 """Settings Module"""
 
-# standard library
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import ClassVar
 
-# third-party
 from arrow import arrow
 from pydantic import BaseModel, Extra
 

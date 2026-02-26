@@ -1,19 +1,15 @@
 """Data Access Object for JsonDB."""
 
-# standard library
 from collections.abc import Callable
 from contextlib import suppress
 from typing import Any, Generic, TypeAlias, TypedDict, TypeVar, cast
 
-# third-party
-from pydantic import BaseModel
-
-# first-party
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.json_db import JsonDB, SortBy, SortOrder
 from core.json_db import where as where_m
+from pydantic import BaseModel
 
 M = TypeVar('M', bound=BaseModel)
 
@@ -106,7 +102,6 @@ class JsonDBDAO(Generic[M]):
 
         # optimization: if we're sorting by a SortBy value, with no filters, we don't have to
         # load everything
-        # pylint: disable=isinstance-second-argument-not-valid-type
         if where is None and isinstance(sort_by, SortBy):
             paths = self.db.get_paths(self.model, sort_by=sort_by, sort_order=sort_order)
             sliced_paths = paths[offset : limit + offset if limit else limit]
@@ -125,11 +120,9 @@ class JsonDBDAO(Generic[M]):
         ):
             filter_fn = cast('Callable', where[self.index_field])
 
-            # pylint: disable=isinstance-second-argument-not-valid-type
             if isinstance(sort_by, SortBy):
                 paths = self.db.get_paths(self.model, sort_by=sort_by, sort_order=sort_order)
 
-                # pylint: disable=protected-access
                 paths = [p for p in paths if filter_fn(self.db.get_index_from_path(p))]
                 sliced_paths = paths[offset : limit + offset if limit else limit]
                 data = self.db.load_paths(self.model, sliced_paths)
@@ -137,7 +130,6 @@ class JsonDBDAO(Generic[M]):
                 return data, total_count
 
             paths = self.db.get_paths(self.model)
-            # pylint: disable=protected-access
             paths = [p for p in paths if filter_fn(self.db.get_index_from_path(p))]
             sliced_paths = paths[offset : limit + offset if limit else limit]
             data = self.db.load_paths(self.model, sliced_paths)
@@ -155,7 +147,7 @@ class JsonDBDAO(Generic[M]):
             case None:
                 where_val = None
 
-        if isinstance(sort_by, SortBy):  # pylint: disable=isinstance-second-argument-not-valid-type
+        if isinstance(sort_by, SortBy):
             results = list(
                 self.db.load_all(
                     self.model,

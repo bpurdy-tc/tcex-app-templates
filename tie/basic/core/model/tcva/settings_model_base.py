@@ -1,10 +1,8 @@
 """Settings Module"""
 
-# standard library
 from pathlib import Path
 from typing import ClassVar
 
-# third-party
 from arrow import arrow
 from pydantic import BaseModel, Extra
 

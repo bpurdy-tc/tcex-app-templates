@@ -1,9 +1,7 @@
 """Model Definition"""
 
-# standard library
 from typing import Generic, TypeVar
 
-# first-party
 from core.model.response.response_model import ResponseModel
 
 T = TypeVar('T')

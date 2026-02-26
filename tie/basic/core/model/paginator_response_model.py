@@ -1,8 +1,5 @@
 """Model Definition"""
 
-# standard library
-
-# third-party
 from pydantic import BaseModel
 
 

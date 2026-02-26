@@ -1,47 +1,47 @@
 {
-    "README.md": {
-        "sha256": "93433328ebbe2182d449738c16bc5d592796a647112553a94aa72819a05ce37d",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "playbook/basic/README.md"
-    },
-    "app.py": {
-        "sha256": "5ec30ef7e402243cc979e02e6653dfd78815a7762f4696b20ddc047d6db00c7f",
-        "last_commit": "80072834613280f1b323333baa81b67b89414110",
-        "template_path": "playbook/basic/app.py"
-    },
-    "app_inputs.json": {
-        "sha256": "5de386148fecfb8b227fe539f91dde07a59deb14c2965729e683d4d6a049b58d",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "playbook/basic/app_inputs.json"
-    },
-    "app_inputs.py": {
-        "sha256": "2eabcadaf302691807fa9bdc84f6ae85158036d363d2126e29babcf7bf6a3280",
-        "last_commit": "ecf4428a4cddbe903fcc7b9da35a02fce3bfd6ab",
-        "template_path": "playbook/basic/app_inputs.py"
-    },
-    "app_spec.yml": {
-        "sha256": "cbf2de3dc15cfbb984798789aa92db2e8421711ee2007945c2f70b3e845cb773",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "playbook/basic/app_spec.yml"
-    },
-    "install.json": {
-        "sha256": "9b639f7ffd6ca749530daaf93923f5612952623c1888f554457edd1f3ebf1466",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "playbook/basic/install.json"
-    },
-    "playbook_app.py": {
-        "sha256": "819cb8292ee766e142867a2dddb9fc30173cfeff2bff77bf55df61aef87c9e29",
-        "last_commit": "4da5f7ba2afca3dd2995cebe1836338c657ab13d",
-        "template_path": "playbook/basic/playbook_app.py"
-    },
-    "run.py": {
-        "sha256": "bdf4d7d46bf302fe77d2b2300e67ce980b10cd72c10c0156693010c8bc0c88e1",
-        "last_commit": "80072834613280f1b323333baa81b67b89414110",
-        "template_path": "playbook/basic/run.py"
-    },
-    "tcex.json": {
-        "sha256": "0e241eb9cd35eeafd386ae43c48e882ea6804cac3647c936e26c8871993ed0af",
-        "last_commit": "43a236aa2454ffd38c9665fe86feebacb358290f",
-        "template_path": "playbook/basic/tcex.json"
-    }
+  "README.md": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "93433328ebbe2182d449738c16bc5d592796a647112553a94aa72819a05ce37d",
+    "template_path": "playbook/basic/README.md"
+  },
+  "app.py": {
+    "last_commit": "80072834613280f1b323333baa81b67b89414110",
+    "sha256": "5ec30ef7e402243cc979e02e6653dfd78815a7762f4696b20ddc047d6db00c7f",
+    "template_path": "playbook/basic/app.py"
+  },
+  "app_inputs.json": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "5de386148fecfb8b227fe539f91dde07a59deb14c2965729e683d4d6a049b58d",
+    "template_path": "playbook/basic/app_inputs.json"
+  },
+  "app_inputs.py": {
+    "last_commit": "ecf4428a4cddbe903fcc7b9da35a02fce3bfd6ab",
+    "sha256": "2eabcadaf302691807fa9bdc84f6ae85158036d363d2126e29babcf7bf6a3280",
+    "template_path": "playbook/basic/app_inputs.py"
+  },
+  "app_spec.yml": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "cbf2de3dc15cfbb984798789aa92db2e8421711ee2007945c2f70b3e845cb773",
+    "template_path": "playbook/basic/app_spec.yml"
+  },
+  "install.json": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "9b639f7ffd6ca749530daaf93923f5612952623c1888f554457edd1f3ebf1466",
+    "template_path": "playbook/basic/install.json"
+  },
+  "playbook_app.py": {
+    "last_commit": "4da5f7ba2afca3dd2995cebe1836338c657ab13d",
+    "sha256": "819cb8292ee766e142867a2dddb9fc30173cfeff2bff77bf55df61aef87c9e29",
+    "template_path": "playbook/basic/playbook_app.py"
+  },
+  "run.py": {
+    "last_commit": "80072834613280f1b323333baa81b67b89414110",
+    "sha256": "bdf4d7d46bf302fe77d2b2300e67ce980b10cd72c10c0156693010c8bc0c88e1",
+    "template_path": "playbook/basic/run.py"
+  },
+  "tcex.json": {
+    "last_commit": "43a236aa2454ffd38c9665fe86feebacb358290f",
+    "sha256": "0e241eb9cd35eeafd386ae43c48e882ea6804cac3647c936e26c8871993ed0af",
+    "template_path": "playbook/basic/tcex.json"
+  }
 }

@@ -1,13 +1,9 @@
 """Class for /api/health endpoint - always succeeds if app is up."""
 
-# standard library
 import os
 from datetime import UTC, datetime
 
-# third-party
 import falcon
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 
 # Capture start time at module load for uptime calculation

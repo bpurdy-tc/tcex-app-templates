@@ -1,12 +1,10 @@
 """Error Module"""
 
-# standard library
 import logging
 import sys
 from inspect import getouterframes
 from uuid import uuid4
 
-# first-party
 from core.api.falcon_request import FalconRequest
 
 # logger

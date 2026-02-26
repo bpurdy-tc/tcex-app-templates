@@ -1,22 +1,27 @@
 """ThreatConnect API Service Falcon API"""
 
-# standard library
 import logging
 from enum import Enum
 from typing import Any
 
 from core.api.endpoint.tc_app_config import TcAppConfig
 from core.api.endpoint.tcvf.batch_error_collection import BatchErrorCollection
-from core.api.endpoint.tcvf.batch_error_counts_collection import BatchErrorCountsCollection
+from core.api.endpoint.tcvf.batch_error_counts_collection import (
+    BatchErrorCountsCollection,
+)
 from core.api.endpoint.tcvf.batch_error_export_resource import BatchErrorExportResource
 from core.api.endpoint.tcvf.download_files_resource import DownloadFilesResource
 from core.api.endpoint.tcvf.health_resource import HealthResource
 from core.api.endpoint.tcvf.job_file_download import JobFileDownload
 from core.api.endpoint.tcvf.job_files import JobFiles
 from core.api.endpoint.tcvf.job_retry_resource import JobRetryResource
-from core.api.endpoint.tcvf.metric_processing_collection import MetricProcessingCollection
+from core.api.endpoint.tcvf.metric_processing_collection import (
+    MetricProcessingCollection,
+)
 from core.api.endpoint.tcvf.metric_task_resource import MetricTaskResource
-from core.api.endpoint.tcvf.report_pdf_tracker_collection import ReportPDFTrackerCollection
+from core.api.endpoint.tcvf.report_pdf_tracker_collection import (
+    ReportPDFTrackerCollection,
+)
 from core.api.endpoint.tcvf.request_collection import RequestCollectionResource
 from core.api.endpoint.tcvf.supervisor_resource import SupervisorResource
 from core.api.endpoint.tcvf.support_log_search_resource import SupportLogSearchResource
@@ -30,14 +35,12 @@ from core.task.cleaner import Cleaner
 from core.task.metric_reporter import MetricReporter
 
 try:
-    # first-party
     from api.endpoint.adhoc_job_request_resource import AdHocRequestResource
 except ImportError:
     AdHocRequestResource = None
     # print('AdHocRequestResource not found')
 
 try:
-    # first-party
     from api.endpoint.download_ti_resource import DownloadTiResource
 except ImportError:
     DownloadTiResource = None
@@ -106,6 +109,7 @@ class PREFLIGHT_CHECKS(Enum):  # noqa: N801
 class MESSAGE_HANDLERS(Enum):  # noqa: N801
     """Enum for message handler types."""
 
+
 class Route(BaseResource):
     """Represents an API route with its corresponding resource class and optional init args."""
 
@@ -142,7 +146,9 @@ class ROUTES(Enum):
 
         # Example: Route that requires additional arguments during initialization
         DOWNLOAD_DB_RESOURCE = Route(
-            path='/api/db/download', resource=DownloadFilesResource, init_args=('db_path',)
+            path='/api/db/download',
+            resource=DownloadFilesResource,
+            init_args=('db_path',),
         )
         APP_CONFIG = Route('/api/tc/app-config', TcAppConfig)
 

@@ -1,6 +1,5 @@
 """Define a protocol for objects that can be transposed"""
 
-# standard library
 from typing import Protocol
 
 

@@ -1,6 +1,5 @@
 """Multipart Form Data Model"""
 
-# third-party
 from pydantic import BaseModel, Extra, Field
 
 

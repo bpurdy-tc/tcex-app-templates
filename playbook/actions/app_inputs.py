@@ -1,10 +1,8 @@
 """App Inputs"""
 # pyright: reportGeneralTypeIssues=false
 
-# standard library
 from typing import Annotated
 
-# third-party
 from pydantic import BaseModel, validator
 from tcex.input.field_type import Choice, always_array, string
 from tcex.input.input import Input
@@ -62,10 +60,8 @@ class AppInputs:
 
         action_model = self.action_model_map(tc_action.lower())
         if action_model is None:
-            # pylint: disable=broad-exception-raised
             raise RuntimeError(
-                'No model found for action: '
-                f'{self.inputs.model_unresolved.tc_action}'  # type: ignore
+                f'No model found for action: {self.inputs.model_unresolved.tc_action}'  # type: ignore
             )
 
         return action_model

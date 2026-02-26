@@ -1,9 +1,7 @@
 """Declares an abstract base class for Middleware."""
 
-# standard library
 from abc import ABC, abstractmethod
 
-# first-party
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 

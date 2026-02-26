@@ -1,15 +1,9 @@
 """Job DAO."""
 
-# standard library
-
-# third-party
-
-# standard library
 import contextlib
 from collections.abc import Iterable
 from pathlib import Path
 
-# third-party
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
@@ -77,7 +71,6 @@ class BatchErrorDAO(JsonDBDAO[BatchErrorModel]):
         if error_code:
             model = error_codes_model_map.get(error_code, UnknownBatchErrorModel)
 
-        # pylint: disable=isinstance-second-argument-not-valid-type
         error_paths = self.db.get_paths(
             model,
             sort_by=sort_by if isinstance(sort_by, SortBy) else SortBy.INDEX,
@@ -103,7 +96,7 @@ class BatchErrorDAO(JsonDBDAO[BatchErrorModel]):
 
         if not isinstance(
             sort_by,
-            SortBy,  # pylint: disable=isinstance-second-argument-not-valid-type
+            SortBy,
         ):
             errors.sort(
                 key=lambda x: getattr(x, sort_by),
@@ -134,7 +127,6 @@ class BatchErrorDAO(JsonDBDAO[BatchErrorModel]):
         if error_code:
             model = error_codes_model_map.get(error_code, UnknownBatchErrorModel)
 
-        # pylint: disable=isinstance-second-argument-not-valid-type
         error_paths = self.db.get_paths(model)
         if request_id:
             error_paths = self._filter_errors_by_request(request_id, error_paths)

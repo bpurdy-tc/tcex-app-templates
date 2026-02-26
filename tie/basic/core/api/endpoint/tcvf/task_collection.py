@@ -1,11 +1,5 @@
 """Class for /api/task endpoint"""
 
-# standard library
-
-# third-party
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -14,6 +8,7 @@ from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.model.tie.task_setting_model import TaskPaginatedResponseModel
+from spectree import Response
 
 
 class TaskCollection(EndpointBase):
@@ -29,7 +24,7 @@ class TaskCollection(EndpointBase):
         self,
         _req: FalconRequest,
         resp: FalconResponse,
-        query_params: QueryParamFilterPaginationModel,  # pylint: disable=unused-argument
+        query_params: QueryParamFilterPaginationModel,
     ):
         """Get task data."""
         response_media = []

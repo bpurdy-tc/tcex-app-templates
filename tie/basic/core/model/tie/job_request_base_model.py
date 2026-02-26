@@ -1,16 +1,12 @@
 """Model Definition"""
 
-# standard library
 from datetime import UTC, datetime
 from typing import ClassVar
 
-# third-party
 import arrow
-from pydantic import Extra, Field, validator
-
-# first-party
 from core.json_db import Index
 from core.model.model_base import ModelBase
+from pydantic import Extra, Field, validator
 
 
 class JobRequestBaseModel(ModelBase):

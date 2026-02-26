@@ -1,9 +1,7 @@
 """SDK Module"""
 
-# standard library
 from functools import cached_property
 
-# third-party
 from tcex import TcEx
 
 BASE_URL = 'BASE_URL'  # TODO: Update this with the correct base URL

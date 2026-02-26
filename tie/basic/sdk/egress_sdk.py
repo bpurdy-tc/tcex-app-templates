@@ -1,6 +1,5 @@
 """Egress SDK for uploading data via HTTP POST."""
 
-# third-party
 import requests
 
 

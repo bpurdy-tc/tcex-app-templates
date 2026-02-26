@@ -1,6 +1,5 @@
 """Task Module"""
 
-# standard library
 import contextlib
 import shutil
 from abc import abstractmethod
@@ -9,10 +8,6 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import TypeVar
 
-# third-party
-from tcex import TcEx
-
-# first-party
 from core.json_db import JsonDB
 
 # from more import Metrics
@@ -24,6 +19,7 @@ from core.task.tasks import Tasks
 from model import AdHocJobRequestModel
 from model.settings_model import SettingModel
 from sdk.sdk import SDK
+from tcex import TcEx
 
 T = TypeVar('T', bound=JobRequestBaseModel)
 
@@ -145,7 +141,7 @@ class DownloadABC(TaskPathPipeABC):
 
     def handle_run_error(
         self, request_id: str, request_dir: Path, exception: Exception | None = None
-    ):  # pylint: disable=unused-argument
+    ):
         """Handle download errors with per-job backoff.
 
         UnrecoverableError: Fail immediately and shutdown (config errors, bad credentials)

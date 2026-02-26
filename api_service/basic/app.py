@@ -1,5 +1,5 @@
 """ThreatConnect API Service App"""
-# standard library
+
 import itertools
 import threading
 from collections.abc import Iterable
@@ -7,12 +7,9 @@ from functools import cached_property
 from typing import Any
 from wsgiref.types import StartResponse, WSGIEnvironment
 
-# third-party
 import falcon
-from tcex import TcEx
-
-# first-party
 from api_service_app import ApiServiceApp
+from tcex import TcEx
 
 
 class TcExMiddleware:
@@ -22,8 +19,12 @@ class TcExMiddleware:
         """Initialize class properties"""
         self.tcex = tcex
 
-    def process_resource(  # pylint: disable=unused-argument
-        self, req: falcon.Request, resp: falcon.Response, resource: Any, params: dict
+    def process_resource(
+        self,
+        req: falcon.Request,  # noqa: ARG002
+        resp: falcon.Response,  # noqa: ARG002
+        resource: Any,
+        params: dict,  # noqa: ARG002
     ):
         """Process resource method."""
         resource.inputs = self.tcex.inputs
@@ -39,7 +40,7 @@ class OneResource:
     log = None
     tcex = None
 
-    def on_get(self, req, resp):  # pylint: disable=unused-argument
+    def on_get(self, req, resp):  # noqa: ARG002
         """Handle GET requests"""
         data = {'data': 'one'}
         resp.media = data
@@ -53,7 +54,7 @@ class TwoResource:
     log = None
     tcex = None
 
-    def on_get(self, req, resp):  # pylint: disable=unused-argument
+    def on_get(self, req, resp):  # noqa: ARG002
         """Handle GET requests"""
         data = {'data': 'two'}
         resp.media = data
@@ -70,7 +71,6 @@ class App(ApiServiceApp):
 
     def build_falcon_app(self):
         """Build falcon app."""
-
         # create Falcon API with tcex middleware
         api = falcon.App(middleware=[TcExMiddleware(tcex=self.tcex)])
 

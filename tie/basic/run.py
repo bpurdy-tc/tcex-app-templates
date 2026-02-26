@@ -1,6 +1,5 @@
 """Run App"""
 
-# standard library
 import os
 import sys
 from functools import cached_property
@@ -11,12 +10,9 @@ from typing import TYPE_CHECKING, NoReturn
 current_dir = Path(__file__).resolve().parent
 sys.path.insert(0, str(current_dir))
 
-# third-party
 from core.app.app_lib import AppLib  # noqa: E402
 
 if TYPE_CHECKING:
-    # third-party
-    # first-party
     from app import App  # must be imported later, but also needed typing hints
     from tcex import TcEx  # must be imported later, but also needed typing hints
 
@@ -32,19 +28,17 @@ class Run:
     @cached_property
     def app(self) -> 'App':
         """Return a properly configured App instance."""
-        # first-party
         from app import App  # noqa: PLC0415
 
         return App(self.tcex)
 
     def exit(self, code: int, msg: str) -> NoReturn:
         """Exit the App."""
-        self.tcex.exit.exit(code, msg)  # pylint: disable=no-member
+        self.tcex.exit.exit(code, msg)
 
     @cached_property
     def tcex(self) -> 'TcEx':
         """Return a properly configured TcEx instance."""
-        # third-party
         from tcex import TcEx  # noqa: PLC0415
 
         tcex = TcEx()
@@ -76,7 +70,7 @@ class Run:
             # loop until exit
             self.tcex.log.info('feature=app, event=loop-forever')
             if hasattr(self.app, 'loop_forever'):
-                self.app.loop_forever()  # pylint: disable=no-member
+                self.app.loop_forever()
             else:
                 while self.tcex.app.service.loop_forever(sleep=1):
                     pass

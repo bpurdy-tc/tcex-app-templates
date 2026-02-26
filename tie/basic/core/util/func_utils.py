@@ -1,6 +1,5 @@
 """Define higher-order functions for common operations."""
 
-# standard library
 import functools
 from collections.abc import Callable, Iterable
 from contextlib import AbstractContextManager, ExitStack, contextmanager

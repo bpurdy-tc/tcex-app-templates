@@ -1,23 +1,19 @@
 """Scheduled Task"""
 
-# standard library
 from abc import abstractmethod
 from collections.abc import Callable
 from typing import NamedTuple
 
-# third-party
-from tcex import TcEx
-from tcex.api.tc.v3.groups.group import Group, Groups
-from tcex.api.tc.v3.tql.tql_operator import TqlOperator
-from tcex.pleb.cached_property import cached_property
-
-# first-party
 from core.dao.report_pdf_tracker_dao import ReportPdfTrackerDAO
 from core.json_db import JsonDB
 from core.model.tie.report_pdf_tracker_model import ReportPdfTrackerModel
 from core.model.tie.task_setting_model import TaskSettingModel
 from core.task.task_abc import TaskABC
 from model import SettingModel
+from tcex import TcEx
+from tcex.api.tc.v3.groups.group import Group, Groups
+from tcex.api.tc.v3.tql.tql_operator import TqlOperator
+from tcex.pleb.cached_property import cached_property
 
 
 class DocumentRetrievalError(Exception):
@@ -124,9 +120,9 @@ class BackfillMissingReportABC(TaskABC):
             message = f'Unexpected error while uploading PDF ({ex}).'
             return False, message[:255]
 
-    def launch(self):  # pylint: disable=arguments-differ
+    def launch(self):
         """Launch the task."""
-        self.process = self.process_metadata()  # pylint: disable=attribute-defined-outside-init
+        self.process = self.process_metadata()
         self.process.start()
         self.log.info(f'event=launch, action={self.task_settings.name}, pid={self.process.pid}')
 
@@ -218,7 +214,7 @@ class BackfillMissingReportABC(TaskABC):
         self._update_tracker(tracker)
 
     @cached_property
-    def task_settings(self):  # pylint: disable=invalid-overridden-method
+    def task_settings(self):
         """Return the task settings."""
         return TaskSettingCustomModel(
             description=(

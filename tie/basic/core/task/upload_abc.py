@@ -1,19 +1,15 @@
 """Batch Submit"""
 
-# standard library
 from abc import ABC, abstractmethod
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import NamedTuple, TypeVar
 
-# third-party
-from tcex import TcEx
-
-# first-party
 from core.json_db import JsonDB
 from core.task.task_path_pipe_abc import TaskPathPipeABC, UploadError, UploadRetryError
 from model import JobRequestModel
 from model.settings_model import SettingModel
+from tcex import TcEx
 
 T = TypeVar('T')
 
@@ -62,7 +58,10 @@ class UploadABC(TaskPathPipeABC, ABC):
         )
 
     def handle_run_error(
-        self, request_id: str, request_dir: Path, exception: Exception | None = None
+        self,
+        request_id: str,
+        request_dir: Path,
+        exception: Exception | None = None,  # noqa: ARG002
     ):
         """Handle upload errors - mark as failed (no retry from Download)."""
         self._task_complete_failed(request_id, request_dir)
@@ -96,7 +95,11 @@ class UploadABC(TaskPathPipeABC, ABC):
 
     @abstractmethod
     def process_file_wrapper(
-        self, file: Path, request: JobRequestModel, output_dir: Path, failed_files: list[str]
+        self,
+        file: Path,
+        request: JobRequestModel,
+        output_dir: Path,
+        failed_files: list[str],
     ) -> bool:
         """Handle file processing.
 

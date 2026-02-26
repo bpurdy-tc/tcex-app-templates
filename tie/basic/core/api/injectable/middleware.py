@@ -1,15 +1,12 @@
 """Injectable middleware module."""
 
-# standard library
 from typing import Any
 
-# first-party
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.middleware_abc import MiddlewareABC
 
 
-# pylint: disable=unused-argument
 class InjectableMiddleware(MiddlewareABC):
     """Injectable middleware module."""
 

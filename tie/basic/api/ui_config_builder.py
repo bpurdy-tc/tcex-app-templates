@@ -1,6 +1,5 @@
 """UIConfigBuilder concrete implementation for building UI configurations."""
 
-# first-party
 from core.api.ui_config_builder_abc import UIConfigBuilderABC
 
 

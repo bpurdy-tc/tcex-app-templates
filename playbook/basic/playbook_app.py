@@ -1,14 +1,10 @@
 """Playbook App Template."""
 
-# standard library
 from typing import cast
 
-# third-party
+from app_inputs import AppBaseModel, AppInputs
 from pydantic import ValidationError
 from tcex import TcEx
-
-# first-party
-from app_inputs import AppBaseModel, AppInputs
 
 
 class PlaybookApp:
@@ -27,7 +23,7 @@ class PlaybookApp:
 
         # properties
         self.exit_message = 'Success'
-        self.in_ = cast(AppBaseModel, self.tcex.inputs.model)
+        self.in_ = cast('AppBaseModel', self.tcex.inputs.model)
         self.log = self.tcex.log
         self.playbook = self.tcex.app.playbook
         self.out = self.tcex.app.playbook.create

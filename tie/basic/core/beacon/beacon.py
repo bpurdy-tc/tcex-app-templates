@@ -1,6 +1,5 @@
 """Extremely late-binding and update-propogating dependency injection"""
 
-# standard library
 import contextlib
 import inspect
 import os

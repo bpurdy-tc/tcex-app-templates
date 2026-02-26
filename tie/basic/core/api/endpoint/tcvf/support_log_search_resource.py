@@ -1,17 +1,11 @@
 """Class for /api/support/log-search endpoint"""
 
-# standard library
 import gzip
 import re
 import sys
 from pathlib import Path
 from typing import IO
 
-# third-party
-from pydantic import Field
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -20,6 +14,8 @@ from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.model.log_event_model import LogEventModel, LogEventPaginatedResponseModel
+from pydantic import Field
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterPaginationModel):
@@ -40,7 +36,6 @@ class SupportLogSearchResource(EndpointBase):
     line_number = 0
     line_number_matched = 0
 
-    # pylint: disable=too-many-return-statements
     @staticmethod
     def _log_event_matches(event: LogEventModel, params: GetQueryParamModel) -> bool:
         """Filter log events based on the provided params."""

@@ -1,16 +1,13 @@
 """Endpoint Base Class"""
 
-# third-party
-from tcex.logger.trace_logger import TraceLogger
-from tcex.tcex import TcEx
-
-# first-party
 from core.json_db import JsonDB
 from model.settings_model import SettingModel
 
 # TODO: What to do about tasks here?
 # from core.task.tasks import Tasks
 from sdk.sdk import SDK
+from tcex.logger.trace_logger import TraceLogger
+from tcex.tcex import TcEx
 
 
 class EndpointBaseABC:

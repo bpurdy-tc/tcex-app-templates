@@ -1,16 +1,17 @@
 """."""
 
-# third-party
-from spectree.response import Response
-
-# first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_service
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
-from core.message_service.model.tcva.enrichment_request_model import EnrichmentRequestModel
-from core.message_service.model.tcva.enrichment_response_model import EnrichmentResponseModel
+from core.message_service.model.tcva.enrichment_request_model import (
+    EnrichmentRequestModel,
+)
+from core.message_service.model.tcva.enrichment_response_model import (
+    EnrichmentResponseModel,
+)
+from spectree.response import Response
 
 
 class GetQueryParamModel(QueryParamFilterModel):

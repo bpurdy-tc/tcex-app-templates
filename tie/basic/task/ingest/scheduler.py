@@ -1,10 +1,8 @@
 """Batch Submit"""
 
-# standard library
 from datetime import UTC, datetime, timedelta
 from functools import cached_property
 
-# first-party
 from core.model.tie.task_setting_model import TaskSettingModel
 from core.task.task_abc import TaskABC
 from model import JobRequestModel
@@ -26,7 +24,7 @@ class Scheduler(TaskABC):
         """Run pre-flight check before launching task."""
         self.launch()
 
-    def launch(self):  # pylint: disable=arguments-differ
+    def launch(self):
         """Launch the task."""
         self.run()
 

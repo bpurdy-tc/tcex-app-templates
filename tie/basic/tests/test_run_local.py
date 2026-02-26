@@ -1,13 +1,11 @@
 """Run to test TIE application."""
 
-# standard library
 import json
 import os
 import shutil
 import subprocess
 from pathlib import Path
 
-# third-party
 from tcex_app_testing.env_store import EnvStore
 
 
@@ -26,7 +24,6 @@ def _should_we_run():
 @staticmethod
 def _run_test(test_file: str):
     """Run the servers."""
-    # pylint: disable=consider-using-with
     p1 = subprocess.Popen(f'tcex run --config-json {test_file}', shell=True)
     p1.wait()
 
@@ -43,7 +40,12 @@ def test_run_local():
                 'bearer_token': env_store.getenv('/ninja/int/flashpoint/ignite_api_key'),
                 'filter_include_tags': '',
                 'filter_exclude_tags': '',
-                'flashpoint_types': ['Event', 'FP Attribute', 'Report', 'Vulnerability'],
+                'flashpoint_types': [
+                    'Event',
+                    'FP Attribute',
+                    'Report',
+                    'Vulnerability',
+                ],
                 'tc_api_path': os.environ.get('TC_API_PATH', None),
                 'tc_api_access_id': os.environ.get('TC_API_ACCESS_ID', None),
                 'tc_api_secret_key': os.environ.get('TC_API_SECRET_KEY', None),

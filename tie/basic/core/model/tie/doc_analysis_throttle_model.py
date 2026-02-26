@@ -1,11 +1,8 @@
 """Model Definition"""
 
-# third-party
-from pydantic import Field
-
-# first-party
 from core.json_db import Index
 from core.model.model_base import ModelBase
+from pydantic import Field
 
 
 class DocAnalysisThrottleModel(ModelBase):

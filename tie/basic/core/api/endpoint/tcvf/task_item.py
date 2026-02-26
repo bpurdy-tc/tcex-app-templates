@@ -1,14 +1,8 @@
 """Class for /api/task endpoint"""
 
-# standard library
 import urllib.parse
 
-# third-party
 import falcon
-from pydantic import Field
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -18,6 +12,8 @@ from core.api.validation.models.query_param_model import QueryParamModel
 from core.model.response.paginated_response import PaginatedResponseModel
 from core.model.response.response_model import ResponseModel
 from core.model.tie.task_setting_model import TaskSettingModel
+from pydantic import Field
+from spectree import Response
 
 
 class PutQueryParamModel(QueryParamModel):
@@ -35,7 +31,6 @@ class TaskPaginatedResponseModel(PaginatedResponseModel[TaskSettingModel]):
 class TaskItem(EndpointBase):
     """Class for /api/task endpoint"""
 
-    # pylint: disable=W0613
     @spec.validate(
         query=QueryParamFilterModel,
         resp=Response(HTTP_200=ResponseModel),

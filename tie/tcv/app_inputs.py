@@ -1,17 +1,11 @@
 """App Inputs"""
 
-# standard library
 from datetime import timedelta
 from typing import ClassVar
 
-# third-party
+from core.model.settings_model_base import DEFAULT_FAILURE_THRESHOLD
 from pydantic import BaseModel, Extra, Field, validator
 from tcex.input.model.app_feed_api_service_model import AppFeedApiServiceModel
-
-# first-party
-from core.model.settings_model_base import DEFAULT_FAILURE_THRESHOLD
-
-# pylint: disable=no-self-argument
 
 ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
 

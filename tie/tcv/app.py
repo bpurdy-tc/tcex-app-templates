@@ -1,10 +1,8 @@
 """ThreatConnect API Service App"""
 
-# standard library
 from datetime import timedelta
 from functools import cached_property
 
-# third-party
 from api.endpoint.enrichment_response import EnrichmentResponse
 from core.api.endpoint.tcva.discovery_response import DiscoveryResponse
 from core.api.injectable.middleware import InjectableMiddleware
@@ -69,7 +67,11 @@ class App(ApiServiceFalconABC):
             pipes=[
                 (
                     IngestDownload(
-                        self.settings, self.tcex, self.db, sdk=self.sdk, pipeline='ingest'
+                        self.settings,
+                        self.tcex,
+                        self.db,
+                        sdk=self.sdk,
+                        pipeline='ingest',
                     ),  # SDK Is optional
                     IngestConvert(self.settings, self.tcex, self.db, pipeline='ingest'),
                     IngestUpload(self.settings, self.tcex, self.db, pipeline='ingest'),
@@ -78,7 +80,11 @@ class App(ApiServiceFalconABC):
                     EgressDownload(self.settings, self.tcex, self.db, pipeline='egress'),
                     EgressConvert(self.settings, self.tcex, self.db, pipeline='egress'),
                     EgressUpload(
-                        self.settings, self.tcex, self.db, sdk=self.egress_sdk, pipeline='egress'
+                        self.settings,
+                        self.tcex,
+                        self.db,
+                        sdk=self.egress_sdk,
+                        pipeline='egress',
                     ),  # SDK Is optional
                 ),
             ],
@@ -102,7 +108,11 @@ class App(ApiServiceFalconABC):
                     logger=self.log,
                 )
             ],
-            default=[self.middleware.TCEX, self.middleware.VALIDATION, self.middleware.ERROR],
+            default=[
+                self.middleware.TCEX,
+                self.middleware.VALIDATION,
+                self.middleware.ERROR,
+            ],
         )
 
     def register_custom_routes(self):

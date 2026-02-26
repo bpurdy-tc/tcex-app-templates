@@ -1,14 +1,11 @@
 """Class for /api/support/supervisor endpoint"""
 
-# third-party
 import falcon
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.spec import spec, tag_util
 from core.api.validation.models.query_param_model import QueryParamModel
 from core.model.model_base import ModelBase
+from spectree import Response
 
 
 class SupervisorConfigUpdateBody(ModelBase):
@@ -50,7 +47,9 @@ class SupervisorResource(EndpointBase):
                     'backoff_max_seconds': 7200.0,
                     'backoff_jitter': 0.1,
                     'pipeline_baseline': {},
-                    'pipelines_on_probation': {'recorded_future_risk_list': 'abc123-request-id'},
+                    'pipelines_on_probation': {
+                        'recorded_future_risk_list': 'abc123-request-id'
+                    },
                 },
                 'pipeline_health': {
                     'recorded_future_risk_list': {
@@ -86,7 +85,7 @@ class SupervisorResource(EndpointBase):
         self,
         _req: falcon.Request,
         resp: falcon.Response,
-        query_params: QueryParamModel,  # noqa: ARG002  # pylint: disable=unused-argument
+        query_params: QueryParamModel,  # noqa: ARG002
         body: PipelineBaselineResetBody,
     ):
         """Handle POST requests - reset pipeline health baselines.
@@ -106,7 +105,9 @@ class SupervisorResource(EndpointBase):
 
             {
                 'message': 'Pipeline baselines reset',
-                'reset_pipelines': {'recorded_future_risk_list': '2024-01-15T12:00:00+00:00'},
+                'reset_pipelines': {
+                    'recorded_future_risk_list': '2024-01-15T12:00:00+00:00'
+                },
             }
         """
         self.log.info(f'action=api-post-supervisor-reset-baseline, body={body}')
@@ -129,14 +130,18 @@ class SupervisorResource(EndpointBase):
         self,
         _req: falcon.Request,
         resp: falcon.Response,
-        query_params: QueryParamModel,  # noqa: ARG002  # pylint: disable=unused-argument
+        query_params: QueryParamModel,  # noqa: ARG002
         body: SupervisorConfigUpdateBody,
     ):
         """Handle PUT requests - update supervisor configuration.
 
         Example input::
 
-            {'backoff_base_seconds': 120.0, 'backoff_max_seconds': 3600.0, 'backoff_jitter': 0.15}
+            {
+                'backoff_base_seconds': 120.0,
+                'backoff_max_seconds': 3600.0,
+                'backoff_jitter': 0.15,
+            }
 
         Example output::
 

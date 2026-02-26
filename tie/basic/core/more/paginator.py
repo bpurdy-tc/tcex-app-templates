@@ -1,6 +1,5 @@
 """Database Paginator Module"""
 
-# standard library
 import logging
 import urllib.parse
 from collections.abc import Iterable
@@ -8,7 +7,6 @@ from datetime import date
 from functools import cached_property
 from typing import TYPE_CHECKING, Generic, TypeVar
 
-# third-party
 from pydantic.main import BaseModel
 
 # get primary API logger
@@ -18,7 +16,6 @@ T = TypeVar('T', bound=BaseModel)
 
 
 if TYPE_CHECKING:
-    # first-party
     from model import FilterParamPaginatedModel
 
 

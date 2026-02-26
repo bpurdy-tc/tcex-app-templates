@@ -1,6 +1,5 @@
 """Batch Submit"""
 
-# standard library
 import gzip
 import inspect
 import json
@@ -9,11 +8,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import NamedTuple, TypeVar
 
-# third-party
 import uuid6
-from tcex.api.tc.v2.batch import BatchSubmit
-
-# first-party
 from core.model.tie.batch_error_model import (
     JobBatchErrorIndexModel,
     UnknownBatchErrorModel,
@@ -22,6 +17,7 @@ from core.model.tie.batch_error_model import (
 )
 from core.task.upload_abc import UploadABC
 from model import JobRequestModel
+from tcex.api.tc.v2.batch import BatchSubmit
 
 T = TypeVar('T')
 
@@ -201,7 +197,7 @@ class UploadIngestABC(UploadABC, ABC):
                 )
                 # Check for failed submission (tcex returns None on error without raising)
                 if batch_response is None:
-                    raise BatchSubmitError(
+                    raise BatchSubmitError(  # noqa: TRY301
                         f'Batch data submission failed for batch ID {batch_id}. '
                         'Check logs for error details (likely file size exceeded limits).'
                     )
@@ -245,7 +241,11 @@ class UploadIngestABC(UploadABC, ABC):
         )
 
     def process_file_wrapper(
-        self, file: Path, request: JobRequestModel, output_dir: Path, failed_files: list[str]
+        self,
+        file: Path,
+        request: JobRequestModel,
+        output_dir: Path,
+        failed_files: list[str],
     ) -> bool:
         """Handle batch file processing."""
         # Return True if successfully processed, False if not.

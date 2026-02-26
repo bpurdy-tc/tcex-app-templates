@@ -1,21 +1,17 @@
 """Metrics Module"""
 
-# standard library
 import gzip
 import json
 import time
 from pathlib import Path
 from typing import Literal
 
-# third-party
-from pydantic import BaseModel, root_validator
-
-# first-party
 from core.json_db import JsonDB
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import TiProcessingMetricModel
 from core.util.custom_handler import CustomHandler
 from model.job_request_model import JobRequestModel
+from pydantic import BaseModel, root_validator
 
 
 class WritingModel(BaseModel):

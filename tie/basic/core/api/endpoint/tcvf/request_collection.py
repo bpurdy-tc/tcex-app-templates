@@ -1,16 +1,8 @@
 """Class for /api/1.0/job/request endpoint"""
 
-# standard library
-
-# standard library
 import re
 from functools import cached_property
 
-# third-party
-from pydantic import validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -21,6 +13,8 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import SortBy, where
 from model.job_request_model import JobRequestPaginatedResponseModel
+from pydantic import validator
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterPaginationModel):
@@ -87,7 +81,6 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
         validate_all = True
 
 
-# pylint: disable=unused-argument
 class RequestCollectionResource(EndpointBase):
     """Class for /api/1.0/job/request endpoint"""
 

@@ -1,14 +1,10 @@
 """."""
 
-# standard library
 from uuid import UUID
 
-# third-party
-from pydantic import Extra, Field
-
-# first-party
 from core.message_service.model.tcva.message_types import MessageTypesInvestigate
 from core.model.model_base import ModelBase
+from pydantic import Extra, Field
 
 
 class InvestigateRequestModel(ModelBase, extra=Extra.allow):
@@ -17,7 +13,8 @@ class InvestigateRequestModel(ModelBase, extra=Extra.allow):
     indicator: str = Field(..., description='The indicator value that should be enriched.')
     indicator_type: str = Field(..., description='The type of the indicator provided.')
     message_type: MessageTypesInvestigate = Field(
-        ..., description='The message type of the request. This is used to route the request.'
+        ...,
+        description='The message type of the request. This is used to route the request.',
     )
     provider_ids: list[str] = Field(
         ...,
@@ -28,6 +25,7 @@ class InvestigateRequestModel(ModelBase, extra=Extra.allow):
     )
     request_id: UUID = Field(..., description='The id of the enrichment request.')
     response_topic: str = Field(
-        ..., description='The message broker topic where the response data should be published.'
+        ...,
+        description='The message broker topic where the response data should be published.',
     )
     schema_version: str = Field('1.0.0', description='The schema version of the request.')

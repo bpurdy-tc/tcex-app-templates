@@ -1,10 +1,9 @@
 """CAL Authentication helper."""
 
-# third-party
 import requests
 
 
-class CALAuth(requests.auth.AuthBase):  # pylint: disable=too-few-public-methods
+class CALAuth(requests.auth.AuthBase):
     """Attach CAL auth headers to each request."""
 
     def __init__(self, token: str, timestamp: int) -> None:

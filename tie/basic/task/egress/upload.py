@@ -1,11 +1,9 @@
 """Batch Submit"""
 
-# standard library
 import gzip
 import json
 from functools import cached_property
 
-# first-party
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
 from core.task.upload_egress_abc import UploadEgressABC
 from sdk.egress_sdk import EgressSDK

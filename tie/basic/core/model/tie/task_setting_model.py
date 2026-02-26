@@ -1,11 +1,8 @@
 """Model Definition"""
 
-# third-party
-from pydantic import Extra, Field, validator
-
-# first-party
 from core.model.response.paginated_response import PaginatedResponseModel
 from core.model.tie.item_model import ItemModel
+from pydantic import Extra, Field, validator
 
 
 class TaskSettingModel(ItemModel):

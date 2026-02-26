@@ -1,22 +1,17 @@
 """Class for /api/tc/app-config endpoint"""
 
-# standard library
 from typing import Any
 
-# third-party
-from pydantic import Extra
-from spectree import Response
-
-# first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_settings
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.model.tie.item_model import ItemModel
+from pydantic import Extra
+from spectree import Response
 
 try:
-    # first-party
     from api.ui_config_builder import UIConfigBuilder
 except ImportError:
     UIConfigBuilder = None
@@ -79,8 +74,8 @@ class UiModel(ItemModel, extra=Extra.allow):
     """UI Model"""
 
     adhocRequest: AdhocRequestModel | None = None  # noqa: N815
-    downloadTI: DownloadTiModel | None = None # noqa: N815
-    jobTable: JobTableModel | None = None # noqa: N815
+    downloadTI: DownloadTiModel | None = None  # noqa: N815
+    jobTable: JobTableModel | None = None  # noqa: N815
     owner: str
     title: str
     version: str
@@ -93,7 +88,6 @@ class AppConfig(ItemModel, extra=Extra.allow):
     ui: UiModel
 
 
-# pylint: disable=unused-argument
 class TcAppConfig(EndpointBaseABC):
     """Class for /api/tc/app-config endpoint"""
 

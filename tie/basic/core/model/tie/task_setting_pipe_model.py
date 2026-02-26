@@ -1,10 +1,8 @@
 """Model Definition"""
 
-# standard library
 import re
 from pathlib import Path
 
-# third-party
 from pydantic import Field
 
 from .task_setting_model import TaskSettingModel
@@ -44,7 +42,8 @@ class TaskSettingPipeModel(TaskSettingModel):
 
     # set the working directory for the task
     working_dir_out: Path | None = Field(
-        None, description='The output working directory for the task. Set by tasks.add_task_pipe.'
+        None,
+        description='The output working directory for the task. Set by tasks.add_task_pipe.',
     )
 
     class Config:

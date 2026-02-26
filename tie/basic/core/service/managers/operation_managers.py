@@ -5,7 +5,6 @@ updating metrics, or updating counts.  Critically, there's a "final" operation f
 a manager is done, it should perform a final operation for any leftover items.
 """
 
-# standard library
 import gzip
 import json
 import time
@@ -16,7 +15,6 @@ from enum import Enum
 from pathlib import Path
 from typing import Self, TypeAlias, TypedDict, TypeVar
 
-# first-party
 from core.beacon import inject
 from core.json_db.dao import JsonDBDAO
 from core.json_db.json_db import JsonDB
@@ -183,17 +181,13 @@ def request_counts_manager(
     """Create a manager that will update a count field on a JobRequestModel."""
     # We accept an extra type for translate_type here, an enum, so we translate that to a string
     # before passsing it on.
-    if isinstance(  # pylint: disable=isinstance-second-argument-not-valid-type
-        translate_type, RequestCountField
-    ):
+    if isinstance(translate_type, RequestCountField):
         translate_type = translate_type.value
 
     dao = JsonDBDAO(db, JobRequestModel)
 
     def write_chunk(chunk: list[dict], field: str | RequestCountField):
-        if isinstance(  # pylint: disable=isinstance-second-argument-not-valid-type
-            field, RequestCountField
-        ):
+        if isinstance(field, RequestCountField):
             field = field.value
 
         current_request = dao.get(request.request_id)
@@ -342,7 +336,10 @@ class ManagerBuilder:
         """Add a request counts manager to the builder."""
         self.managers.append(
             request_counts_manager(
-                translate_type=translate_type, chunk_size=chunk_size, db=db, request=request
+                translate_type=translate_type,
+                chunk_size=chunk_size,
+                db=db,
+                request=request,
             )
         )
 

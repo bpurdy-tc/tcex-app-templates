@@ -1,16 +1,12 @@
 """ThreatConnect Preflight Check Service"""
 
-# standard library
 import logging
 
-# third-party
-from tcex import TcEx
-from tcex.logger.trace_logger import TraceLogger
-
-# first-party
 from core.app.enums import PREFLIGHT_CHECKS
 from core.service.attribute_checker import AttributeChecker
 from core.service.current_running_process import CurrentRunningProcess
+from tcex import TcEx
+from tcex.logger.trace_logger import TraceLogger
 
 logger = logging.getLogger('tcex')
 

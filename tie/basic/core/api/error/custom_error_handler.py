@@ -1,13 +1,11 @@
 """Custom HTTP Error Module"""
 
-# standard library
 import logging
 import traceback
 from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
-# first-party
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 
@@ -53,7 +51,6 @@ def build_log_traceback(tb: traceback) -> list:
     return log_data
 
 
-# pylint: disable=W0613
 def custom_error_handler(
     req: FalconRequest,
     resp: FalconResponse,  # noqa: ARG001

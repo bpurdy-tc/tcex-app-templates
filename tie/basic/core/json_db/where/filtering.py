@@ -1,6 +1,5 @@
 """Helper methods for filtering data with JSON DB DAOs."""
 
-# standard library
 from collections.abc import Callable
 from typing import Any, TypeAlias, TypeVar
 

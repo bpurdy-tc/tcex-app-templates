@@ -1,14 +1,10 @@
 """."""
 
-# standard library
 from uuid import UUID
 
-# third-party
-from pydantic import Field
-
-# first-party
 from core.message_service.model.tcva.message_types import MessageTypesInvestigateAck
 from core.model.model_base import ModelBase
+from pydantic import Field
 
 
 class InvestigateAcknowledgeResponseModel(ModelBase):

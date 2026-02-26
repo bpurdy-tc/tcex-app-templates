@@ -11,19 +11,18 @@
 
 from __future__ import annotations
 
-# standard library
 import argparse
 import hashlib
 import json
 import os
-import subprocess
+import subprocess  # nosec B404
 import sys
+from collections.abc import Iterator, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, Sequence
+from typing import ClassVar
 
 try:
-    # third-party
     import yaml  # type: ignore
 except Exception:  # pragma: no cover
     print(
@@ -68,7 +67,7 @@ class TemplateResolver:
             with yaml_path.open('r', encoding='utf-8') as fh:
                 data = yaml.safe_load(fh) or {}
         except Exception as e:
-            raise SystemExit(f'Failed to parse {yaml_path}: {e}')
+            raise SystemExit(f'Failed to parse {yaml_path}: {e}') from e
 
         return TemplateInfo(dir_path=dir_path, config=data)
 
@@ -112,7 +111,7 @@ class TemplateResolver:
 class FileExpander:
     """Expands template file entries to concrete file paths."""
 
-    EXCLUDED_DIRS = {'.git', '__pycache__', '.venv', 'node_modules', '.nx'}
+    EXCLUDED_DIRS: ClassVar[set[str]] = {'.git', '__pycache__', '.venv', 'node_modules', '.nx'}
 
     def iter_template_files(
         self, template_dir: Path, relative_paths: Sequence[str]
@@ -154,7 +153,7 @@ class GitHelper:
     def _git_repo_root(self, start_dir: Path) -> Path | None:
         """Return the Git repository root, or None if not in a repo."""
         try:
-            out = subprocess.check_output(
+            out = subprocess.check_output(  # nosec
                 ['git', '-C', str(start_dir), 'rev-parse', '--show-toplevel'],
                 text=True,
                 stderr=subprocess.STDOUT,
@@ -169,10 +168,14 @@ class GitHelper:
             return {}
 
         try:
-            out = subprocess.check_output(
+            out = subprocess.check_output(  # nosec
                 [
-                    'git', '-C', str(self.repo_root),
-                    'log', '--format=%H', '--name-only',
+                    'git',
+                    '-C',
+                    str(self.repo_root),
+                    'log',
+                    '--format=%H',
+                    '--name-only',
                 ],
                 text=True,
                 stderr=subprocess.STDOUT,
@@ -390,7 +393,9 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     )
     ap.add_argument('input_dir', help='Child template directory (e.g., tcv)')
     ap.add_argument(
-        '--root', default='.', help='Templates root (default: current working directory)'
+        '--root',
+        default='.',
+        help='Templates root (default: current working directory)',
     )
     return ap.parse_args(argv)
 

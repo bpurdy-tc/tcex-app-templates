@@ -1,16 +1,12 @@
 """Class for /api/tc/app-config endpoint"""
 
-# third-party
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
+from spectree import Response
 
 
-# pylint: disable=unused-argument
 class JobFiles(EndpointBase):
     """Class for /api/tc/app-config endpoint"""
 

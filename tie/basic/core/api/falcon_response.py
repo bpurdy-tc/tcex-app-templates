@@ -2,19 +2,15 @@
 
 from __future__ import annotations
 
-# standard library
 from typing import Any
 
-# third-party
 import falcon
-from pydantic import BaseModel, ValidationError
-
-# first-party
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.api.validation.models.query_param_model import QueryParamModel
+from pydantic import BaseModel, ValidationError
 
 
 class FalconResponse(falcon.Response):

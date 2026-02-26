@@ -1,14 +1,11 @@
 """Middleware module"""
 
-# standard library
 from abc import ABC
 
-# first-party
 from core.api.error.util import error
 from core.api.middleware_abc import MiddlewareABC
 
 
-# pylint: disable=unused-argument
 class ErrorMiddleware(MiddlewareABC, ABC):
     """Middleware module"""
 

@@ -1,6 +1,5 @@
 """JsonDB module for storing and loading entities from disk."""
 
-# standard library
 import gzip as gz
 import importlib
 import json
@@ -15,21 +14,19 @@ from pathlib import Path
 from types import GenericAlias
 from typing import TYPE_CHECKING, Any, ParamSpec, TypeVar, cast
 
-# third-party
 import uuid6
 from pydantic import BaseModel, Field
 from pydantic.fields import Undefined
 from tcex.logger.trace_logger import TraceLogger
 
 if TYPE_CHECKING:
-    # third-party
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, NoArgAnyCallable
 
 SortBy = Enum('SortBy', ['CREATED', 'MODIFIED', 'INDEX'])
 SortOrder = Enum('SortOrder', {'ASC': 'asc', 'DESC': 'desc'})
 
 
-def Embedded(  # noqa: N802, PLR0913
+def Embedded(  # noqa: N802
     default: Any = Undefined,
     *,
     default_factory: 'NoArgAnyCallable | None' = None,
@@ -94,7 +91,7 @@ def Embedded(  # noqa: N802, PLR0913
     )
 
 
-def Index(  # noqa: N802, PLR0913
+def Index(  # noqa: N802
     default: Any = Undefined,
     *,
     default_factory: 'NoArgAnyCallable | None' = lambda: str(uuid6.uuid7()),
@@ -586,7 +583,7 @@ class JsonDB:
         for lock_file in lock_files:
             parts = ''.join(lock_file.name.split('.')[:-1]).split('#')
             timestamp = float(parts[-1])
-            if winner is None or timestamp < winner[0]:  # pylint: disable=unsubscriptable-object
+            if winner is None or timestamp < winner[0]:
                 winner = (timestamp, lock_file)
 
         if winner is None:
@@ -595,7 +592,7 @@ class JsonDB:
                 'where lock files were deleted between listing and selection.'
             )
             raise RuntimeError(msg)
-        return winner[1]  # pylint: disable=unsubscriptable-object
+        return winner[1]
 
     def _migrate_gzip(self):
         """Migrate existing files to or from gzip.

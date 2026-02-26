@@ -1,13 +1,12 @@
 #!python3
 """sync report from testing Apps"""
-# standard library
+
 import os
 import shutil
 import sys
 from functools import cached_property
 from pathlib import Path
 
-# third-party
 import typer
 
 
@@ -16,7 +15,6 @@ class SyncTemplate:
 
     def __init__(self):
         """Initialize instance properties"""
-
         # properties
 
         self.app_common_dst_path = Path('_app_common/')

@@ -1,10 +1,8 @@
 """DatetimeEncoder class."""
 
-# standard library
 import json
 from datetime import date, datetime, timedelta
 
-# third-party
 import arrow
 
 
@@ -18,7 +16,7 @@ class CustomHandler(json.JSONEncoder):
             date: lambda x: x.isoformat(),
             datetime: lambda x: x.isoformat(),
             timedelta: lambda x: x.total_seconds(),
-            set: lambda x: list(x),  # pylint: disable=unnecessary-lambda
+            set: lambda x: list(x),
         }
         handler = handlers.get(type(o), super().default)
         return handler(o)

@@ -1,9 +1,7 @@
 """Scheduled Task"""
 
-# standard library
 from typing import AnyStr
 
-# first-party
 from core.task.backfill_missing_report_abc import BackfillMissingReportABC
 
 # from core.tcvf.task.backfill_missing_report_abc import CustomTag, DocumentRetrievalError

@@ -2,17 +2,14 @@
 
 Note: this is demo code only.
 """
-# standard library
+
 from typing import TYPE_CHECKING
 
-# third-party
 from flask import Blueprint, render_template
 
-# first-party
 from flask_app.tc_search_blueprint.tc_search_view import TCSearchView
 
 if TYPE_CHECKING:
-    # third-party
     from tcex import TcEx
 
 __all__ = ['create_blueprint']
@@ -24,7 +21,6 @@ def create_blueprint(tcex: 'TcEx'):
     Blueprints are modular components for a flask app, see:
     https://flask.palletsprojects.com/en/2.2.x/blueprints/
     """
-
     bp = Blueprint(
         'tc_search',
         __name__,
@@ -34,7 +30,9 @@ def create_blueprint(tcex: 'TcEx'):
     )
 
     bp.add_url_rule(
-        '/search', view_func=TCSearchView.as_view('search', tcex=tcex), strict_slashes=False
+        '/search',
+        view_func=TCSearchView.as_view('search', tcex=tcex),
+        strict_slashes=False,
     )
 
     @bp.route('/')

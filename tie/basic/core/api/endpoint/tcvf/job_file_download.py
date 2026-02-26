@@ -1,17 +1,14 @@
 """Class for /api/tc/app-config endpoint"""
 
-# third-party
 from pathlib import Path
 
 import falcon
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
+from spectree import Response
 
 
 class QueryParams(QueryParamModel):
@@ -20,7 +17,6 @@ class QueryParams(QueryParamModel):
     file_name: str
 
 
-# pylint: disable=unused-argument
 class JobFileDownload(EndpointBase):
     """Class for /api/tc/app-config endpoint"""
 
@@ -67,5 +63,4 @@ class JobFileDownload(EndpointBase):
                 resp.content_type = 'application/gzip'
 
         resp.downloadable_as = file_path.name
-        # pylint: disable=consider-using-with
         resp.set_stream(Path.open(file_path, 'rb'), file_path.stat().st_size)

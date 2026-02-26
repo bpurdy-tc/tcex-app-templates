@@ -1,6 +1,5 @@
 """ThreatConnect API Service Falcon API"""
 
-# standard library
 import logging
 from abc import ABC, abstractmethod
 from enum import Enum
@@ -8,13 +7,7 @@ from functools import cached_property
 from time import sleep, time
 from typing import cast
 
-# third-party
 import schedule
-from tcex.api.tc.v3.tql.tql_operator import TqlOperator
-from tcex.exit import ExitCode
-from tcex.logger.trace_logger import TraceLogger
-
-# first-party
 from app_inputs import AppBaseModel
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
@@ -30,9 +23,11 @@ from core.supervisor import Supervisor
 from core.task.tasks import Tasks
 from core.util.custom_handler import CustomHandler
 from model.settings_model import SettingModel
+from tcex.api.tc.v3.tql.tql_operator import TqlOperator
+from tcex.exit import ExitCode
+from tcex.logger.trace_logger import TraceLogger
 
 try:
-    # third-party
     from migrations import Migrations
 except ImportError:
     Migrations = None
@@ -96,7 +91,9 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         self.spec.register(self.app)
 
     def register_preflight_checks(
-        self, preflight_checks: list | None = None, default: list[PREFLIGHT_CHECKS] | None = None
+        self,
+        preflight_checks: list | None = None,
+        default: list[PREFLIGHT_CHECKS] | None = None,
     ):
         """Register all preflight checks."""
         preflight_checks = preflight_checks or []
@@ -155,7 +152,9 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
                 self._jobs[action.name] = job
 
     def register_middleware(
-        self, middleware_list: list | None = None, default: list[MIDDLEWARE] | None = None
+        self,
+        middleware_list: list | None = None,
+        default: list[MIDDLEWARE] | None = None,
     ):
         """Register middleware."""
         middleware_list = middleware_list or []

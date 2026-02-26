@@ -1,19 +1,15 @@
 """Batch Submit"""
 
-# standard library
 from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import TypeVar
 
-# third-party
-from tcex import TcEx
-
-# first-party
 from core.json_db import JsonDB
 from core.task.task_path_pipe_abc import UploadError
 from core.task.upload_abc import UploadABC
 from model import JobRequestModel
 from model.settings_model import SettingModel
+from tcex import TcEx
 
 T = TypeVar('T')
 

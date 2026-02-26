@@ -1,6 +1,5 @@
 """Error handling for the ThreatConnect App Framework."""
 
-# standard library
 import logging
 import traceback
 from pathlib import Path

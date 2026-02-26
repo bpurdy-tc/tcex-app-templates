@@ -1,8 +1,5 @@
 """Metrics Module"""
 
-# third-party
-
-# first-party
 from core.json_db import JsonDB
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import TiProcessingMetricModel
@@ -18,7 +15,6 @@ class Metrics:
         self.staged_metrics = {}
         self.dao = JsonDBDAO(db, TiProcessingMetricModel)
 
-    #  pylint: disable=no-member
     def get_metrics(self, metric_name: str) -> TiProcessingMetricModel | None:
         """Return metrics."""
         try:

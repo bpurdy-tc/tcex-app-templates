@@ -1,16 +1,12 @@
 """Model Definition"""
 
-# standard library
-from datetime import UTC, datetime, timezone
+from datetime import UTC, datetime
 from typing import ClassVar
 
-# third-party
-from pydantic import Extra, Field
-
-# first-party
 from core.json_db import Index
 from core.model.response.paginated_response import PaginatedResponseModel
 from core.model.tie.item_model import ItemModel
+from pydantic import Extra, Field
 
 
 class TiProcessingMetricModel(ItemModel):
@@ -27,9 +23,7 @@ class TiProcessingMetricModel(ItemModel):
         """Model Config"""
 
         extra = Extra.forbid
-        json_encoders: ClassVar[dict] = {
-            datetime: lambda v: v.replace(tzinfo=timezone.utc).isoformat()
-        }
+        json_encoders: ClassVar[dict] = {datetime: lambda v: v.replace(tzinfo=UTC).isoformat()}
         orm_mode = True
 
 

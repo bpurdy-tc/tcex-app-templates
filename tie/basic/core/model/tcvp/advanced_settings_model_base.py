@@ -1,6 +1,5 @@
 """Settings Module"""
 
-# third-party
 from pydantic import BaseModel
 
 

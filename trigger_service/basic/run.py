@@ -1,17 +1,13 @@
 """Run App"""
-# standard library
+
 import sys
-import traceback
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, NoReturn
 
 if TYPE_CHECKING:
-    # third-party
-    from tcex import TcEx  # must be imported later, but also needed typing hints
-
-    # first-party
     from app import App  # must be imported later, but also needed typing hints
+    from tcex import TcEx  # must be imported later, but also needed typing hints
 
 
 class Run:
@@ -20,20 +16,18 @@ class Run:
     @cached_property
     def app(self) -> 'App':
         """Return a properly configured App instance."""
-        # first-party
-        from app import App  # pylint: disable=import-outside-toplevel
+        from app import App  # noqa: PLC0415
 
         return App(self.tcex)
 
     def exit(self, code: int, msg: str) -> NoReturn:
         """Exit the App."""
-        self.tcex.exit.exit(code, msg)  # pylint: disable=no-member
+        self.tcex.exit.exit(code, msg)
 
     @cached_property
     def tcex(self) -> 'TcEx':
         """Return a properly configured TcEx instance."""
-        # third-party
-        from tcex import TcEx  # pylint: disable=import-outside-toplevel
+        from tcex import TcEx  # noqa: PLC0415
 
         return TcEx()
 
@@ -41,7 +35,6 @@ class Run:
         """Launch the App"""
         try:
             # configure custom trigger message handler
-            # pylint: disable=no-member
 
             self.tcex.app.service.create_config_callback = (  # type: ignore
                 self.app.create_config_callback
@@ -51,14 +44,13 @@ class Run:
             )
             self.tcex.app.service.shutdown_callback = self.app.shutdown_callback  # type: ignore
 
-            # first-party
-            from app_inputs import TriggerConfigModel  # pylint: disable=import-outside-toplevel
+            from app_inputs import TriggerConfigModel  # noqa: PLC0415
 
             # set the createConfig model
             self.tcex.app.service.trigger_input_model = TriggerConfigModel  # type: ignore
 
             # perform prep/setup operations
-            self.app.setup(**{})
+            self.app.setup()
 
             # listen on channel/topic
             self.tcex.app.service.listen()
@@ -70,14 +62,14 @@ class Run:
             self.tcex.app.service.ready = True
 
             # run the App logic
-            self.app.run(**{})
+            self.app.run()
 
             # perform cleanup/teardown operations
-            self.app.teardown(**{})
+            self.app.teardown()
 
         except Exception as e:
             main_err = f'Generic Error.  See logs for more details ({e}).'
-            self.tcex.log.error(traceback.format_exc())
+            self.tcex.log.exception(main_err)
             self.exit(1, main_err)
 
     def setup(self):
@@ -95,7 +87,6 @@ class Run:
     def teardown(self):
         """Teardown the App."""
         # explicitly call the exit method
-        # pylint: disable=no-member
         self.tcex.exit.exit(0, msg=self.app.exit_message)
 
 

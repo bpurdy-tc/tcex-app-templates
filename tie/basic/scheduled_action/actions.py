@@ -1,13 +1,10 @@
 """."""
 
-# third-party
-from tcex.logger.trace_logger import TraceLogger  # pylint: disable=no-name-in-module
-
-# first-party
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
 from core.task.tasks import Tasks
 from model.settings_model import SettingModel
+from tcex.logger.trace_logger import TraceLogger
 
 
 def log_running_tasks(db: JsonDB, settings: SettingModel, log: TraceLogger):
@@ -21,9 +18,7 @@ def log_running_tasks(db: JsonDB, settings: SettingModel, log: TraceLogger):
     throttle_statuses.extend(Tasks.status_final)
 
     running_tasks = [
-        {r.request_id: r.status}
-        for r in dao.get_all()
-        if r.status.lower() not in throttle_statuses
+        {r.request_id: r.status} for r in dao.get_all() if r.status.lower() not in throttle_statuses
     ]
     log.debug(
         f'task-event=log-running-tasks, running_tasks={running_tasks},'

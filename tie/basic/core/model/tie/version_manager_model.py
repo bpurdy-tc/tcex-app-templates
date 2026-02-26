@@ -1,15 +1,11 @@
 """Model Definition"""
 
-# standard library
 from datetime import UTC, datetime
 from typing import ClassVar
 
-# third-party
-from pydantic import Field
-
-# first-party
 from core.json_db import Index
 from core.model.model_base import ModelBase
+from pydantic import Field
 
 
 class VersionManagerModel(ModelBase):

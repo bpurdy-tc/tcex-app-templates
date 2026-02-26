@@ -1,12 +1,10 @@
 """External App Template"""
 
-# third-party
 from typing import cast
+
+from app_inputs import AppBaseModel, AppInputs
 from pydantic import ValidationError
 from tcex import TcEx
-
-# first-party
-from app_inputs import AppBaseModel, AppInputs
 
 
 class ExternalApp:
@@ -21,7 +19,7 @@ class ExternalApp:
 
         # properties
         self.exit_message = 'Success'
-        self.in_ = cast(AppBaseModel, self.tcex.inputs.model)
+        self.in_ = cast('AppBaseModel', self.tcex.inputs.model)
         self.log = self.tcex.log
 
     def _update_inputs(self):

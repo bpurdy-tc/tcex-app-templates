@@ -1,6 +1,5 @@
 """Class for /api/report/batch-error/export endpoint"""
 
-# standard library
 import csv
 import gzip
 import json
@@ -8,11 +7,6 @@ from functools import cached_property
 from io import BytesIO, StringIO
 from typing import Literal
 
-# third-party
-from pydantic import Field, validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -22,6 +16,8 @@ from core.dao.batch_error_dao import BatchErrorDAO
 from core.json_db import where
 from core.model.tie import BatchErrorPaginatedResponseModel
 from core.util.custom_handler import CustomHandler
+from pydantic import Field, validator
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterModel, where.ToWhere):
@@ -55,7 +51,6 @@ class GetQueryParamModel(QueryParamFilterModel, where.ToWhere):
                 return v
 
 
-# pylint: disable=unused-argument
 class BatchErrorExportResource(EndpointBase):
     """Class for /api/report/batch-error/export endpoint"""
 

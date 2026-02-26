@@ -1,12 +1,10 @@
 """Converts the data into the ThreatConnect batch format."""
 
-# standard library
 import gzip
 import json
 from functools import cached_property
 from pathlib import Path
 
-# first-party
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
 from core.service.writing_service import WritingModel
 from core.task.task_path_pipe_abc import TaskPathPipeABC

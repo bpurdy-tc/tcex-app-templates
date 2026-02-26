@@ -1,6 +1,5 @@
 """Falcon Request Class"""
 
-# third-party
 import falcon
 from pydantic import BaseModel, Field
 

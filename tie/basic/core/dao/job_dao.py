@@ -1,14 +1,10 @@
 """Job DAO."""
 
-# standard library
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING, Generic, TypeVar
 
-# third-party
 import arrow
-
-# first-party
 from core.json_db import JsonDB, SortOrder, where
 from core.json_db.dao import JsonDBDAO
 from core.model.settings_model_base import SettingModelBase
@@ -16,7 +12,6 @@ from core.model.tie.job_request_base_model import JobRequestBaseModel
 from model.job_request_model import JobRequestModel
 
 if TYPE_CHECKING:
-    # first-party
     # Note: TYPE_CHECKING import to avoid circular import at runtime.
     # TaskPathPipeABC imports JobRequestDAO, so we can't import it directly here.
     from core.task.task_path_pipe_abc import TaskPathPipeABC
@@ -36,7 +31,6 @@ class JobRequestDAO(JsonDBDAO[M], Generic[M]):
 
     def get_all_job_ids(self) -> list[str]:
         """Get all job IDs."""
-        #  pylint: disable=protected-access
         return [self.db.get_index_from_path(path) for path in self.db.get_paths(self.model)]
 
     def get_jobs_over_limit(self, max_jobs: int) -> Iterable[M]:

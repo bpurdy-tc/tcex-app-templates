@@ -1,7 +1,6 @@
 """App Inputs"""
 # pyright: reportGeneralTypeIssues=false
 
-# third-party
 from tcex.input.input import Input
 from tcex.input.model.app_playbook_model import AppPlaybookModel
 

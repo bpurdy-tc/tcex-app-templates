@@ -18,9 +18,9 @@ import argparse
 import hashlib
 import json
 import os
-import subprocess
+import subprocess  # nosec B404
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Sequence
 
 # Files/dirs to exclude from manifests.
 # template.yaml and manifest.json are metadata, not deliverable template files.
@@ -45,7 +45,7 @@ def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
 def git_repo_root(start_dir: Path) -> Path | None:
     """Return the Git repository root, or None if not in a repo."""
     try:
-        out = subprocess.check_output(
+        out = subprocess.check_output(  # nosec
             ['git', '-C', str(start_dir), 'rev-parse', '--show-toplevel'],
             text=True,
             stderr=subprocess.STDOUT,
@@ -78,7 +78,7 @@ def build_commit_map(repo_root: Path) -> dict[str, str]:
     (app.py maps to abc123 because that's the newest commit — def456 is ignored)
     """
     try:
-        out = subprocess.check_output(
+        out = subprocess.check_output(  # nosec
             ['git', '-C', str(repo_root), 'log', '--format=%H', '--name-only'],
             text=True,
             stderr=subprocess.STDOUT,
@@ -210,9 +210,7 @@ def build_manifest(
 
 def main(argv: Sequence[str] | None = None) -> None:
     """Entry point."""
-    ap = argparse.ArgumentParser(
-        description='Generate manifest.json for template directories.'
-    )
+    ap = argparse.ArgumentParser(description='Generate manifest.json for template directories.')
     ap.add_argument(
         '--root',
         default='.',

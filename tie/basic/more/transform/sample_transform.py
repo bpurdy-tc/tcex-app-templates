@@ -1,9 +1,7 @@
 """Transform for various Indicator types"""
 
-# standard library
 from pathlib import Path
 
-# first-party
 from more.transform.custom_transform_abc import CustomTransformABC
 
 

@@ -1,6 +1,5 @@
 """Markdown formatting utilities."""
 
-# standard library
 import html
 import mimetypes
 from abc import ABC, abstractmethod
@@ -116,7 +115,10 @@ class TextList(ContentABC):
         markdown = [title_block]
         for index, item in enumerate(items_, start=1):
             item = _format_txt(
-                item, max_len=self.max_item_length, prepend=self.prepend, append=self.append
+                item,
+                max_len=self.max_item_length,
+                prepend=self.prepend,
+                append=self.append,
             )
             markdown.append(f'**{self.sub_title} {index}**\n{item}\n\n')
         if len(self.items) > self.max_items:
@@ -160,13 +162,19 @@ class Text(ContentABC):
             lines = []
             for k, v in self.content.items():
                 v = _format_txt(
-                    str(v), max_len=self.max_length, prepend=self.prepend, append=self.append
+                    str(v),
+                    max_len=self.max_length,
+                    prepend=self.prepend,
+                    append=self.append,
                 )
                 # v = self._truncate(str(v))
                 lines.append(f'**{k}**: {v if v else "N/A"}')
             return self.spacing.join(lines) + self.spacing
         content = _format_txt(
-            self.content, max_len=self.max_length, prepend=self.prepend, append=self.append
+            self.content,
+            max_len=self.max_length,
+            prepend=self.prepend,
+            append=self.append,
         )
         return f'{content}{self.spacing}'
 
@@ -293,7 +301,14 @@ class Table(ContentABC):
     """Represents a markdown table."""
 
     def __init__(
-        self, title, *, spacing=2, max_row_length=50, level=3, max_rows=100, ai_indicator=False
+        self,
+        title,
+        *,
+        spacing=2,
+        max_row_length=50,
+        level=3,
+        max_rows=100,
+        ai_indicator=False,
     ):
         """Initialize class properties.
 

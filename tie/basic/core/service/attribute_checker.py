@@ -1,13 +1,11 @@
 """ThreatConnect Preflight Check Service"""
 
-# standard library
 import json
 import logging
 from functools import cached_property
 from pathlib import Path
 from typing import Any
 
-# third-party
 from tcex import TcEx
 
 logger = logging.getLogger('tcex')

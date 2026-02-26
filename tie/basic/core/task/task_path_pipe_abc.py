@@ -1,6 +1,5 @@
 """Tasks Common Module"""
 
-# standard library
 import shutil
 import threading
 import time
@@ -10,10 +9,6 @@ from functools import partial
 from pathlib import Path
 from uuid import UUID
 
-# third-party
-from pydantic import BaseModel
-
-# first-party
 from core.beacon import provide
 from core.task.task_abc import TaskABC
 from core.task.task_path_pipe_injectables import (
@@ -24,6 +19,7 @@ from core.task.task_path_pipe_injectables import (
 )
 from core.util.process_metadata import Metadata, ProcessMetadata
 from model import AdHocJobRequestModel
+from pydantic import BaseModel
 
 
 class UploadError(Exception):
@@ -46,7 +42,6 @@ class UnrecoverableError(Exception):
     """
 
 
-# pylint: disable=no-member
 class TaskPathPipeABC(TaskABC, ABC):
     """Tasks ABC Class
 
@@ -248,7 +243,6 @@ class TaskPathPipeABC(TaskABC, ABC):
 
         return input_dir, output_dir
 
-    # pylint: disable=arguments-differ
     def _task_start(self, request_id: str):
         """Run tasks startup logic."""
         # rename thread for multiprocessing task
@@ -349,7 +343,7 @@ class TaskPathPipeABC(TaskABC, ABC):
     def _has_ti_data(data):
         return data.get('group') or data.get('indicator')
 
-    def handle_run_error(  # pylint: disable=unused-argument
+    def handle_run_error(
         self, request_id: str, request_dir: Path, exception: Exception | None = None
     ):
         """Handle task errors - reset to Pending to restart entire pipeline.
@@ -439,10 +433,9 @@ class TaskPathPipeABC(TaskABC, ABC):
             f'action=restart-from-download'
         )
 
-    # pylint: disable=arguments-differ
     def launch(self, request_id: str, request_dir: Path | None = None, **kwargs):
         """Launch the task."""
-        self.process = self.process_metadata(  # pylint: disable=attribute-defined-outside-init
+        self.process = self.process_metadata(
             args=(
                 request_id,
                 request_dir,

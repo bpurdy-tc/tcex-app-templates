@@ -1,10 +1,7 @@
 """."""
 
-# third-party
-from pydantic import Field
-
-# first-party
 from core.model.model_base import ModelBase
+from pydantic import Field
 
 
 class EnrichmentTimelineModel(ModelBase):

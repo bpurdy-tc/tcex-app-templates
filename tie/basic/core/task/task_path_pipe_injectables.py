@@ -10,11 +10,9 @@ For example:
 > update_heartbeat(verbose=False)
 """
 
-# standard library
 from pathlib import Path
 from typing import Protocol
 
-# first-party
 from model import JobRequestModel
 
 CurrentJob = type('CurrentJob', (JobRequestModel,), {})

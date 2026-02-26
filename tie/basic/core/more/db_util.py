@@ -1,11 +1,9 @@
 """DB Util Module"""
 
-# standard library
 import logging
 from sqlite3 import OperationalError
 from typing import Any
 
-# third-party
 from sqlalchemy.dialects import sqlite
 from sqlalchemy.exc import IntegrityError, NoResultFound
 from sqlalchemy.orm import Query, Session
@@ -14,7 +12,6 @@ from sqlalchemy.orm import Query, Session
 logger = logging.getLogger('tcex')
 
 
-# pylint: disable=no-member
 class DbUtil:
     """DB Util Module"""
 
@@ -24,7 +21,11 @@ class DbUtil:
         self.log = logger
 
     def add_record(
-        self, session: Session, record: Any, error_description: str, raise_exception: bool = False
+        self,
+        session: Session,
+        record: Any,
+        error_description: str,
+        raise_exception: bool = False,
     ):
         """Add DB record."""
         try:
@@ -40,7 +41,11 @@ class DbUtil:
                 raise
 
     def create_record(
-        self, schema: Any, data: dict, error_description: str, raise_exception: bool = False
+        self,
+        schema: Any,
+        data: dict,
+        error_description: str,
+        raise_exception: bool = False,
     ):
         """Create DB record."""
         try:
@@ -52,7 +57,11 @@ class DbUtil:
         return None
 
     def delete_record(
-        self, session: Session, record: Any, error_description: str, raise_exception: bool = False
+        self,
+        session: Session,
+        record: Any,
+        error_description: str,
+        raise_exception: bool = False,
     ):
         """Delete DB record."""
         try:
@@ -73,7 +82,11 @@ class DbUtil:
                 raise
 
     def get_record(
-        self, query: Query, method: str, error_description: str, raise_exception: bool = False
+        self,
+        query: Query,
+        method: str,
+        error_description: str,
+        raise_exception: bool = False,
     ) -> Any | list[Any]:
         """Return DB record(s)."""
         try:
@@ -114,7 +127,11 @@ class DbUtil:
             self.log.debug(f'event=log-result, result={result}')
 
     def patch_record(
-        self, session: Session, record: Any, error_description: str, raise_exception: bool = False
+        self,
+        session: Session,
+        record: Any,
+        error_description: str,
+        raise_exception: bool = False,
     ):
         """Patch DB Record."""
         try:

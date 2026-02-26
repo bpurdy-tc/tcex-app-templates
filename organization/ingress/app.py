@@ -1,10 +1,8 @@
 """ThreatConnect Job App"""
-# third-party
+
+from job_app import JobApp  # Import default Job App Class (Required)
 from tcex import TcEx
 from tcex.exit import ExitCode
-
-# first-party
-from job_app import JobApp  # Import default Job App Class (Required)
 
 
 class App(JobApp):
@@ -25,7 +23,6 @@ class App(JobApp):
 
     def run(self):
         """Run main App logic."""
-
         with self.tcex.session.external as s:
             # https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json
             r = s.get('/downloads/ipblocklist_recommended.json')

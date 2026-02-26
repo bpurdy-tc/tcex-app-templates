@@ -1,13 +1,10 @@
 """Service App module for TcEx App."""
-# standard library
+
 from typing import cast
 
-# third-party
+from app_inputs import AppInputs, ServiceConfigModel, TriggerConfigModel
 from pydantic import ValidationError
 from tcex import TcEx
-
-# first-party
-from app_inputs import AppInputs, ServiceConfigModel, TriggerConfigModel
 
 
 class ServiceApp:
@@ -26,7 +23,7 @@ class ServiceApp:
 
         # properties
         self.exit_message = 'Success'
-        self.in_ = cast(ServiceConfigModel, self.tcex.inputs.model)
+        self.in_ = cast('ServiceConfigModel', self.tcex.inputs.model)
         self.log = self.tcex.log
 
     def _update_inputs(self):
@@ -36,14 +33,14 @@ class ServiceApp:
         except ValidationError as ex:
             self.tcex.exit.exit(code=1, msg=self.tcex.inputs.validation_exit_message(ex))
 
-    # pylint: disable=unused-argument
-    def create_config_callback(self, config: TriggerConfigModel, **kwargs) -> dict:
+    def create_config_callback(self, config: TriggerConfigModel, **kwargs) -> dict:  # noqa: ARG002
         """Handle create config messages.
 
         Args:
             trigger_id: The ID of the playbook.
             config: The playbook config inputs.
             url (str, kwargs): The URL for a webhook trigger.
+            **kwargs: Additional keyword arguments.
 
         Returns:
             dict: A dict containing a **msg** field that can be used to relay error context back to
@@ -52,8 +49,7 @@ class ServiceApp:
         self.log.trace('create config callback')
         return {'msg': 'Success', 'status': True}
 
-    # pylint: disable=unused-argument
-    def delete_config_callback(self, trigger_id: int):
+    def delete_config_callback(self, trigger_id: int):  # noqa: ARG002
         """Handle delete config messages.
 
         Args:

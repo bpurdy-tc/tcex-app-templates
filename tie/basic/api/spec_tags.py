@@ -1,6 +1,5 @@
 """SpecTree OpenAPI Tag Specification"""
 
-# third-party
 # from spectree import Tag
 
 # tag_custom = Tag(

@@ -1,21 +1,21 @@
 """ThreatConnect Preflight Check Service"""
 
-# standard library
 import sqlite3
 from collections.abc import Callable
 from logging import Logger
 from pathlib import Path
 from typing import Any
 
-# third-party
 import uuid6
-from pydantic import BaseModel, root_validator
-
-# first-party
 from core.json_db import JsonDB
-from core.model.tie import BatchErrorModel, ReportPdfTrackerModel, TiProcessingMetricModel
+from core.model.tie import (
+    BatchErrorModel,
+    ReportPdfTrackerModel,
+    TiProcessingMetricModel,
+)
 from model.job_request_model import JobRequestModel
 from model.settings_model import SettingModel
+from pydantic import BaseModel, root_validator
 
 
 class SQLiteMigrationModel(BaseModel):
@@ -153,7 +153,7 @@ class SQLiteMigration:
         try:
             cursor.execute(query)
             column_names = [desc[0] for desc in cursor.description]
-            return [dict(zip(column_names, row)) for row in cursor.fetchall()]
+            return [dict(zip(column_names, row, strict=False)) for row in cursor.fetchall()]
         except sqlite3.Error:
             self.log.exception(f'Failed to execute query: {query}')
             return []

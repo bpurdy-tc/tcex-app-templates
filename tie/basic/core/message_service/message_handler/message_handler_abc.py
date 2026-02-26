@@ -1,19 +1,17 @@
 """."""
 
-# standard library
 import logging
 from abc import abstractmethod
 
-# third-party
-from pydantic import BaseModel
-from tcex.logger.trace_logger import TraceLogger
-
-# first-party
 from core.message_service.message_service import MessageService
 from core.message_service.model.tcva.enrichment_acknowledge_model import (
     EnrichmentAcknowledgeResponseModel,
 )
-from core.message_service.model.tcva.enrichment_request_model import EnrichmentRequestModel
+from core.message_service.model.tcva.enrichment_request_model import (
+    EnrichmentRequestModel,
+)
+from pydantic import BaseModel
+from tcex.logger.trace_logger import TraceLogger
 
 _logger: TraceLogger = logging.getLogger('tcex')  # type: ignore
 

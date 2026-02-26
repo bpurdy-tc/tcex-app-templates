@@ -1,6 +1,5 @@
 """Tasks Common Module"""
 
-# standard library
 import logging
 import pickle  # nosec
 import threading
@@ -11,17 +10,8 @@ from functools import cached_property, partial
 from pathlib import Path
 from typing import Generic, Protocol, TypeVar
 
-# third-party
 import arrow
 import schedule
-from pydantic.main import BaseModel
-from tcex import TcEx
-from tcex.logger.rotating_file_handler_custom import (
-    RotatingFileHandlerCustom,  # pylint: disable=no-name-in-module
-)
-from tcex.logger.trace_logger import TraceLogger  # pylint: disable=no-name-in-module
-
-# first-party
 from core.beacon import inject, provide
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
@@ -32,10 +22,14 @@ from core.supervisor import Supervisor
 from core.task.task_path_pipe_injectables import UpdateHeartbeat
 from core.util.process_metadata import Metadata, ProcessMetadata
 from model.settings_model import SettingModel
+from pydantic.main import BaseModel
+from tcex import TcEx
+from tcex.logger.rotating_file_handler_custom import (
+    RotatingFileHandlerCustom,
+)
+from tcex.logger.trace_logger import TraceLogger
 
 T = TypeVar('T', bound=JobRequestBaseModel)
-
-# pylint: disable=no-member
 
 
 class TaskResult(Protocol):
@@ -96,10 +90,10 @@ class TaskABC(ABC, Generic[T]):
 
     def __init__(
         self,
-        settings: SettingModel = inject(SettingModel),
-        tcex: TcEx = inject(TcEx),
-        db: JsonDB = inject(JsonDB),
-        supervisor: Supervisor = inject(Supervisor),
+        settings: SettingModel = inject(SettingModel),  # noqa: B008
+        tcex: TcEx = inject(TcEx),  # noqa: B008
+        db: JsonDB = inject(JsonDB),  # noqa: B008
+        supervisor: Supervisor = inject(Supervisor),  # noqa: B008
         *,
         request_schema: type[T] = JobRequestBaseModel,
     ):
@@ -205,7 +199,7 @@ class TaskABC(ABC, Generic[T]):
         # new logger
         logging.setLoggerClass(TraceLogger)
         logger = logging.getLogger(self.task_settings.slug)
-        logger.setLevel(logging.TRACE)  # pylint: disable=no-member
+        logger.setLevel(logging.TRACE)
 
         # add custom handler
         fh = RotatingFileHandlerCustom(
@@ -336,7 +330,7 @@ class TaskABC(ABC, Generic[T]):
         except Exception:
             self.log.exception('task-event=run-if-able-error')
 
-    def run_task(self, *args, **kwargs):  # pylint: disable=unused-argument
+    def run_task(self, *args, **kwargs):
         """Run pipe setup, start, and complete logic."""
         # run startup logic (rename thread, log action)
         self._task_start()

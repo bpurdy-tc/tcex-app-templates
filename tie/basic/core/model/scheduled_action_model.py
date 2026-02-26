@@ -1,11 +1,9 @@
 """Scheduled action model."""
 
-# standard library
 from collections.abc import Callable
 from datetime import timedelta
 from typing import Any
 
-# third-party
 from pydantic import BaseModel, Field
 
 

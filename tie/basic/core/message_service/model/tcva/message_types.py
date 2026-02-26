@@ -1,6 +1,5 @@
 """."""
 
-# standard library
 from typing import Literal
 
 MessageTypesBlock = Literal[

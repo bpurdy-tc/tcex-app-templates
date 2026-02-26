@@ -24,22 +24,18 @@ Example API calls:
     {"target_stage": "upload", "move_files": false}
 """
 
-# standard library
-from functools import cached_property
 import re
+from functools import cached_property
 
-# third-party
 import falcon
-from pydantic import BaseModel, Field, validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
 from core.dao.job_dao import JobRequestDAO
+from pydantic import BaseModel, Field, validator
+from spectree import Response
 
 
 class JobStatusUpdateRequest(BaseModel):
@@ -112,12 +108,14 @@ class JobRetryResource(EndpointBase):
                         continue
                     fallback = name.lower().replace(' ', '_')
                     name_camel = getattr(task_settings, 'name_camel', fallback)
-                    stages.append({
-                        'name': name.lower(),
-                        'status': f'{name} In Progress',
-                        'working_dir': f'{name_camel}_working_dir',
-                        'order': getattr(task_settings, 'index', len(stages)) + 1,
-                    })
+                    stages.append(
+                        {
+                            'name': name.lower(),
+                            'status': f'{name} In Progress',
+                            'working_dir': f'{name_camel}_working_dir',
+                            'order': getattr(task_settings, 'index', len(stages)) + 1,
+                        }
+                    )
 
         # Sort by order and deduplicate by name
         seen = set()

@@ -1,13 +1,7 @@
 """Class for /api/report/batch-error endpoint"""
 
-# standard library
 from functools import cached_property
 
-# third-party
-from pydantic import Field, validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -18,6 +12,8 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.json_db import SortBy, where
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import ReportPdfTrackerModel, ReportPdfTrackerResponseModel
+from pydantic import Field, validator
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
@@ -50,7 +46,6 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
                 return v
 
 
-# pylint: disable=unused-argument
 class ReportPDFTrackerCollection(EndpointBase):
     """Class for /api/report/pdf-tracker endpoint"""
 

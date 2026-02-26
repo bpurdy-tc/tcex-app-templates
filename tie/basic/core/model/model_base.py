@@ -1,9 +1,7 @@
 """Model Definition"""
 
-# standard library
 import logging
 
-# third-party
 from pydantic import BaseModel, Extra
 from pydantic.generics import GenericModel
 

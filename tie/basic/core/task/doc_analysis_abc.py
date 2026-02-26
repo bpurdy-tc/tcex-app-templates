@@ -1,33 +1,31 @@
 """Scheduled Task"""
 
-# standard library
 from collections import namedtuple
 from collections.abc import Generator
 from datetime import UTC, datetime, timedelta
 from itertools import zip_longest
 
-# third-party
 import requests
+from core.dao.doc_analysis_processed_items_dao import DocAnalysisProcessedItemsDAO
+from core.dao.doc_analysis_throttled_dao import DocAnalysisThrottledDAO
+from core.dao.doc_analysis_tracker_dao import DocAnalysisTrackerDAO
+from core.json_db import JsonDB
+from core.model.tie.doc_analysis_processed_items_model import (
+    DocAnalysisProcessedItemsModel,
+)
+from core.model.tie.doc_analysis_tracker_model import DocAnalysisTrackerModel
+from core.model.tie.task_setting_model import TaskSettingModel
+from core.task.task_abc import TaskABC
 from data_model.doc_analysis import DocAnalysisData
+from model import SettingModel
 from tcex import TcEx
 from tcex.api.tc.v3.groups.group import Group, Groups
 from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 from tcex.input.field_type import Sensitive
 from tcex.pleb.cached_property import cached_property
 
-# first-party
-from core.dao.doc_analysis_processed_items_dao import DocAnalysisProcessedItemsDAO
-from core.dao.doc_analysis_throttled_dao import DocAnalysisThrottledDAO
-from core.dao.doc_analysis_tracker_dao import DocAnalysisTrackerDAO
-from core.json_db import JsonDB
-from core.model.tie.doc_analysis_processed_items_model import DocAnalysisProcessedItemsModel
-from core.model.tie.doc_analysis_tracker_model import DocAnalysisTrackerModel
-from core.model.tie.task_setting_model import TaskSettingModel
-from core.task.task_abc import TaskABC
-from model import SettingModel
 
-
-class CALAuth(requests.auth.AuthBase):  # pylint: disable=too-few-public-methods
+class CALAuth(requests.auth.AuthBase):
     """Token-based auth for CAL."""
 
     def __init__(self, token: str, timestamp: int):
@@ -59,7 +57,13 @@ class DocAnalysisABC(TaskABC):
         self.processed_items_dao = DocAnalysisProcessedItemsDAO(self.db)
         self.throttled_dao = DocAnalysisThrottledDAO(self.db)
         self.supported_types = ['Report']
-        self.doc_analysis_features = {'alias', 'ioc', 'attack', 'textindustry', 'textsummarize'}
+        self.doc_analysis_features = {
+            'alias',
+            'ioc',
+            'attack',
+            'textindustry',
+            'textsummarize',
+        }
         self.doc_analysis_ttl = timedelta(days=7)
         self.custom_tags = []
         self._session = None
@@ -132,9 +136,9 @@ class DocAnalysisABC(TaskABC):
         tracker.attempt_count += 0
         self.dao.save(tracker)
 
-    def launch(self):  # pylint: disable=arguments-differ
+    def launch(self):
         """Launch the task."""
-        self.process = self.process_metadata()  # pylint: disable=attribute-defined-outside-init
+        self.process = self.process_metadata()
         self.process.start()
         self.log.info(f'event=launch, action={self.task_settings.name}, pid={self.process.pid}')
 
@@ -217,7 +221,10 @@ class DocAnalysisABC(TaskABC):
                             f'task-event=enrich-with-doc-analysis-failed, group={id_}'
                         )
                         self.handle_failure(
-                            tracker, 'enrich-with-doc-analysis-failed', group, custom_tag
+                            tracker,
+                            'enrich-with-doc-analysis-failed',
+                            group,
+                            custom_tag,
                         )
             try:
                 self.process_groups(parsed_groups, processed_items, force=True)
@@ -311,7 +318,10 @@ class DocAnalysisABC(TaskABC):
                     self.tcex.log.exception('task-event=create-group-failed')
 
     def process_groups(
-        self, parsed_groups: dict, processed_items: DocAnalysisProcessedItemsModel, force=False
+        self,
+        parsed_groups: dict,
+        processed_items: DocAnalysisProcessedItemsModel,
+        force=False,
     ):
         """Process and associate groups."""
         if len(parsed_groups) < 1_000 and force is False:
@@ -490,7 +500,7 @@ class DocAnalysisABC(TaskABC):
         self.tcex.log.debug(f'action=add-note, len="{len(note)}" report={report.model.id}')
 
     @cached_property
-    def task_settings(self):  # pylint: disable=invalid-overridden-method
+    def task_settings(self):
         """Return the task settings."""
         return TaskSettingModel(
             description=('Enrich Threat Intelligence reports with Document Analysis.'),

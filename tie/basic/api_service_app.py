@@ -5,14 +5,11 @@ ApiServiceFalconABC -> ApiServiceAppABC, not from this class. Consider removing
 this file if it's not needed.
 """
 
-# third-party
+from app_inputs import AppInputs
 from pydantic import ValidationError
 from tcex import TcEx
 from tcex.input.input import Input
 from tcex.logger.trace_logger import TraceLogger
-
-# first-party
-from app_inputs import AppInputs
 
 
 class ApiServiceApp:

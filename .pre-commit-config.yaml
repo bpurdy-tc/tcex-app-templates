@@ -30,22 +30,21 @@ repos:
           (?x)(
               tests/
           )
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
-  - repo: https://github.com/pycqa/pydocstyle
-    rev: 6.3.0
-    hooks:
-      - id: pydocstyle
-        args:
-          - --ignore=D104,D202,D203,D213,D300,D301,D400,D402,D406,D407,D413,D415
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.3.1
     hooks:
       - id: pyupgrade
         args:
           - --py311-plus
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.11
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
   - repo: https://github.com/yunojuno/pre-commit-xenon
     rev: v0.1
     hooks:
@@ -62,9 +61,3 @@ repos:
         stages: [post-commit]
         additional_dependencies:
           - pyyaml>=6.0
-      - id: pylint
-        entry: pylint
-        language: system
-        name: pylint
-        types: [python]
-        args: ['--jobs=3']

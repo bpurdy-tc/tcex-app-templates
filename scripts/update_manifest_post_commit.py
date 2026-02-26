@@ -4,22 +4,23 @@
 Detects which template directories were affected by the last commit and
 regenerates their manifests using ``build_all_manifests.py``.
 """
+
 from __future__ import annotations
 
 import os
-import subprocess
+import subprocess  # nosec B404
 import sys
 from pathlib import Path
 
 # Guard against recursive invocation — build() sets this env var before
 # shelling out to build_all_manifests.py, which itself triggers a commit
 # that would re-invoke this hook.
-if os.environ.get("MANIFEST_HOOK_DISABLED") == "1":
+if os.environ.get('MANIFEST_HOOK_DISABLED') == '1':
     sys.exit(0)
 
 
 def run(cmd, *, cwd=None, timeout=None, check=True, capture_output=False, env=None):
-    return subprocess.run(
+    return subprocess.run(  # nosec B603
         cmd,
         cwd=cwd,
         timeout=timeout,
@@ -31,25 +32,24 @@ def run(cmd, *, cwd=None, timeout=None, check=True, capture_output=False, env=No
 
 
 class ManifestBuilder:
-
     def __init__(self):
         self.log_path = Path(self.repo_path / '.git' / 'manifest-hook.log')
         self.log_path.write_text('', encoding='utf-8')
-        self.skip_message = "[skip-manifest]"
+        self.skip_message = '[skip-manifest]'
 
     @property
     def repo_path(self) -> Path:
         # git rev-parse --show-toplevel returns the absolute path to the repo root
         # e.g. "/Users/you/projects/tcex-app-templates"
-        out = run(["git", "rev-parse", "--show-toplevel"], capture_output=True).stdout.strip()
+        out = run(['git', 'rev-parse', '--show-toplevel'], capture_output=True).stdout.strip()
         return Path(out)
 
     def log(self, msg: str) -> None:
         """Log a message to the hook log file and stdout."""
         try:
-            with self.log_path.open("a", encoding="utf-8") as fh:
-                fh.write(msg + "\n")
-        except Exception:
+            with self.log_path.open('a', encoding='utf-8') as fh:
+                fh.write(msg + '\n')
+        except Exception:  # nosec B110
             pass
         print(msg, flush=True)
 
@@ -58,7 +58,7 @@ class ManifestBuilder:
         # git log -1 --pretty=%B returns just the commit message body
         # e.g. "fix: update app.py logic\n"
         return run(
-            ["git", "log", "-1", "--pretty=%B"], capture_output=True, cwd=self.repo_path
+            ['git', 'log', '-1', '--pretty=%B'], capture_output=True, cwd=self.repo_path
         ).stdout
 
     def _find_template_dirs(self) -> set[str]:
@@ -77,7 +77,7 @@ class ManifestBuilder:
         # -r recurses into subtrees so we get full file paths.
         # e.g. "playbook/basic/app.py\nplaybook/basic/run.py\n"
         out = run(
-            ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"],
+            ['git', 'diff-tree', '--no-commit-id', '--name-only', '-r', 'HEAD'],
             capture_output=True,
             cwd=self.repo_path,
         ).stdout
@@ -114,10 +114,10 @@ class ManifestBuilder:
         # Set MANIFEST_HOOK_DISABLED so the child commit (in commit()) doesn't
         # re-trigger this hook in an infinite loop.
         env = os.environ.copy()
-        env["MANIFEST_HOOK_DISABLED"] = "1"
+        env['MANIFEST_HOOK_DISABLED'] = '1'
         # Pass only the affected dirs so build_all_manifests.py rebuilds just those
         run(
-            [sys.executable, "scripts/build_all_manifests.py", "--root", "."] + sorted(dirs),
+            [sys.executable, 'scripts/build_all_manifests.py', '--root', '.', *sorted(dirs)],
             cwd=self.repo_path,
             timeout=120,
             env=env,
@@ -127,14 +127,14 @@ class ManifestBuilder:
         """Stage manifest.json files for the affected dirs only."""
         self.log('[manifest] staging updated manifests')
         manifests = [f'{d}/manifest.json' for d in sorted(dirs)]
-        run(["git", "add", "--"] + manifests, cwd=self.repo_path)
+        run(['git', 'add', '--', *manifests], cwd=self.repo_path)
 
     def commit(self):
         """Commit staged manifest changes (no-op if nothing staged)."""
         # git diff --cached --quiet exits 0 if nothing is staged, 1 if there are
         # staged changes. We use check=False so exit code 1 doesn't raise.
         result = run(
-            ["git", "diff", "--cached", "--quiet"],
+            ['git', 'diff', '--cached', '--quiet'],
             cwd=self.repo_path,
             check=False,
         )
@@ -147,19 +147,19 @@ class ManifestBuilder:
         # don't re-trigger the post-commit hook recursively.
         run(
             [
-                "git",
-                "-c",
-                "core.hooksPath=/dev/null",
-                "commit",
-                "-m",
-                f"chore: update manifests {self.skip_message}",
-                "--quiet",
+                'git',
+                '-c',
+                'core.hooksPath=/dev/null',
+                'commit',
+                '-m',
+                f'chore: update manifests {self.skip_message}',
+                '--quiet',
             ],
             cwd=self.repo_path,
         )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     manifest_builder = ManifestBuilder()
     try:
         affected = manifest_builder.get_affected_dirs()

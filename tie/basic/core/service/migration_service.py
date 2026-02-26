@@ -1,14 +1,10 @@
 """ThreatConnect Preflight Check Service"""
 
-# standard library
 from pathlib import Path
 
-# third-party
-from packaging.version import parse
-
-# first-party
 from core.model.tie.version_manager_model import VersionManagerModel
 from core.service.sqlite_migration_service import SQLiteMigration
+from packaging.version import parse
 
 
 class MigrationService:

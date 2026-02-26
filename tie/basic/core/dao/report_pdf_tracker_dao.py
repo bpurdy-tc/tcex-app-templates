@@ -1,6 +1,5 @@
 """DAO for ReportPdfTrackerModel."""
 
-# first-party
 from core.json_db import JsonDB, SortBy, SortOrder
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import ReportPdfTrackerModel

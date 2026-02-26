@@ -1,22 +1,18 @@
 """Class for /api/metric/task endpoint"""
 
-# standard library
 import json
 from datetime import UTC, datetime, timedelta
 from functools import cached_property, lru_cache
 
-from spectree import Response
-
-# third-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_metric
 from core.json_db.dao import JsonDBDAO
 from model import JobRequestModel
+from spectree import Response
 
 
-# pylint: disable=unused-argument
 class MetricTaskResource(EndpointBase):
     """Class for /api/metric/task endpoint"""
 
@@ -131,7 +127,6 @@ class MetricTaskResource(EndpointBase):
             resp.text = json.dumps(self._generate_metrics(self._get_ttl_datetime()), default=str)
         except Exception:
             # TODO: @bsummers - update this
-            # standard library
             import traceback  # noqa: PLC0415
 
             resp.text = traceback.format_exc()

@@ -1,14 +1,7 @@
 """Class for /api/metric/processing endpoint"""
 
-# standard library
-
-# standard library
 from functools import cached_property
 
-# third-party
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -17,10 +10,13 @@ from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.json_db.dao import JsonDBDAO
-from core.model.tie import TiProcessingMetricModel, TiProcessingMetricPaginatedResponseModel
+from core.model.tie import (
+    TiProcessingMetricModel,
+    TiProcessingMetricPaginatedResponseModel,
+)
+from spectree import Response
 
 
-# pylint: disable=unused-argument
 class MetricProcessingCollection(EndpointBase):
     """Class for /api/metric/processing endpoint"""
 

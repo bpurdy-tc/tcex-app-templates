@@ -1,6 +1,5 @@
 """Tasks Container"""
 
-# standard library
 import logging
 import os
 import signal
@@ -9,21 +8,17 @@ import traceback
 from datetime import UTC, timedelta
 from typing import TYPE_CHECKING, ClassVar
 
-# third-party
 import arrow
 import schedule
-from tcex import TcEx
-from tcex.exit import ExitCode
-
-# first-party
 from core.beacon import inject
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
 from core.model.settings_model_base import SettingModelBase
 from core.supervisor import Supervisor
+from tcex import TcEx
+from tcex.exit import ExitCode
 
 if TYPE_CHECKING:
-    # first-party
     from task import TaskABC
 
 logger = logging.getLogger('tcex')
@@ -37,8 +32,8 @@ class Tasks:
     def __init__(
         self,
         tcex: TcEx,
-        db: JsonDB = inject(JsonDB),
-        settings: SettingModelBase = inject(SettingModelBase),
+        db: JsonDB = inject(JsonDB),  # noqa: B008
+        settings: SettingModelBase = inject(SettingModelBase),  # noqa: B008
     ):
         """Initialize class properties.
 
@@ -191,7 +186,6 @@ class Tasks:
             # see if we should kill the task as its over its time limit
             if task.process is not None and task.process.is_alive():
                 # update date expires based on heartbeat
-                # pylint: disable=protected-access
                 self.log.trace(
                     f'task-event=watchdog, '
                     f'heartbeat-value={task.ns.heartbeat}, task={task.task_settings.name}'

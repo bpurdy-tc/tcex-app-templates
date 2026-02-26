@@ -1,9 +1,9 @@
 {
-    "inputs": {
-        "tc_owner": "TCI",
-        "sample_types": [
-            "Event"
-        ]
-    },
-    "stage": {}
+  "inputs": {
+    "sample_types": [
+      "Event"
+    ],
+    "tc_owner": "TCI"
+  },
+  "stage": {}
 }

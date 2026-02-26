@@ -1,19 +1,15 @@
 """Falcon Response Class"""
 
-# standard library
 import json
 from functools import partial
 from pathlib import Path
 
-# third-party
 import falcon
-from falcon import media
-
-# first-party
 from core.api.error.custom_error_handler import custom_error_handler
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.util.custom_handler import CustomHandler
+from falcon import media
 
 
 class FalconApp(falcon.App):
@@ -42,7 +38,7 @@ class FalconApp(falcon.App):
         """Add API handlers."""
         json_handler = media.JSONHandler(dumps=partial(json.dumps, cls=CustomHandler))
         extra_handlers = {'application/json': json_handler}
-        self.resp_options.media_handlers.update(extra_handlers)  # pylint: disable=no-member
+        self.resp_options.media_handlers.update(extra_handlers)
 
     def _add_redirect_and_sink(self):
         """Add redirect and sink to angular App."""

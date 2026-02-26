@@ -1,18 +1,19 @@
 """."""
 
-# third-party
-from pydantic import validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_service
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.api.validation.models.query_param_model import param_to_list
-from core.message_service.model.tcva.discovery_request_model import DiscoveryRequestModel
-from core.message_service.model.tcva.discovery_response_model import DiscoveryResponseModel
+from core.message_service.model.tcva.discovery_request_model import (
+    DiscoveryRequestModel,
+)
+from core.message_service.model.tcva.discovery_response_model import (
+    DiscoveryResponseModel,
+)
+from pydantic import validator
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterModel, DiscoveryRequestModel):  # type: ignore
@@ -36,7 +37,12 @@ class DiscoveryResponse(EndpointBaseABC):
         skip_validation=True,
         tags=[tag_service],
     )
-    def on_get(self, _req: FalconRequest, resp: FalconResponse, query_params: GetQueryParamModel):
+    def on_get(
+        self,
+        _req: FalconRequest,
+        resp: FalconResponse,
+        query_params: GetQueryParamModel,
+    ):
         """."""
         response_model = self.message_handler.on_get(query_params)
 

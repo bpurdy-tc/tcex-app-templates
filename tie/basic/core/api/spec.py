@@ -1,15 +1,11 @@
 """SpecTree OpenAPI Specification"""
 
-# standard library
 import os
 
-# third-party
+from core.model.model_base import ModelBase
 from offapi import OpenAPITemplate
 from spectree import SpecTree, Tag
 from tcex.app.config.install_json import InstallJson
-
-# first-party
-from core.model.model_base import ModelBase
 
 ij = InstallJson()
 

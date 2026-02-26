@@ -1,6 +1,5 @@
 """A proxy for a type that can be injected at runtime."""
 
-# standard library
 from typing import Generic, TypeVar
 
 _NotResolved = object()

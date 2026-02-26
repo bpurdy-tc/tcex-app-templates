@@ -1,6 +1,5 @@
 """ThreatConnect Exchange Playbook App"""
 
-# first-party
 from playbook_app import PlaybookApp
 
 

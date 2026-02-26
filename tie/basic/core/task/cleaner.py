@@ -1,15 +1,10 @@
 """Cleaner"""
 
-# standard library
 import shutil
 import time
 from functools import cached_property
 from pathlib import Path
 
-# third-party
-from tcex import TcEx
-
-# first-party
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB, where
 from core.json_db.dao import JsonDBDAO
@@ -19,6 +14,7 @@ from core.model.tie.task_setting_model import TaskSettingModel
 from core.service.error_handling import app_exception
 from core.task.task_abc import TaskABC
 from core.task.tasks import Tasks
+from tcex import TcEx
 
 
 class TaskSettingCustomModel(TaskSettingModel):
@@ -123,7 +119,7 @@ class Cleaner(TaskABC):
         stat = shutil.disk_usage(self.settings.base_path)
         return int(stat.used / stat.total * 100)
 
-    def launch(self):  # pylint: disable=arguments-differ
+    def launch(self):
         """Launch the task."""
         self.process = self.process_metadata()
         self.process.start()

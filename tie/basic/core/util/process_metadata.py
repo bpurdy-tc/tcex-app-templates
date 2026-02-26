@@ -1,12 +1,10 @@
 """Process Metadata"""
 
-# standard library
 import logging
 import multiprocessing
 import platform
 from datetime import UTC
 
-# third-party
 import arrow
 from pydantic import BaseModel, Extra, root_validator
 
@@ -75,7 +73,12 @@ class ProcessMetadata(multiprocessing.Process):
         """Init"""
         kwargs = {} if kwargs is None else kwargs
         super().__init__(
-            group=group, target=target, name=name, args=args, kwargs=kwargs, daemon=daemon
+            group=group,
+            target=target,
+            name=name,
+            args=args,
+            kwargs=kwargs,
+            daemon=daemon,
         )
         self.ns = ns
         self._metadata = metadata

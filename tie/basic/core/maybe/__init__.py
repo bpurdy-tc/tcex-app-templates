@@ -7,7 +7,11 @@ For example, given:
    >>> data = ...  # some dict data structure with optional pieces
 
 the "normal" way:
-   >>> ignore_body = dict.get('options', {}).get('session', {}).get('ignore_body', True)
+   >>> ignore_body = (
+   ...     dict.get('options', {})
+   ...     .get('session', {})
+   ...     .get('ignore_body', True)
+   ... )
 
 vs the maybe way:
    >>> ignore_body = maybe(data).options.session.ignore_body | True
@@ -46,7 +50,6 @@ Something, else map will return Nothing:
 Note that sometimes you may not need to unwrap
 """
 
-# standard library
 from abc import ABC, abstractmethod
 from collections.abc import Callable
 from typing import Any, Generic, TypeVar, cast
@@ -110,7 +113,12 @@ class Something(Maybe[T]):
 
     __match_args__ = ('_value',)
 
-    def __init__(self, value: T, enable_dot_notation_for_containers=True, suppress_exceptions=True):
+    def __init__(
+        self,
+        value: T,
+        enable_dot_notation_for_containers=True,
+        suppress_exceptions=True,
+    ):
         """."""
         self._value: T = value
         self._dot_notation = enable_dot_notation_for_containers
@@ -123,7 +131,9 @@ class Something(Maybe[T]):
                 try:
                     if item in self._value:
                         return Something(
-                            self._value[item], self._dot_notation, self._suppress_exceptions
+                            self._value[item],
+                            self._dot_notation,
+                            self._suppress_exceptions,
                         )  # type: ignore
                 except TypeError:
                     return Nothing
@@ -166,7 +176,9 @@ def maybe(value: T, **dragons) -> Maybe[T]:
 
     Compare:
        >>> profile = {'options': {}}
-       >>> profile.get('options', {}).get('session', {}).get('ignore_body', True)
+       >>> profile.get('options', {}).get('session', {}).get(
+       ...     'ignore_body', True
+       ... )
        True
        >>> maybe(profile)['options']['session']['ignore_body'] | True
        True

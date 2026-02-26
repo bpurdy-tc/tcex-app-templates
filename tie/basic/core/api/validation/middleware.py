@@ -2,14 +2,10 @@
 
 from __future__ import annotations
 
-# standard library
 import traceback
 from typing import Any, get_type_hints
 
-# third-party
 import falcon
-
-# first-party
 from core.api.error.util import error
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse

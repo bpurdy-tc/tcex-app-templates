@@ -1,9 +1,7 @@
 """Transform ABC"""
 
-# standard library
 from abc import ABC
 
-# first-party
 from core.more.transform.transform_abc import TransformABC
 
 

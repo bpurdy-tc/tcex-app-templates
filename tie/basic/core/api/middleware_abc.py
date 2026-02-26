@@ -1,6 +1,5 @@
 """Nexus middleware abstract base class."""
 
-# standard library
 from abc import ABC
 
 

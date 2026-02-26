@@ -1,6 +1,5 @@
 """Class to set App lib directory for current version of Python"""
 
-# standard library
 import contextlib
 import os
 import sys
@@ -29,7 +28,11 @@ class AppLib:
         elif self.lib_major_version in self.lib_directories:
             lib_directory = self.lib_major_version
         else:
-            for lv in [self.lib_micro_version, self.lib_minor_version, self.lib_major_version]:
+            for lv in [
+                self.lib_micro_version,
+                self.lib_minor_version,
+                self.lib_major_version,
+            ]:
                 for d in self.lib_directories:
                     if lv in d:
                         lib_directory = d

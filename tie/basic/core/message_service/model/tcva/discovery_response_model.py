@@ -1,14 +1,10 @@
 """."""
 
-# standard library
 from typing import Literal
 from uuid import UUID
 
-# third-party
-from pydantic import Extra, Field
-
-# first-party
 from core.model.model_base import ModelBase
+from pydantic import Extra, Field
 
 
 class DiscoveryResponseModel(ModelBase, extra=Extra.allow):

@@ -1,10 +1,8 @@
 """Task Module"""
 
-# standard library
 from functools import cached_property
 from pathlib import Path
 
-# first-party
 from core.model.tie.task_setting_pipe_model import TaskSettingPipeModel
 from core.service.writing_service import WritingModel
 from core.task.download_abc import DownloadABC

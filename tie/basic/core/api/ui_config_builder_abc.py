@@ -1,9 +1,7 @@
 """UIConfigBuilderABC concrete implementation for building UI configurations."""
 
-# standard library
 from abc import abstractmethod
 
-# first-party
 from core.task.task_path_pipe_abc import TaskPathPipeABC
 
 

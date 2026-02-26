@@ -1,13 +1,7 @@
 """Class for /api/report/batch-error endpoint"""
 
-# standard library
 from functools import cached_property
 
-# third-party
-from pydantic import Field, validator
-from spectree import Response
-
-# first-party
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
@@ -18,6 +12,8 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.dao.batch_error_dao import BatchErrorDAO
 from core.json_db import SortBy, where
 from core.model.tie import BatchErrorPaginatedResponseModel
+from pydantic import Field, validator
+from spectree import Response
 
 
 class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
@@ -61,7 +57,6 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
                 return v
 
 
-# pylint: disable=unused-argument
 class BatchErrorCollection(EndpointBase):
     """Class for /api/report/batch-error endpoint"""
 
