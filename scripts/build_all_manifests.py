@@ -25,7 +25,7 @@ from pathlib import Path
 # Files/dirs to exclude from manifests.
 # template.yaml and manifest.json are metadata, not deliverable template files.
 EXCLUDED_FILES = {'template.yaml', 'manifest.json', '.DS_Store'}
-EXCLUDED_DIRS = {'.git', '__pycache__', '.venv', 'node_modules', '.nx'}
+EXCLUDED_DIRS = {'.git', '__pycache__', '.ruff_cache', '.venv', 'node_modules', '.nx'}
 
 
 # ---------------------------------------------------------------------------
