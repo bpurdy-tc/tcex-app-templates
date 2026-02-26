@@ -88,7 +88,7 @@ ignore = [
   'TC003', # Move standard library import into a type-checking block
   'TRY003', # Avoid specifying long messages outside the exception class
   'TRY300', # Consider moving this statement to an else block
-  'INP001', # Implicit namespace package (templates repo has no __init__.py)
+  'INP001', # Implicit namespace package
 ]
 # Rule groups to enable (each code prefix enables all rules in that group)
 select = [
@@ -141,9 +141,6 @@ max-args = 10
 [tool.ruff.lint.extend-per-file-ignores]
 # Allow unused imports in __init__.py (commonly used for public API re-exports)
 "__init__.py" = ["F401"]
-# CLI scripts use print() intentionally and may have shebangs
-"scripts/*.py" = ["T201", "EXE001", "D101", "D102", "D103", "D107"]
-"tie/build_manifest.py" = ["T201", "EXE001"]
 
 [tool.ruff.lint.flake8-type-checking]
 runtime-evaluated-base-classes = ["pydantic.BaseModel", "tcex.logger.trace_logger.TraceLogger"]
