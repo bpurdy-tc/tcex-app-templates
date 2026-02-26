@@ -8,8 +8,9 @@ from typing import Any
 from wsgiref.types import StartResponse, WSGIEnvironment
 
 import falcon
-from api_service_app import ApiServiceApp
 from tcex import TcEx
+
+from api_service_app import ApiServiceApp
 
 
 class TcExMiddleware:

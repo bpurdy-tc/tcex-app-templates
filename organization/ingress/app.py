@@ -1,8 +1,9 @@
 """ThreatConnect Job App"""
 
-from job_app import JobApp  # Import default Job App Class (Required)
 from tcex import TcEx
 from tcex.exit import ExitCode
+
+from job_app import JobApp  # Import default Job App Class (Required)
 
 
 class App(JobApp):

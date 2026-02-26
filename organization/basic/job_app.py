@@ -2,9 +2,10 @@
 
 from typing import cast
 
-from app_inputs import AppBaseModel, AppInputs
 from pydantic import ValidationError
 from tcex import TcEx
+
+from app_inputs import AppBaseModel, AppInputs
 
 
 class JobApp:

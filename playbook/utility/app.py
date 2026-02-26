@@ -3,8 +3,9 @@
 import json
 from typing import cast
 
-from playbook_app import PlaybookApp  # Import default Playbook App Class (Required)
 from tcex import TcEx
+
+from playbook_app import PlaybookApp  # Import default Playbook App Class (Required)
 
 
 class App(PlaybookApp):

@@ -2,10 +2,11 @@
 
 from typing import cast
 
-from app_inputs import CapitalizeModel, LowercaseModel, ReverseModel
-from playbook_app import PlaybookApp
 from tcex import TcEx
 from tcex.app.decorator import OnException, OnSuccess, Output
+
+from app_inputs import CapitalizeModel, LowercaseModel, ReverseModel
+from playbook_app import PlaybookApp
 
 
 class App(PlaybookApp):

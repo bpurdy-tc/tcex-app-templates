@@ -4,13 +4,14 @@ import itertools
 from collections.abc import Iterable
 from datetime import UTC, datetime
 
-from app_inputs import TCFiltersModel
-from job_app import JobApp
 from tcex import TcEx
 from tcex.api.tc.v3.indicators.indicator import Indicator
 from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 from tcex.exit import ExitCode
 from tcex.requests_external import ExternalSession
+
+from app_inputs import TCFiltersModel
+from job_app import JobApp
 
 
 class App(JobApp):

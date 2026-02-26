@@ -4,9 +4,10 @@ from abc import abstractmethod
 from typing import cast
 from wsgiref.types import WSGIApplication
 
-from app_inputs import AppBaseModel, AppInputs
 from pydantic import ValidationError
 from tcex import TcEx
+
+from app_inputs import AppBaseModel, AppInputs
 
 
 class ApiServiceApp:

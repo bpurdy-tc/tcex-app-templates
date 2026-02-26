@@ -56,7 +56,6 @@ select = [
   "F",
   "FBT",
   "G",
-  "I",
   "ICN",
   "INP",
   "ISC",
@@ -96,10 +95,6 @@ max-args = 10
 [tool.ruff.lint.flake8-type-checking]
 runtime-evaluated-base-classes = ["pydantic.BaseModel", "tcex.logger.trace_logger.TraceLogger"]
 runtime-evaluated-decorators = ["pydantic.BaseModel", "tcex.logger.trace_logger.TraceLogger"]
-
-[tool.ruff.lint.isort]
-split-on-trailing-comma = true
-known-local-folder = ["."]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"

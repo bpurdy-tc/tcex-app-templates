@@ -3,10 +3,11 @@
 import datetime
 from typing import cast
 
-from app_inputs import TriggerConfigModel
-from service_app import ServiceApp  # Import default Service App Class (Required)
 from tcex.app.playbook import Playbook
 from tcex.app.service import CommonServiceTrigger
+
+from app_inputs import TriggerConfigModel
+from service_app import ServiceApp  # Import default Service App Class (Required)
 
 
 class App(ServiceApp):

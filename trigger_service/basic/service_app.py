@@ -2,9 +2,10 @@
 
 from typing import cast
 
-from app_inputs import AppInputs, ServiceConfigModel, TriggerConfigModel
 from pydantic import ValidationError
 from tcex import TcEx
+
+from app_inputs import AppInputs, ServiceConfigModel, TriggerConfigModel
 
 
 class ServiceApp:
