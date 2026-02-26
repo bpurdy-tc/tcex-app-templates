@@ -1,47 +1,47 @@
 {
-    "README.md": {
-        "sha256": "ff56ba5e33fe412f096539ab868bde4b273aba0a308b2f442b831b24b47bcdd0",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "api_service/basic/README.md"
-    },
-    "api_service_app.py": {
-        "sha256": "1fb5836d7df548b7fe7a825750ab780e062ea658d6fcfc4feed014aea4b696cc",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
-        "template_path": "api_service/basic/api_service_app.py"
-    },
-    "app.py": {
-        "sha256": "d2003ac1610af373854e4d40863b838bad101d9bf87a74bac5126e98e78a71d8",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
-        "template_path": "api_service/basic/app.py"
-    },
-    "app_inputs.json": {
-        "sha256": "5de386148fecfb8b227fe539f91dde07a59deb14c2965729e683d4d6a049b58d",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "api_service/basic/app_inputs.json"
-    },
-    "app_inputs.py": {
-        "sha256": "403535b9ad2e7ea6279faf66d98b2efce0ebf26d45b9a4212f8c1ee0b73d5ac1",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
-        "template_path": "api_service/basic/app_inputs.py"
-    },
-    "install.json": {
-        "sha256": "7e4b65852faf428c37fd396e3c11614d47a4a24d8d48259ff3c3a80617b6b889",
-        "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
-        "template_path": "api_service/basic/install.json"
-    },
-    "requirements.txt": {
-        "sha256": "061d20e03b74818cf06a33c9b23dc9d7bfb456ea3922383f0612f67454cf937b",
-        "last_commit": "80072834613280f1b323333baa81b67b89414110",
-        "template_path": "api_service/basic/requirements.txt"
-    },
-    "run.py": {
-        "sha256": "311f53e931c1b831a0d4d7965755e9af18d0b2163a2938ea418a75ece7f0dbed",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
-        "template_path": "api_service/basic/run.py"
-    },
-    "tcex.json": {
-        "sha256": "efe66d49e2e06d8a83ab2849c1187ba20c6ea9f5c55e6e74818b35ed83d7d6a9",
-        "last_commit": "43a236aa2454ffd38c9665fe86feebacb358290f",
-        "template_path": "api_service/basic/tcex.json"
-    }
+  "README.md": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "ff56ba5e33fe412f096539ab868bde4b273aba0a308b2f442b831b24b47bcdd0",
+    "template_path": "api_service/basic/README.md"
+  },
+  "api_service_app.py": {
+    "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+    "sha256": "1fb5836d7df548b7fe7a825750ab780e062ea658d6fcfc4feed014aea4b696cc",
+    "template_path": "api_service/basic/api_service_app.py"
+  },
+  "app.py": {
+    "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+    "sha256": "d2003ac1610af373854e4d40863b838bad101d9bf87a74bac5126e98e78a71d8",
+    "template_path": "api_service/basic/app.py"
+  },
+  "app_inputs.json": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "5de386148fecfb8b227fe539f91dde07a59deb14c2965729e683d4d6a049b58d",
+    "template_path": "api_service/basic/app_inputs.json"
+  },
+  "app_inputs.py": {
+    "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+    "sha256": "403535b9ad2e7ea6279faf66d98b2efce0ebf26d45b9a4212f8c1ee0b73d5ac1",
+    "template_path": "api_service/basic/app_inputs.py"
+  },
+  "install.json": {
+    "last_commit": "52d2dc0b0ee9f995899f1effe561a99da5add852",
+    "sha256": "7e4b65852faf428c37fd396e3c11614d47a4a24d8d48259ff3c3a80617b6b889",
+    "template_path": "api_service/basic/install.json"
+  },
+  "requirements.txt": {
+    "last_commit": "80072834613280f1b323333baa81b67b89414110",
+    "sha256": "061d20e03b74818cf06a33c9b23dc9d7bfb456ea3922383f0612f67454cf937b",
+    "template_path": "api_service/basic/requirements.txt"
+  },
+  "run.py": {
+    "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+    "sha256": "311f53e931c1b831a0d4d7965755e9af18d0b2163a2938ea418a75ece7f0dbed",
+    "template_path": "api_service/basic/run.py"
+  },
+  "tcex.json": {
+    "last_commit": "43a236aa2454ffd38c9665fe86feebacb358290f",
+    "sha256": "efe66d49e2e06d8a83ab2849c1187ba20c6ea9f5c55e6e74818b35ed83d7d6a9",
+    "template_path": "api_service/basic/tcex.json"
+  }
 }

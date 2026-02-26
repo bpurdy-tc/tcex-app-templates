@@ -1,5 +1,5 @@
 [tool.ruff]
-exclude = ["tests"]
+exclude = ["tests", "_test_inits"]
 line-length = 100
 src = ["."]
 target-version = "py311"
@@ -99,6 +99,7 @@ runtime-evaluated-decorators = ["pydantic.BaseModel", "tcex.logger.trace_logger.
 
 [tool.ruff.lint.isort]
 split-on-trailing-comma = true
+known-local-folder = ["."]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"

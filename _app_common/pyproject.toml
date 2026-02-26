@@ -152,6 +152,7 @@ runtime-evaluated-decorators = ["pydantic.BaseModel", "tcex.logger.trace_logger.
 [tool.ruff.lint.isort]
 # Keep trailing commas when present, which forces one-import-per-line formatting
 split-on-trailing-comma = true
+known-local-folder = ["."]
 
 [tool.ruff.lint.pydocstyle]
 # Use Google-style docstring convention for docstring rule enforcement
