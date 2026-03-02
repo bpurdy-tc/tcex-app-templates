@@ -8,7 +8,6 @@ from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_settings
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.model.tie.item_model import ItemModel
-from pydantic import Extra
 from spectree import Response
 
 try:
@@ -17,14 +16,14 @@ except ImportError:
     UIConfigBuilder = None
 
 
-class FieldLabelModel(ItemModel, extra=Extra.allow):
+class FieldLabelModel(ItemModel, extra='allow'):
     """Field Label Model"""
 
     field: str
     label: str
 
 
-class FormModel(ItemModel, extra=Extra.allow):
+class FormModel(ItemModel, extra='allow'):
     """Form Model"""
 
     choices: list[str] | None
@@ -37,32 +36,32 @@ class FormModel(ItemModel, extra=Extra.allow):
     validators: list
 
 
-class FieldsModel(ItemModel, extra=Extra.allow):
+class FieldsModel(ItemModel, extra='allow'):
     """Fields Model"""
 
     fields: list[FormModel]
 
 
-class ValidatorModel(ItemModel, extra=Extra.allow):
+class ValidatorModel(ItemModel, extra='allow'):
     """Validator Model"""
 
     config: Any
     name: str
 
 
-class AdhocRequestModel(ItemModel, extra=Extra.allow):
+class AdhocRequestModel(ItemModel, extra='allow'):
     """Adhoc Request Model"""
 
     form: FieldsModel
 
 
-class DownloadTiModel(ItemModel, extra=Extra.allow):
+class DownloadTiModel(ItemModel, extra='allow'):
     """Download TI Model"""
 
     form: FieldsModel
 
 
-class JobTableModel(ItemModel, extra=Extra.allow):
+class JobTableModel(ItemModel, extra='allow'):
     """Job Table Model"""
 
     columns: list[FieldLabelModel]
@@ -70,7 +69,7 @@ class JobTableModel(ItemModel, extra=Extra.allow):
     filters: FieldsModel
 
 
-class UiModel(ItemModel, extra=Extra.allow):
+class UiModel(ItemModel, extra='allow'):
     """UI Model"""
 
     adhocRequest: AdhocRequestModel | None = None  # noqa: N815
@@ -81,7 +80,7 @@ class UiModel(ItemModel, extra=Extra.allow):
     version: str
 
 
-class AppConfig(ItemModel, extra=Extra.allow):
+class AppConfig(ItemModel, extra='allow'):
     """App Config Model"""
 
     schema_version: str

@@ -12,7 +12,7 @@ from core.api.validation.models.query_param_filter_model import QueryParamFilter
 from core.api.validation.util import PaginatorResponseModel
 from core.more.error import error
 from core.more.paginator import Paginator
-from pydantic import BaseModel, ValidationError, parse_obj_as
+from pydantic import BaseModel, TypeAdapter, ValidationError
 
 # get primary API logger
 logger = logging.getLogger('tcex')
@@ -75,12 +75,11 @@ def response_media(req: FalconRequest, data: T | Paginator[T]):
         'exclude_none': params.exclude_none,
         'exclude_unset': params.exclude_unset,
         'include': params.include_filter,
-        'sort_keys': True,
     }
     try:
         if isinstance(data, Paginator):
             # handle collection response
-            media = [json.loads(t.json(**json_param)) for t in data.page_data]
+            media = [t.model_dump(mode='json', **json_param) for t in data.page_data]
             paginated_data = {
                 'count': len(media),
                 'data': media,
@@ -88,10 +87,10 @@ def response_media(req: FalconRequest, data: T | Paginator[T]):
                 'previous': data.previous_url,
                 'total_count': data.total_count,
             }
-            media = PaginatorResponseModel(**paginated_data).dict(exclude_none=True)
+            media = PaginatorResponseModel(**paginated_data).model_dump(exclude_none=True)
         else:
             # handle item response
-            media = json.loads(data.json(**json_param))
+            media = data.model_dump(mode='json', **json_param)
 
         return media
     except ValidationError as ex:
@@ -115,7 +114,7 @@ def validate_request_body(req: FalconRequest, model: BaseModel):
             media = req.get_media()
 
             if isinstance(media, list):
-                req.context.body = parse_obj_as(list[model], media)
+                req.context.body = TypeAdapter(list[model]).validate_python(media)
             elif isinstance(media, dict):
                 req.context.body = model(**media)
 
@@ -155,9 +154,9 @@ def validate_request_form_data(req: FalconRequest, model: BaseModel):
         #          ]
         #     },
         binary_fields = []
-        for field, data in model.schema().get('properties').items():
+        for field, data in model.model_json_schema().get('properties').items():
             for ref in data.get('allOf', []):
-                if ref.get('$ref') == '#/definitions/MultipartFormDataModel':
+                if ref.get('$ref') == '#/$defs/MultipartFormDataModel':
                     binary_fields.append(field)
 
         try:

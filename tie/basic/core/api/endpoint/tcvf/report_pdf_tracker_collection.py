@@ -12,7 +12,7 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.json_db import SortBy, where
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import ReportPdfTrackerModel, ReportPdfTrackerResponseModel
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from spectree import Response
 
 
@@ -29,8 +29,9 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
             'group_id': where.contains(self.group_id),
         }
 
-    @validator('sort', always=True)
-    def _sort(cls, v):  # noqa: N805
+    @field_validator('sort')
+    @classmethod
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.

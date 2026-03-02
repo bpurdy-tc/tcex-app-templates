@@ -10,7 +10,7 @@ from core.api.validation.models.query_param_model import (
     values_to_snake,
 )
 from core.json_db.where import ToWhere, WhereDict
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 
 # get primary API logger
 logger = logging.getLogger('tcex')
@@ -159,12 +159,14 @@ class QueryParamFilterModel(QueryParamModel, ToWhere):
 
     # convert params with multiple value (e.g., ?id=1,id=2)
     # and/or csv delimited (e.g., id=1,2) into a list.
-    @validator('exclude', 'include', pre=True)
-    def _param_to_model_filter(cls, value):  # noqa: N805
+    @field_validator('exclude', 'include', mode='before')
+    @classmethod
+    def _param_to_model_filter(cls, value):
         return param_to_list(value)
 
-    @validator('exclude', 'include', pre=True)
-    def _exclude_extra_include_value_to_snake(cls, value):  # noqa: N805
+    @field_validator('exclude', 'include', mode='before')
+    @classmethod
+    def _exclude_extra_include_value_to_snake(cls, value):
         return values_to_snake(value)
 
     @property

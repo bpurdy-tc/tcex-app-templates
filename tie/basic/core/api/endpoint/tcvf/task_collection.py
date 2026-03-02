@@ -29,7 +29,7 @@ class TaskCollection(EndpointBase):
         """Get task data."""
         response_media = []
         for task in self.tasks.all():
-            d = task.data.dict(exclude_none=True)
+            d = task.data.model_dump(exclude_none=True)
             d['description'] = task.task_settings.description
             d['index'] = None
             if task.task_settings.task_type == 'path_pipe':

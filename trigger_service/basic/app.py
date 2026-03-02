@@ -19,7 +19,9 @@ class App(ServiceApp):
 
         while service.loop_forever(sleep=15):
             # startup inputs, access via self.inputs.model.service_input
-            self.log.debug(f'Server configuration service_input {self.tcex.inputs.model.dict()}')
+            self.log.debug(
+                f'Server configuration service_input {self.tcex.inputs.model.model_dump()}'
+            )
 
             # any "extra" args passed to fire_event will be
             # available in kwargs in the callback method

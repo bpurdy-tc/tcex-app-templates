@@ -78,7 +78,7 @@ class Scheduler(TaskABC):
             job.pipeline = self.pipeline
         self.job_dao.save(job)
 
-        self.tcex.log.info(f'action=schedule-download, job={job.dict()}')
+        self.tcex.log.info(f'action=schedule-download, job={job.model_dump()}')
 
     @cached_property
     def task_settings(self) -> TaskSettingModel:

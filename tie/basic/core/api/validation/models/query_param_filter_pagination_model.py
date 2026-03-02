@@ -2,10 +2,9 @@
 
 from core.api.validation.models.query_param_filter_model import QueryParamFilterModel
 from core.json_db import SortBy, SortOrder
-from pydantic import Field, validator
+from pydantic import ConfigDict, Field, field_validator
 
 
-# ruff: noqa: N805
 class QueryParamFilterPaginationModel(QueryParamFilterModel):
     """Query Param Filter Pagination Model."""
 
@@ -30,7 +29,8 @@ class QueryParamFilterPaginationModel(QueryParamFilterModel):
     sort: str | SortBy = Field('id', description='The field name used to sort the results.')
     sort_order: SortOrder = Field(SortOrder.ASC, description='The sort order: asc|desc.')
 
-    @validator('sort', always=True)
+    @field_validator('sort', mode='before')
+    @classmethod
     def _sort(cls, v):
         """Validate sort value."""
         match v.lower():
@@ -43,7 +43,8 @@ class QueryParamFilterPaginationModel(QueryParamFilterModel):
             case _:
                 return v
 
-    @validator('sort_order', always=True)
+    @field_validator('sort_order', mode='before')
+    @classmethod
     def _sort_order(cls, v):
         """Validate sort order."""
         match v:
@@ -62,8 +63,4 @@ class QueryParamFilterPaginationModel(QueryParamFilterModel):
                 raise ValueError(msg)
         return v
 
-    class Config:
-        """Model Configuration."""
-
-        validate_assignment = True
-        validate_all = True
+    model_config = ConfigDict(validate_assignment=True, validate_default=True)

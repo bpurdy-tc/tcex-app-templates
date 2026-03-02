@@ -4,10 +4,10 @@ from uuid import UUID
 
 from core.message_service.model.tcva.message_types import MessageTypesBlock
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field
+from pydantic import Field
 
 
-class BlockRequestModel(ModelBase, extra=Extra.allow):
+class BlockRequestModel(ModelBase, extra='allow'):
     """Enrichment Request Model"""
 
     indicator: str = Field(..., description='The indicator value that should be enriched.')

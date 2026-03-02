@@ -71,7 +71,7 @@ class AttributeChecker:
         }
         for at in self.tcex.api.tc.v3.attribute_types(params=params):
             try:
-                model = at.model.dict()
+                model = at.model.model_dump()
                 supported_types = {
                     self._norm_str(mapping.get('type'))
                     for mapping in model.get('attributeTypeMappings', [])

@@ -9,7 +9,7 @@ from core.api.validation.models.query_param_filter_model import QueryParamFilter
 from core.api.validation.models.query_param_model import param_to_list
 from core.model.model_base import ModelBase
 from more.transform.sample_transform import SampleTransform
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from spectree import Response
 
 
@@ -20,7 +20,7 @@ class GetQueryParamModel(QueryParamFilterModel):
     type: str = Field(..., description='The type of object to retrieve.')
     # convert params with multiple value (e.g., ?id=1,id=2)
     # and/or csv delimited (e.g., id=1,2) into a list.
-    _ids_to_list = validator('ids', allow_reuse=True, pre=True)(param_to_list)
+    _ids_to_list = field_validator('ids', mode='before')(param_to_list)
 
 
 class UploadRequestBody(ModelBase):

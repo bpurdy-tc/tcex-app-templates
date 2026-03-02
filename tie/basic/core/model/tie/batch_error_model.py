@@ -1,12 +1,11 @@
 """Model Definition"""
 
 from datetime import UTC, datetime
-from typing import ClassVar
 
 from core.json_db import Index
 from core.model.model_base import ModelBase
 from core.model.response.paginated_response import PaginatedResponseModel
-from pydantic import Field
+from pydantic import Field, field_serializer
 
 error_codes_name_map = {
     '0x1001': 'General Error',
@@ -38,12 +37,11 @@ class BatchErrorModel(ModelBase):
     reason: str = Field(..., description='')
     request_id: str = Field(..., description='')
 
-    class Config:
-        """Model Config"""
-
-        json_encoders: ClassVar[dict] = {
-            datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S'),
-        }
+    @field_serializer('date_added')
+    @classmethod
+    def serialize_date_added(cls, v: datetime) -> str:
+        """Serialize datetime to string format."""
+        return v.strftime('%Y-%m-%d %H:%M:%S')
 
 
 class UnknownBatchErrorModel(BatchErrorModel):

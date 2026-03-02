@@ -4,10 +4,10 @@ from uuid import UUID
 
 from core.message_service.model.tcva.message_types import MessageTypesEnrichmentResponse
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field
+from pydantic import Field
 
 
-class EnrichmentResponseModel(ModelBase, extra=Extra.allow):
+class EnrichmentResponseModel(ModelBase, extra='allow'):
     """Enrichment Request Model"""
 
     data: dict | list[dict] = Field(

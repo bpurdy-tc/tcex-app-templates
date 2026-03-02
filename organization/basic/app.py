@@ -11,4 +11,4 @@ class App(JobApp):
 
         This method should contain the core logic of the App.
         """
-        self.log.info(f'Sample Input is: {self.in_.dict()}')
+        self.log.info(f'Sample Input is: {self.in_.model_dump()}')

@@ -6,10 +6,10 @@ from core.message_service.model.tcva.message_types import (
     MessageTypesInvestigateResponse,
 )
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field
+from pydantic import Field
 
 
-class InvestigateResponseModel(ModelBase, extra=Extra.allow):
+class InvestigateResponseModel(ModelBase, extra='allow'):
     """Enrichment Request Model"""
 
     data: dict | list[dict] = Field(

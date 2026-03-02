@@ -1,12 +1,11 @@
 """Model Definition"""
 
 import datetime
-from typing import ClassVar
 
 from core.json_db import Index
 from core.model.model_base import ModelBase
 from core.model.response.paginated_response import PaginatedResponseModel
-from pydantic import Field
+from pydantic import Field, field_serializer
 
 
 class DocAnalysisTrackerModel(ModelBase):
@@ -20,12 +19,10 @@ class DocAnalysisTrackerModel(ModelBase):
         datetime.datetime.now(datetime.UTC), description=''
     )
 
-    class Config:
-        """Model Config"""
-
-        json_encoders: ClassVar[dict] = {
-            datetime.datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S')
-        }
+    @field_serializer('date_last_attempt')
+    def serialize_datetime(self, v: datetime.datetime, _info) -> str:
+        """Serialize datetime to string."""
+        return v.strftime('%Y-%m-%d %H:%M:%S')
 
 
 class DocAnalysisTrackerResponseModel(PaginatedResponseModel[DocAnalysisTrackerModel]):

@@ -1,17 +1,13 @@
 """Falcon Request Class"""
 
 import falcon
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class ContextModel(BaseModel):
     """Context model."""
 
-    class Config:
-        """Model configuration."""
-
-        extra = 'allow'
-        validate_default = True
+    model_config = ConfigDict(extra='allow', validate_default=True)
 
     # falcon initializes the context object, which should
     # be empty by default, but not with None values???

@@ -196,7 +196,8 @@ class Tasks:
                 ):
                     self.log.warning(
                         f'task-event=kill-task, task-name={task.task_settings.name}, '
-                        f'process-id={task.process.pid}, metadata={task.process.metadata.dict()}, '
+                        f'process-id={task.process.pid}, '
+                        f'metadata={task.process.metadata.model_dump()}, '
                     )
                     self.kill(task)
 

@@ -2,10 +2,8 @@
 
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import ClassVar
 
-from arrow import arrow
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel, ConfigDict
 
 
 class SettingModelBase(BaseModel):
@@ -29,9 +27,4 @@ class SettingModelBase(BaseModel):
     status_pending: str = 'pending'
     throttle_limit: int = 3
 
-    class Config:
-        """Pydantic Config"""
-
-        arbitrary_types_allowed = True
-        json_encoders: ClassVar[dict] = {arrow.Arrow: lambda v: v.isoformat()}
-        extra = Extra.allow
+    model_config = ConfigDict(arbitrary_types_allowed=True, extra='allow')

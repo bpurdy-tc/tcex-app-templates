@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-from pydantic import Field
+from pydantic import ConfigDict, Field
 
 from .task_setting_model import TaskSettingModel
 
@@ -46,10 +46,7 @@ class TaskSettingPipeModel(TaskSettingModel):
         description='The output working directory for the task. Set by tasks.add_task_pipe.',
     )
 
-    class Config:
-        """Model Configuration"""
-
-        validate_assignment = True
+    model_config = ConfigDict(validate_assignment=True)
 
     def camel_to_snake(self, camel_string: str) -> str:
         """Return snake case string from a camel case string."""

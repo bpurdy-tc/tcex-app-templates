@@ -46,7 +46,7 @@ class EnrichmentHandler(MessageHandlerABC):
 
     def on_post(self, message: EnrichmentRequestModel):
         """."""
-        return self.enrich(message).dict(exclude_none=True)
+        return self.enrich(message).model_dump(exclude_none=True)
 
     def on_message(self, message: EnrichmentRequestModel):
         """."""

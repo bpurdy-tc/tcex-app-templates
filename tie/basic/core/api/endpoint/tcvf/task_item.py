@@ -48,7 +48,7 @@ class TaskItem(EndpointBase):
         task_name = urllib.parse.unquote(task_name)
         for task in self.tasks.all():
             if task.data.name.lower() == task_name.lower():
-                response_media = task.data.dict(exclude_none=True)
+                response_media = task.data.model_dump(exclude_none=True)
                 response_media['description'] = task.task_settings.description
                 paused = any(
                     [

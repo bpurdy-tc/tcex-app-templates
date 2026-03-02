@@ -34,7 +34,7 @@ from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
 from core.dao.job_dao import JobRequestDAO
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 from spectree import Response
 
 
@@ -58,8 +58,9 @@ class JobStatusUpdateRequest(BaseModel):
         description='Attempt to move job files to the target working directory.',
     )
 
-    @validator('target_stage')
-    def _validate_target_stage(cls, v):  # noqa: N805
+    @field_validator('target_stage')
+    @classmethod
+    def _validate_target_stage(cls, v):
         """Validate target_stage contains only safe characters (prevent path traversal)."""
         if not re.match(r'^[a-zA-Z0-9_\- ]+$', v):
             raise ValueError(

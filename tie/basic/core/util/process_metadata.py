@@ -6,7 +6,7 @@ import platform
 from datetime import UTC
 
 import arrow
-from pydantic import BaseModel, Extra, root_validator
+from pydantic import BaseModel, ConfigDict, model_validator
 
 logger = logging.getLogger('tcex')
 
@@ -18,11 +18,13 @@ if not platform.platform().upper().startswith('LINUX'):
     multiprocessing.set_start_method('fork')
 
 
-class Metadata(BaseModel, arbitrary_types_allowed=True, extra=Extra.allow):
+class Metadata(BaseModel):
     """Metadata common to all ProcessMetadata instances.
 
     Note this model allows extra, so arbitrary values can be attached to metadata.
     """
+
+    model_config = ConfigDict(arbitrary_types_allowed=True, extra='allow')
 
     max_execution_time_minutes: int
     last_heartbeat: arrow.Arrow
@@ -32,8 +34,9 @@ class Metadata(BaseModel, arbitrary_types_allowed=True, extra=Extra.allow):
     name: str
     pid: int
 
-    @root_validator
-    def expires_percent(cls, values):  # noqa: N805
+    @model_validator(mode='before')
+    @classmethod
+    def expires_percent(cls, values):
         """Calculate percent of max runtime that has elapsed."""
         last_heartbeat: arrow.Arrow = values.get('last_heartbeat')
         date_expires: arrow.Arrow = last_heartbeat.shift(

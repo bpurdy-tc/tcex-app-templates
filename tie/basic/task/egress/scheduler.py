@@ -42,7 +42,7 @@ class Scheduler(TaskABC):
 
         self.job_dao.save(job)
 
-        self.tcex.log.info(f'action=schedule-download, job={job.dict()}')
+        self.tcex.log.info(f'action=schedule-download, job={job.model_dump()}')
 
     def _add_backfill_jobs(self, end_date: datetime):
         """Add backfill jobs to the database."""

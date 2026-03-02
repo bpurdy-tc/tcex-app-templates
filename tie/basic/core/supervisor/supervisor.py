@@ -410,6 +410,6 @@ class Supervisor:
             Dictionary containing pipeline health and config.
         """
         return {
-            'config': self._config.dict(),
+            'config': self._config.model_dump(),
             'pipeline_health': self.get_pipeline_health(),
         }

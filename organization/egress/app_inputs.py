@@ -1,8 +1,7 @@
 """App Inputs"""
 # pyright: reportGeneralTypeIssues=false
 
-from pydantic import validator
-from pydantic.class_validators import root_validator
+from pydantic import field_validator, model_validator
 from tcex.input.field_type import Choice, DateTime, always_array, integer, string
 from tcex.input.input import Input
 from tcex.input.model.app_organization_model import AppOrganizationModel
@@ -65,7 +64,7 @@ class TCFiltersModel(AppOrganizationModel):
 
     # validates what we get from core and then turns to array
     tags: string(allow_empty=False) | None
-    _always_array = validator('tags', allow_reuse=True)(always_array(split_csv=True))
+    _always_array = field_validator('tags')(always_array(split_csv=True))
 
     # validate that if tql is empty, then
     # 1. last_modified is required
@@ -75,7 +74,10 @@ class TCFiltersModel(AppOrganizationModel):
     # 1. no other filters are allowed (except owners)
     # validate if tql is not empty and contains ownerName, then
     # 1. no owner is selected
-    _tql_none_validation = root_validator(allow_reuse=True)(validate_tql)
+    @model_validator(mode='before')
+    @classmethod
+    def _tql_none_validation(cls, values: dict) -> dict:
+        return validate_tql(cls, values)
 
 
 class AppBaseModel(TCFiltersModel):

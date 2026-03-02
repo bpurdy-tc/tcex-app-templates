@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from pydantic import BaseModel, Field, root_validator
+from pydantic import BaseModel, Field, model_validator
 
 
 class SupervisorConfigModel(BaseModel):
@@ -46,13 +46,12 @@ class SupervisorConfigModel(BaseModel):
         description='Pipelines on probation after stale restart. Maps to probation job ID or None.',
     )
 
-    @root_validator
-    def _validate_max_greater_than_base(cls, values):  # noqa: N805
+    @model_validator(mode='after')
+    def _validate_max_greater_than_base(self):
         """Ensure backoff_max_seconds >= backoff_base_seconds."""
-        base = values.get('backoff_base_seconds')
-        max_val = values.get('backoff_max_seconds')
-        if base is not None and max_val is not None and max_val < base:
+        if self.backoff_max_seconds < self.backoff_base_seconds:
             raise ValueError(
-                f'backoff_max_seconds ({max_val}) must be >= backoff_base_seconds ({base})'
+                f'backoff_max_seconds ({self.backoff_max_seconds}) '
+                f'must be >= backoff_base_seconds ({self.backoff_base_seconds})'
             )
-        return values
+        return self

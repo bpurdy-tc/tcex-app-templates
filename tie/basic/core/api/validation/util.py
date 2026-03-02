@@ -12,7 +12,7 @@ from core.api.error.util import error
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.model_base import ModelBase
-from pydantic import BaseModel, ValidationError, parse_obj_as
+from pydantic import BaseModel, TypeAdapter, ValidationError
 
 # from core.api.validation.models import (
 #     QueryParamFilterModel,
@@ -91,7 +91,7 @@ def validate_request_body(req: FalconRequest, model: type[BaseModel]):
     if model is not None:
         try:
             if isinstance(req.media, list):
-                req.context.body = parse_obj_as(list[model], req.media)
+                req.context.body = TypeAdapter(list[model]).validate_python(req.media)
             elif isinstance(req.media, dict):
                 req.context.body = model(**req.media)
 
@@ -188,9 +188,9 @@ def validate_response_body(req: FalconRequest, resp: FalconResponse, model: type
     if model is not None:
         try:
             if isinstance(resp.media, list):
-                resp.media = [model(**m).dict(by_alias=True) for m in resp.media]
+                resp.media = [model(**m).model_dump(by_alias=True) for m in resp.media]
             elif isinstance(resp.media, dict):
-                resp.media = model(**resp.media).dict(by_alias=True)
+                resp.media = model(**resp.media).model_dump(by_alias=True)
             logger.debug('event=validate-response-body, results=succeeded')
         except ValidationError as ex:
             _process_validation_response_errors(ex, req)

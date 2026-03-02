@@ -11,31 +11,35 @@ from contextlib import contextmanager
 from enum import Enum
 from functools import cached_property, lru_cache
 from pathlib import Path
-from types import GenericAlias
-from typing import TYPE_CHECKING, Any, ParamSpec, TypeVar, cast
+from typing import Any, ParamSpec, TypeVar, cast, get_args, get_origin
 
 import uuid6
 from pydantic import BaseModel, Field
-from pydantic.fields import Undefined
+from pydantic_core import PydanticUndefined
 from tcex.logger.trace_logger import TraceLogger
-
-if TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, NoArgAnyCallable
 
 SortBy = Enum('SortBy', ['CREATED', 'MODIFIED', 'INDEX'])
 SortOrder = Enum('SortOrder', {'ASC': 'asc', 'DESC': 'desc'})
 
 
+def _get_json_schema_extra(field_info) -> dict:
+    """Get json_schema_extra dict from a FieldInfo, handling None and callable."""
+    extra = field_info.json_schema_extra
+    if extra is None:
+        return {}
+    if callable(extra):
+        return {}
+    return extra
+
+
 def Embedded(  # noqa: N802
-    default: Any = Undefined,
+    default: Any = PydanticUndefined,
     *,
-    default_factory: 'NoArgAnyCallable | None' = None,
+    default_factory: Callable | None = None,
     alias: str | None = None,
     title: str | None = None,
     description: str | None = None,
-    exclude: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
-    include: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
-    const: bool | None = None,
+    exclude: bool | None = None,
     gt: float | None = None,
     ge: float | None = None,
     lt: float | None = None,
@@ -44,13 +48,8 @@ def Embedded(  # noqa: N802
     allow_inf_nan: bool | None = None,
     max_digits: int | None = None,
     decimal_places: int | None = None,
-    min_items: int | None = None,
-    max_items: int | None = None,
-    unique_items: bool | None = None,
     min_length: int | None = None,
     max_length: int | None = None,
-    allow_mutation: bool = True,
-    regex: str | None = None,
     discriminator: str | None = None,
     repr: bool = True,  # noqa: A002
     **extra: Any,
@@ -67,8 +66,6 @@ def Embedded(  # noqa: N802
         title=title,
         description=description,
         exclude=exclude,
-        include=include,
-        const=const,
         gt=gt,
         ge=ge,
         lt=lt,
@@ -77,30 +74,22 @@ def Embedded(  # noqa: N802
         allow_inf_nan=allow_inf_nan,
         max_digits=max_digits,
         decimal_places=decimal_places,
-        min_items=min_items,
-        max_items=max_items,
-        unique_items=unique_items,
         min_length=min_length,
         max_length=max_length,
-        allow_mutation=allow_mutation,
-        regex=regex,
         discriminator=discriminator,
         repr=repr,
-        json_db_embedded=True,
-        **extra,
+        json_schema_extra={'json_db_embedded': True, **extra},
     )
 
 
 def Index(  # noqa: N802
-    default: Any = Undefined,
+    default: Any = PydanticUndefined,
     *,
-    default_factory: 'NoArgAnyCallable | None' = lambda: str(uuid6.uuid7()),
+    default_factory: Callable | None = lambda: str(uuid6.uuid7()),
     alias: str | None = None,
     title: str | None = None,
     description: str | None = None,
-    exclude: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
-    include: 'AbstractSetIntStr | MappingIntStrAny | Any | None' = None,
-    const: bool | None = None,
+    exclude: bool | None = None,
     gt: float | None = None,
     ge: float | None = None,
     lt: float | None = None,
@@ -109,13 +98,8 @@ def Index(  # noqa: N802
     allow_inf_nan: bool | None = None,
     max_digits: int | None = None,
     decimal_places: int | None = None,
-    min_items: int | None = None,
-    max_items: int | None = None,
-    unique_items: bool | None = None,
     min_length: int | None = None,
     max_length: int | None = None,
-    allow_mutation: bool = True,
-    regex: str | None = None,
     discriminator: str | None = None,
     repr: bool = True,  # noqa: A002
     **extra: Any,
@@ -128,8 +112,6 @@ def Index(  # noqa: N802
         title=title,
         description=description,
         exclude=exclude,
-        include=include,
-        const=const,
         gt=gt,
         ge=ge,
         lt=lt,
@@ -138,17 +120,11 @@ def Index(  # noqa: N802
         allow_inf_nan=allow_inf_nan,
         max_digits=max_digits,
         decimal_places=decimal_places,
-        min_items=min_items,
-        max_items=max_items,
-        unique_items=unique_items,
         min_length=min_length,
         max_length=max_length,
-        allow_mutation=allow_mutation,
-        regex=regex,
         discriminator=discriminator,
         repr=repr,
-        json_db_index=True,
-        **extra,
+        json_schema_extra={'json_db_index': True, **extra},
     )
 
 
@@ -176,6 +152,14 @@ def enforce_write_policies(fn: Callable[A, R]) -> Callable[A, R]:
 
 T = TypeVar('T')
 P = TypeVar('P', bound=BaseModel)
+
+
+def _get_inner_type(annotation):
+    """Extract the inner type from a type annotation (e.g., list[Foo] -> Foo)."""
+    args = get_args(annotation)
+    if args:
+        return args[0]
+    return annotation
 
 
 class JsonDB:
@@ -402,20 +386,26 @@ class JsonDB:
             self.log.warning(f'event=stale-path-skipped, file="{file_path}"')
             return None
 
-        for field, model_info in clz.__fields__.items():
+        for field, field_info in clz.model_fields.items():
+            annotation = field_info.annotation
+            json_extra = _get_json_schema_extra(field_info)
+            is_embedded = json_extra.get('json_db_embedded', False)
+            inner_type = _get_inner_type(annotation)
+
             if (
-                isinstance(model_info.outer_type_, GenericAlias)
-                and model_info.outer_type_.__origin__ is list
-                and issubclass(model_info.type_, BaseModel)
-                and not model_info.field_info.extra.get('json_db_embedded', False)
+                get_origin(annotation) is list
+                and inner_type is not None
+                and isinstance(inner_type, type)
+                and issubclass(inner_type, BaseModel)
+                and not is_embedded
             ):
-                unserialized[field] = [
-                    self.load(model_info.type_, item) for item in unserialized[field]
-                ]
-            elif issubclass(model_info.type_, BaseModel) and not model_info.field_info.extra.get(
-                'json_db_embedded', False
+                unserialized[field] = [self.load(inner_type, item) for item in unserialized[field]]
+            elif (
+                isinstance(inner_type, type)
+                and issubclass(inner_type, BaseModel)
+                and not is_embedded
             ):
-                unserialized[field] = self.load(model_info.type_, unserialized[field])
+                unserialized[field] = self.load(inner_type, unserialized[field])
 
         return clz(**unserialized)
 
@@ -441,23 +431,23 @@ class JsonDB:
     def save(self, entity: BaseModel):
         """Save entity to disk in a safe way."""
         composed_entities = []
-        for field, field_info in entity.__fields__.items():
+        for field, field_info in entity.model_fields.items():
             value = getattr(entity, field)
-            if isinstance(value, BaseModel) and not field_info.field_info.extra.get(
-                'json_db_embedded', False
-            ):
+            json_extra = _get_json_schema_extra(field_info)
+            is_embedded = json_extra.get('json_db_embedded', False)
+            if isinstance(value, BaseModel) and not is_embedded:
                 composed_entities.append((field, self.get_index_value(value), value))
             if (
                 isinstance(value, list)
                 and len(value) > 0
                 and isinstance(value[0], BaseModel)
-                and not field_info.field_info.extra.get('json_db_embedded', False)
+                and not is_embedded
             ):
                 composed_entities.append(
                     (field, [self.get_index_value(item) for item in value], value)
                 )
 
-        serialized = entity.dict(exclude={field[0] for field in composed_entities})
+        serialized = entity.model_dump(exclude={field[0] for field in composed_entities})
         for field_name, index_value, value in composed_entities:
             if isinstance(value, list):
                 for item in value:
@@ -515,12 +505,13 @@ class JsonDB:
             TypeError: If no index field is defined or found for the given entity.
         """
         index_field = None
-        for field, value in entity.__fields__.items():
-            if value.field_info.extra.get('json_db_index', False):
+        for field, field_info in entity.model_fields.items():
+            json_extra = _get_json_schema_extra(field_info)
+            if json_extra.get('json_db_index', False):
                 index_field = field
                 break
         else:
-            if 'id' in entity.__fields__:
+            if 'id' in entity.model_fields:
                 index_field = 'id'
 
         if index_field is None:

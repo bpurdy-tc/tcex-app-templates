@@ -2,7 +2,7 @@
 
 from core.model.response.paginated_response import PaginatedResponseModel
 from core.model.tie.item_model import ItemModel
-from pydantic import Extra, Field, validator
+from pydantic import ConfigDict, Field, model_validator
 
 
 class TaskSettingModel(ItemModel):
@@ -37,14 +37,14 @@ class TaskSettingModel(ItemModel):
     # the type of task (e.g., path_pipe, standalone)
     task_type: str = Field('standalone', description='The type of task (e.g., pipe, single).')
 
-    @validator('slug', always=True, pre=True)
-    def _create_slug(cls, _, values):  # noqa: N805
-        return values.get('name').lower().replace(' ', '-')
+    @model_validator(mode='before')
+    @classmethod
+    def _create_slug(cls, values):
+        if values.get('name'):
+            values['slug'] = values.get('name').lower().replace(' ', '-')
+        return values
 
-    class Config:
-        """Model Definition"""
-
-        extra = Extra.allow
+    model_config = ConfigDict(extra='allow')
 
 
 class TaskPaginatedResponseModel(PaginatedResponseModel[TaskSettingModel]):

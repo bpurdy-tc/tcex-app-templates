@@ -68,7 +68,7 @@ class App(ApiServiceApp):
         """Initialize class properties."""
         super().__init__(_tcex)
 
-        self.tcex.log.trace(f'inputs: {self.in_.dict()}')
+        self.tcex.log.trace(f'inputs: {self.in_.model_dump()}')
 
     def build_falcon_app(self):
         """Build falcon app."""

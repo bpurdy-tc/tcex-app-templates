@@ -144,7 +144,7 @@ class SupportLogSearchResource(EndpointBase):
                     continue
 
                 # add parsed data to event
-                _event.update(parsed_data.dict())
+                _event.update(parsed_data.model_dump())
 
                 # increment line number matched
                 self.line_number_matched += 1

@@ -58,7 +58,9 @@ class MessageHandlerABC:
 
     def publish_to_broker(self, message, topic):
         """Publish messages to the message broker."""
-        self.message_service.message_broker.publish(message.json(exclude_none=True), topic=topic)
+        self.message_service.message_broker.publish(
+            message.model_dump_json(exclude_none=True), topic=topic
+        )
 
     def acknowledge_data(
         self, message: EnrichmentRequestModel

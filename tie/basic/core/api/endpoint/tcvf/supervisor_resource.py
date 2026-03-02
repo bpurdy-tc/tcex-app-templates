@@ -174,6 +174,6 @@ class SupervisorResource(EndpointBase):
 
         resp.media = {
             'message': 'Configuration updated',
-            'config': self.tasks.supervisor.config.dict(),
+            'config': self.tasks.supervisor.config.model_dump(),
         }
         resp.status = falcon.HTTP_200

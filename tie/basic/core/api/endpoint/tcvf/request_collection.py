@@ -13,7 +13,7 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import SortBy, where
 from model.job_request_model import JobRequestPaginatedResponseModel
-from pydantic import validator
+from pydantic import ConfigDict, field_validator
 from spectree import Response
 
 
@@ -23,10 +23,11 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
     @property
     def extra_fields(self):
         """The extra fields that are not part of the base model."""
-        return {key: value for key, value in self.__dict__.items() if key not in self.__fields__}
+        return {key: value for key, value in self.__dict__.items() if key not in self.model_fields}
 
-    @validator('sort', always=True)
-    def _sort(cls, v):  # noqa: N805
+    @field_validator('sort')
+    @classmethod
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.
@@ -73,12 +74,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
                 # print(f'Unknown type for {key}: {value}')
         return where_dict
 
-    class Config:  # type: ignore
-        """Model Configuration."""
-
-        extra = 'allow'
-        validate_assignment = True
-        validate_all = True
+    model_config = ConfigDict(extra='allow', validate_assignment=True)
 
 
 class RequestCollectionResource(EndpointBase):

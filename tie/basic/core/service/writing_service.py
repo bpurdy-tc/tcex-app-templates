@@ -11,7 +11,7 @@ from core.json_db.dao import JsonDBDAO
 from core.model.tie import TiProcessingMetricModel
 from core.util.custom_handler import CustomHandler
 from model.job_request_model import JobRequestModel
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 
 
 class WritingModel(BaseModel):
@@ -26,8 +26,9 @@ class WritingModel(BaseModel):
     file_seperator: str = '#'
     metric_name: str | None = None
 
-    @root_validator
-    def root_validation(cls, values):  # noqa: N805
+    @model_validator(mode='before')
+    @classmethod
+    def root_validation(cls, values):
         """Validate the model."""
         if not values.get('metric_name'):
             values['metric_name'] = values['page_name'].title()

@@ -26,11 +26,14 @@ class FalconResponse(falcon.Response):
         media: dict | list[dict]
         try:
             if isinstance(response_data, type(BaseModel)):
-                media = response_data.dict(**params.filter_values)
+                media = response_data.model_dump(**params.filter_values)
             elif isinstance(response_data, list):
-                media = [model.parse_obj(a).dict(**params.filter_values) for a in response_data]
+                media = [
+                    model.model_validate(a).model_dump(**params.filter_values)
+                    for a in response_data
+                ]
             else:
-                media = model.parse_obj(response_data).dict(**params.filter_values)
+                media = model.model_validate(response_data).model_dump(**params.filter_values)
         except ValidationError as ex:
             raise falcon.HTTPInternalServerError from ex
         except Exception as ex:

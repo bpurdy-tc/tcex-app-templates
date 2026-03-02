@@ -12,7 +12,7 @@ from core.message_service.model.tcva.discovery_request_model import (
 from core.message_service.model.tcva.discovery_response_model import (
     DiscoveryResponseModel,
 )
-from pydantic import validator
+from pydantic import field_validator
 from spectree import Response
 
 
@@ -21,7 +21,7 @@ class GetQueryParamModel(QueryParamFilterModel, DiscoveryRequestModel):  # type:
 
     # convert params with multiple value (e.g., ?id=1,id=2)
     # and/or csv delimited (e.g., id=1,2) into a list.
-    _param_to_list = validator('requested_features', pre=True)(param_to_list)
+    _param_to_list = field_validator('requested_features', mode='before')(param_to_list)
 
 
 class DiscoveryResponse(EndpointBaseABC):

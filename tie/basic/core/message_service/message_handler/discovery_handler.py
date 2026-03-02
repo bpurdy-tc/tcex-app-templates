@@ -22,7 +22,7 @@ class DiscoveryHandler(MessageHandlerABC):
         """Discovery request handler."""
         service_discovery = self.discovery(message)
         response = self.discovery_response(message, service_discovery)
-        return response.dict(exclude_none=True)
+        return response.model_dump(exclude_none=True)
 
     @property
     def discovery_data(self):
@@ -67,5 +67,5 @@ class DiscoveryHandler(MessageHandlerABC):
 
         response = self.discovery_response(message, service_discovery)
         self.message_service.message_broker.publish(
-            response.json(exclude_none=True), topic=message.response_topic
+            response.model_dump_json(exclude_none=True), topic=message.response_topic
         )

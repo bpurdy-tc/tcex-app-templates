@@ -4,7 +4,7 @@ import logging
 import re
 from typing import Any
 
-from pydantic import BaseModel, Extra, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 # get primary API logger
 logger = logging.getLogger('tcex')
@@ -52,13 +52,12 @@ def values_to_snake(values: list[str] | None) -> list[str] | None:
 class QueryParamModel(BaseModel):
     """Model Definition"""
 
-    class Config:
-        """Model Configuration"""
-
-        alias_generator = value_to_camel
-        allow_population_by_field_name = True
-        arbitrary_types_allowed = True
-        extra = Extra.forbid
+    model_config = ConfigDict(
+        alias_generator=value_to_camel,
+        populate_by_name=True,
+        arbitrary_types_allowed=True,
+        extra='forbid',
+    )
 
     _not_unset_capable = ['by_alias']
 

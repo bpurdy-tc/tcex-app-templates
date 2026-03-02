@@ -3,7 +3,7 @@
 
 from typing import Annotated
 
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, field_validator
 from tcex.input.field_type import Choice, always_array, string
 from tcex.input.input import Input
 from tcex.input.model.app_playbook_model import AppPlaybookModel
@@ -18,7 +18,7 @@ class AppBaseModel(AppPlaybookModel):
     tc_action: Annotated[str, Choice]
 
     # ensure inputs that take single and array types always return an array
-    _always_array = validator('input_strings', allow_reuse=True, pre=True)(
+    _always_array = field_validator('input_strings', mode='before')(
         always_array(allow_empty=True, include_empty=False, include_null=False, split_csv=True)
     )
 

@@ -21,7 +21,9 @@ class Download(DownloadABC):
         for counter, indicator in enumerate(indicators):
             if counter >= max_indicators:
                 break
-            indicator = indicator.model.dict(by_alias=True, exclude_none=True, exclude_unset=True)
+            indicator = indicator.model.model_dump(
+                by_alias=True, exclude_none=True, exclude_unset=True
+            )
             chunk.append(indicator)
             chunk = self.writing_service.write_indicators(chunk, writer)
         writer.force = True

@@ -4,10 +4,10 @@ from typing import Literal
 from uuid import UUID
 
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field
+from pydantic import Field
 
 
-class DiscoveryResponseModel(ModelBase, extra=Extra.allow):
+class DiscoveryResponseModel(ModelBase, extra='allow'):
     """Service Discovery Response Model"""
 
     description: str = Field(..., description='The description of the service provider.')

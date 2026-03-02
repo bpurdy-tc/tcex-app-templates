@@ -8,7 +8,7 @@ from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.dao.job_dao import JobRequestDAO
 from core.model.model_base import ModelBase
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 
 from model.job_request_model import AdHocJobRequestModel  # isort:skip
 
@@ -20,8 +20,9 @@ class AdHocCreateRequest(ModelBase):
     end_time: datetime = Field(None, description='')
     sample_types: list[str] = Field([], description='')
 
-    @validator('sample_types')
-    def validate_sample_types(cls, value):  # noqa: N805
+    @field_validator('sample_types')
+    @classmethod
+    def validate_sample_types(cls, value):
         """Validate the sample types."""
         return [type_.lower().strip() for type_ in value]
 
@@ -58,9 +59,9 @@ class AdHocRequestResource(EndpointBaseABC):
         )
         self.dao.save(job)
 
-        self.log.info(f'action=schedule-download, job={job.dict()}')
+        self.log.info(f'action=schedule-download, job={job.model_dump()}')
 
-        return job.dict()
+        return job.model_dump()
 
     def _add_backfill_jobs(self, body) -> list[dict]:
         """Add backfill jobs to the database."""

@@ -1,16 +1,22 @@
 """Model Definition"""
 
 from datetime import UTC, datetime
-from typing import ClassVar
+from typing import Any
 
 import arrow
 from core.json_db import Index
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field, validator
+from pydantic import ConfigDict, Field, field_serializer, field_validator, model_validator
 
 
 class JobRequestBaseModel(ModelBase):
     """Model Definition"""
+
+    model_config = ConfigDict(
+        arbitrary_types_allowed=True,
+        extra='allow',
+        from_attributes=True,
+    )
 
     job_type: str = 'scheduled'
     date_completed: datetime | None = Field(None, description='')
@@ -103,12 +109,14 @@ class JobRequestBaseModel(ModelBase):
             return self.date_upload_complete - self.date_download_start
         return None
 
-    @validator('status')
-    def _title_case(cls, v):  # noqa: N805
+    @field_validator('status')
+    @classmethod
+    def _title_case(cls, v: str) -> str:
         return ' '.join([w.title() for w in v.split(' ')])
 
-    @validator('status_icon', pre=True)
-    def _status_icon(cls, _, values):  # noqa: N805
+    @model_validator(mode='before')
+    @classmethod
+    def _compute_status_icon(cls, values: dict) -> dict:
         status_icon_map = {
             'download in progress': 'file_download',
             'download complete': 'file_download',
@@ -119,12 +127,15 @@ class JobRequestBaseModel(ModelBase):
             'upload in progress': 'file_upload',
             'upload complete': 'check',
         }
-        return status_icon_map.get(values.get('status').lower()) or 'help_outline'
+        if isinstance(values, dict) and 'status' in values:
+            values['status_icon'] = (
+                status_icon_map.get(values.get('status', '').lower()) or 'help_outline'
+            )
+        return values
 
-    class Config:
-        """Model Config"""
-
-        arbitrary_types_allowed = True
-        extra = Extra.allow
-        json_encoders: ClassVar[dict] = {arrow.Arrow: lambda v: v.isoformat()}
-        orm_mode = True
+    @field_serializer('*')
+    @classmethod
+    def _serialize_arrow(cls, v: Any, _info) -> Any:
+        if isinstance(v, arrow.Arrow):
+            return v.isoformat()
+        return v

@@ -15,7 +15,7 @@ from core.model.tie import (
 )
 from model.job_request_model import JobRequestModel
 from model.settings_model import SettingModel
-from pydantic import BaseModel, root_validator
+from pydantic import BaseModel, model_validator
 
 
 class SQLiteMigrationModel(BaseModel):
@@ -27,8 +27,9 @@ class SQLiteMigrationModel(BaseModel):
     row_callback: Callable | list[Callable] | None = None
     post_migration_callback: Callable[[list], list] | None = None
 
-    @root_validator
-    def validate_data(cls, values: dict) -> dict:  # noqa: N805
+    @model_validator(mode='before')
+    @classmethod
+    def validate_data(cls, values: dict) -> dict:
         """Define the query if not provided."""
         if not values.get('query'):
             values['query'] = f'SELECT * FROM {values["table_name"]}'  # nosec

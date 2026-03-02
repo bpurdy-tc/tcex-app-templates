@@ -16,7 +16,7 @@ from core.dao.batch_error_dao import BatchErrorDAO
 from core.json_db import where
 from core.model.tie import BatchErrorPaginatedResponseModel
 from core.util.custom_handler import CustomHandler
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from spectree import Response
 
 
@@ -41,8 +41,9 @@ class GetQueryParamModel(QueryParamFilterModel, where.ToWhere):
             'reason': where.contains(self.reason),
         }
 
-    @validator('messages', always=True, pre=True)
-    def _messages(cls, v):  # noqa: N805
+    @field_validator('messages', mode='before')
+    @classmethod
+    def _messages(cls, v):
         """Validate messages value."""
         match v:
             case str():
@@ -77,7 +78,7 @@ class BatchErrorExportResource(EndpointBase):
             request_id=query_params.request_id,
             error_code=query_params.error_code,
         )
-        data = [d.dict() for d in data]
+        data = [d.model_dump() for d in data]
         resp.content_type = 'application/x-gzip'
         resp.set_header(
             'Content-Disposition',

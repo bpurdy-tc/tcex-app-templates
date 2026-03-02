@@ -1,10 +1,9 @@
 """App Inputs"""
 
 from datetime import timedelta
-from typing import ClassVar
 
 from core.model.settings_model_base import DEFAULT_FAILURE_THRESHOLD
-from pydantic import BaseModel, Extra, Field, validator
+from pydantic import BaseModel, ConfigDict, Field, field_serializer, field_validator
 from tcex.input.model.app_feed_api_service_model import AppFeedApiServiceModel
 
 ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
@@ -13,11 +12,7 @@ ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
 class AdvancedSettingsModel(BaseModel):
     """Advanced Settings model for the App."""
 
-    class Config:
-        """Config for the App."""
-
-        extra = Extra.forbid
-        json_encoders: ClassVar[dict] = {timedelta: lambda v: v.total_seconds()}
+    model_config = ConfigDict(extra='forbid')
 
     backfill: int = 8  # How far back to backfill in hours
     backfill_frequency: int = 8  # How often a new backfill job is created in hours
@@ -25,8 +20,15 @@ class AdvancedSettingsModel(BaseModel):
     failure_threshold: timedelta = DEFAULT_FAILURE_THRESHOLD  # Pipeline staleness for app shutdown
     max_retries: int = 10  # Max retries for individual jobs before permanent failure
 
-    @validator('failure_threshold', pre=True)
-    def parse_failure_threshold(cls, value: str | float | timedelta) -> timedelta:  # noqa: N805
+    @field_serializer('failure_threshold')
+    @classmethod
+    def serialize_failure_threshold(cls, v: timedelta) -> float:
+        """Serialize timedelta to total seconds."""
+        return v.total_seconds()
+
+    @field_validator('failure_threshold', mode='before')
+    @classmethod
+    def parse_failure_threshold(cls, value: str | float | timedelta) -> timedelta:
         """Convert hours (int/string) or seconds (float from JSON) to timedelta."""
         if isinstance(value, timedelta):
             return value
@@ -46,16 +48,18 @@ class AppBaseModel(AppFeedApiServiceModel):
     # ${ORGANIZATION:TEXT:Advanced Settings}
     advanced_settings: AdvancedSettingsModel = AdvancedSettingsModel()
 
-    @validator('sample_types', pre=True)
-    def validate_sample_types(cls, entries: str | None) -> set[str]:  # noqa: N805
+    @field_validator('sample_types', mode='before')
+    @classmethod
+    def validate_sample_types(cls, entries: str | None) -> set[str]:
         """Validate and parse the supported types."""
         if not entries:
             return set()
 
         return {entry.strip().lower() for entry in entries}
 
-    @validator('advanced_settings', pre=True)
-    def validate_advanced_settings(cls, entries: str | None) -> dict:  # noqa: N805
+    @field_validator('advanced_settings', mode='before')
+    @classmethod
+    def validate_advanced_settings(cls, entries: str | None) -> dict:
         """Validate and parse the advanced settings."""
         if not entries:
             return {}

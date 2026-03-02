@@ -2,10 +2,8 @@
 
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import ClassVar
 
-from arrow import arrow
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel, ConfigDict
 
 # Default failure threshold for jobs and pipeline staleness
 DEFAULT_FAILURE_THRESHOLD = timedelta(hours=48)
@@ -58,9 +56,4 @@ class SettingModelBase(BaseModel):
     file: FileSettings = FileSettings()
     job: JobSettings = JobSettings()
 
-    class Config:
-        """Pydantic Config"""
-
-        arbitrary_types_allowed = True
-        json_encoders: ClassVar[dict] = {arrow.Arrow: lambda v: v.isoformat()}
-        extra = Extra.allow
+    model_config = ConfigDict(arbitrary_types_allowed=True, extra='allow')

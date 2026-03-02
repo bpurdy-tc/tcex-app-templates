@@ -39,7 +39,7 @@ class App(JobApp):
         # httbin used for demonstration only, we don't want to bombard it with traffic, so
         # send AT MOST 10 requests per run. Replace this code with your target service ASAP.
         for indicator in self.get_indicators(self.in_, 10):
-            resp = self.session.post('/post', data=indicator.model.json())
+            resp = self.session.post('/post', data=indicator.model.model_dump_json())
             if resp.ok:
                 success += 1
             else:

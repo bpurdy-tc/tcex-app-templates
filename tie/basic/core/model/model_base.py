@@ -2,8 +2,7 @@
 
 import logging
 
-from pydantic import BaseModel, Extra
-from pydantic.generics import GenericModel
+from pydantic import BaseModel, ConfigDict
 
 # logger
 logger = logging.getLogger('tcex')
@@ -19,27 +18,25 @@ def snake_to_camel(snake_string: str) -> str:
     return components[0] + ''.join(x.title() for x in components[1:])
 
 
-class GenericModelBase(GenericModel):
+class GenericModelBase(BaseModel):
     """Generic Model Definition"""
 
-    class Config:
-        """Model Configuration"""
-
-        alias_generator = snake_to_camel
-        allow_population_by_field_name = True
-        extra = Extra.forbid
-        validate_all = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        alias_generator=snake_to_camel,
+        populate_by_name=True,
+        extra='forbid',
+        validate_default=True,
+        validate_assignment=True,
+    )
 
 
 class ModelBase(BaseModel):
     """Model Definition"""
 
-    class Config:
-        """Model Configuration"""
-
-        alias_generator = snake_to_camel
-        allow_population_by_field_name = True
-        extra = Extra.forbid
-        validate_all = True
-        validate_assignment = True
+    model_config = ConfigDict(
+        alias_generator=snake_to_camel,
+        populate_by_name=True,
+        extra='forbid',
+        validate_default=True,
+        validate_assignment=True,
+    )

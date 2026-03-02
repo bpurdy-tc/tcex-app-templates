@@ -42,7 +42,7 @@ class Paginator(Generic[T]):
             f'limit={self.params.limit}',
             f'offset={offset}',
         ]
-        for name, value in self.params.dict(exclude_none=True, exclude_unset=True).items():
+        for name, value in self.params.model_dump(exclude_none=True, exclude_unset=True).items():
             # limit and offset will be replaced
             if name in ('limit', 'offset'):
                 continue

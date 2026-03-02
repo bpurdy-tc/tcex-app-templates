@@ -12,7 +12,7 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 from core.dao.batch_error_dao import BatchErrorDAO
 from core.json_db import SortBy, where
 from core.model.tie import BatchErrorPaginatedResponseModel
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from spectree import Response
 
 
@@ -31,8 +31,9 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
             'reason': where.contains(self.reason),
         }
 
-    @validator('messages', always=True, pre=True)
-    def _messages(cls, v):  # noqa: N805
+    @field_validator('messages', mode='before')
+    @classmethod
+    def _messages(cls, v):
         """Validate error_codes value."""
         match v:
             case str():
@@ -40,8 +41,9 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
             case _:
                 return v
 
-    @validator('sort', always=True, pre=True)
-    def _sort(cls, v):  # noqa: N805
+    @field_validator('sort', mode='before')
+    @classmethod
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.
