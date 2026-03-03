@@ -1,13 +1,11 @@
 """ThreatConnect Trigger Service App"""
-# standard library
+
 import datetime
 from typing import cast
 
-# third-party
 from tcex.app.playbook import Playbook
 from tcex.app.service import CommonServiceTrigger
 
-# first-party
 from app_inputs import TriggerConfigModel
 from service_app import ServiceApp  # Import default Service App Class (Required)
 
@@ -17,7 +15,7 @@ class App(ServiceApp):
 
     def run(self):
         """Run the trigger logic."""
-        service: CommonServiceTrigger = cast(CommonServiceTrigger, self.tcex.app.service)
+        service: CommonServiceTrigger = cast('CommonServiceTrigger', self.tcex.app.service)
 
         while service.loop_forever(sleep=15):
             # startup inputs, access via self.inputs.model.service_input
@@ -27,9 +25,12 @@ class App(ServiceApp):
             # available in kwargs in the callback method
             service.fire_event(self.trigger_callback, my_data='data')
 
-    # pylint: disable=unused-argument
     def trigger_callback(
-        self, playbook: Playbook, trigger_id: int, config: TriggerConfigModel, **kwargs
+        self,
+        playbook: Playbook,
+        trigger_id: int,  # noqa: ARG002
+        config: TriggerConfigModel,
+        **kwargs,
     ) -> bool:
         """Execute trigger callback for all current configs.
 
@@ -49,10 +50,12 @@ class App(ServiceApp):
         self.log.debug(f'my_data: {my_data}')
 
         # args defined in install.json with serviceConfig set to False are available in config
-        self.log.debug(f'''Trigger configuration trigger_input {config.trigger_input}''')
+        self.log.debug(f"""Trigger configuration trigger_input {config.trigger_input}""")
 
         # write output variable
-        playbook.create.variable('example.date_time', datetime.datetime.now().isoformat())
+        playbook.create.variable(
+            'example.date_time', datetime.datetime.now(tz=datetime.UTC).isoformat()
+        )
         playbook.create.variable('example.service_input', self.in_.service_input)
         playbook.create.variable('example.trigger_input', config.trigger_input)
         return True

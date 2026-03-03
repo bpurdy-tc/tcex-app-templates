@@ -1,16 +1,13 @@
 """Run App"""
-# standard library
+
 import sys
-import traceback
 from functools import cached_property
 from pathlib import Path
 from typing import TYPE_CHECKING, NoReturn
 
 if TYPE_CHECKING:
-    # third-party
     from tcex import TcEx  # must be imported later, but also needed typing hints
 
-    # first-party
     from app import App  # must be imported later, but also needed typing hints
 
 
@@ -40,20 +37,18 @@ class Run:
     @cached_property
     def app(self) -> 'App':
         """Return a properly configured App instance."""
-        # first-party
-        from app import App  # pylint: disable=import-outside-toplevel
+        from app import App  # noqa: PLC0415
 
         return App(self.tcex)
 
     def exit(self, code: int, msg: str) -> NoReturn:
         """Exit the App."""
-        self.tcex.exit.exit(code, msg)  # pylint: disable=no-member
+        self.tcex.exit.exit(code, msg)
 
     @cached_property
     def tcex(self) -> 'TcEx':
         """Return a properly configured TcEx instance."""
-        # third-party
-        from tcex import TcEx  # pylint: disable=import-outside-toplevel
+        from tcex import TcEx  # noqa: PLC0415
 
         return TcEx()
 
@@ -61,27 +56,26 @@ class Run:
         """Launch the App"""
         try:
             # perform prep/setup operations
-            self.app.setup(**{})
+            self.app.setup()
 
             # run the App logic
             if (
-                hasattr(self.app.in_, 'tc_action')
-                and self.app.in_.tc_action is not None  # type: ignore
+                hasattr(self.app.in_, 'tc_action') and self.app.in_.tc_action is not None  # type: ignore
             ):
                 self._run_tc_action_method()
             else:
                 # default to run method
-                self.app.run(**{})
+                self.app.run()
 
             # write requested value for downstream Apps
             self.app.write_output()
 
             # perform cleanup/teardown operations
-            self.app.teardown(**{})
+            self.app.teardown()
 
         except Exception as e:
             main_err = f'Generic Error.  See logs for more details ({e}).'
-            self.tcex.log.error(traceback.format_exc())
+            self.tcex.log.exception(main_err)
             self.exit(1, main_err)
 
     @staticmethod

@@ -1,7 +1,6 @@
 """App Inputs"""
 # pyright: reportGeneralTypeIssues=false
 
-# third-party
 from pydantic import validator
 from pydantic.class_validators import root_validator
 from tcex.input.field_type import Choice, DateTime, always_array, integer, string
@@ -9,19 +8,18 @@ from tcex.input.input import Input
 from tcex.input.model.app_organization_model import AppOrganizationModel
 
 
-def validate_tql(cls, values: dict):  # pylint: disable=unused-argument
+def validate_tql(cls, values: dict):  # noqa: ARG001
     """Validate tql vs other fields that are required"""
-
     # validate that if tql is empty, then
     # 1. last_modified is required
     # 2. indicator_types is required
     # 3. owners is required
-    if not values.get('tql', None):
-        if not values.get('last_modified', None):
+    if not values.get('tql'):
+        if not values.get('last_modified'):
             raise ValueError('last_modified must not be empty')
-        if not values.get('indicator_types', None):
+        if not values.get('indicator_types'):
             raise ValueError('indicator_types must have 1 type selected')
-        if not values.get('owners', None):
+        if not values.get('owners'):
             raise ValueError('owners must have at least 1 selected')
     else:
         # TQL has a value.
@@ -32,20 +30,20 @@ def validate_tql(cls, values: dict):  # pylint: disable=unused-argument
         # If they have selected owners, then check there is no ownerName within the TQL string.
         if any(
             [
-                values.get('indicator_types', None),
-                values.get('max_false_positives', None),
-                values.get('minimum_confidence', None),
-                values.get('minimum_rating', None),
-                values.get('minimum_threatassess_score', None),
-                values.get('last_modified', None),
-                values.get('tags', None),
+                values.get('indicator_types'),
+                values.get('max_false_positives'),
+                values.get('minimum_confidence'),
+                values.get('minimum_rating'),
+                values.get('minimum_threatassess_score'),
+                values.get('last_modified'),
+                values.get('tags'),
             ]
         ):
             raise ValueError(
                 'TQL is not allowed when other filters are selected except for owners.'
             )
 
-        if values.get('owners', None) and 'ownerName' in values.get('tql', ''):
+        if values.get('owners') and 'ownerName' in values.get('tql', ''):
             # They have selected an owner, check if the TQL contains ownerName
             raise ValueError(
                 'There is an owner selected, but the TQL contains ownerName. This is not allowed.'

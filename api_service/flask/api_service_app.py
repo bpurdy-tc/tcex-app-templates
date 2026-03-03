@@ -1,14 +1,12 @@
 """App Module"""
-# standard library
+
 from abc import abstractmethod
 from typing import cast
 from wsgiref.types import WSGIApplication
 
-# third-party
 from pydantic import ValidationError
 from tcex import TcEx
 
-# first-party
 from app_inputs import AppBaseModel, AppInputs
 
 
@@ -24,8 +22,8 @@ class ApiServiceApp:
 
         # properties
         self.exit_message = 'Success'
-        self.in_ = cast(AppBaseModel, self.tcex.inputs.model)
-        self.in_unresolved = cast(AppBaseModel, self.tcex.inputs.model_unresolved)
+        self.in_ = cast('AppBaseModel', self.tcex.inputs.model)
+        self.in_unresolved = cast('AppBaseModel', self.tcex.inputs.model_unresolved)
         self.log = self.tcex.log
 
         self.wsgi_app: WSGIApplication | None = None

@@ -1,6 +1,5 @@
 """ThreatConnect Exchange Job App."""
 
-# first-party
 from job_app import JobApp
 
 

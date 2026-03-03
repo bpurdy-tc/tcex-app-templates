@@ -1,12 +1,10 @@
 """ThreatConnect Playbook App"""
-# standard library
+
 import json
 from typing import cast
 
-# third-party
 from tcex import TcEx
 
-# first-party
 from playbook_app import PlaybookApp  # Import default Playbook App Class (Required)
 
 
@@ -28,7 +26,7 @@ class App(PlaybookApp):
         """
         # use the unresolved version of the input variable
         # so that tcex does not convert the JSON to a dict.
-        json_data = cast(str, self.in_unresolved.json_data)  # type: ignore
+        json_data = cast('str', self.in_unresolved.json_data)  # type: ignore
 
         # get the playbook variable type
         json_data_type = self.playbook.get_variable_type(json_data)

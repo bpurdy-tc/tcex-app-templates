@@ -1,0 +1,17 @@
+{
+  "transform": {
+    "associated_groups": [],
+    "attributes": [],
+    "name": {
+      "path": "name"
+    },
+    "tags": [],
+    "type": {
+      "default": "Event"
+    },
+    "xid": {
+      "path": "id"
+    }
+  },
+  "type": "group"
+}

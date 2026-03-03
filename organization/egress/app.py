@@ -1,17 +1,15 @@
 """ThreatConnect Job App"""
-# standard library
+
 import itertools
 from collections.abc import Iterable
-from datetime import datetime
+from datetime import UTC, datetime
 
-# third-party
 from tcex import TcEx
 from tcex.api.tc.v3.indicators.indicator import Indicator
 from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 from tcex.exit import ExitCode
 from tcex.requests_external import ExternalSession
 
-# first-party
 from app_inputs import TCFiltersModel
 from job_app import JobApp
 
@@ -54,11 +52,13 @@ class App(JobApp):
             exit_msg += 'to external service.'
 
         if not self.in_.tql:
-            self.tcex.app.results_tc('last_modified', datetime.utcnow().isoformat())
+            self.tcex.app.results_tc('last_modified', datetime.now(tz=UTC).isoformat())
 
         self.tcex.exit.exit(ExitCode.SUCCESS, exit_msg)
 
-    def get_indicators(self, model: TCFiltersModel, max_results=None) -> Iterable[Indicator]:
+    def get_indicators(  # noqa: C901
+        self, model: TCFiltersModel, max_results=None
+    ) -> Iterable[Indicator]:
         """Retrieve indicators from ThreatConnect based on filter params."""
         # Retrieve all fields associated with IOCs. Can customize when needed.
         additional_fields = {

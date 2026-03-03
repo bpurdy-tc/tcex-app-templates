@@ -1,10 +1,11 @@
 """App Inputs"""
 # pyright: reportGeneralTypeIssues=false
 
-# third-party
 from tcex.input.field_type import string
 from tcex.input.input import Input
-from tcex.input.model.app_webhook_trigger_service_model import AppWebhookTriggerServiceModel
+from tcex.input.model.app_webhook_trigger_service_model import (
+    AppWebhookTriggerServiceModel,
+)
 from tcex.input.model.create_config_model import CreateConfigModel
 
 

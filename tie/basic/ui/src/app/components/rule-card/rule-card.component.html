@@ -1,0 +1,36 @@
+<tcl-collapsible-card [opened]="opened">
+    <tcl-header>
+        <div class="align-items-end d-flex justify-content-between">
+            {{ rule.label }}
+            <tcl-edit-buttons
+                #editButtons
+                [addDeleteBtn]="true"
+                [disableSave]="!valid"
+                [editModeActive]="editing"
+                (click)="$event.stopPropagation()"
+                (onCancelClick)="onCancelClick()"
+                (onDeleteClick)="delete.emit(rule)"
+                (onEditClick)="onEditClicked()"
+                (onSaveClick)="onSaveClick()"></tcl-edit-buttons>
+        </div>
+    </tcl-header>
+    @for (ruleInput of rule.inputs; track ruleInput) {
+        <!--
+            In the future, probably want to use a switch/case to have
+            different types of inputs based on the ruleInput.type.
+        -->
+        <tcl-text-input
+            [error]="ruleInput.error"
+            [helperText]="ruleInput.tooltip"
+            [label]="ruleInput.label"
+            [maxValue]="ruleInput.maxValue"
+            [minValue]="ruleInput.minValue"
+            [readOnly]="!editing"
+            [required]="!ruleInput.optional"
+            [showCount]="false"
+            [type]="ruleInput.type"
+            [value]="'' + ruleInput.value"
+            (onChange)="onRuleInputValueChanged(ruleInput, $event)">
+        </tcl-text-input>
+    }
+</tcl-collapsible-card>

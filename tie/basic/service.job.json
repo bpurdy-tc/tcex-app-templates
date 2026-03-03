@@ -1,0 +1,17 @@
+{
+  "allowOnDemand": true,
+  "enableNotifications": false,
+  "jobName": "Sample Threat Intelligence Engine",
+  "notifyEmail": "",
+  "notifyIncludeLogFiles": true,
+  "notifyOnComplete": false,
+  "notifyOnFailure": true,
+  "notifyOnPartialFailure": false,
+  "params": [],
+  "programName": "TCVF - Sample Threat Intel Engine v1",
+  "programVersion": "1.0.0",
+  "publishAuth": false,
+  "scheduleCronFormat": "00 00 0 * * ? *",
+  "scheduleStartDate": 1484858999000,
+  "scheduleType": "Daily"
+}

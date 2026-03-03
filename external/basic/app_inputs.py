@@ -1,5 +1,5 @@
 """App Inputs"""
-# third-party
+
 from tcex.input.input import Input
 from tcex.input.model.app_external_model import AppExternalModel
 

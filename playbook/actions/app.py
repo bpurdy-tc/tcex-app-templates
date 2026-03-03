@@ -1,12 +1,10 @@
 """ThreatConnect Exchange Playbook App"""
-# standard library
+
 from typing import cast
 
-# third-party
 from tcex import TcEx
 from tcex.app.decorator import OnException, OnSuccess, Output
 
-# first-party
 from app_inputs import CapitalizeModel, LowercaseModel, ReverseModel
 from playbook_app import PlaybookApp
 
@@ -24,7 +22,7 @@ class App(PlaybookApp):
     @Output(attribute='output_strings')
     def capitalize(self):
         """Return capitalized string."""
-        self.in_ = cast(CapitalizeModel, self.in_)
+        self.in_ = cast('CapitalizeModel', self.in_)
         return [input_string.capitalize() for input_string in self.in_.input_strings]
 
     @OnException(exit_msg='Failed to run lowercase action.')
@@ -32,7 +30,7 @@ class App(PlaybookApp):
     @Output(attribute='output_strings')
     def lowercase(self):
         """Return string in lowercase."""
-        self.in_ = cast(LowercaseModel, self.in_)
+        self.in_ = cast('LowercaseModel', self.in_)
         return [input_string.lower() for input_string in self.in_.input_strings]
 
     @OnException(exit_msg='Failed to run reverse action.')
@@ -40,7 +38,7 @@ class App(PlaybookApp):
     @Output(attribute='output_strings')
     def reverse(self):
         """Return string reversed."""
-        self.in_ = cast(ReverseModel, self.in_)
+        self.in_ = cast('ReverseModel', self.in_)
         return [input_string[::-1] for input_string in self.in_.input_strings]
 
     def write_output(self):

@@ -17,19 +17,17 @@ class Run:
     @cached_property
     def app(self) -> 'App':
         """Return a properly configured App instance."""
-        # first-party
         from app import App  # noqa: PLC0415
 
         return App(self.tcex)
 
     def exit(self, code: int, msg: str) -> NoReturn:
         """Exit the App."""
-        self.tcex.exit.exit(code, msg)  # pylint: disable=no-member
+        self.tcex.exit.exit(code, msg)
 
     @cached_property
     def tcex(self) -> 'TcEx':
         """Return a properly configured TcEx instance."""
-        # third-party
         from tcex import TcEx  # noqa: PLC0415
 
         return TcEx()

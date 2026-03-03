@@ -1,37 +1,100 @@
-[tool.black]
+[tool.ruff]
+exclude = ["tests", "_test_inits"]
 line-length = 100
-skip-string-normalization = true
+src = ["."]
+target-version = "py311"
 
-[tool.isort]
-skip_glob = ["*"]
+[tool.ruff.format]
+docstring-code-format = true
+docstring-code-line-length = 60
+indent-style = "space"
+line-ending = "auto"
+quote-style = "single"
+skip-magic-trailing-comma = false
 
-[tool.pydocstyle]
+[tool.ruff.lint]
 ignore = [
-  "D202", # no blank lines allowed after function docstring
-  "D203", # 1 blank line required before class docstring (found 0)
-  "D213", # Multi-line docstring summary should start at the second line
-  "D400", # First line should end with a period ...
-  "D406", # Section name should end with a newline ...
-  "D407", # Missing dashed underline after section ...
-  "D413", # Missing blank line after last section ...
-  "D415", # First line should end with a period, question mark, or exclamation point ...
+  'BLE001',
+  'D400',
+  'D401',
+  'D415',
+  'EM101',
+  'EM102',
+  'FBT001',
+  'FBT002',
+  'FBT003',
+  'G004',
+  'PGH003',
+  'PLR0913',
+  'PLR2004',
+  'PLW2901',
+  'RET504',
+  'SIM102',
+  'SIM103',
+  'SIM108',
+  'SIM117',
+  'TC001',
+  'TC002',
+  'TC003',
+  'TRY003',
+  'TRY300',
+  'INP001',
+]
+select = [
+  "A",
+  "ARG",
+  "B",
+  "BLE",
+  "C4",
+  "C90",
+  "D",
+  "DJ",
+  "DTZ",
+  "E",
+  "EM",
+  "EXE",
+  "F",
+  "FBT",
+  "G",
+  "ICN",
+  "INP",
+  "ISC",
+  "N",
+  "NPY",
+  "PD",
+  "PGH",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "PYI",
+  "RET",
+  "RSE",
+  "RUF",
+  "SIM",
+  "SLF",
+  "T10",
+  "T20",
+  "TC",
+  "TID",
+  "TRY",
+  "UP",
+  "W",
+  "YTT",
 ]
 
-[tool.pylint.messages_control]
-disable = [
-  "broad-exception-caught",
-  "duplicate-code",
-  "fixme",
-  "inconsistent-return-statements", # pylint doesn't properly handle "NoReturn" in all cases
-  "invalid-name",
-  "logging-fstring-interpolation",
-  "relative-beyond-top-level", # disable relative rule due to this project being a submodule
-  "too-few-public-methods",
-  "too-many-arguments",
-  "too-many-branches",
-  "too-many-instance-attributes",
-  "too-many-locals",
-  "too-many-public-methods",
-  "too-many-return-statements",
-]
-extension-pkg-whitelist = "pydantic"
+[tool.ruff.lint.pylint]
+max-args = 10
+
+[tool.ruff.lint.extend-per-file-ignores]
+"__init__.py" = ["F401"]
+"scripts/*.py" = ["T201", "EXE001", "D101", "D102", "D103", "D107"]
+"tie/build_manifest.py" = ["T201", "EXE001"]
+
+
+[tool.ruff.lint.flake8-type-checking]
+runtime-evaluated-base-classes = ["pydantic.BaseModel", "tcex.logger.trace_logger.TraceLogger"]
+runtime-evaluated-decorators = ["pydantic.BaseModel", "tcex.logger.trace_logger.TraceLogger"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"

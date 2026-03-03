@@ -1,26 +1,23 @@
 """ThreatConnect Playbook App"""
-# standard library
+
 import json
 
-# third-party
 from tcex.app.playbook import Playbook
 
-# first-party
 from service_app import ServiceApp
 
 
 class App(ServiceApp):
     """Service App Template."""
 
-    # pylint: disable=unused-argument
     def webhook_event_callback(
         self,
-        body: bytes | str,
+        body: bytes | str,  # noqa: ARG002
         headers: list[dict[str, str]],
         method: str,
         params: list[dict[str, str]],
         playbook: Playbook,
-        **kwargs,
+        **kwargs,  # noqa: ARG002
     ):
         """Run the trigger logic.
 
@@ -37,6 +34,7 @@ class App(ServiceApp):
                 provided when feature webhookResponseMarshall or webhookServiceEndpoint is enabled.
             trigger_id (int | kwargs): The trigger id value used for the playbook being
                 launched. Not provided when feature WebhookServiceEndpoint is enabled.
+            **kwargs: Additional keyword arguments.
 
         Returns:
             bool, Callable[..., Any], dict: Dependent on the feature
@@ -62,8 +60,8 @@ class App(ServiceApp):
             response = True
 
             # format headers and params for output variables (does not handle duplicate keys)
-            headers_ = json.dumps([f'''{header['name']}={header['value']}''' for header in headers])
-            params_ = json.dumps([f'''{param['name']}={param['value']}''' for param in params])
+            headers_ = json.dumps([f"""{header['name']}={header['value']}""" for header in headers])
+            params_ = json.dumps([f"""{param['name']}={param['value']}""" for param in params])
 
             # write output variables
             playbook.create.variable('headers', headers_, 'String')
@@ -72,14 +70,13 @@ class App(ServiceApp):
 
         return response
 
-    # pylint: disable=unused-argument
     def webhook_marshall_event_callback(
         self,
         body: bytes | str,
         headers: list[dict[str, str]],
-        request_key: str,
+        request_key: str,  # noqa: ARG002
         status_code: int,
-        trigger_id: int,
+        trigger_id: int,  # noqa: ARG002
     ):
         """Handle webhook marshall events.
 

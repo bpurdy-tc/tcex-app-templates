@@ -1,8 +1,8 @@
 """View for ThreatConnect Search Results."""
-# standard library
-from itertools import islice
 
-# third-party
+from itertools import islice
+from typing import ClassVar
+
 from flask import render_template, request
 from flask.views import View
 from tcex import TcEx
@@ -11,7 +11,7 @@ from tcex import TcEx
 class TCSearchView(View):
     """View class for TC Indicator Search results."""
 
-    methods = ['POST']
+    methods: ClassVar[list[str]] = ['POST']
 
     page_size = 10
 

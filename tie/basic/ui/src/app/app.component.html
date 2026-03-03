@@ -1,0 +1,65 @@
+<div class="parent bg-base01">
+  <div class="header d-flex align-items-center border-bottom-border02 bg-base02 tester">
+    <a class="pl-small pr-medium" href="/">
+      <img alt="ThreatConnect" style="margin-left: 20px" [src]="logoImage" />
+    </a>
+    <div class="d-flex flex-column">
+      <h3>{{ (appConfig$ | async)?.ui.title }}</h3>
+      <div class="text-textTertiary align-self-bottom fontsize-subtext">
+        Version: {{ (appConfig$ | async)?.ui.version }} | Source: {{ (appConfig$ | async)?.ui.owner }}
+      </div>
+    </div>
+  </div>
+
+  <!-- testing mat sidenav with TC structure -->
+  <!--
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav
+            class="sidenav-left"
+            #leftSideNav
+            fixedInViewport="true"
+            mode="side"
+            opened="true">
+            <ng-container #leftSideNavContainer></ng-container>
+        </mat-sidenav>
+
+        <mat-sidenav-content [ngClass]="{ 'main-content': true }">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+        <mat-sidenav
+            class="sidenav-right"
+            #rightSideNav
+            autoFocus="false"
+            mode="over"
+            position="end">
+            <ng-container #rightSideNavContainer></ng-container>
+        </mat-sidenav>
+    </mat-sidenav-container>
+    -->
+
+  @if (!hideSideNav) {
+    <div class="sidenav sidenav-container border-right-border02 pt-medium-large">
+      <app-sidenav-menu *ngIf="viewSideNav"></app-sidenav-menu>
+    </div>
+
+    <div class="sidenav-action sidenav-container border-right-border02">
+      <div
+        class="sidenav-action-button d-flex align-items-center cursor-pointer"
+        role="button"
+        tabindex="0"
+        (click)="showSideNav()"
+        (keyup)="showSideNav()"
+      >
+        <tcl-svg-icon [name]="showSideNavIcon" />
+      </div>
+    </div>
+  }
+  @if (showContent) {
+    <div [ngClass]="{ 'main-content': true }">
+      <router-outlet></router-outlet>
+    </div>
+  }
+</div>
+
+<tcl-alert-toast position="bottom-left"></tcl-alert-toast>

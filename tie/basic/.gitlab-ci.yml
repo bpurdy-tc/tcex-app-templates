@@ -1,0 +1,29 @@
+default:
+  image: $IMAGE_TCEX_4
+
+include:
+- file: build.yml
+  project: tc-eng/integrations/app-ci-cd/app-ci-cd-templates
+  ref: main
+- file: deploy.yml
+  project: tc-eng/integrations/app-ci-cd/app-ci-cd-templates
+  ref: main
+- file: pre-flight.yml
+  project: tc-eng/integrations/app-ci-cd/app-ci-cd-templates
+  ref: main
+- file: prep.yml
+  project: tc-eng/integrations/app-ci-cd/app-ci-cd-templates
+  ref: main
+- file: test.yml
+  project: tc-eng/integrations/app-ci-cd/app-ci-cd-templates
+  ref: main
+
+stages:
+- prep
+- pre-flight
+- test
+- build
+- deploy
+
+variables:
+  GIT_SUBMODULE_STRATEGY: none

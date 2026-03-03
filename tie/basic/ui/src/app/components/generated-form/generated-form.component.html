@@ -1,0 +1,60 @@
+@for (field of formConfig$ | async; track $index) {
+  @switch (field.type) {
+    @case ('select') {
+      <tcl-dropdown-v2
+        class="mr-medium"
+        maxMenuHeight="300px"
+        [errorText]="form[field.name].error"
+        [label]="field.label"
+        [labelIconTooltip]="field.info"
+        (onSelect)="handleChange($event, field.name)"
+        [isPill]="true"
+        [menuItems]="field.choices"
+        [required]="field.required"
+        [style.min-width.px]="200"
+      ></tcl-dropdown-v2>
+    }
+    @case ('multi-select') {
+      <tcl-dropdown-v2
+        class="mr-medium"
+        maxMenuHeight="300px"
+        [advancedSettings]="field.advancedSettings"
+        [errorText]="form[field.name].error"
+        [label]="field.label"
+        [labelIconTooltip]="field.info"
+        (onSelect)="handleChange($event, field.name)"
+        [isPill]="true"
+        [menuItems]="field.choices"
+        [required]="field.required"
+        [style.min-width.px]="field.minWidth"
+      ></tcl-dropdown-v2>
+    }
+    @case ('date') {
+      <tcl-calendar-v2
+        appendTo="body"
+        [showTime]="true"
+        [showSeconds]="true"
+        [showButtonBar]="true"
+        [calendarLabel]="field.label"
+        [error]="!!form[field.name].error"
+        [errorMessage]="form[field.name].error"
+        [required]="field.required"
+        [tooltipCalendar]="field.info"
+        (onSelect)="handleChange($event, field.name)"
+        (onClearClick)="handleChange(null, field.name)"
+      ></tcl-calendar-v2>
+    }
+    @default {
+      <tcl-text-input
+        class="mr-medium"
+        [error]="form[field.name].error"
+        [infoMessage]="field.info"
+        [label]="field.label"
+        [showCount]="false"
+        [required]="field.required"
+        [value]="field.default"
+        (onChange)="handleChange($event, field.name)"
+      ></tcl-text-input>
+    }
+  }
+}

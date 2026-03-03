@@ -1,0 +1,15 @@
+<tcl-tabs
+    class="pt-xsmall"
+    [containerTabs]="false"
+    [isCollapsible]="false"
+    [tabsRight]="false"
+    [verticalLayout]="true"
+    (onTabChange)="tabChange($event)">
+    @for (item of sideNavItems; track $index) {
+        <tcl-tab-item
+            tclPendo
+            [active]="tabIndex === $index"
+            [tabTitle]="item.label">
+        </tcl-tab-item>
+    }
+</tcl-tabs>

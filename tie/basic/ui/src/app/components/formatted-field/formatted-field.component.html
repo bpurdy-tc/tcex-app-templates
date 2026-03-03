@@ -1,0 +1,32 @@
+@if (field && value !== null) {
+    @switch (field.type) {
+        @case ('date') {
+            {{ value | date: 'yyyy-MM-dd HH:mm:ss z' }}
+        }
+        @case ('array') {
+            <tcl-chip-list [items]="value"></tcl-chip-list>
+        }
+        @case ('status') {
+            @if (finalStatuses) {
+                <div
+                    class="d-flex align-items-center"
+                    [style]="{ gap: 'var(--tcl-spacing-3)' }">
+                    @if (value == 'Failed') {
+                        <tcl-svg-icon
+                            name="alert"
+                            [style]="{ color: 'rgb(212, 37, 52)' }" />
+                    } @else if (finalStatuses.includes(value.toLocaleLowerCase())) {
+                        <tcl-svg-icon
+                            name="check"
+                            [style]="{ color: 'rgb(0, 128, 0)' }" />
+                    } @else {}
+                    {{ value }}
+                </div>
+            }
+        }
+
+        @default {
+            {{ value }}
+        }
+    }
+}
