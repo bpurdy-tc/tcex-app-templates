@@ -10,6 +10,7 @@ from core.json_db import JsonDB, where
 from core.json_db.dao import JsonDBDAO
 from core.model.tcvf.settings_model_base import SettingModelBase
 from core.model.tie.batch_error_model import BatchErrorModel, JobBatchErrorIndexModel
+from core.model.tie.notification_model import NotificationModel
 from core.model.tie.task_setting_model import TaskSettingModel
 from core.service.error_handling import app_exception
 from core.task.task_abc import TaskABC
@@ -22,6 +23,7 @@ class TaskSettingCustomModel(TaskSettingModel):
 
     max_disk_percent_usage: int
     max_jobs: int
+    max_notification_age_days: int
 
 
 class Cleaner(TaskABC):
@@ -155,10 +157,24 @@ class Cleaner(TaskABC):
                 )
                 break
 
+    def _clean_notifications(self):
+        """Remove notifications older than max_notification_age_days."""
+        try:
+            max_age_seconds = self._days_to_seconds(self.task_settings.max_notification_age_days)
+            cutoff = time.time() - max_age_seconds
+            for path in self.db.get_paths(NotificationModel):
+                if path.stat().st_mtime < cutoff:
+                    notification = self.db.load_from_path(NotificationModel, path)
+                    if notification is not None:
+                        self.db.delete(notification)
+        except Exception as ex:
+            app_exception(ex, 'failure=failed-cleaning-notifications')
+
     def run(self):
         """Run the task."""
         for task in self.tasks.all():
             task.cleaner()
+        self._clean_notifications()
 
     @cached_property
     def batch_error_dao(self) -> JsonDBDAO:
@@ -177,4 +193,5 @@ class Cleaner(TaskABC):
             max_disk_percent_usage=60,
             max_jobs=500,
             max_ttl_batch_error=(60 * 60 * 24 * 90),  # 90 days
+            max_notification_age_days=30,
         )

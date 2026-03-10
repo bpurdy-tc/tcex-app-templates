@@ -5,6 +5,7 @@ be modified.
 """
 
 from .batch_error_model import BatchErrorModel, BatchErrorPaginatedResponseModel
+from .notification_model import NotificationModel, NotificationPaginatedResponseModel
 from .report_pdf_tracker_model import (
     ReportPdfTrackerModel,
     ReportPdfTrackerResponseModel,

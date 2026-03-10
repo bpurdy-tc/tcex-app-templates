@@ -109,3 +109,8 @@ tag_service = Tag(
     name='[Internal] Service Provider',
     description='Endpoints related to the service provider',
 )
+
+tag_notification = Tag(
+    name='[Internal] Notification',
+    description='Endpoints related to pipeline health notifications',
+)

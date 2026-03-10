@@ -9,6 +9,19 @@ from tcex.input.model.app_feed_api_service_model import AppFeedApiServiceModel
 
 ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
 
+DIGEST_INTERVAL_MAP: dict[str, timedelta] = {
+    '1 Hour': timedelta(hours=1),
+    '2 Hours': timedelta(hours=2),
+    '3 Hours': timedelta(hours=3),
+    '4 Hours': timedelta(hours=4),
+}
+
+NOTIFICATION_TYPE_MAP: dict[str, str] = {
+    'Failing and retrying': 'retrying',
+    'Permanent failures': 'permanently_failed',
+    'Recovered': 'recovered',
+}
+
 
 class AdvancedSettingsModel(BaseModel):
     """Advanced Settings model for the App."""
@@ -43,8 +56,28 @@ class AppBaseModel(AppFeedApiServiceModel):
     # vv: ${OWNERS}
     # tc_owner: str
     sample_types: set[str] | None = Field(default_factory=set)
+    notification_digest_interval: timedelta | None = Field(default=None)
+    notification_types: list[str] | None = Field(default=None)
     # ${ORGANIZATION:TEXT:Advanced Settings}
     advanced_settings: AdvancedSettingsModel = AdvancedSettingsModel()
+
+    @validator('notification_digest_interval', pre=True)
+    def parse_digest_interval(cls, value: str | timedelta | None) -> timedelta | None:  # noqa: N805
+        """Convert Choice value to timedelta. None means notifications are disabled."""
+        if value is None:
+            return None
+        if isinstance(value, timedelta):
+            return value
+        return DIGEST_INTERVAL_MAP.get(str(value), timedelta(hours=2))
+
+    @validator('notification_types', pre=True)
+    def parse_notification_types(cls, value: list | str | None) -> list[str] | None:  # noqa: N805
+        """Parse notification types from MultiChoice input. None means notifications disabled."""
+        if value is None:
+            return None
+        if isinstance(value, str):
+            value = [v.strip() for v in value.split(',')]
+        return [NOTIFICATION_TYPE_MAP.get(v, v) for v in value]
 
     @validator('sample_types', pre=True)
     def validate_sample_types(cls, entries: str | None) -> set[str]:  # noqa: N805

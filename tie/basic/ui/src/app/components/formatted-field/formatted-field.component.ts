@@ -21,6 +21,22 @@ export class FormattedFieldComponent implements OnInit {
 
     constructor(private taskService: TaskService) {}
 
+    /** Format a value as pretty-printed JSON */
+    formatJson(value: any): string {
+        try {
+            return JSON.stringify(value, null, 2);
+        } catch {
+            return String(value);
+        }
+    }
+
+    /** Convert snake_case to Title Case (e.g. "permanently_failed" → "Permanently Failed") */
+    toTitleCase(value: string): string {
+        return value
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, (c) => c.toUpperCase());
+    }
+
     ngOnInit(): void {
         this.taskService
             .getCollection()
