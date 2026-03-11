@@ -22,6 +22,9 @@ class NotificationModel(ModelBase):
     )
     priority: str = Field(..., description='Low, Medium, High')
     message: str = Field(...)
+    job_ids: list[str] = Field(
+        default_factory=list, description='Job request IDs related to this notification'
+    )
     send_status: str | None = Field(None, description='success, failed, or None if not sent')
     send_status_code: int | None = Field(None, description='HTTP status code from API')
     send_status_text: str | None = Field(None, description='Error text on failure')

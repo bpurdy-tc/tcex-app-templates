@@ -53,6 +53,8 @@ schemaVersion: 1.1.0
 sections:
 - params:
   - default: 2 Hours
+    feedDeployer: true
+    serviceConfig: true
     label: Notification Digest Interval
     name: notification_digest_interval
     note: How often pipeline health digest notifications are sent.
@@ -63,17 +65,18 @@ sections:
     - 3 Hours
     - 4 Hours
   - allowMultiple: true
-    default: Failing and retrying,Permanent failures,Recovered
+    feedDeployer: true
+    serviceConfig: true
+    default: Failing and retrying|Permanent failures|Recovered
     label: Notification Types
     name: notification_types
-    note: Which digest notification types are sent via TC Notification API. Shutdown notifications always send regardless of this setting.
+    note: Which digest notification types are sent via TC Notification API. Shutdown
+      notifications always send regardless of this setting.
     type: MultiChoice
     validValues:
     - Failing and retrying
     - Permanent failures
     - Recovered
-  sectionName: Notifications
-- params:
   - hidden: true
     label: Advanced Settings
     name: advanced_settings

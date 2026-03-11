@@ -68,7 +68,7 @@ class NotificationCollection(EndpointBase):
     @cached_property
     def notification_service(self) -> NotificationService:
         """Return a new instance of the NotificationService."""
-        return NotificationService(self.tcex)
+        return NotificationService(self.tcex, owner_name=self.settings.tc_owner)
 
     @spec.validate(
         query=GetQueryParamModel,

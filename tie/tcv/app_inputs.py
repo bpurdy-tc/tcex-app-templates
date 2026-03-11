@@ -56,27 +56,21 @@ class AppBaseModel(AppFeedApiServiceModel):
     # vv: ${OWNERS}
     # tc_owner: str
     sample_types: set[str] | None = Field(default_factory=set)
-    notification_digest_interval: timedelta | None = Field(default=None)
-    notification_types: list[str] | None = Field(default=None)
+    notification_digest_interval: timedelta = Field(default=timedelta(hours=2))
+    notification_types: list[str] = Field(default=['retrying', 'permanently_failed', 'recovered'])
     # ${ORGANIZATION:TEXT:Advanced Settings}
     advanced_settings: AdvancedSettingsModel = AdvancedSettingsModel()
 
     @validator('notification_digest_interval', pre=True)
-    def parse_digest_interval(cls, value: str | timedelta | None) -> timedelta | None:  # noqa: N805
-        """Convert Choice value to timedelta. None means notifications are disabled."""
-        if value is None:
-            return None
+    def parse_digest_interval(cls, value: str | timedelta) -> timedelta:  # noqa: N805
+        """Convert Choice value to timedelta."""
         if isinstance(value, timedelta):
             return value
         return DIGEST_INTERVAL_MAP.get(str(value), timedelta(hours=2))
 
     @validator('notification_types', pre=True)
-    def parse_notification_types(cls, value: list | str | None) -> list[str] | None:  # noqa: N805
-        """Parse notification types from MultiChoice input. None means notifications disabled."""
-        if value is None:
-            return None
-        if isinstance(value, str):
-            value = [v.strip() for v in value.split(',')]
+    def parse_notification_types(cls, value: list) -> list[str]:  # noqa: N805
+        """Map display labels to internal values."""
         return [NOTIFICATION_TYPE_MAP.get(v, v) for v in value]
 
     @validator('sample_types', pre=True)

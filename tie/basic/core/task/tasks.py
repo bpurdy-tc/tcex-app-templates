@@ -67,7 +67,9 @@ class Tasks:
         # Notification state tracking (disabled when notification_digest_interval is None)
         self.notifications_enabled = settings.notification_digest_interval is not None
         self.notification_service = (
-            NotificationService(tcex) if self.notifications_enabled else None
+            NotificationService(tcex, owner_name=settings.tc_owner)
+            if self.notifications_enabled
+            else None
         )
         self.last_digest_time = datetime.now(UTC)
         self.reported_retrying: set[str] = set()  # job IDs already reported as retrying
@@ -232,7 +234,8 @@ class Tasks:
         if self.notifications_enabled:
             now = datetime.now(UTC)
             digest_interval = self.settings.notification_digest_interval
-            if now - self.last_digest_time >= digest_interval:
+            elapsed = now - self.last_digest_time
+            if elapsed >= digest_interval:
                 self._send_digest(now)
 
     def pause_all(self):
@@ -255,7 +258,7 @@ class Tasks:
 
         # Tier 1: Send shutdown notification (always, never filtered)
         if self.notifications_enabled:
-            message = f'App is shutting down: {reason}'
+            message = f'Shutting down — {reason}'
             self._store_and_maybe_send('shutdown', 'High', message, should_send=True)
 
         self.pause_all()
@@ -269,6 +272,9 @@ class Tasks:
         Tier 2: periodic digest batched into fixed windows. Each job appears in at most
         2 digests (retrying + resolution). Self-healed jobs are omitted.
         """
+        self.log.debug(
+            f'task-event=digest-start, last_digest_time={self.last_digest_time.isoformat()}'
+        )
         retrying = []
         perm_failed = []
         recovered = []
@@ -304,8 +310,15 @@ class Tasks:
                 recovered.append(job)
 
         if not retrying and not perm_failed and not recovered:
+            self.log.debug('task-event=digest-sweep, result=nothing-to-report')
             self.last_digest_time = now
             return
+
+        self.log.info(
+            f'task-event=digest-sweep, '
+            f'retrying={len(retrying)}, perm_failed={len(perm_failed)}, '
+            f'recovered={len(recovered)}'
+        )
 
         notification_types = getattr(
             self.settings,
@@ -314,32 +327,41 @@ class Tasks:
         )
 
         if retrying:
-            job_ids = ', '.join(j.request_id for j in retrying)
-            msg = f'{len(retrying)} job(s) ({job_ids}) failing and retrying'
+            ids = [j.request_id for j in retrying]
+            msg = f'{len(retrying)} job(s) failing and retrying'
             should_send = 'retrying' in notification_types
-            self._store_and_maybe_send('retrying', 'Medium', msg, should_send)
-            self.reported_retrying.update(j.request_id for j in retrying)
+            self._store_and_maybe_send('retrying', 'Medium', msg, should_send, job_ids=ids)
+            self.reported_retrying.update(ids)
 
         if perm_failed:
-            job_ids = ', '.join(j.request_id for j in perm_failed)
-            msg = f'{len(perm_failed)} job(s) ({job_ids}) permanently failed'
+            ids = [j.request_id for j in perm_failed]
+            msg = f'{len(perm_failed)} job(s) permanently failed'
             should_send = 'permanently_failed' in notification_types
-            self._store_and_maybe_send('permanently_failed', 'High', msg, should_send)
-            self.reported_resolved.update(j.request_id for j in perm_failed)
+            self._store_and_maybe_send('permanently_failed', 'High', msg, should_send, job_ids=ids)
+            self.reported_resolved.update(ids)
 
         if recovered:
-            job_ids = ', '.join(j.request_id for j in recovered)
-            msg = f'{len(recovered)} job(s) ({job_ids}) recovered'
+            ids = [j.request_id for j in recovered]
+            msg = f'{len(recovered)} job(s) recovered'
             should_send = 'recovered' in notification_types
-            self._store_and_maybe_send('recovered', 'Low', msg, should_send)
-            self.reported_resolved.update(j.request_id for j in recovered)
+            self._store_and_maybe_send('recovered', 'Low', msg, should_send, job_ids=ids)
+            self.reported_resolved.update(ids)
 
         self.last_digest_time = now
 
     def _store_and_maybe_send(
-        self, category: str, priority: str, message: str, should_send: bool
+        self,
+        category: str,
+        priority: str,
+        message: str,
+        should_send: bool,
+        job_ids: list[str] | None = None,
     ) -> None:
         """Store notification in json_db and optionally send via TC Notification API."""
+        self.log.info(
+            f'task-event=notification-store, category={category}, '
+            f'priority={priority}, should_send={should_send}'
+        )
         api_request = None
         api_response = None
         send_status = None
@@ -353,11 +375,16 @@ class Tasks:
             status_text = result['status_text']
             api_request = result['api_request']
             api_response = result['api_response']
+            self.log.info(
+                f'task-event=notification-sent, category={category}, '
+                f'send_status={send_status}, status_code={status_code}'
+            )
 
         notification = NotificationModel(
             category=category,
             priority=priority,
             message=message,
+            job_ids=job_ids or [],
             send_status=send_status,
             send_status_code=status_code,
             send_status_text=status_text,
