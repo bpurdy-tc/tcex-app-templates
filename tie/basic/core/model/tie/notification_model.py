@@ -15,11 +15,10 @@ class NotificationModel(ModelBase):
     id: str = Index()
     date_added: datetime = Field(default_factory=lambda: datetime.now(UTC))
     category: str = Field(
-        ..., description='shutdown, retrying, permanently_failed, recovered, manual'
+        ...,
+        description='app_startup, app_shutdown, job_retrying, job_failed, job_recovered, manual',
     )
-    notification_type: str = Field(
-        default='TIE Pipeline Alert', description='TC notification type label'
-    )
+    notification_type: str = Field(..., description='TC notification type label')
     priority: str = Field(..., description='Low, Medium, High')
     message: str = Field(...)
     job_ids: list[str] = Field(

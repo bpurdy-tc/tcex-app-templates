@@ -4,23 +4,9 @@ from datetime import timedelta
 from typing import ClassVar
 
 from core.model.settings_model_base import DEFAULT_FAILURE_THRESHOLD
+from core.service.notification_service import DIGEST_INTERVAL_MAP, NOTIFICATION_TYPES
 from pydantic import BaseModel, Extra, Field, validator
 from tcex.input.model.app_feed_api_service_model import AppFeedApiServiceModel
-
-ALL_SAMPLE_TYPES: set[str] = {'File', 'URL', 'Host', 'Event'}
-
-DIGEST_INTERVAL_MAP: dict[str, timedelta] = {
-    '1 Hour': timedelta(hours=1),
-    '2 Hours': timedelta(hours=2),
-    '3 Hours': timedelta(hours=3),
-    '4 Hours': timedelta(hours=4),
-}
-
-NOTIFICATION_TYPE_MAP: dict[str, str] = {
-    'Failing and retrying': 'retrying',
-    'Permanent failures': 'permanently_failed',
-    'Recovered': 'recovered',
-}
 
 
 class AdvancedSettingsModel(BaseModel):
@@ -57,7 +43,9 @@ class AppBaseModel(AppFeedApiServiceModel):
     # tc_owner: str
     sample_types: set[str] | None = Field(default_factory=set)
     notification_digest_interval: timedelta = Field(default=timedelta(hours=2))
-    notification_types: list[str] = Field(default=['retrying', 'permanently_failed', 'recovered'])
+    notification_types: list[str] = Field(
+        default=['app_startup', 'job_retrying', 'job_failed', 'job_recovered']
+    )
     # ${ORGANIZATION:TEXT:Advanced Settings}
     advanced_settings: AdvancedSettingsModel = AdvancedSettingsModel()
 
@@ -71,7 +59,7 @@ class AppBaseModel(AppFeedApiServiceModel):
     @validator('notification_types', pre=True)
     def parse_notification_types(cls, value: list) -> list[str]:  # noqa: N805
         """Map display labels to internal values."""
-        return [NOTIFICATION_TYPE_MAP.get(v, v) for v in value]
+        return [NOTIFICATION_TYPES[v].category if v in NOTIFICATION_TYPES else v for v in value]
 
     @validator('sample_types', pre=True)
     def validate_sample_types(cls, entries: str | None) -> set[str]:  # noqa: N805

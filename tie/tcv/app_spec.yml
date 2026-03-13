@@ -67,16 +67,17 @@ sections:
   - allowMultiple: true
     feedDeployer: true
     serviceConfig: true
-    default: Failing and retrying|Permanent failures|Recovered
+    default: App Startup|Job Retrying|Job Failed|Job Recovered
     label: Notification Types
     name: notification_types
-    note: Which digest notification types are sent via TC Notification API. Shutdown
-      notifications always send regardless of this setting.
+    note: Which notification types are sent via TC Notification API. Shutdown
+      notifications are always sent regardless of this setting.
     type: MultiChoice
     validValues:
-    - Failing and retrying
-    - Permanent failures
-    - Recovered
+    - App Startup
+    - Job Retrying
+    - Job Failed
+    - Job Recovered
   - hidden: true
     label: Advanced Settings
     name: advanced_settings

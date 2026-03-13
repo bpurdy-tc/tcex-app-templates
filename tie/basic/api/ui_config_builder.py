@@ -1,6 +1,7 @@
 """UIConfigBuilder concrete implementation for building UI configurations."""
 
 from core.api.ui_config_builder_abc import UIConfigBuilderABC
+from core.service.notification_service import NOTIFICATION_TYPES
 
 
 class UIConfigBuilder(UIConfigBuilderABC):
@@ -136,6 +137,7 @@ class UIConfigBuilder(UIConfigBuilderABC):
             self.generate_field('notificationType', 'Notification Type'),
             self.generate_field('priority', 'Priority'),
             self.generate_field('message', 'Message'),
+            self.generate_field('jobIds', 'Job IDs', 'array'),
             self.generate_field('sendStatus', 'Send Status', 'send-status'),
             self.generate_field('sendStatusCode', 'Status Code'),
             self.generate_field('sendStatusText', 'Status Text'),
@@ -150,20 +152,8 @@ class UIConfigBuilder(UIConfigBuilderABC):
                 name='category',
                 label='Category',
                 type_='multi-select',
-                choices=[
-                    'Shutdown',
-                    'Retrying',
-                    'Permanently Failed',
-                    'Recovered',
-                    'Manual',
-                ],
-                default=[
-                    'Shutdown',
-                    'Retrying',
-                    'Permanently Failed',
-                    'Recovered',
-                    'Manual',
-                ],
+                choices=list(NOTIFICATION_TYPES.keys()),
+                default=list(NOTIFICATION_TYPES.keys()),
             ),
             self.generate_form_field(
                 name='priority',

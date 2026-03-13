@@ -1,7 +1,9 @@
 """Notification Service - Sends TC notifications for pipeline health events."""
 
 import logging
+from datetime import timedelta
 from functools import cached_property
+from typing import NamedTuple
 
 from tcex import TcEx
 from tcex.api.tc.v3.tql.tql_operator import TqlOperator
@@ -9,28 +11,89 @@ from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 logger = logging.getLogger('tcex')
 
 
+DIGEST_INTERVAL_MAP: dict[str, timedelta] = {
+    '1 Hour': timedelta(hours=1),
+    '2 Hours': timedelta(hours=2),
+    '3 Hours': timedelta(hours=3),
+    '4 Hours': timedelta(hours=4),
+}
+
+
+class NotificationTypeConfig(NamedTuple):
+    """Configuration for a single notification type."""
+
+    category: str
+    priority: str
+    message_template: str | None
+
+
+NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
+    'App Startup': NotificationTypeConfig(
+        category='app_startup',
+        priority='Low',
+        message_template='App starting',
+    ),
+    'App Shutdown': NotificationTypeConfig(
+        category='app_shutdown',
+        priority='High',
+        message_template='App shutting down — {reason}',
+    ),
+    'Job Retrying': NotificationTypeConfig(
+        category='job_retrying',
+        priority='High',
+        message_template='{count} job(s) failed and are retrying',
+    ),
+    'Job Failed': NotificationTypeConfig(
+        category='job_failed',
+        priority='Medium',
+        message_template='{count} job(s) retried 10 times and failed'
+        ' - job(s) stopped and will not be retried',
+    ),
+    'Job Recovered': NotificationTypeConfig(
+        category='job_recovered',
+        priority='Low',
+        message_template='{count} failed job(s) have recovered and completed',
+    ),
+    'Manual': NotificationTypeConfig(
+        category='manual',
+        priority='Low',
+        message_template=None,
+    ),
+}
+
+# Reverse lookup: internal category → config
+NOTIFICATION_BY_CATEGORY: dict[str, NotificationTypeConfig] = {
+    v.category: v for v in NOTIFICATION_TYPES.values()
+}
+
+
 class NotificationService:
     """Sends TC notifications for pipeline health events."""
 
-    def __init__(self, tcex: TcEx, owner_name: str):
+    def __init__(self, tcex: TcEx, owner_name: str, display_name_override: str | None = None):
         """Initialize with TcEx instance for API access."""
         self.tcex = tcex
         self.owner_id = self._resolve_owner_id(owner_name)
         self.log = logger
-        self._display_name = str(tcex.app.ij.model.display_name)
-        self._app_version = str(tcex.app.ij.model.program_version)
+        self._display_name = display_name_override or str(tcex.app.ij.model.display_name)
+
+    @cached_property
+    def notification_type(self) -> str:
+        """Notification type label sent to TC, truncated to stay within API limits."""
+        prefix = 'Service: '
+        max_len = 100
+        name = self._display_name
+
+        if len(prefix) + len(name) > max_len:
+            name = name[: max_len - len(prefix) - 3] + '...'
+
+        return f'{prefix}{name}'
 
     @cached_property
     def msg_prefix(self) -> str:
-        """Prefix for all notification messages, truncated to stay within API limits."""
-        max_prefix_len = 100
-        name = self._display_name
-        suffix = f' v{self._app_version}: '
-
-        if len(name) + len(suffix) > max_prefix_len:
-            name = name[: max_prefix_len - len(suffix) - 3] + '...'
-
-        return f'{name}{suffix}'
+        """Message prefix: 'App Name vX.Y.Z: '"""
+        version = str(self.tcex.app.ij.model.program_version)
+        return f'{self._display_name} v{version}: '
 
     def _resolve_owner_id(self, owner_name: str) -> int:
         """Resolve owner name to numeric owner ID via TC API."""
@@ -45,22 +108,24 @@ class NotificationService:
         self,
         message: str,
         priority: str = 'Low',
-        notification_type: str = 'TIE Pipeline Alert',
     ) -> dict:
         """Send an org-wide notification via POST /v2/notifications.
 
         Calls the TC API directly to capture the full request and response
         for auditing. Always returns a dict — never raises.
         """
-        prefixed_message = f'{self.msg_prefix}{message}'
         request_body = {
-            'notificationType': notification_type,
+            'notificationType': self.notification_type,
             'priority': priority,
             'isOrganization': False,
             'ownerId': self.owner_id,
-            'message': prefixed_message,
+            'message': message,
         }
-        api_request = {'method': 'POST', 'path': '/v2/notifications', 'body': request_body}
+        api_request = {
+            'method': 'POST',
+            'path': '/v2/notifications',
+            'body': request_body,
+        }
 
         try:
             r = self.tcex.session.tc.post('/v2/notifications', json=request_body)

@@ -54,6 +54,10 @@ class SettingModelBase(BaseModel):
     tc_owner: str
     date_started: datetime = datetime.now(UTC)
 
+    notification_digest_interval: timedelta | None = None
+    notification_display_name: str | None = None
+    notification_types: list[str] | None = None
+
     mb: MessageBrokerSettings | None = None
     file: FileSettings = FileSettings()
     job: JobSettings = JobSettings()

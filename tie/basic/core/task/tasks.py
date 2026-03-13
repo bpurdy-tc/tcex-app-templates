@@ -15,7 +15,11 @@ from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
 from core.model.settings_model_base import SettingModelBase
 from core.model.tie.notification_model import NotificationModel
-from core.service.notification_service import NotificationService
+from core.service.notification_service import (
+    NOTIFICATION_BY_CATEGORY,
+    NotificationService,
+    NotificationTypeConfig,
+)
 from core.supervisor import Supervisor
 from model.job_request_model import JobRequestModel
 from tcex import TcEx
@@ -67,7 +71,11 @@ class Tasks:
         # Notification state tracking (disabled when notification_digest_interval is None)
         self.notifications_enabled = settings.notification_digest_interval is not None
         self.notification_service = (
-            NotificationService(tcex, owner_name=settings.tc_owner)
+            NotificationService(
+                tcex,
+                owner_name=settings.tc_owner,
+                display_name_override=settings.notification_display_name,
+            )
             if self.notifications_enabled
             else None
         )
@@ -79,6 +87,15 @@ class Tasks:
         # Stale pipelines: first job must succeed or app shuts down
         # Healthy pipelines: baseline is reset normally
         self.supervisor.check_and_enter_probation()
+
+        # Send startup notification immediately (not batched into digest)
+        if self.notifications_enabled:
+            notification_config = NOTIFICATION_BY_CATEGORY['app_startup']
+            notification_types = self.settings.notification_types or []
+            self._store_and_maybe_send(
+                notification_config,
+                should_send='app_startup' in notification_types,
+            )
 
         # schedule watchdog for tasks
         schedule.every(1).minute.do(self.watchdog)
@@ -256,25 +273,26 @@ class Tasks:
         """
         self.log.error(f'task-event=graceful-shutdown-initiated, reason={reason}')
 
-        # Tier 1: Send shutdown notification (always, never filtered)
+        # Send shutdown notification immediately (always sent, not user-configurable)
         if self.notifications_enabled:
-            message = f'Shutting down — {reason}'
-            self._store_and_maybe_send('shutdown', 'High', message, should_send=True)
+            notification_config = NOTIFICATION_BY_CATEGORY['app_shutdown']
+            self._store_and_maybe_send(
+                notification_config,
+                should_send=True,
+                format_message={'reason': reason[:80]},
+            )
 
         self.pause_all()
         self.kill_all()
         if self.exit_service:
             self.exit_service.exit(ExitCode.FAILURE, f'Shutting down: {reason}')
 
-    def _send_digest(self, now: datetime) -> None:  # noqa: C901
-        """Sweep job state and send a digest notification if anything noteworthy happened.
+    def _sweep_job_state(self) -> tuple[list, list, list]:
+        """Classify jobs into retrying, permanently failed, and recovered buckets.
 
-        Tier 2: periodic digest batched into fixed windows. Each job appears in at most
-        2 digests (retrying + resolution). Self-healed jobs are omitted.
+        Scans all jobs because the recovered/perm-failed checks depend on the
+        reported_retrying/reported_resolved tracking sets, not just timestamps.
         """
-        self.log.debug(
-            f'task-event=digest-start, last_digest_time={self.last_digest_time.isoformat()}'
-        )
         retrying = []
         perm_failed = []
         recovered = []
@@ -290,7 +308,6 @@ class Tasks:
                 and job.status.casefold() != status_failed
                 and job_id not in self.reported_retrying
             ):
-                # Only report if first failure occurred since last digest
                 if job.date_failed is not None and job.date_failed >= self.last_digest_time:
                     retrying.append(job)
 
@@ -309,6 +326,20 @@ class Tasks:
                     continue
                 recovered.append(job)
 
+        return retrying, perm_failed, recovered
+
+    def _send_digest(self, now: datetime) -> None:
+        """Send a digest notification if anything noteworthy happened.
+
+        Tier 2: periodic digest batched into fixed windows. Each job appears in at most
+        2 digests (retrying + resolution). Self-healed jobs are omitted.
+        """
+        self.log.debug(
+            f'task-event=digest-start, last_digest_time={self.last_digest_time.isoformat()}'
+        )
+
+        retrying, perm_failed, recovered = self._sweep_job_state()
+
         if not retrying and not perm_failed and not recovered:
             self.log.debug('task-event=digest-sweep, result=nothing-to-report')
             self.last_digest_time = now
@@ -320,47 +351,42 @@ class Tasks:
             f'recovered={len(recovered)}'
         )
 
-        notification_types = getattr(
-            self.settings,
-            'notification_types',
-            ['retrying', 'permanently_failed', 'recovered'],
-        )
+        notification_types = self.settings.notification_types or []
 
-        if retrying:
-            ids = [j.request_id for j in retrying]
-            msg = f'{len(retrying)} job(s) failing and retrying'
-            should_send = 'retrying' in notification_types
-            self._store_and_maybe_send('retrying', 'Medium', msg, should_send, job_ids=ids)
-            self.reported_retrying.update(ids)
+        digest_buckets = [
+            ('job_retrying', retrying, self.reported_retrying),
+            ('job_failed', perm_failed, self.reported_resolved),
+            ('job_recovered', recovered, self.reported_resolved),
+        ]
 
-        if perm_failed:
-            ids = [j.request_id for j in perm_failed]
-            msg = f'{len(perm_failed)} job(s) permanently failed'
-            should_send = 'permanently_failed' in notification_types
-            self._store_and_maybe_send('permanently_failed', 'High', msg, should_send, job_ids=ids)
-            self.reported_resolved.update(ids)
-
-        if recovered:
-            ids = [j.request_id for j in recovered]
-            msg = f'{len(recovered)} job(s) recovered'
-            should_send = 'recovered' in notification_types
-            self._store_and_maybe_send('recovered', 'Low', msg, should_send, job_ids=ids)
-            self.reported_resolved.update(ids)
+        for category, jobs, tracking_set in digest_buckets:
+            if not jobs:
+                continue
+            notification_config = NOTIFICATION_BY_CATEGORY[category]
+            ids = [j.request_id for j in jobs]
+            self._store_and_maybe_send(
+                notification_config,
+                should_send=category in notification_types,
+                job_ids=ids,
+                format_message={'count': len(jobs)},
+            )
+            tracking_set.update(ids)
 
         self.last_digest_time = now
 
     def _store_and_maybe_send(
         self,
-        category: str,
-        priority: str,
-        message: str,
+        notification_config: NotificationTypeConfig,
         should_send: bool,
         job_ids: list[str] | None = None,
+        format_message: dict | None = None,
     ) -> None:
         """Store notification in json_db and optionally send via TC Notification API."""
+        message_body = notification_config.message_template.format(**(format_message or {}))
+        message = f'{self.notification_service.msg_prefix}{message_body}'
         self.log.info(
-            f'task-event=notification-store, category={category}, '
-            f'priority={priority}, should_send={should_send}'
+            f'task-event=notification-store, category={notification_config.category}, '
+            f'priority={notification_config.priority}, should_send={should_send}'
         )
         api_request = None
         api_response = None
@@ -369,20 +395,21 @@ class Tasks:
         status_text = None
 
         if should_send:
-            result = self.notification_service.send(message, priority)
+            result = self.notification_service.send(message, notification_config.priority)
             send_status = result['send_status']
             status_code = result['status_code']
             status_text = result['status_text']
             api_request = result['api_request']
             api_response = result['api_response']
             self.log.info(
-                f'task-event=notification-sent, category={category}, '
+                f'task-event=notification-sent, category={notification_config.category}, '
                 f'send_status={send_status}, status_code={status_code}'
             )
 
         notification = NotificationModel(
-            category=category,
-            priority=priority,
+            notification_type=self.notification_service.notification_type,
+            category=notification_config.category,
+            priority=notification_config.priority,
             message=message,
             job_ids=job_ids or [],
             send_status=send_status,

@@ -2,6 +2,7 @@
 
 import shutil
 import time
+from datetime import UTC, datetime, timedelta
 from functools import cached_property
 from pathlib import Path
 
@@ -160,13 +161,14 @@ class Cleaner(TaskABC):
     def _clean_notifications(self):
         """Remove notifications older than max_notification_age_days."""
         try:
-            max_age_seconds = self._days_to_seconds(self.task_settings.max_notification_age_days)
-            cutoff = time.time() - max_age_seconds
-            for path in self.db.get_paths(NotificationModel):
-                if path.stat().st_mtime < cutoff:
-                    notification = self.db.load_from_path(NotificationModel, path)
-                    if notification is not None:
-                        self.db.delete(notification)
+            cutoff = datetime.now(UTC) - timedelta(
+                days=self.task_settings.max_notification_age_days
+            )
+            for notification in self.db.load_all(
+                NotificationModel,
+                where=lambda n: n.date_added < cutoff,
+            ):
+                self.db.delete(notification)
         except Exception as ex:
             app_exception(ex, 'failure=failed-cleaning-notifications')
 

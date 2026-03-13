@@ -53,7 +53,6 @@ class PostBodyModel(ModelBase):
     """Body model for POST /api/notification"""
 
     message: str = Field(...)
-    notification_type: str = Field(default='TIE Pipeline Alert')
     priority: str = Field(default='Medium')
 
 
@@ -68,7 +67,11 @@ class NotificationCollection(EndpointBase):
     @cached_property
     def notification_service(self) -> NotificationService:
         """Return a new instance of the NotificationService."""
-        return NotificationService(self.tcex, owner_name=self.settings.tc_owner)
+        return NotificationService(
+            self.tcex,
+            owner_name=self.settings.tc_owner,
+            display_name_override=self.settings.notification_display_name,
+        )
 
     @spec.validate(
         query=GetQueryParamModel,
@@ -106,15 +109,14 @@ class NotificationCollection(EndpointBase):
         body = req.media or {}
         parsed = PostBodyModel(**body)
 
-        result = self.notification_service.send(
-            parsed.message, parsed.priority, parsed.notification_type
-        )
+        prefixed_message = f'{self.notification_service.msg_prefix}{parsed.message}'
+        result = self.notification_service.send(prefixed_message, parsed.priority)
 
         notification = NotificationModel(
             category='manual',
-            notification_type=parsed.notification_type,
+            notification_type=self.notification_service.notification_type,
             priority=parsed.priority,
-            message=parsed.message,
+            message=prefixed_message,
             send_status=result['send_status'],
             send_status_code=result['status_code'],
             send_status_text=result['status_text'],

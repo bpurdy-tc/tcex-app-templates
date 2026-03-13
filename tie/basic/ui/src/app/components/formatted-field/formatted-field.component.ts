@@ -9,7 +9,6 @@ import { TaskService } from 'src/app/service/tasks-service/tasks.service';
 @Component({
     selector: 'app-formatted-field',
     templateUrl: './formatted-field.component.html',
-    styleUrl: './formatted-field.component.scss',
 })
 export class FormattedFieldComponent implements OnInit {
     @Input() field: FieldDisplay;
