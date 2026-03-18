@@ -26,7 +26,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
         return {key: value for key, value in self.__dict__.items() if key not in self.__fields__}
 
     @validator('sort', always=True)
-    def _sort(cls, v):  # noqa: N805
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.
@@ -65,9 +65,9 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
             if not value:
                 continue
             if isinstance(value, str):
-                where_dict[key] = where.contains(value)
+                where_dict[key] = where.contains(value.strip())
             elif isinstance(value, list):
-                where_dict[key] = where.is_in(value)
+                where_dict[key] = where.is_in([v.strip() for v in value])
             else:
                 pass
                 # print(f'Unknown type for {key}: {value}')

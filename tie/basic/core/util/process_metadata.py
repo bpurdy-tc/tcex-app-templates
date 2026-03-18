@@ -33,7 +33,7 @@ class Metadata(BaseModel, arbitrary_types_allowed=True, extra=Extra.allow):
     pid: int
 
     @root_validator
-    def expires_percent(cls, values):  # noqa: N805
+    def expires_percent(cls, values):
         """Calculate percent of max runtime that has elapsed."""
         last_heartbeat: arrow.Arrow = values.get('last_heartbeat')
         date_expires: arrow.Arrow = last_heartbeat.shift(

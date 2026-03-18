@@ -28,7 +28,7 @@ class SQLiteMigrationModel(BaseModel):
     post_migration_callback: Callable[[list], list] | None = None
 
     @root_validator
-    def validate_data(cls, values: dict) -> dict:  # noqa: N805
+    def validate_data(cls, values: dict) -> dict:
         """Define the query if not provided."""
         if not values.get('query'):
             values['query'] = f'SELECT * FROM {values["table_name"]}'  # nosec

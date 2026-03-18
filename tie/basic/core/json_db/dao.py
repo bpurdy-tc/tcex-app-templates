@@ -146,6 +146,8 @@ class JsonDBDAO(Generic[M]):
                 where_val = where
             case None:
                 where_val = None
+            case _:
+                raise ValueError(f'Invalid where value: {where}')
 
         if isinstance(sort_by, SortBy):
             results = list(

@@ -39,10 +39,14 @@ class JobFileDownload(EndpointBase):
         if query_params.file_name.endswith('.jsondb') or query_params.file_name.endswith(
             '.jsondb.gz'
         ):
-            file_path = next(self.settings.base_path.rglob(f'*{job_id}.jsondb*'))
+            file_path = next(self.settings.base_path.rglob(f'*{job_id}.jsondb*'), None)
         else:
             path_parts = query_params.file_name.split('/')
-            job_dir = next(p for p in self.settings.base_path.rglob(f'*{job_id}') if p.is_dir())
+            job_dir = next(
+                (p for p in self.settings.base_path.rglob(f'*{job_id}') if p.is_dir()), None
+            )
+            if job_dir is None:
+                raise falcon.HTTPNotFound
 
             combined_path = job_dir.joinpath(*path_parts)
 

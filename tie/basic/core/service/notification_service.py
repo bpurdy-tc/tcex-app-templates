@@ -73,9 +73,17 @@ class NotificationService:
     def __init__(self, tcex: TcEx, owner_name: str, display_name_override: str | None = None):
         """Initialize with TcEx instance for API access."""
         self.tcex = tcex
-        self.owner_id = self._resolve_owner_id(owner_name)
+        self._owner_name = owner_name
+        self._owner_id: int | None = None
         self.log = logger
         self._display_name = display_name_override or str(tcex.app.ij.model.display_name)
+
+    @property
+    def owner_id(self) -> int:
+        """Lazily resolve owner ID on first access."""
+        if self._owner_id is None:
+            self._owner_id = self._resolve_owner_id(self._owner_name)
+        return self._owner_id
 
     @cached_property
     def notification_type(self) -> str:

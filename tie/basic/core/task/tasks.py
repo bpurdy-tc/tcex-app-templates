@@ -39,8 +39,8 @@ class Tasks:
     def __init__(
         self,
         tcex: TcEx,
-        db: JsonDB = inject(JsonDB),  # noqa: B008
-        settings: SettingModelBase = inject(SettingModelBase),  # noqa: B008
+        db: JsonDB = inject(JsonDB),
+        settings: SettingModelBase = inject(SettingModelBase),
     ):
         """Initialize class properties.
 

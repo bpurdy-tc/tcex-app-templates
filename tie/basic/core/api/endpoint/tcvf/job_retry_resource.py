@@ -59,7 +59,7 @@ class JobStatusUpdateRequest(BaseModel):
     )
 
     @validator('target_stage')
-    def _validate_target_stage(cls, v):  # noqa: N805
+    def _validate_target_stage(cls, v):
         """Validate target_stage contains only safe characters (prevent path traversal)."""
         if not re.match(r'^[a-zA-Z0-9_\- ]+$', v):
             raise ValueError(

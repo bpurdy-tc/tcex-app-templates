@@ -46,5 +46,5 @@ class DocAnalysisThrottledDAO(JsonDBDAO[DocAnalysisThrottleModel]):
     def throttle(self) -> None:
         """Throttle the group."""
         item = self.instance
-        item.timestamp = int(arrow.now().timestamp())
+        item.timestamp = int(arrow.utcnow().timestamp())
         self.db.save(item)

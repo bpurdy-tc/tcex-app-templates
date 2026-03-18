@@ -30,7 +30,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
         }
 
     @validator('sort', always=True)
-    def _sort(cls, v):  # noqa: N805
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.

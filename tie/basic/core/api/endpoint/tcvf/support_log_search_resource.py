@@ -119,7 +119,7 @@ class SupportLogSearchResource(EndpointBase):
         events = []
         for line in fh.readlines():
             # skip logs from this file
-            if Path.name(__file__) in line:
+            if Path(__file__).name in line:
                 continue
 
             # increment line number

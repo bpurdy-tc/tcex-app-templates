@@ -5,7 +5,6 @@ from core.json_db import SortBy, SortOrder
 from pydantic import Field, validator
 
 
-# ruff: noqa: N805
 class QueryParamFilterPaginationModel(QueryParamFilterModel):
     """Query Param Filter Pagination Model."""
 

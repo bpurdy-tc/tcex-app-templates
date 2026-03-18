@@ -104,11 +104,11 @@ class JobRequestBaseModel(ModelBase):
         return None
 
     @validator('status')
-    def _title_case(cls, v):  # noqa: N805
+    def _title_case(cls, v):
         return ' '.join([w.title() for w in v.split(' ')])
 
     @validator('status_icon', pre=True)
-    def _status_icon(cls, _, values):  # noqa: N805
+    def _status_icon(cls, _, values):
         status_icon_map = {
             'download in progress': 'file_download',
             'download complete': 'file_download',

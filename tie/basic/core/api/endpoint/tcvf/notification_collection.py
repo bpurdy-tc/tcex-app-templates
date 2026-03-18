@@ -2,8 +2,9 @@
 
 import json as json_lib
 import logging
-
 from functools import cached_property
+
+import falcon
 
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
@@ -36,7 +37,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
     )
 
     @validator('sort', always=True, pre=True)
-    def _sort(cls, v):  # noqa: N805
+    def _sort(cls, v):
         """Validate sort value."""
         match v.lower():
             case 'id' | 'index':
@@ -107,7 +108,10 @@ class NotificationCollection(EndpointBase):
         The send_status field records the outcome.
         """
         body = req.media or {}
-        parsed = PostBodyModel(**body)
+        try:
+            parsed = PostBodyModel(**body)
+        except Exception as ex:
+            raise falcon.HTTPBadRequest(title='Bad Request', description=str(ex)) from ex
 
         prefixed_message = f'{self.notification_service.msg_prefix}{parsed.message}'
         result = self.notification_service.send(prefixed_message, parsed.priority)

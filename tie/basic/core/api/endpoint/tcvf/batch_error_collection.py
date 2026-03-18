@@ -32,7 +32,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
         }
 
     @validator('messages', always=True, pre=True)
-    def _messages(cls, v):  # noqa: N805
+    def _messages(cls, v):
         """Validate error_codes value."""
         match v:
             case str():
@@ -41,7 +41,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
                 return v
 
     @validator('sort', always=True, pre=True)
-    def _sort(cls, v):  # noqa: N805
+    def _sort(cls, v):
         """Validate sort value."""
         # because BatchErrorModel uses the default default_factory for Index(),
         # it's ID is a UUID7, which means it is time sortable by INDEX.

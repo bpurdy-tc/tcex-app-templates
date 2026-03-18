@@ -35,7 +35,6 @@ class TransformABC(ABC):  # noqa: B024
         self.tcex = tcex
         self.api = tcex.api
         self.base_path = base_path
-        self.base_path = base_path
         self.custom_fns = {}
         self.log = logger
         self.fns = ProcessingFunctions(tcex)

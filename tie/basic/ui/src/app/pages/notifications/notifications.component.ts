@@ -1,8 +1,8 @@
-import { Component, DestroyRef, inject, ViewChild } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MenuItemType, Table } from '@tc-eng/component-library';
 import { FeatureVersion } from '@tc-eng/component-library/utils/featureFlags';
-import { catchError, finalize, mergeMap, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, mergeMap, tap } from 'rxjs';
 import { GeneratedFormComponent } from 'src/app/components/generated-form/generated-form.component';
 import { AlertMessageService } from 'src/app/service/alert-message-service/alert-message.service';
 import { NxPaginator } from 'src/app/modules/nx-utils/nx-paginator';
@@ -21,7 +21,7 @@ export enum SideDrawerContent {
     templateUrl: './notifications.component.html',
     styleUrl: './notifications.component.scss',
 })
-export class NotificationsComponent {
+export class NotificationsComponent implements OnInit {
     protected readonly featureVersion: FeatureVersion = 'new-design';
     protected readonly SideDrawerContent = SideDrawerContent;
     private destroyRef = inject(DestroyRef);
@@ -93,7 +93,7 @@ export class NotificationsComponent {
             .pipe(
                 catchError(() => {
                     this.table.dataLoaded = true;
-                    return [];
+                    return EMPTY;
                 }),
             )
             .subscribe({});

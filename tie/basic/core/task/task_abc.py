@@ -90,10 +90,10 @@ class TaskABC(ABC, Generic[T]):
 
     def __init__(
         self,
-        settings: SettingModel = inject(SettingModel),  # noqa: B008
-        tcex: TcEx = inject(TcEx),  # noqa: B008
-        db: JsonDB = inject(JsonDB),  # noqa: B008
-        supervisor: Supervisor = inject(Supervisor),  # noqa: B008
+        settings: SettingModel = inject(SettingModel),
+        tcex: TcEx = inject(TcEx),
+        db: JsonDB = inject(JsonDB),
+        supervisor: Supervisor = inject(Supervisor),
         *,
         request_schema: type[T] = JobRequestBaseModel,
     ):
@@ -261,8 +261,8 @@ class TaskABC(ABC, Generic[T]):
 
     @property
     def pause(self):
-        """Return True if paused requested."""
-        self.task_settings.paused = False
+        """Return True if pause requested."""
+        self.task_settings.paused = True
 
     @property
     def process_metadata(self):

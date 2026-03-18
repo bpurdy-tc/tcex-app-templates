@@ -27,7 +27,7 @@ class WritingModel(BaseModel):
     metric_name: str | None = None
 
     @root_validator
-    def root_validation(cls, values):  # noqa: N805
+    def root_validation(cls, values):
         """Validate the model."""
         if not values.get('metric_name'):
             values['metric_name'] = values['page_name'].title()

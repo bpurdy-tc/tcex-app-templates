@@ -42,7 +42,7 @@ class GetQueryParamModel(QueryParamFilterModel, where.ToWhere):
         }
 
     @validator('messages', always=True, pre=True)
-    def _messages(cls, v):  # noqa: N805
+    def _messages(cls, v):
         """Validate messages value."""
         match v:
             case str():

@@ -1,6 +1,8 @@
 """Class for /api/support/supervisor endpoint"""
 
 import falcon
+from pydantic import Field
+
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.spec import spec, tag_util
 from core.api.validation.models.query_param_model import QueryParamModel
@@ -11,9 +13,9 @@ from spectree import Response
 class SupervisorConfigUpdateBody(ModelBase):
     """Request body model for updating supervisor config."""
 
-    backoff_base_seconds: float | None = None
-    backoff_max_seconds: float | None = None
-    backoff_jitter: float | None = None
+    backoff_base_seconds: float | None = Field(None, ge=1.0, le=86400.0)
+    backoff_max_seconds: float | None = Field(None, ge=1.0, le=86400.0)
+    backoff_jitter: float | None = Field(None, ge=0.0, le=1.0)
 
 
 class PipelineBaselineResetBody(ModelBase):

@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { BaseService } from '../base-service/base.service';
 import { ApiResponseCollection } from '../api-response-interface';
