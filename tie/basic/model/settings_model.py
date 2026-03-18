@@ -5,10 +5,11 @@ The parent SettingsModel class should never be edited.
 
 from datetime import timedelta
 
+from pydantic import Field
+
 from app_inputs import AdvancedSettingsModel
 from core.json_db import Embedded
 from core.model.settings_model_base import SettingModelBase
-from pydantic import Field
 
 
 class SettingModel(SettingModelBase):

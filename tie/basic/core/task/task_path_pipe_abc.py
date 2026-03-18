@@ -9,6 +9,8 @@ from functools import partial
 from pathlib import Path
 from uuid import UUID
 
+from pydantic import BaseModel
+
 from core.beacon import provide
 from core.task.task_abc import TaskABC
 from core.task.task_path_pipe_injectables import (
@@ -19,7 +21,6 @@ from core.task.task_path_pipe_injectables import (
 )
 from core.util.process_metadata import Metadata, ProcessMetadata
 from model import AdHocJobRequestModel
-from pydantic import BaseModel
 
 
 class UploadError(Exception):

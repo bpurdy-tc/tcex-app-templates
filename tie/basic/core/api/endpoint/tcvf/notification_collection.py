@@ -5,6 +5,8 @@ import logging
 from functools import cached_property
 
 import falcon
+from pydantic import Field, validator
+from spectree import Response
 
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
@@ -21,8 +23,6 @@ from core.model.tie.notification_model import (
     NotificationPaginatedResponseModel,
 )
 from core.service.notification_service import NotificationService
-from pydantic import Field, validator
-from spectree import Response
 
 logger = logging.getLogger('tcex')
 

@@ -4,12 +4,13 @@ from collections.abc import Callable
 from contextlib import suppress
 from typing import Any, Generic, TypeAlias, TypedDict, TypeVar, cast
 
+from pydantic import BaseModel
+
 from core.api.validation.models.query_param_filter_pagination_model import (
     QueryParamFilterPaginationModel,
 )
 from core.json_db import JsonDB, SortBy, SortOrder
 from core.json_db import where as where_m
-from pydantic import BaseModel
 
 M = TypeVar('M', bound=BaseModel)
 

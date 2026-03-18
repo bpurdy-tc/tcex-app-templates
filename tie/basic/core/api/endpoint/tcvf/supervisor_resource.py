@@ -2,12 +2,12 @@
 
 import falcon
 from pydantic import Field
+from spectree import Response
 
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.spec import spec, tag_util
 from core.api.validation.models.query_param_model import QueryParamModel
 from core.model.model_base import ModelBase
-from spectree import Response
 
 
 class SupervisorConfigUpdateBody(ModelBase):

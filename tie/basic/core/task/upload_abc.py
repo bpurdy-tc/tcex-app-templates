@@ -5,11 +5,12 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import NamedTuple, TypeVar
 
+from tcex import TcEx
+
 from core.json_db import JsonDB
 from core.task.task_path_pipe_abc import TaskPathPipeABC, UploadError, UploadRetryError
 from model import JobRequestModel
 from model.settings_model import SettingModel
-from tcex import TcEx
 
 T = TypeVar('T')
 

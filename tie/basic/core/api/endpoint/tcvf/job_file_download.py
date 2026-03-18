@@ -3,12 +3,13 @@
 from pathlib import Path
 
 import falcon
+from spectree import Response
+
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
-from spectree import Response
 
 
 class QueryParams(QueryParamModel):

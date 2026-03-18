@@ -18,8 +18,8 @@ from core.api.endpoint.tcvf.job_retry_resource import JobRetryResource
 from core.api.endpoint.tcvf.metric_processing_collection import (
     MetricProcessingCollection,
 )
-from core.api.endpoint.tcvf.notification_collection import NotificationCollection
 from core.api.endpoint.tcvf.metric_task_resource import MetricTaskResource
+from core.api.endpoint.tcvf.notification_collection import NotificationCollection
 from core.api.endpoint.tcvf.report_pdf_tracker_collection import (
     ReportPDFTrackerCollection,
 )

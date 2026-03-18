@@ -28,14 +28,15 @@ import re
 from functools import cached_property
 
 import falcon
+from pydantic import BaseModel, Field, validator
+from spectree import Response
+
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 from core.api.spec import spec, tag_job
 from core.api.validation.models import QueryParamModel
 from core.dao.job_dao import JobRequestDAO
-from pydantic import BaseModel, Field, validator
-from spectree import Response
 
 
 class JobStatusUpdateRequest(BaseModel):

@@ -8,6 +8,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import TypeVar
 
+from tcex import TcEx
+
 from core.json_db import JsonDB
 
 # from more import Metrics
@@ -19,7 +21,6 @@ from core.task.tasks import Tasks
 from model import AdHocJobRequestModel
 from model.settings_model import SettingModel
 from sdk.sdk import SDK
-from tcex import TcEx
 
 T = TypeVar('T', bound=JobRequestBaseModel)
 

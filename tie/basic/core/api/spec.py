@@ -2,10 +2,11 @@
 
 import os
 
-from core.model.model_base import ModelBase
 from offapi import OpenAPITemplate
 from spectree import SpecTree, Tag
 from tcex.app.config.install_json import InstallJson
+
+from core.model.model_base import ModelBase
 
 ij = InstallJson()
 

@@ -10,6 +10,9 @@ from typing import TYPE_CHECKING, ClassVar
 
 import arrow
 import schedule
+from tcex import TcEx
+from tcex.exit import ExitCode
+
 from core.beacon import inject
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
@@ -22,8 +25,6 @@ from core.service.notification_service import (
 )
 from core.supervisor import Supervisor
 from model.job_request_model import JobRequestModel
-from tcex import TcEx
-from tcex.exit import ExitCode
 
 if TYPE_CHECKING:
     from task import TaskABC

@@ -4,9 +4,10 @@ from datetime import UTC, datetime
 from typing import ClassVar
 
 import arrow
+from pydantic import Extra, Field, validator
+
 from core.json_db import Index
 from core.model.model_base import ModelBase
-from pydantic import Extra, Field, validator
 
 
 class JobRequestBaseModel(ModelBase):

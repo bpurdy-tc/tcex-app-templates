@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from typing import TYPE_CHECKING, Generic, TypeVar
 
 import arrow
+
 from core.json_db import JsonDB, SortOrder, where
 from core.json_db.dao import JsonDBDAO
 from core.model.settings_model_base import SettingModelBase

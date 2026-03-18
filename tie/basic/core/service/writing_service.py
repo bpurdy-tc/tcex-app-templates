@@ -6,12 +6,13 @@ import time
 from pathlib import Path
 from typing import Literal
 
+from pydantic import BaseModel, root_validator
+
 from core.json_db import JsonDB
 from core.json_db.dao import JsonDBDAO
 from core.model.tie import TiProcessingMetricModel
 from core.util.custom_handler import CustomHandler
 from model.job_request_model import JobRequestModel
-from pydantic import BaseModel, root_validator
 
 
 class WritingModel(BaseModel):

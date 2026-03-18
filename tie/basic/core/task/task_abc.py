@@ -12,6 +12,13 @@ from typing import Generic, Protocol, TypeVar
 
 import arrow
 import schedule
+from pydantic.main import BaseModel
+from tcex import TcEx
+from tcex.logger.rotating_file_handler_custom import (
+    RotatingFileHandlerCustom,
+)
+from tcex.logger.trace_logger import TraceLogger
+
 from core.beacon import inject, provide
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
@@ -22,12 +29,6 @@ from core.supervisor import Supervisor
 from core.task.task_path_pipe_injectables import UpdateHeartbeat
 from core.util.process_metadata import Metadata, ProcessMetadata
 from model.settings_model import SettingModel
-from pydantic.main import BaseModel
-from tcex import TcEx
-from tcex.logger.rotating_file_handler_custom import (
-    RotatingFileHandlerCustom,
-)
-from tcex.logger.trace_logger import TraceLogger
 
 T = TypeVar('T', bound=JobRequestBaseModel)
 
