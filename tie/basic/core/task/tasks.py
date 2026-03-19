@@ -223,7 +223,7 @@ class Tasks:
                     f'heartbeat-value={task.ns.heartbeat}, task={task.task_settings.name}'
                 )
 
-                if arrow.now(UTC) - task.ns.heartbeat > timedelta(
+                if task.ns.heartbeat is not None and arrow.now(UTC) - task.ns.heartbeat > timedelta(
                     minutes=task.task_settings.max_execution_minutes
                 ):
                     self.log.warning(

@@ -270,12 +270,11 @@ class DocAnalysisABC(TaskABC):
     def handle_failure(self, tracker, message, group, custom_tag):
         """Handle a failure in processing."""
         tracker.attempt_result = message
-        tracker.attempt_count += 1
+        self._update_tracker(tracker)
         if self._max_attempts_reached(group.model.id, tracker) is True:
             self._update_tag(group, custom_tag.name)
             if custom_tag.cleaner:
                 custom_tag.cleaner(group.model.id)
-        self._update_tracker(tracker)
 
     def process_group(self, xid, data, processed_items):
         """Process a single group."""

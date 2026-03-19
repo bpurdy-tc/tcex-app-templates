@@ -337,7 +337,7 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         deadline = time() + delay_time
 
         self.log.debug(f'action=loop-forever, shutdown=True, max_delay_time={delay_time}')
-        while self.tasks_obj.alive() != 0 and time() < deadline:
+        while self.tasks_obj.alive() and time() < deadline:
             sleep(1)
 
         self.tasks_obj.kill_all()

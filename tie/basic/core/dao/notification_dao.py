@@ -7,7 +7,7 @@ from core.api.validation.models.query_param_filter_pagination_model import (
 )
 from core.json_db import JsonDB
 from core.json_db.dao import JsonDBDAO
-from core.json_db.json_db import SortBy
+from core.json_db.json_db import SortBy, SortOrder
 from core.model.tie.notification_model import NotificationModel
 
 
@@ -44,7 +44,7 @@ class NotificationDAO(JsonDBDAO[NotificationModel]):
         if not isinstance(sort_by, SortBy):
             notifications.sort(
                 key=lambda x: getattr(x, sort_by),
-                reverse=query_params.sort_order == 'desc',
+                reverse=query_params.sort_order == SortOrder.DESC,
             )
 
         # Apply filters

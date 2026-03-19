@@ -67,7 +67,7 @@ class ParamModelFilter:
 
     def _is_processed(self, field: str, field_filters: dict[str, Any]) -> bool:
         """Return True if the field has already been processed (included/exclude)."""
-        return hasattr(field_filters, field) and field_filters.get(field) is True
+        return field in field_filters and field_filters.get(field) is True
         # return field_filters.get(field) and field_filters.get(field) is True  # type: ignore
 
     def _nested(self, parts: list[str], field_filters: dict[str, Any]):

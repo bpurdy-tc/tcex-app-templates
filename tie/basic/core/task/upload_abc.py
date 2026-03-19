@@ -135,7 +135,6 @@ class UploadABC(TaskPathPipeABC, ABC):
         self.log.info(f'action="run-task", status="start", request-id="{request_id}"')
 
         request = self.job_dao.get(request_id)
-        self._reset_counts(request)
 
         files = sorted(input_dir.iterdir())
         failed_files = []

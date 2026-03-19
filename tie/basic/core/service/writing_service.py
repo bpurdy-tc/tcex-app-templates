@@ -127,7 +127,7 @@ class WritingService:
                 f'action=write-results, '
                 f'page_name={writer.page_name}, '
                 f'group-chunk={len(groups_written_chunk)}, '
-                f'indicator-chunk={len(indicators_written_chunk)}'
+                f'indicator-chunk={len(indicators_written_chunk)}, '
                 f'association-chunk={len(associations_written_chunk)}'
             )
             self._write_data(chunk, writer)

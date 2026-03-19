@@ -18,7 +18,7 @@ class ReportPdfTrackerModel(ModelBase):
     attempt_count: int = Field(..., description='')
     attempt_result: str = Field('pending', description='')
     date_last_attempt: datetime.datetime = Field(
-        datetime.datetime.now(datetime.UTC), description=''
+        default_factory=lambda: datetime.datetime.now(datetime.UTC), description=''
     )
 
     class Config:

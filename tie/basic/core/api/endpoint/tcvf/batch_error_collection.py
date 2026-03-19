@@ -37,7 +37,7 @@ class GetQueryParamModel(QueryParamFilterPaginationModel, where.ToWhere):
         """Validate error_codes value."""
         match v:
             case str():
-                return [v.strip() for f in v.split(',')]
+                return [f.strip() for f in v.split(',')]
             case _:
                 return v
 
