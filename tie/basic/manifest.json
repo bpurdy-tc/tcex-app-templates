@@ -105,8 +105,8 @@
         "template_path": "tie/basic/core/api/endpoint/tcvf/__init__.py"
     },
     "core/api/endpoint/tcvf/batch_error_collection.py": {
-        "sha256": "fb7d9bdce8fe3541b30707ffa6feea756163b6b7b89261e267a1b8d3960a8fac",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "8444f17b421196ce036ed52b73e7435427cc63b5c4bb1315679e28649cf1bd15",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/api/endpoint/tcvf/batch_error_collection.py"
     },
     "core/api/endpoint/tcvf/batch_error_counts_collection.py": {
@@ -300,8 +300,8 @@
         "template_path": "tie/basic/core/api/validation/models/multipart_form_data_model.py"
     },
     "core/api/validation/models/query_param_filter_model.py": {
-        "sha256": "d5c4ac013e5c2a078ad348142532c7453fd6ccd88b494c9ba648524582e6b158",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "21608803c122ae24a23d25755310d89ded178643403045a53a37f971860f506e",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/api/validation/models/query_param_filter_model.py"
     },
     "core/api/validation/models/query_param_filter_pagination_model.py": {
@@ -330,8 +330,8 @@
         "template_path": "tie/basic/core/app/api_service_app_abc.py"
     },
     "core/app/api_service_falcon_abc.py": {
-        "sha256": "d5fbfd40f7757d65809d74bc0ab974a430ca7b4a0f90b5ca6f92bc2033c7879e",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "608c15b5541328a36434313677c934eda71ff26c0e336e5457942b1e81ec42d6",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/app/api_service_falcon_abc.py"
     },
     "core/app/app_lib.py": {
@@ -370,8 +370,8 @@
         "template_path": "tie/basic/core/dao/__init__.py"
     },
     "core/dao/batch_error_dao.py": {
-        "sha256": "5f4a64309564551b3b5abeceb2bb79dceeac9e1db4926740371dc99347179cbf",
-        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
+        "sha256": "773fedeeeb19e5a4f05e0e7d7b4528216fefdd2388c71204108f7ce07597d4e9",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/dao/batch_error_dao.py"
     },
     "core/dao/doc_analysis_processed_items_dao.py": {
@@ -395,8 +395,8 @@
         "template_path": "tie/basic/core/dao/job_dao.py"
     },
     "core/dao/notification_dao.py": {
-        "sha256": "3db2ef950958991a0013f362cf6172e39271d69b17a3bdd1b92931629f795162",
-        "last_commit": "190bff941b1cff10c0ebe4afbebad0602bd29f3b",
+        "sha256": "5a4997e81ea056ff763f7352966be0a863df18e00440609c519c4788c42fbb27",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/dao/notification_dao.py"
     },
     "core/dao/report_pdf_tracker_dao.py": {
@@ -585,8 +585,8 @@
         "template_path": "tie/basic/core/model/scheduled_action_model.py"
     },
     "core/model/settings_model_base.py": {
-        "sha256": "e954206c025ec61ba99bcd7aaf3fc172f3b8dd2d7c5907162ce8524a3fa9e561",
-        "last_commit": "711183afc85ed9fa905e29775a93922487f1dc9b",
+        "sha256": "13518f60a3b8740a8739e32c83b927982ae9fa994b973f383f5c1857e7ccccc1",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/model/settings_model_base.py"
     },
     "core/model/tcva/__init__.py": {
@@ -630,8 +630,8 @@
         "template_path": "tie/basic/core/model/tcvf/advanced_settings_model_base.py"
     },
     "core/model/tcvf/settings_model_base.py": {
-        "sha256": "e59ef49587948724a75b27f6229762dd1c0acb790d28c018f3c6d167e56daaaf",
-        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
+        "sha256": "75947e1b8c992f3a3a67e9cd64eec99ef55131e2be205390c7d16ca97d8a1cf3",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/model/tcvf/settings_model_base.py"
     },
     "core/model/tcvp/__init__.py": {
@@ -690,8 +690,8 @@
         "template_path": "tie/basic/core/model/tie/notification_model.py"
     },
     "core/model/tie/report_pdf_tracker_model.py": {
-        "sha256": "a74ec2609b62313edc9592a4f942aedc22542723aceabe17e47133c59ed14c2c",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "0d996c6bc4e76d41afe5395acb0de34ad72198f7458016104e01e58dbc3f43fe",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/model/tie/report_pdf_tracker_model.py"
     },
     "core/model/tie/task_setting_model.py": {
@@ -730,8 +730,8 @@
         "template_path": "tie/basic/core/more/error.py"
     },
     "core/more/paginator.py": {
-        "sha256": "6320b96cd6da16c934275d725b1513051843725b9b7e85b74322b70da48b1fac",
-        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
+        "sha256": "14b12fb795fd38c3de3d062578cddea5bbba9a3a2a99789ed5d6fd8030ea7a57",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/more/paginator.py"
     },
     "core/more/transform/__init__.py": {
@@ -815,8 +815,8 @@
         "template_path": "tie/basic/core/service/sqlite_migration_service.py"
     },
     "core/service/writing_service.py": {
-        "sha256": "1cb54af1db239a1431907bfeabc28a6fa7910d3e4505d767626dd40aef8411c3",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "8a0656535a60e606bb56895537502410c273c78bcbf5f4e0e1e3f68f09297d03",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/service/writing_service.py"
     },
     "core/supervisor/__init__.py": {
@@ -855,8 +855,8 @@
         "template_path": "tie/basic/core/task/cleaner.py"
     },
     "core/task/doc_analysis_abc.py": {
-        "sha256": "5369744d0de8882cdd61d39733702e2042a0a89fd1af717455704ab02f2443ab",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "9a574fe68450c962ef259238000566bb728de98a95eb9fc81c558b0e14fd139b",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/task/doc_analysis_abc.py"
     },
     "core/task/download_abc.py": {
@@ -890,13 +890,13 @@
         "template_path": "tie/basic/core/task/task_path_pipe_injectables.py"
     },
     "core/task/tasks.py": {
-        "sha256": "003185b794ff39aded31618b21209e3bb43815004c149a05a95def801b9353c8",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "853a7a0488f28ed3b8b50c8f40567bce4c3e2f31953fe2f22e068f2c3201054c",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/task/tasks.py"
     },
     "core/task/upload_abc.py": {
-        "sha256": "0d6e33db332ffb2a418203569d0f3f127fd17aa341b6ee73ffba09e2a71e9e8b",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "0135e9197787480b74fbcb8d159e08670334a7d8ab9410f4b057618ee59c3de4",
+        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
         "template_path": "tie/basic/core/task/upload_abc.py"
     },
     "core/task/upload_egress_abc.py": {
