@@ -10,8 +10,8 @@
         "template_path": "_app_common/.gitignore"
     },
     ".pre-commit-config.yaml": {
-        "sha256": "2963d6089f47f61e03ab8b10164031e792574d782265677ef1c62abee4d24283",
-        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
+        "sha256": "e8868d50096894ca69730398d7c3e5ae60cddf8bacc1f087eb9baa126dd9d6a3",
+        "last_commit": "b20ab741ab4d1dba7e724bb53ce6bb563518bf03",
         "template_path": "_app_common/.pre-commit-config.yaml"
     },
     "README.md": {
