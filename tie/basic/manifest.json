@@ -875,8 +875,8 @@
         "template_path": "tie/basic/core/task/metric_reporter_redis.py"
     },
     "core/task/task_abc.py": {
-        "sha256": "5b0ff697b30e6501a788abb29db96d0339c2cd7af3cc07e6a9b19e9eb03f82be",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "9407ec216dfc0ee28d33bb5c10bd36011dcd2cc9c4ee014159896d6166a119cf",
+        "last_commit": "1f2783af53abbdb30bf9d16d05c6c61470f9b73b",
         "template_path": "tie/basic/core/task/task_abc.py"
     },
     "core/task/task_path_pipe_abc.py": {
