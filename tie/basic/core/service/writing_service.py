@@ -24,7 +24,7 @@ class WritingModel(BaseModel):
     size: int = 5_000
     update_metrics: bool = False
     priority: str | None = None
-    file_seperator: str = '#'
+    file_separator: str = '#'
     metric_name: str | None = None
 
     @root_validator
@@ -47,7 +47,7 @@ class WritingModel(BaseModel):
             file_name_identifiers.append(self.priority)
         file_name_identifiers.append(str(round(time.time() * 10_000_000)))
         file_name_identifiers.append(self.page_name)
-        name = f'{self.file_seperator}'.join(file_name_identifiers).lower()
+        name = f'{self.file_separator}'.join(file_name_identifiers).lower()
         return f'{name}.json.gz'
 
     def should_write(self, data):
@@ -75,7 +75,7 @@ class WritingService:
         self.db = db
         self.request = request
         self.log = log
-        self.file_seperator = '#'
+        self.file_separator = '#'
         self.metric_name_mapping = {}
 
     def register_metric_name_mapping(self, initial_type: str, mapped_type: str):
@@ -89,6 +89,20 @@ class WritingService:
     def write_indicators(self, data, writer: WritingModel):
         """Write indicators to disk."""
         return self._write(data, writer, 'indicator')
+
+    def write_associations(self, data, writer: WritingModel):
+        """Write associations to disk."""
+        if not writer.should_write(data):
+            return data
+
+        while len(data) > writer.size or (writer.force and data):
+            written_chunk, data = data[: writer.size], data[writer.size :]
+            self.log.info(
+                f'action=write-results, page_name={writer.page_name}, count={len(written_chunk)}'
+            )
+            self._write_data(written_chunk, writer)
+
+        return data
 
     def write_batch(self, data, writer: WritingModel):
         """Write groups and indicators to disk."""
