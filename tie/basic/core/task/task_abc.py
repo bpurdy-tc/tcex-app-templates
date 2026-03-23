@@ -47,6 +47,7 @@ class TaskNamespace(Protocol):
     api_limit_details: dict
     heartbeat: arrow.Arrow | None
     last_batch_failure: datetime | None
+    last_task_success: datetime | None
     task_result: TaskResult | None  # None=no event, set on success or failure
     unrecoverable_failure: bool
 
@@ -117,6 +118,7 @@ class TaskABC(ABC, Generic[T]):
         # set default heartbeat
         self.ns.heartbeat = None
         self.ns.unrecoverable_failure = False
+        self.ns.last_task_success = None
         self.ns.task_result = None
         self.ns.last_batch_failure = datetime.now(UTC) - timedelta(days=90)
 
@@ -339,8 +341,19 @@ class TaskABC(ABC, Generic[T]):
         try:
             # run the task core logic
             self.run(*args, **kwargs)
+            self.ns.last_task_success = datetime.now(UTC)
         except Exception:
             self.log.exception(f'task-event=task-failed, task-name={self.task_settings.name}')
+            last_success = self.ns.last_task_success
+            threshold = self.settings.advanced_settings.failure_threshold
+            if last_success is not None and (datetime.now(UTC) - last_success) > threshold:
+                self.log.error(  # noqa: TRY400
+                    f'task-event=failure-threshold-exceeded, '
+                    f'task-name={self.task_settings.name}, '
+                    f'last-success={last_success}, '
+                    f'threshold={threshold}'
+                )
+                self.ns.unrecoverable_failure = True
 
     def schedule(self):
         """Schedule the task."""
