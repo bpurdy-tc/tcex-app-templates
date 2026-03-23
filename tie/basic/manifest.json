@@ -880,8 +880,8 @@
         "template_path": "tie/basic/core/task/task_abc.py"
     },
     "core/task/task_path_pipe_abc.py": {
-        "sha256": "e75018cfc7aee56572ad64164a92984e70f5332d48b776b9e5a0411ce4c1c61f",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "7bbfe8671b4fc65d28943b3212ddde55d4a4575d78b40641ed68a68e20225740",
+        "last_commit": "dd30e1fb3ec0ce2260309234653574500a88a176",
         "template_path": "tie/basic/core/task/task_path_pipe_abc.py"
     },
     "core/task/task_path_pipe_injectables.py": {
