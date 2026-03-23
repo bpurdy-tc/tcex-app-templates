@@ -272,9 +272,11 @@ class TaskPathPipeABC(TaskABC, ABC):
             self._task_date_fields_complete,
         )
 
-        # Clear any backoff/failure state on success
-        # This ensures future failures start fresh with correct 48h threshold
-        self._clear_failure_state_on_success(request_id)
+        # Clear any backoff/failure state only when the entire pipeline completes.
+        # Intermediate task success (e.g., Download succeeding before Convert fails again)
+        # should NOT reset failure_count, otherwise the job retries forever at count=1.
+        if self.task_settings.pipe_task_complete is True:
+            self._clear_failure_state_on_success(request_id)
 
         # Signal success to Supervisor (via namespace for cross-process communication)
         self.ns.task_result = {'success': True}
