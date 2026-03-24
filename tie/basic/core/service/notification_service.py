@@ -40,12 +40,12 @@ NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
     ),
     'Job Retrying': NotificationTypeConfig(
         category='job_retrying',
-        priority='High',
+        priority='Medium',
         message_template='{count} job(s) failed and are retrying',
     ),
     'Job Failed': NotificationTypeConfig(
         category='job_failed',
-        priority='Medium',
+        priority='High',
         message_template='{count} job(s) retried 10 times and failed'
         ' - job(s) stopped and will not be retried',
     ),
