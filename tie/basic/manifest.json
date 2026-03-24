@@ -800,8 +800,8 @@
         "template_path": "tie/basic/core/service/migration_service.py"
     },
     "core/service/notification_service.py": {
-        "sha256": "07190f53b1460087b9315d2b7b8fa127bf56eaa3403cb8351c22742346e731ae",
-        "last_commit": "d38749742b355ecdee6977b86d8e00eeb295c58c",
+        "sha256": "1b5973050ea4c1ba3651bea094ce2bf8ec1b3813ff677eadc6f17cc8bf9a8fb7",
+        "last_commit": "4ea817ac4f9456da66bc15909326a60234a917e2",
         "template_path": "tie/basic/core/service/notification_service.py"
     },
     "core/service/preflight_check_service.py": {
