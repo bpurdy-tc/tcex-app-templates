@@ -52,6 +52,9 @@ class JobRequestDAO(JsonDBDAO[M], Generic[M]):
             # if the job is not completed or failed do NOT clean it
             if not job.date_completed and not job.date_failed:
                 continue
+            # do not clean jobs that are actively retrying
+            if job.status.casefold() == self.settings.job.status_retry_pending.casefold():
+                continue
             # We do not want to clean the most recent scheduled job
             if job.job_type == 'scheduled' and first_found is False:
                 first_found = True
@@ -123,6 +126,7 @@ class JobRequestDAO(JsonDBDAO[M], Generic[M]):
         status_lower = job.status.casefold()
         return (
             status_lower == self.settings.job.status_pending.casefold()
+            or status_lower == self.settings.job.status_retry_pending.casefold()
             or status_lower == task.task_settings.status_active.casefold()
         )
 

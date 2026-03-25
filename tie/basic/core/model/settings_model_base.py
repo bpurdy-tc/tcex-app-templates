@@ -42,6 +42,7 @@ class JobSettings(BaseModel):
     status_cancelled: str = 'cancelled'
     status_failed: str = 'failed'
     status_pending: str = 'pending'
+    status_retry_pending: str = 'retry pending'
     throttle_limit: int = 3
 
 

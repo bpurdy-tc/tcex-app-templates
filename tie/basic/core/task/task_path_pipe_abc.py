@@ -409,8 +409,8 @@ class TaskPathPipeABC(TaskABC, ABC):
         backoff = self.supervisor.compute_backoff(job.failure_count)
         job.retry_after = now + backoff
 
-        # Reset to Pending to restart from Download (clear all stage progress)
-        job.status = self.settings.job.status_pending
+        # Reset to Retry Pending to restart from Download (clear all stage progress)
+        job.status = self.settings.job.status_retry_pending
         job.date_download_start = None
         job.date_download_complete = None
         job.date_convert_start = None

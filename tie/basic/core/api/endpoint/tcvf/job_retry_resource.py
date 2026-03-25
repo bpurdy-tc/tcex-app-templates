@@ -272,6 +272,12 @@ class JobRetryResource(EndpointBase):
         if request.clear_backoff:
             job.retry_after = None
 
+        # Clear retry state when resetting to pending (fresh start)
+        if target_status.casefold() == self.settings.job.status_pending.casefold():
+            job.failure_count = 0
+            job.retry_after = None
+            job.date_failed = None
+
         self.dao.save(job)
 
         self.log.info(

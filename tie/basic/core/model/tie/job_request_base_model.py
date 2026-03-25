@@ -117,6 +117,7 @@ class JobRequestBaseModel(ModelBase):
             'convert complete': 'change_circle',
             'failed': 'error_outline',
             'pending': 'help_outline',
+            'retry pending': 'replay',
             'upload in progress': 'file_upload',
             'upload complete': 'check',
         }

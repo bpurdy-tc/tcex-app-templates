@@ -288,6 +288,14 @@ class Tasks:
         if self.exit_service:
             self.exit_service.exit(ExitCode.FAILURE, f'Shutting down: {reason}')
 
+    def _is_newly_perm_failed(self, job, status_failed: str) -> bool:
+        return (
+            job.status.casefold() == status_failed
+            and job.request_id not in self.reported_resolved
+            and job.date_failed is not None
+            and job.date_failed >= self.last_digest_time
+        )
+
     def _sweep_job_state(self) -> tuple[list, list, list]:
         """Classify jobs into retrying, permanently failed, and recovered buckets.
 
@@ -312,8 +320,7 @@ class Tasks:
                 if job.date_failed is not None and job.date_failed >= self.last_digest_time:
                     retrying.append(job)
 
-            # Permanently failed: status is 'failed', not yet reported as resolved
-            elif job.status.casefold() == status_failed and job_id not in self.reported_resolved:
+            elif self._is_newly_perm_failed(job, status_failed):
                 perm_failed.append(job)
 
             # Recovered: completed, was previously reported as retrying, not yet resolved

@@ -60,6 +60,7 @@
                     @for (col of table.dataColumns; track col) {
                         <th>{{ col.header }}</th>
                     }
+                    <th></th>
                 </tr>
             </ng-template>
             <!-- Rows -->
@@ -76,6 +77,7 @@
                                 [value]="value[row.field]"></app-formatted-field>
                         </td>
                     }
+                    <td></td>
                 </tr>
             </ng-template>
         </tcl-table>
