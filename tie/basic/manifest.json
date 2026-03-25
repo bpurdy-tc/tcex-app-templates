@@ -145,8 +145,8 @@
         "template_path": "tie/basic/core/api/endpoint/tcvf/job_files.py"
     },
     "core/api/endpoint/tcvf/job_retry_resource.py": {
-        "sha256": "be54de7008af36191068716af7d7807f88b38b064f9a70ecc27862297ec7d446",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "326272a36603bef333ddc60c89fbedd263c3caae90c417e0420cbff5bf7a1270",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/api/endpoint/tcvf/job_retry_resource.py"
     },
     "core/api/endpoint/tcvf/metric_processing_collection.py": {
@@ -390,8 +390,8 @@
         "template_path": "tie/basic/core/dao/doc_analysis_tracker_dao.py"
     },
     "core/dao/job_dao.py": {
-        "sha256": "26476399d47634fb97af6861ba4e2d1c63751989b2f2d4040aef2435b5692423",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "7cc4bd106d06e27a71d61b522101cf1f39b86526ea90baa47f7cfc5a46802e66",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/dao/job_dao.py"
     },
     "core/dao/notification_dao.py": {
@@ -585,8 +585,8 @@
         "template_path": "tie/basic/core/model/scheduled_action_model.py"
     },
     "core/model/settings_model_base.py": {
-        "sha256": "13518f60a3b8740a8739e32c83b927982ae9fa994b973f383f5c1857e7ccccc1",
-        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
+        "sha256": "c71531fc95763fd6b6f04191b31b5f87c4dfdc6921ebcb8bb270b2ebce913b93",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/model/settings_model_base.py"
     },
     "core/model/tcva/__init__.py": {
@@ -680,8 +680,8 @@
         "template_path": "tie/basic/core/model/tie/item_model.py"
     },
     "core/model/tie/job_request_base_model.py": {
-        "sha256": "79679eccaf92a64d436e15c370bbee12a8d1cd9e7bd26e03d25437483a10dc29",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "36dc2abd3f3606404a083083de5c096494699119a17262e311af290c7189180c",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/model/tie/job_request_base_model.py"
     },
     "core/model/tie/notification_model.py": {
@@ -860,8 +860,8 @@
         "template_path": "tie/basic/core/task/doc_analysis_abc.py"
     },
     "core/task/download_abc.py": {
-        "sha256": "61b0b45c7cd54c0d5c119f04127e4d86c840c9f963148a8d0b0e0498f3901061",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "a8f8768fc829736b9ee7d1cabc3f5bc05e2154095c80b9cd6d19795ff882abe9",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/task/download_abc.py"
     },
     "core/task/metric_reporter.py": {
@@ -880,8 +880,8 @@
         "template_path": "tie/basic/core/task/task_abc.py"
     },
     "core/task/task_path_pipe_abc.py": {
-        "sha256": "7bbfe8671b4fc65d28943b3212ddde55d4a4575d78b40641ed68a68e20225740",
-        "last_commit": "dd30e1fb3ec0ce2260309234653574500a88a176",
+        "sha256": "85f477e502f18463b3b9f85e1c89420ffb1b39b3081e76508ec4ee5ecd78e7b3",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/task/task_path_pipe_abc.py"
     },
     "core/task/task_path_pipe_injectables.py": {
@@ -890,8 +890,8 @@
         "template_path": "tie/basic/core/task/task_path_pipe_injectables.py"
     },
     "core/task/tasks.py": {
-        "sha256": "853a7a0488f28ed3b8b50c8f40567bce4c3e2f31953fe2f22e068f2c3201054c",
-        "last_commit": "fc8926fa768dcfdd913492b0eee66ce487daf8eb",
+        "sha256": "6c885cd14cc0ec674f2c6b5e95542c73572392aef594d8e08d04332fe0063f08",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/core/task/tasks.py"
     },
     "core/task/upload_abc.py": {
@@ -1400,8 +1400,8 @@
         "template_path": "tie/basic/ui/src/app/pages/jobs/jobs.component.ts"
     },
     "ui/src/app/pages/notifications/notifications.component.html": {
-        "sha256": "e8a6827c25b8560d78ce1b093b2b8b0d3d0e758a8f527acda6525e8ce3370b3d",
-        "last_commit": "711183afc85ed9fa905e29775a93922487f1dc9b",
+        "sha256": "b891ac51168d5aa59fe12cf81f05e7c950a66ca686c221d579aa82cba346e01d",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/ui/src/app/pages/notifications/notifications.component.html"
     },
     "ui/src/app/pages/notifications/notifications.component.scss": {
@@ -1705,8 +1705,8 @@
         "template_path": "tie/basic/ui/src/proxy.conf.json"
     },
     "ui/src/styles.scss": {
-        "sha256": "cde8c7cb81acf5a27dfd9f72f6817a50b6539e0f4a990ac9e24dcf03cb4c304c",
-        "last_commit": "711183afc85ed9fa905e29775a93922487f1dc9b",
+        "sha256": "b19dfdd61fc067f7aae5fbaf64943597c79198f4ce3a5b264ef5b94bbbe18826",
+        "last_commit": "51cfb7b1e4a6c71567150b079187aa40e6e93a6f",
         "template_path": "tie/basic/ui/src/styles.scss"
     },
     "ui/src/tc-global.scss": {
