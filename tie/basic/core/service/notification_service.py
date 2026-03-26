@@ -33,6 +33,11 @@ NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
         priority='Low',
         message_template='App starting',
     ),
+    'App Startup Failed': NotificationTypeConfig(
+        category='app_startup_failed',
+        priority='High',
+        message_template='App failed to start — {reason}',
+    ),
     'App Shutdown': NotificationTypeConfig(
         category='app_shutdown',
         priority='High',

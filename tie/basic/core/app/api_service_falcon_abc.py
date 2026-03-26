@@ -322,9 +322,13 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
 
     def loop_forever(self):
         """Run the app."""
-        self.initialize_app()
-        self.preflight_check_service.perform_checks()
-        # self.tcex.exit.exit(ExitCode.SUCCESS, 'App has been successfully Started')
+        try:
+            self.initialize_app()
+            self.preflight_check_service.perform_checks()
+        except Exception as ex:
+            self.tasks_obj.send_preflight_failure_notification(str(ex)[:80])
+            raise
+        self.tasks_obj.send_startup_notification()
         if self.migrations:
             self.migrations.migration_service.preform_migrations()
 

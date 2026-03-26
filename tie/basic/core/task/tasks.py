@@ -89,7 +89,11 @@ class Tasks:
         # Healthy pipelines: baseline is reset normally
         self.supervisor.check_and_enter_probation()
 
-        # Send startup notification immediately (not batched into digest)
+        # schedule watchdog for tasks
+        schedule.every(1).minute.do(self.watchdog)
+
+    def send_startup_notification(self) -> None:
+        """Send startup notification. Call after preflight checks pass."""
         if self.notifications_enabled:
             notification_config = NOTIFICATION_BY_CATEGORY['app_startup']
             notification_types = self.settings.notification_types or []
@@ -98,8 +102,15 @@ class Tasks:
                 should_send='app_startup' in notification_types,
             )
 
-        # schedule watchdog for tasks
-        schedule.every(1).minute.do(self.watchdog)
+    def send_preflight_failure_notification(self, reason: str) -> None:
+        """Send a notification when preflight checks fail."""
+        if self.notifications_enabled:
+            notification_config = NOTIFICATION_BY_CATEGORY['app_startup_failed']
+            self._store_and_maybe_send(
+                notification_config,
+                should_send=True,
+                format_message={'reason': reason},
+            )
 
     def add_task(self, task: 'TaskABC'):
         """Add a task to the container."""
