@@ -3,7 +3,10 @@
 import logging
 import multiprocessing
 import platform
+import time
 from datetime import UTC
+
+import setproctitle
 
 import arrow
 from pydantic import BaseModel, Extra, root_validator
@@ -82,6 +85,19 @@ class ProcessMetadata(multiprocessing.Process):
         )
         self.ns = ns
         self._metadata = metadata
+
+    def run(self):
+        """Set the OS-level process title before running the target."""
+        # setproctitle.setproctitle(f'tie-task: {self.name}')
+
+        args = ' '.join(
+            [
+                f'--tie.task={self.name.lower().replace(" ", "-")}',
+                f'--tie.started={int(time.time())}',
+            ]
+        )
+        setproctitle.setproctitle(f'{setproctitle.getproctitle()} {args}')
+        super().run()
 
     @property
     def metadata(self):
