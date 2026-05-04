@@ -6,12 +6,12 @@
     },
     "api_service_app.py": {
         "sha256": "eec992880b4ae45a54e869f7e4f477da8630d6b0eb77dc0820366bcb362ebc69",
-        "last_commit": "c36d36c5caf00c1150efae6c9d08bb2e7d304f33",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/basic/api_service_app.py"
     },
     "app.py": {
         "sha256": "38ea79e14937ff39d7dcaaaa53d9b0a2c7da879190d235750952e5c98d47173e",
-        "last_commit": "1a0d0b9d2b9dd618a5e529fe4dc323ab703c43ec",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/basic/app.py"
     },
     "app_inputs.json": {
@@ -21,7 +21,7 @@
     },
     "app_inputs.py": {
         "sha256": "403535b9ad2e7ea6279faf66d98b2efce0ebf26d45b9a4212f8c1ee0b73d5ac1",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/basic/app_inputs.py"
     },
     "install.json": {
@@ -30,13 +30,13 @@
         "template_path": "api_service/basic/install.json"
     },
     "requirements.txt": {
-        "sha256": "05f6683580a638974b6457e2315a139178c2df6bb6cfc7746cd17e7e6f486b85",
-        "last_commit": "1a0d0b9d2b9dd618a5e529fe4dc323ab703c43ec",
+        "sha256": "209ae2b97a42dd1ec16f4b765e0cfbe59c35c7136aabc9de14ee274db2f84898",
+        "last_commit": "43088c74fa8d75fa0bd67852c05ab0924b8c157a",
         "template_path": "api_service/basic/requirements.txt"
     },
     "run.py": {
         "sha256": "fd2d681d316b3a6f97b2d56c109408b9eca578823f14ed13a12b5e9522d867b6",
-        "last_commit": "c36d36c5caf00c1150efae6c9d08bb2e7d304f33",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/basic/run.py"
     },
     "tcex.json": {

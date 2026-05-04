@@ -6,27 +6,27 @@
     },
     "api_service_app.py": {
         "sha256": "3751d3796d78d82d5d283ac2317737354daa39349a86d5c8d5256c342154e5f7",
-        "last_commit": "c36d36c5caf00c1150efae6c9d08bb2e7d304f33",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/api_service_app.py"
     },
     "app.py": {
         "sha256": "a3a0236a837015b245916b5b871e87e38e0e6caf28036103fab6a9cbcdb14a38",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/app.py"
     },
     "app_inputs.py": {
         "sha256": "c15ef8e57babd1dbd31240d4b22b72f7919da1fa71b310592b2616fb50a4d340",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/app_inputs.py"
     },
     "flask_app/__init__.py": {
         "sha256": "da79e1837dfa3a985fc10a94f9e5c2e689d282e7fe2ab832388e3eb083f1e3bb",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/flask_app/__init__.py"
     },
     "flask_app/tc_search_blueprint/__init__.py": {
         "sha256": "1cb89b85d4f7d0a7b500c9d9edc90cc620a1ac173fe5f41f4a91aa8c2295aa02",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/flask_app/tc_search_blueprint/__init__.py"
     },
     "flask_app/tc_search_blueprint/static/pure-min.css": {
@@ -36,7 +36,7 @@
     },
     "flask_app/tc_search_blueprint/tc_search_view.py": {
         "sha256": "9625ebb73ffc2af56831aaf34f31decfd8043430afaeafc6e37a69f9811b2307",
-        "last_commit": "a4244225ffb6299b0651213027ac673ed86b6782",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/flask_app/tc_search_blueprint/tc_search_view.py"
     },
     "flask_app/tc_search_blueprint/templates/base.html.jinja": {
@@ -60,13 +60,13 @@
         "template_path": "api_service/flask/install.json"
     },
     "requirements.txt": {
-        "sha256": "18a85989d9101faf55f4c1ad8ae1088630081502a778d2d9668194fce1b1571b",
-        "last_commit": "1a0d0b9d2b9dd618a5e529fe4dc323ab703c43ec",
+        "sha256": "2b483f571916bab69427da49b45c1eaf5352e4ec2ada76fd77011193ea231e8d",
+        "last_commit": "43088c74fa8d75fa0bd67852c05ab0924b8c157a",
         "template_path": "api_service/flask/requirements.txt"
     },
     "run.py": {
         "sha256": "edb8ba04d6079c8c9275ebae55c796f9f96cc7e5e0dabdf012cc25605a4b3778",
-        "last_commit": "c36d36c5caf00c1150efae6c9d08bb2e7d304f33",
+        "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "api_service/flask/run.py"
     },
     "tcex.json": {
