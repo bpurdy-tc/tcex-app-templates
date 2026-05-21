@@ -551,7 +551,7 @@ class TaskPathPipeABC(TaskABC, ABC):
 
             name: str | None = self.task_settings.name
             max_execution_minutes: int | None = self.task_settings.max_execution_minutes
-            process: Metadata | None
+            process: Metadata | None = None
             schedule_period: int | None = self.task_settings.schedule_period
             schedule_unit: str | None = self.task_settings.schedule_unit
             pipe: str | None = self.pipe

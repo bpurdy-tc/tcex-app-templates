@@ -56,11 +56,11 @@ class TaskNamespace(Protocol):
 class TaskData(BaseModel):
     """Data model for process."""
 
-    process: Metadata | None
-    name: str | None
-    max_execution_minutes: int | None
-    schedule_period: int | None
-    schedule_unit: str | None
+    process: Metadata | None = None
+    name: str | None = None
+    max_execution_minutes: int | None = None
+    schedule_period: int | None = None
+    schedule_unit: str | None = None
 
 
 class TaskABC(ABC, Generic[T]):

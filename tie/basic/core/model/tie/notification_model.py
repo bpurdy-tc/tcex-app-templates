@@ -1,9 +1,8 @@
 """Model Definition"""
 
 from datetime import UTC, datetime
-from typing import ClassVar
 
-from pydantic import Field
+from pydantic import Field, field_serializer
 
 from core.json_db import Index
 from core.model.model_base import ModelBase
@@ -31,12 +30,10 @@ class NotificationModel(ModelBase):
     api_request: dict | None = Field(None, description='Request sent to TC Notification API')
     api_response: dict | None = Field(None, description='Response from TC Notification API')
 
-    class Config:
-        """Model Config"""
-
-        json_encoders: ClassVar[dict] = {
-            datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S'),
-        }
+    @field_serializer('date_added')
+    def serialize_datetime(self, v: datetime) -> str:
+        """Serialize datetime to string."""
+        return v.strftime('%Y-%m-%d %H:%M:%S')
 
 
 class NotificationPaginatedResponseModel(PaginatedResponseModel[NotificationModel]):

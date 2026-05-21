@@ -5,7 +5,7 @@ import logging
 from functools import cached_property
 
 import falcon
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from spectree import Response
 
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
@@ -36,7 +36,8 @@ class GetQueryParamModel(QueryParamFilterPaginationModel):
         None, description='Filter by send status (comma-separated: success,failed,not_sent)'
     )
 
-    @validator('sort', always=True, pre=True)
+    @field_validator('sort', mode='before')
+    @classmethod
     def _sort(cls, v):
         """Validate sort value."""
         match v.lower():
@@ -128,5 +129,5 @@ class NotificationCollection(EndpointBase):
             api_response=result['api_response'],
         )
         self.db.save(notification)
-        resp.media = json_lib.loads(notification.json(by_alias=True))
+        resp.media = json_lib.loads(notification.model_dump_json(by_alias=True))
         resp.status = '201 Created'

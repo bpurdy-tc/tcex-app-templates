@@ -1,6 +1,5 @@
 """Falcon Validation hook module."""
 
-import json
 import logging
 import traceback
 from typing import TypeVar
@@ -21,7 +20,7 @@ logger = logging.getLogger('tcex')
 
 def _process_validation_request_errors(ex: ValidationError, req: FalconRequest):
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')
 
@@ -35,7 +34,7 @@ def _process_validation_request_errors(ex: ValidationError, req: FalconRequest):
 
 def _process_validation_response_errors(ex: ValidationError, req: FalconRequest):
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')
 
@@ -52,7 +51,7 @@ def format_validation_errors(
     ex: ValidationError, title: str, req: FalconRequest | None = None
 ) -> dict:
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')
 
