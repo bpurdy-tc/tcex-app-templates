@@ -12,7 +12,7 @@ class PaginatedResponseModel(ResponseModel[list[T]], Generic[T]):
 
     count: int
     data: list[T]
-    next: str | None
-    prev: str | None
-    status: str | None
+    next: str | None = None
+    prev: str | None = None
+    status: str | None = None
     total_count: int

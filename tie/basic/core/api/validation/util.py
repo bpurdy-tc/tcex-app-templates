@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import logging
 import traceback
 from typing import Generic, TypeVar
@@ -44,7 +43,7 @@ class PaginatorResponseBodyModel(PaginatorResponseModel, Generic[T]):
 
 def _process_validation_request_errors(ex: ValidationError, req: FalconRequest):
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')  # rename loc to field for clarity
 
@@ -58,7 +57,7 @@ def _process_validation_request_errors(ex: ValidationError, req: FalconRequest):
 
 def _process_validation_response_errors(ex: ValidationError, req: FalconRequest):
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')  # rename loc to field for clarity
         e.pop('url', None)  # remove url from error response
@@ -75,10 +74,10 @@ def format_validation_errors(
     ex: ValidationError, title: str, req: FalconRequest | None = None
 ) -> dict:
     """Process any validation errors."""
-    errors = json.loads(ex.json())
+    errors = ex.errors()
     for e in errors:
         e['field'] = e.pop('loc')  # rename loc to field for clarity
-        e.pop('url')  # remove url from error response
+        e.pop('url', None)  # remove url from error response
 
     return error(
         description=errors,

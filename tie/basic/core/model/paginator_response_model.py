@@ -6,8 +6,8 @@ from pydantic import BaseModel
 class PaginatorResponseModel(BaseModel):
     """Model Definition"""
 
-    count: int | None
-    data: list[dict] | None
-    next: str | None
-    previous: str | None
-    total_count: int | None
+    count: int | None = None
+    data: list[dict] | None = None
+    next: str | None = None
+    previous: str | None = None
+    total_count: int | None = None
