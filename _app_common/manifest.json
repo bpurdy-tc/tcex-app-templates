@@ -10,8 +10,8 @@
     "template_path": "_app_common/.gitignore"
   },
   ".pre-commit-config.yaml": {
-    "last_commit": "c86b63215730a1dde71a8d411c38412680d9e2d6",
-    "sha256": "2963d6089f47f61e03ab8b10164031e792574d782265677ef1c62abee4d24283",
+    "last_commit": "b20ab741ab4d1dba7e724bb53ce6bb563518bf03",
+    "sha256": "e8868d50096894ca69730398d7c3e5ae60cddf8bacc1f087eb9baa126dd9d6a3",
     "template_path": "_app_common/.pre-commit-config.yaml"
   },
   "README.md": {
@@ -20,8 +20,8 @@
     "template_path": "_app_common/README.md"
   },
   "pyproject.toml": {
-    "last_commit": "cdcf0757f9ed38a8e93761fadf501243fdb1a73b",
-    "sha256": "dd5c247397ea19cbd941fa561f8c50dba5ac3cb6403c45775b2f04428eb6763d",
+    "last_commit": "d38749742b355ecdee6977b86d8e00eeb295c58c",
+    "sha256": "29e592b08d1119c316927e4d2ef65a7a3ffaab73d871bfb5588024fbad33a8fa",
     "template_path": "_app_common/pyproject.toml"
   },
   "requirements.txt": {
