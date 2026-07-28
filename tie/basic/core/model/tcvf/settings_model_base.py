@@ -3,7 +3,6 @@
 from datetime import UTC, datetime
 from pathlib import Path
 
-from arrow import arrow
 from pydantic import BaseModel, ConfigDict, Field
 
 

@@ -8,15 +8,11 @@ from time import sleep, time
 from typing import cast
 
 import schedule
-from tcex.api.tc.v3.tql.tql_operator import TqlOperator
-from tcex.exit import ExitCode
-from tcex.logger.trace_logger import TraceLogger
-
 from app_inputs import AppBaseModel
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC
-from core.app.enums import MESSAGE_HANDLERS, MIDDLEWARE, PREFLIGHT_CHECKS, ROUTES, TASKS
+from core.app.enums import ALL_TCVE, MESSAGE_HANDLERS, MIDDLEWARE, PREFLIGHT_CHECKS, ROUTES, TASKS
 from core.beacon import provide
 from core.json_db import JsonDB
 from core.message_service.message_service import MessageService
@@ -27,6 +23,9 @@ from core.supervisor import Supervisor
 from core.task.tasks import Tasks
 from core.util.custom_handler import CustomHandler
 from model.settings_model import SettingModel
+from tcex.api.tc.v3.tql.tql_operator import TqlOperator
+from tcex.exit import ExitCode
+from tcex.logger.trace_logger import TraceLogger
 
 try:
     from migrations import Migrations
@@ -77,6 +76,9 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
             if route == ROUTES.ALL_TIE:
                 self._routes.update(self.all_supported_routes.get('tie', {}))
                 default.remove(route)  # Remove it from further processing
+            elif route == ALL_TCVE:
+                self._routes.update(self.all_supported_routes.get('tcve', {}))
+                default.remove(route)
 
         # Loop through all supported route categories and register only matching ones
         for supported_routes in self.all_supported_routes.values():

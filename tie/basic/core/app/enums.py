@@ -5,6 +5,16 @@ from enum import Enum
 from typing import Any
 
 from core.api.endpoint.tc_app_config import TcAppConfig
+from core.api.endpoint.tcve.batch_error_collection import (
+    BatchErrorCollection as TcveBatchErrorCollection,
+)
+from core.api.endpoint.tcve.config_resource import ConfigResource
+from core.api.endpoint.tcve.job_request_collection import JobRequestCollection
+from core.api.endpoint.tcve.task_collection import TaskCollection as TcveTaskCollection
+from core.api.endpoint.tcve.task_status_collection import (
+    TaskStatusCollection as TcveTaskStatusCollection,
+)
+from core.api.endpoint.tcve.test_config_resource import TestConfigResource
 from core.api.endpoint.tcvf.batch_error_collection import BatchErrorCollection
 from core.api.endpoint.tcvf.batch_error_counts_collection import (
     BatchErrorCountsCollection,
@@ -39,13 +49,11 @@ try:
     from api.endpoint.adhoc_job_request_resource import AdHocRequestResource
 except ImportError:
     AdHocRequestResource = None
-    # print('AdHocRequestResource not found')
 
 try:
     from api.endpoint.download_ti_resource import DownloadTiResource
 except ImportError:
     DownloadTiResource = None
-    # print('DownloadTiResource not found')
 
 logger = logging.getLogger('tcex')
 
@@ -124,7 +132,7 @@ class ROUTES(Enum):
     """Enum grouping all route categories."""
 
     class TIE(Enum):
-        """All TIE-related routes."""
+        """All TIE-related routes (ingress/ingest apps)."""
 
         JOB_FILES = Route('/api/job/{job_id}/files', JobFiles)
         JOB_FILE_DOWNLOAD = Route('/api/job/{job_id}/download', JobFileDownload)
@@ -162,4 +170,21 @@ class ROUTES(Enum):
             init_args=('log_path',),
         )
 
+    class TCVE(Enum):
+        """All TCVE-related routes (egress apps)."""
+
+        CONFIG = Route('/api/tql-config', ConfigResource)
+        TEST_CONFIG = Route('/api/tql-config/test', TestConfigResource)
+        JOB_REQUEST = Route('/api/job/request', JobRequestCollection)
+        TASK_STATUS = Route('/api/task/status', TcveTaskStatusCollection)
+        TASK = Route('/api/task', TcveTaskCollection)
+        TASK_ITEM = Route('/api/task/{task_name}', TcveTaskCollection)
+        BATCH_ERROR = Route('/api/report/batch-error', TcveBatchErrorCollection)
+        NOTIFICATION = Route('/api/notification', NotificationCollection)
+
     ALL_TIE = TIE
+    ALL_TCVE = TCVE
+
+
+# Module-level sentinel so api_service_falcon_abc can import it directly.
+ALL_TCVE = ROUTES.ALL_TCVE

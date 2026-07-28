@@ -12,7 +12,7 @@ class UIConfigBuilderABC:
         """Initialize the UI configuration builder with settings."""
         self.settings = api_properties.settings
         self.tasks = api_properties.tasks
-        self.sdk = api_properties.sdk
+        self.sdk = getattr(api_properties, 'sdk', None)
 
     @property
     def all_statuses(self):

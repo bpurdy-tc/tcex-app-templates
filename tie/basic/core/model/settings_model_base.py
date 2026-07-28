@@ -3,7 +3,6 @@
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from arrow import arrow
 from pydantic import BaseModel, ConfigDict, Field
 
 # Default failure threshold for jobs and pipeline staleness
