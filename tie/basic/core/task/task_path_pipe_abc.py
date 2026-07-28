@@ -43,6 +43,14 @@ class UnrecoverableError(Exception):
     """
 
 
+class TaskTimeoutError(Exception):
+    """Exception raised when a task is killed by the watchdog for exceeding max_execution_minutes.
+
+    Distinct from transient errors so that handle_run_error callers can identify
+    timeouts and avoid consuming the job's retry budget.
+    """
+
+
 class TaskPathPipeABC(TaskABC, ABC):
     """Tasks ABC Class
 
@@ -435,6 +443,28 @@ class TaskPathPipeABC(TaskABC, ABC):
             f'retry_after={job.retry_after}, '
             f'action=restart-from-download'
         )
+
+    def on_timeout(self) -> None:
+        """Update job state after the watchdog kills this task for exceeding max_execution_minutes.
+
+        Runs in the main process because SIGKILL prevents the child from reaching handle_run_error.
+        request_id and request_dir are read from process metadata — set at launch time — so there
+        is no ambiguity about which job is being cleaned up.
+        """
+        try:
+            request_id = self.process._metadata['request_id']  # noqa: SLF001
+            request_dir = Path(self.process._metadata['request_dir'])  # noqa: SLF001
+
+            self.log.warning(
+                f'task-event=timeout-cleanup, '
+                f'task-name={self.task_settings.name}, '
+                f'request_id={request_id}'
+            )
+            self.handle_run_error(request_id, request_dir, exception=TaskTimeoutError(request_id))
+        except Exception:
+            self.log.exception(
+                f'task-event=timeout-cleanup-failed, task-name={self.task_settings.name}'
+            )
 
     def launch(self, request_id: str, request_dir: Path | None = None, **kwargs):
         """Launch the task."""

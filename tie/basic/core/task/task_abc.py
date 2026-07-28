@@ -56,11 +56,11 @@ class TaskNamespace(Protocol):
 class TaskData(BaseModel):
     """Data model for process."""
 
-    process: Metadata | None
-    name: str | None
-    max_execution_minutes: int | None
-    schedule_period: int | None
-    schedule_unit: str | None
+    process: Metadata | None = None
+    name: str | None = None
+    max_execution_minutes: int | None = None
+    schedule_period: int | None = None
+    schedule_unit: str | None = None
 
 
 class TaskABC(ABC, Generic[T]):
@@ -241,6 +241,9 @@ class TaskABC(ABC, Generic[T]):
     def cleaner(self):
         """Clean up the task."""
 
+    def on_timeout(self) -> None:
+        """Called by the watchdog after this task is killed for exceeding max_execution_minutes."""
+
     @property
     def data(self) -> TaskData:
         """Return data for the task."""
@@ -311,6 +314,11 @@ class TaskABC(ABC, Generic[T]):
                 if self.process.is_alive():
                     return  # launch is prohibited if process is currently alive
                 self.process.join()
+                self.log.warning(
+                    f'task-event=process-exited, pid={self.process.pid}, '
+                    f'exitcode={self.process.exitcode}'
+                )
+                self.process = None
 
             # run check for pause files
             self._check_pause_file()

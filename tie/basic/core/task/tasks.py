@@ -187,7 +187,7 @@ class Tasks:
         for task in self.all():
             self.kill(task)
 
-    def watchdog(self) -> None:  # noqa: C901
+    def watchdog(self) -> None:  # noqa: C901, PLR0912
         """Monitor tasks and perform health checks.
 
         Per-job backoff is handled directly on JobRequestModel fields.
@@ -232,10 +232,18 @@ class Tasks:
                 ):
                     self.log.warning(
                         f'task-event=kill-task, task-name={task.task_settings.name}, '
-                        f'process-id={task.process.pid}, metadata={task.process.metadata.dict()}, '
+                        f'process-id={task.process.pid}, '
+                        f'metadata={task.process.metadata.model_dump()}, '
                     )
                     self.kill(task)
-                    self._cleanup_killed_job(task)
+                    if task.process.is_alive():
+                        self.log.warning(
+                            f'task-event=timeout-process-still-alive, '
+                            f'task-name={task.task_settings.name}, '
+                            f'process-id={task.process.pid}'
+                        )
+                    else:
+                        task.on_timeout()
 
                 # Handle setting our api limit hit metric since its forked
                 # We only care about the value for the DownloadPathPipe task
@@ -400,61 +408,6 @@ class Tasks:
                     mapping[ts.status_active.casefold()] = previous_status_complete
             self._status_reset_mapping = mapping
         return self._status_reset_mapping
-
-    def _cleanup_killed_job(self, task: 'TaskABC') -> None:
-        """Reset a zombie job after the watchdog kills its task process.
-
-        Without this, the job stays in "X In Progress" with no date_completed
-        or date_failed, permanently blocking the scheduler.
-        """
-        # Access _metadata dict directly — the .metadata property calls is_alive()
-        # which is unreliable after kill + join.
-        request_id = getattr(task.process, '_metadata', {}).get('request_id')
-        if not request_id:
-            return
-
-        try:
-            job = self.job_dao.get(request_id)
-        except Exception:
-            self.log.warning(f'event=cleanup-killed-job-load-failed, request_id={request_id}')
-            return
-
-        status_lower = job.status.casefold()
-
-        # Already completed or failed — nothing to do (race: task finished before kill)
-        if job.date_completed is not None or job.date_failed is not None:
-            self.log.info(
-                f'event=cleanup-killed-job-skip, request_id={request_id}, '
-                f'status={job.status}, reason=already-terminal'
-            )
-            return
-
-        # Download in progress — delete the job (no previous state to restore)
-        if 'download' in status_lower and 'in progress' in status_lower:
-            self.log.warning(
-                f'event=cleanup-killed-job-delete, request_id={request_id}, status={job.status}'
-            )
-            self.db.delete(job)
-            return
-
-        # Other in-progress statuses — reset to previous pipeline stage
-        if status_lower in self.status_reset_mapping:
-            previous_status = self.status_reset_mapping[status_lower]
-            self.log.warning(
-                f'event=cleanup-killed-job-reset, request_id={request_id}, '
-                f'from_status={job.status}, to_status={previous_status}'
-            )
-            job.status = previous_status
-            self.job_dao.save(job)
-            return
-
-        # Fallback: mark as failed so the scheduler isn't permanently blocked
-        self.log.warning(
-            f'event=cleanup-killed-job-mark-failed, request_id={request_id}, status={job.status}'
-        )
-        job.date_failed = datetime.now(UTC)
-        job.status = self.settings.job.status_failed
-        self.job_dao.save(job)
 
     def _send_signal_to_task(self, send_signal: signal.Signals, to_task: 'TaskABC'):
         """Send signal to task."""
