@@ -11,6 +11,7 @@ from tcex import TcEx
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB, where
 from core.json_db.dao import JsonDBDAO
+from core.json_db.json_db import SortOrder
 from core.model.tcvf.settings_model_base import SettingModelBase
 from core.model.tie.batch_error_model import BatchErrorModel, JobBatchErrorIndexModel
 from core.model.tie.notification_model import NotificationModel
@@ -25,6 +26,7 @@ class TaskSettingCustomModel(TaskSettingModel):
 
     max_disk_percent_usage: int
     max_jobs: int
+    max_batch_errors: int
     max_notification_age_days: int
 
 
@@ -88,13 +90,19 @@ class Cleaner(TaskABC):
             app_exception(ex, 'failure=failed-cleaning-files')
 
     def _clean_batch_errors(self):
-        """Clean files in the common directories."""
+        """Clean batch errors: remove orphans and enforce cap."""
         try:
             job_ids = self.job_dao.get_all_job_ids()
             for batch_error in self.batch_error_dao.get_all(
                 where={'request_id': where.not_(where.is_in(job_ids))}
             ):
                 self.batch_error_dao.delete(batch_error)
+
+            # Cap total batch errors to prevent unbounded growth
+            for path in self.db.get_paths(BatchErrorModel, sort_order=SortOrder.DESC)[
+                self.task_settings.max_batch_errors :
+            ]:
+                path.unlink()
         except Exception as ex:
             # log exception
             app_exception(ex, 'failure=failed-cleaning-batch-errors')
@@ -195,6 +203,7 @@ class Cleaner(TaskABC):
             schedule_unit='hours',
             max_disk_percent_usage=60,
             max_jobs=500,
+            max_batch_errors=20_000,
             max_ttl_batch_error=(60 * 60 * 24 * 90),  # 90 days
             max_notification_age_days=30,
         )
