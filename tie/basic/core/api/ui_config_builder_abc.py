@@ -1,4 +1,4 @@
-"""UIConfigBuilderABC concrete implementation for building UI configurations."""
+"""UIConfigBuilderABC — abstract base for building UI configurations."""
 
 from abc import abstractmethod
 
@@ -6,13 +6,22 @@ from core.task.task_path_pipe_abc import TaskPathPipeABC
 
 
 class UIConfigBuilderABC:
-    """Abstract base class for building UI configuration."""
+    """Abstract base class for building UI configuration.
+
+    Concrete subclasses override ``populate()`` and the various ``*_columns``,
+    ``*_details``, ``*_filters``, and ``*_form_fields`` methods to define the
+    data-driven UI for their app type.
+    """
 
     def __init__(self, api_properties):
         """Initialize the UI configuration builder with settings."""
         self.settings = api_properties.settings
         self.tasks = api_properties.tasks
-        self.sdk = api_properties.sdk
+        self.sdk = getattr(api_properties, 'sdk', None)
+
+    # ------------------------------------------------------------------
+    # Status helpers
+    # ------------------------------------------------------------------
 
     @property
     def all_statuses(self):
@@ -26,14 +35,22 @@ class UIConfigBuilderABC:
         statuses += ['Failed', 'Pending']
         return statuses
 
+    # ------------------------------------------------------------------
+    # Top-level assembler (abstract)
+    # ------------------------------------------------------------------
+
     @abstractmethod
     def populate(self) -> dict:
-        """Abstract method to populate the configuration."""
+        """Build and return the complete UI configuration dict."""
+
+    # ------------------------------------------------------------------
+    # Field generators
+    # ------------------------------------------------------------------
 
     def generate_field(
         self, field: str, label: str, type_: str | None = None, tooltip: str | None = None
     ):
-        """Generate a field."""
+        """Generate a table column / detail field descriptor."""
         field_info = {'field': field, 'label': label}
         if type_:
             field_info['type'] = type_
@@ -57,7 +74,7 @@ class UIConfigBuilderABC:
         info: str | None = None,
         min_width: int | None = None,
     ):
-        """Generate a form field."""
+        """Generate a form field descriptor."""
         choices = choices or []
         additional_validators = additional_validators or []
 
@@ -78,3 +95,50 @@ class UIConfigBuilderABC:
 
         field = {key: value for key, value in field.items() if value is not None}
         return field
+
+    # ------------------------------------------------------------------
+    # Configure page (egress TQL config management)
+    # ------------------------------------------------------------------
+
+    def configure_table_columns(self) -> list[dict]:
+        """Columns shown in the Configure table.
+
+        Override to customise which config fields appear as table columns.
+        Default returns an empty list (no configure page).
+        """
+        return []
+
+    def configure_form_fields(self) -> list[dict]:
+        """Form fields for the Configure add/edit drawer.
+
+        Override to provide the dynamic form layout for configuring TQL queries
+        (owners, types, sort field/direction, TQL text, etc.).
+        """
+        return []
+
+    def configure_info_tooltip(self) -> str | None:
+        """Optional tooltip text displayed next to the Configure page title.
+
+        Override to provide app-specific guidance (e.g. explaining TQL query
+        ordering and dedup behaviour).
+        """
+        return None
+
+    # ------------------------------------------------------------------
+    # Egress errors page
+    # ------------------------------------------------------------------
+
+    def egress_error_table_columns(self) -> list[dict]:
+        """Columns shown in the Egress Errors table.
+
+        Override to customise which error fields appear as table columns.
+        Default returns an empty list (no egress errors page).
+        """
+        return []
+
+    def egress_error_table_details(self) -> list[dict]:
+        """Fields shown in the Egress Error detail / side-drawer view.
+
+        Override to customise the detail view for egress errors.
+        """
+        return []

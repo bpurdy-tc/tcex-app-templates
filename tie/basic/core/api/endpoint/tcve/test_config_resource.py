@@ -1,0 +1,45 @@
+"""Test config resource for /api/tql-config/test endpoint."""
+
+# standard library
+import contextlib
+
+# third-party
+import falcon
+
+# first-party
+from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
+from model.tql_config_model import TqlConfigPostModel
+
+
+class TestConfigResource(EndpointBaseABC):
+    """Class for /api/tql-config/test endpoint."""
+
+    def on_post(self, req: falcon.Request, resp: falcon.Response):
+        """Handle POST requests — validate a TQL config against the TC API and return results."""
+        tql_config = TqlConfigPostModel.model_validate(req.media or {})
+        owners = (f'"{o}"' for o in tql_config.owners)
+
+        types = {f'"{t.split(":")[0]}"' for t in tql_config.types}
+        tql = (
+            f'({tql_config.tql}) and ownerName in ({",".join(owners)}) and typeName in '
+            f'({",".join(types)})'
+        )
+
+        sorting = f'{tql_config.sort_field} {tql_config.sort_direction}'
+        if tql_config.sort_field.lower() != 'id':
+            sorting += ' ID DESC'
+
+        params = {
+            'count': 'true',
+            'fields': [],
+            'resultLimit': 1,
+            'sorting': sorting,
+        }
+
+        indicators = self.tcex.api.tc.v3.indicators(params=params)
+        indicators.tql.set_raw_tql(tql)
+        with contextlib.suppress(Exception):
+            next(iter(indicators))
+
+        response = indicators.request.json()
+        resp.media = response

@@ -48,7 +48,7 @@ class DownloadABC(TaskPathPipeABC):
         self.pipeline = pipeline
         self.metrics = None
         self.writing_service = WritingService(self.db, self.log)
-        self.preflight_checks = [self._is_throttled_preflight_check]
+        self.preflight_checks: list[Callable[[], bool]] = [self._is_throttled_preflight_check]
 
     def process_group(self, item, chunk, writer: WritingModel):
         """Process item."""

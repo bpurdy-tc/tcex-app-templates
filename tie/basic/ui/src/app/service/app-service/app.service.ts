@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 export interface Validator {
   name: string;
@@ -35,10 +36,10 @@ export interface AppConfig {
         enableAddJob?: boolean;
       };
     };
-    adhocRequest: {
+    adhocRequest?: {
       form: Form;
     };
-    downloadTI: {
+    downloadTI?: {
       form: Form;
     };
     jobTable: {
@@ -46,10 +47,19 @@ export interface AppConfig {
       details: FieldDisplay[];
       filters: Form;
     };
-    notifications: {
+    notifications?: {
       columns: FieldDisplay[];
       details: FieldDisplay[];
       filters: Form;
+    };
+    configure?: {
+      columns: FieldDisplay[];
+      formFields: any[];
+      infoTooltip?: string;
+    };
+    egressErrors?: {
+      columns: FieldDisplay[];
+      details: FieldDisplay[];
     };
     owner: string;
     title: string;
@@ -63,19 +73,28 @@ export interface AppConfig {
 export class AppService {
   apiUrl: string = 'api/tc';
 
-  private appConfigSubject = new ReplaySubject<AppConfig>();
+  private appConfigSubject = new ReplaySubject<AppConfig>(1);
 
   constructor(private http: HttpClient) {
-    this.loadUIConfig().subscribe((config) => {
-      this.appConfigSubject.next(config);
-    });
+    this.loadUIConfig().subscribe();
   }
 
   public getConfig(): Observable<AppConfig> {
     return this.appConfigSubject.asObservable();
   }
 
+  /** Fetch fresh TC owner names. Call each time the owner dropdown is opened. */
+  public getOwners(): Observable<string[]> {
+    return this.http
+      .get<{ owners: string[] }>('api/tc-info')
+      .pipe(map((d) => (Array.isArray(d?.owners) ? d.owners : [])));
+  }
+
   private loadUIConfig(): Observable<AppConfig> {
-    return this.http.get<AppConfig>(`${this.apiUrl}/app-config`);
+    return this.http.get<AppConfig>(`${this.apiUrl}/app-config`).pipe(
+      tap((config) => {
+        this.appConfigSubject.next(config);
+      }),
+    );
   }
 }

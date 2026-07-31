@@ -35,6 +35,7 @@ import {
     // LoadingIconModule,
     LoadingSpinnerModule,
     MenuItemModule,
+    ModalModule,
     NestedMenuModule,
     PendoModel,
     PendoModule,
@@ -53,6 +54,7 @@ import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor-v2'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { FormattedFieldComponent } from './components/formatted-field/formatted-field.component';
 import { GeneratedFormComponent } from './components/generated-form/generated-form.component';
@@ -61,12 +63,15 @@ import { errorHandlerProvider } from './error-handler/error-handler.provider';
 import { httpInterceptorProviders } from './interceptors/http-interceptor-providers';
 import { BatchErrorsTableComponent } from './pages/batch-errors-table/batch-errors-table.component';
 import { BatchErrorsComponent } from './pages/batch-errors/batch-errors.component';
+import { ConfigureComponent } from './pages/configure/configure.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DownloadComponent } from './pages/download/download.component';
+import { EgressErrorsComponent } from './pages/egress-errors/egress-errors.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { ReportPdfTrackerComponent } from './pages/report-pdf-tracker/report-pdf-tracker.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
+import { IsoDatePipe } from './pipes/iso-date/iso-date.pipe';
 import { JsonFormatPipe } from './pipes/json-format/json-format.pipe';
 import { WIN_PROVIDERS } from './service/window-service/window.service';
 
@@ -122,12 +127,16 @@ const monacoConfig: NgxMonacoEditorConfig = {
         AppComponent,
         BatchErrorsComponent,
         BatchErrorsTableComponent,
+        ConfigureComponent,
+        ConfirmationModalComponent,
         DashboardComponent,
         DownloadComponent,
-        GeneratedFormComponent,
-        FormattedFieldComponent,
-        JobsComponent,
+        EgressErrorsComponent,
         ErrorMessageComponent,
+        FormattedFieldComponent,
+        GeneratedFormComponent,
+        IsoDatePipe,
+        JobsComponent,
         JsonFormatPipe,
         NotificationsComponent,
         ReportPdfTrackerComponent,
@@ -166,6 +175,7 @@ const monacoConfig: NgxMonacoEditorConfig = {
         MatStepperModule,
         MatTableModule,
         MenuItemModule,
+        ModalModule,
         MonacoEditorModule.forRoot(monacoConfig),
         NestedMenuModule,
         NgxChartsModule,
