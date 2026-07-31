@@ -128,11 +128,35 @@ class DynamicPageSizer:
         return self.limit
 
 
+_VALID_DIRECTIONS = {'ASC', 'DESC'}
+
+
 def _to_iso(value: str | datetime) -> str:
     """Normalize a datetime or string to ISO format."""
     if isinstance(value, datetime):
         return value.strftime('%Y-%m-%dT%H:%M:%SZ')
     return value
+
+
+def _validate_sorting(sorting: list[tuple[str, str]]) -> str:
+    """Validate and normalize sorting tuples to a TC API sorting string.
+
+    Accepts direction in any case (e.g. 'asc', 'DESC'), normalizes to uppercase.
+
+    Returns:
+        API sorting string, e.g. ``"lastModified ASC id DESC"``.
+
+    Raises:
+        ValueError: If any direction is not ASC or DESC.
+    """
+    parts = []
+    for field, direction in sorting:
+        direction = direction.upper()
+        if direction not in _VALID_DIRECTIONS:
+            msg = f'Invalid sort direction "{direction}" for field "{field}". Must be ASC or DESC.'
+            raise ValueError(msg)
+        parts.append(f'{field} {direction}')
+    return ' '.join(parts)
 
 
 class DownloadEgressABC(DownloadABC, ABC):
@@ -152,7 +176,7 @@ class DownloadEgressABC(DownloadABC, ABC):
         dynamic_page_size: bool = False,
         result_limit: int = 10_000,
         fields: list[str] | None = None,
-        sorting: str | None = None,
+        sorting: list[tuple[str, str]] | None = None,
     ) -> Generator:
         """Iterate over a TC v3 collection with configurable pagination.
 
@@ -163,15 +187,30 @@ class DownloadEgressABC(DownloadABC, ABC):
                 of tcex's built-in ``next`` URL pagination. Required for
                 deterministic ordering and resume support.
             dynamic_page_size: Automatically adjust ``resultLimit`` based on
-                response timing. Only works with ``paginate_via_id=True``.
+                response timing.
             result_limit: Starting (or fixed) page size.
             fields: Optional list of fields to request from the API.
-            sorting: Custom sorting clause. Ignored when ``paginate_via_id=True``
-                (forced to ``ID ASC``).
+            sorting: Custom sorting as a list of ``(field, direction)`` tuples,
+                e.g. ``[('lastModified', 'ASC'), ('id', 'DESC')]``. Direction
+                is case-insensitive and normalized to uppercase. Cannot be
+                combined with ``paginate_via_id`` since ID-based pagination
+                requires ``sorting=ID ASC``.
 
         Yields:
             Individual TC objects (indicators, groups, etc.).
+
+        Raises:
+            ValueError: If ``sorting`` and ``paginate_via_id`` are both set,
+                or if a sort direction is invalid.
         """
+        if sorting and paginate_via_id:
+            msg = (
+                'Cannot combine sorting with paginate_via_id. '
+                'ID-based pagination requires sorting=ID ASC.'
+            )
+            raise ValueError(msg)
+
+        sorting_str = _validate_sorting(sorting) if sorting else None
         tql_str = str(tql)
 
         if paginate_via_id:
@@ -188,7 +227,7 @@ class DownloadEgressABC(DownloadABC, ABC):
                 tql_str,
                 result_limit=result_limit,
                 fields=fields,
-                sorting=sorting,
+                sorting=sorting_str,
             )
 
     def _iterate_by_tcex(
