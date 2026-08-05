@@ -61,6 +61,7 @@ export interface AppConfig {
       columns: FieldDisplay[];
       details: FieldDisplay[];
     };
+    brand?: string;
     owner: string;
     title: string;
     version: string;
