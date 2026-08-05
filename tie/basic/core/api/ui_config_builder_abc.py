@@ -20,6 +20,18 @@ class UIConfigBuilderABC:
         self.sdk = getattr(api_properties, 'sdk', None)
 
     # ------------------------------------------------------------------
+    # Branding
+    # ------------------------------------------------------------------
+
+    def brand(self) -> str:
+        """Brand key used by the UI to select the logo.
+
+        Override in concrete subclasses to change branding
+        (e.g. ``"dataminr"``).  Default is ``"threatconnect"``.
+        """
+        return 'threatconnect'
+
+    # ------------------------------------------------------------------
     # Status helpers
     # ------------------------------------------------------------------
 
