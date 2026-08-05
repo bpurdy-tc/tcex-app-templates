@@ -90,8 +90,8 @@
         "template_path": "tie/basic/core/api/endpoint/endpoint_base_abc.py"
     },
     "core/api/endpoint/tc_app_config.py": {
-        "sha256": "25121b4707300f5306757b6e4fb9c4c8330586e982e482ba58fa5a115c26bc53",
-        "last_commit": "c69b8813c56206491ca6e3f9cc826ab61b4174e8",
+        "sha256": "dad3a66e7f97ecd9e1fe5472a68e5212c4ef1dfe2d73ccb05661beb25a77c919",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
         "template_path": "tie/basic/core/api/endpoint/tc_app_config.py"
     },
     "core/api/endpoint/tcva/__init__.py": {
@@ -315,8 +315,8 @@
         "template_path": "tie/basic/core/api/tcex/middleware.py"
     },
     "core/api/ui_config_builder_abc.py": {
-        "sha256": "b1f02e12c5f0eb6618b6a4a42142458fbde6774d3eaea9e4823ac4d3b6a4ec82",
-        "last_commit": "565db231471f2d571b9b56e73d4dbcfaf2ef0961",
+        "sha256": "3be0d96aba5b128c8b5c458324c376691c8f18142557be19b6c3b82f2fe1fbd5",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
         "template_path": "tie/basic/core/api/ui_config_builder_abc.py"
     },
     "core/api/validation/__init__.py": {
@@ -840,8 +840,8 @@
         "template_path": "tie/basic/core/service/notification_helper.py"
     },
     "core/service/notification_service.py": {
-        "sha256": "79c9f59dff86c76f6b78d6244955376e6666eb104f057a022f7526d2600433ac",
-        "last_commit": "3d2fe213cf73ab6ec0cf8abb88ee01720e3f2510",
+        "sha256": "d04bb21635c6dbfc39c6d0198fac21b121aa0bedb3d6ea17107df00e36178917",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
         "template_path": "tie/basic/core/service/notification_service.py"
     },
     "core/service/preflight_check_service.py": {
@@ -1220,8 +1220,8 @@
         "template_path": "tie/basic/ui/src/app/app.component.spec.ts"
     },
     "ui/src/app/app.component.ts": {
-        "sha256": "3a49d2028cc74a319e71fde090663fd4fc8163a7e47847d77086a7eae162b658",
-        "last_commit": "6939cce384277dd9472a7d94b8b005952dad0349",
+        "sha256": "bd554aa319ca3df1567e647e9078472f0a729268d7eca3b23c08b835759a8f40",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
         "template_path": "tie/basic/ui/src/app/app.component.ts"
     },
     "ui/src/app/app.module.ts": {
@@ -1768,6 +1768,16 @@
         "sha256": "4fe511832ce29219f6799d4dfa46722da234904ef56c039d51ac71d0f14c9ac5",
         "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
         "template_path": "tie/basic/ui/src/assets/images/TCLogo_LightTheme.svg"
+    },
+    "ui/src/assets/images/dataminr-logo-black.png": {
+        "sha256": "317c26cedb57a896e787ca16b549e4e62c288f3d0abeb4830bc7173e38956e46",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
+        "template_path": "tie/basic/ui/src/assets/images/dataminr-logo-black.png"
+    },
+    "ui/src/assets/images/dataminr-logo-white.png": {
+        "sha256": "5119ae52ac58cabb2ce39c0d1bbe2e34c72f630bad4582b4fcfded63bb29d1dd",
+        "last_commit": "224a3f57a42d9fc8ac423e5e5a596a31ca044f8b",
+        "template_path": "tie/basic/ui/src/assets/images/dataminr-logo-white.png"
     },
     "ui/src/environments/environment.prod.ts": {
         "sha256": "4f2a236857c6d2889996d00dbd102628c44dcee1f38883eb09956df87e9a007b",
