@@ -1615,8 +1615,8 @@
         "template_path": "tie/basic/ui/src/app/service/api-response-interface.ts"
     },
     "ui/src/app/service/app-service/app.service.ts": {
-        "sha256": "2186635b84267189473688d42bea2b146e85a892968cf746c2fac9c027a4a8f1",
-        "last_commit": "4c8ad4c1b4cd4a451b00d4371ac952676348840e",
+        "sha256": "f86283d0fde281f0bbaedc2a5e96d7baceb54af3b165d467e922c1f23f5d94a6",
+        "last_commit": "8a9f4ad0261d9d84b6c035c2ed455bdaa06756f0",
         "template_path": "tie/basic/ui/src/app/service/app-service/app.service.ts"
     },
     "ui/src/app/service/base-service/base-http-error-response.ts": {
