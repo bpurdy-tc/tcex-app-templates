@@ -124,10 +124,12 @@ class TcAppConfig(EndpointBaseABC):
     ):
         """Get the UI configuration for the App."""
         ui_config = {}
+        brand = 'threatconnect'
 
         if UIConfigBuilder:
             ui_config_builder = UIConfigBuilder(self)
             ui_config = ui_config_builder.populate()
+            brand = ui_config_builder.brand()
 
         resp_media = {
             'schema_version': '1.0.0',
@@ -135,6 +137,7 @@ class TcAppConfig(EndpointBaseABC):
                 'title': str(self.tcex.app.ij.model.display_name),
                 'version': str(self.tcex.app.ij.model.program_version),
                 'owner': self.settings.tc_owner,
+                'brand': brand,
                 **ui_config,
             },
         }

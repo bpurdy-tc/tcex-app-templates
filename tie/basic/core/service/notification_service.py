@@ -75,7 +75,12 @@ NOTIFICATION_BY_CATEGORY: dict[str, NotificationTypeConfig] = {
 class NotificationService:
     """Sends TC notifications for pipeline health events."""
 
-    def __init__(self, tcex: TcEx, owner_name: str, display_name_override: str | None = None):
+    def __init__(
+        self,
+        tcex: TcEx,
+        owner_name: str | None = None,
+        display_name_override: str | None = None,
+    ):
         """Initialize with TcEx instance for API access."""
         self.tcex = tcex
         self._owner_name = owner_name
@@ -84,23 +89,27 @@ class NotificationService:
         self._display_name = display_name_override or str(tcex.app.ij.model.display_name)
 
     @property
-    def owner_id(self) -> int:
-        """Lazily resolve owner ID on first access."""
+    def is_organization(self) -> bool:
+        """True when no owner name is configured — send org-wide instead of owner-scoped."""
+        return not self._owner_name
+
+    @property
+    def owner_id(self) -> int | None:
+        """Lazily resolve owner ID on first access.
+
+        Returns None when no owner name is configured, since org-wide
+        notifications don't require an owner ID.
+        """
+        if not self._owner_name:
+            return None
         if self._owner_id is None:
             self._owner_id = self._resolve_owner_id(self._owner_name)
         return self._owner_id
 
     @cached_property
     def notification_type(self) -> str:
-        """Notification type label sent to TC, truncated to stay within API limits."""
-        prefix = 'Service: '
-        max_len = 100
-        name = self._display_name
-
-        if len(prefix) + len(name) > max_len:
-            name = name[: max_len - len(prefix) - 3] + '...'
-
-        return f'{prefix}{name}'
+        """Notification type label sent to TC."""
+        return 'App Notification'
 
     @cached_property
     def msg_prefix(self) -> str:
@@ -130,10 +139,11 @@ class NotificationService:
         request_body = {
             'notificationType': self.notification_type,
             'priority': priority,
-            'isOrganization': False,
-            'ownerId': self.owner_id,
+            'isOrganization': self.is_organization,
             'message': message,
         }
+        if not self.is_organization:
+            request_body['ownerId'] = self.owner_id
         api_request = {
             'method': 'POST',
             'path': '/v2/notifications',

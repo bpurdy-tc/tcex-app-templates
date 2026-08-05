@@ -35,6 +35,18 @@ export class AppComponent implements OnInit {
     logoImage: string = 'assets/images/TCLogo_LightTheme.svg';
     appTheme: 'light' | 'dark' = 'light';
     showThemeToggle: boolean = true; // for dev purposes only
+    private brand: string = 'threatconnect';
+
+    private static readonly BRAND_LOGOS: Record<string, { light: string; dark: string }> = {
+        threatconnect: {
+            light: 'assets/images/TCLogo_LightTheme.svg',
+            dark: 'assets/images/TCLogo_DarkTheme.svg',
+        },
+        dataminr: {
+            light: 'assets/images/dataminr-logo-black.png',
+            dark: 'assets/images/dataminr-logo-white.png',
+        },
+    };
 
     showContent = false;
     private appConfigSubject = new BehaviorSubject<AppConfig>(null);
@@ -75,6 +87,10 @@ export class AppComponent implements OnInit {
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe((config) => {
                 this.appConfigSubject.next(config);
+                if (config?.ui?.brand) {
+                    this.brand = config.ui.brand;
+                    this.updateLogo();
+                }
             });
 
         const permissions = localStorage.getItem('tc.permissions');
@@ -82,10 +98,10 @@ export class AppComponent implements OnInit {
             const userPermissions = JSON.parse(permissions);
             this.appTheme = userPermissions?.settingUser?.uiTheme === 'Dark' ? 'dark' : 'light';
             if (this.appTheme === 'dark') {
-                this.logoImage = 'assets/images/TCLogo_DarkTheme.svg';
                 this.themeService.setTheme(this.appTheme);
                 this.renderer.addClass(document.body, this.appTheme);
             }
+            this.updateLogo();
         }
 
         this.router.events
@@ -104,6 +120,11 @@ export class AppComponent implements OnInit {
     showSideNav() {
         this.viewSideNav = !this.viewSideNav;
         this.showSideNavIcon = this.viewSideNav ? 'chevron-left' : 'chevron-right';
+    }
+
+    private updateLogo(): void {
+        const logos = AppComponent.BRAND_LOGOS[this.brand] ?? AppComponent.BRAND_LOGOS['threatconnect'];
+        this.logoImage = this.appTheme === 'dark' ? logos.dark : logos.light;
     }
 }
 
