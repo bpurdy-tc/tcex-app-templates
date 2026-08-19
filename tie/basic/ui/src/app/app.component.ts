@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
     appTheme: 'light' | 'dark' = 'light';
     showThemeToggle: boolean = true; // for dev purposes only
     private brand: string = 'threatconnect';
+    logoReady: boolean = false;
 
     private static readonly BRAND_LOGOS: Record<string, { light: string; dark: string }> = {
         threatconnect: {
@@ -101,8 +102,8 @@ export class AppComponent implements OnInit {
                 this.themeService.setTheme(this.appTheme);
                 this.renderer.addClass(document.body, this.appTheme);
             }
-            this.updateLogo();
         }
+        this.updateLogo();
 
         this.router.events
             .pipe(takeUntilDestroyed(this.destroyRef))
@@ -125,6 +126,7 @@ export class AppComponent implements OnInit {
     private updateLogo(): void {
         const logos = AppComponent.BRAND_LOGOS[this.brand] ?? AppComponent.BRAND_LOGOS['threatconnect'];
         this.logoImage = this.appTheme === 'dark' ? logos.dark : logos.light;
+        this.logoReady = true;
     }
 }
 

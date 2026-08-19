@@ -1,7 +1,7 @@
 <div class="parent bg-base01">
   <div class="header d-flex align-items-center border-bottom-border02 bg-base02 tester">
     <a class="pl-small pr-medium" href="/">
-      <img alt="ThreatConnect" style="margin-left: 20px" [src]="logoImage" />
+      <img *ngIf="logoReady" alt="Logo" style="margin-left: 20px" [src]="logoImage" />
     </a>
     <div class="d-flex flex-column">
       <h3>{{ (appConfig$ | async)?.ui.title }}</h3>

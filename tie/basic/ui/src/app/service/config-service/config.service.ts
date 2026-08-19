@@ -40,11 +40,6 @@ export class ConfigService extends BaseService {
     }
 
     public testConfig(config: any): Observable<any> {
-        return this.http.post(`${this.apiUrl}/test`, config).pipe(
-            catchError((err) => {
-                this.errorHandler(err);
-                return of(null);
-            }),
-        );
+        return this.http.post(`${this.apiUrl}/test`, config);
     }
 }

@@ -5,6 +5,7 @@ import contextlib
 
 # third-party
 import falcon
+from pydantic import ValidationError
 
 # first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
@@ -16,7 +17,10 @@ class TestConfigResource(EndpointBaseABC):
 
     def on_post(self, req: falcon.Request, resp: falcon.Response):
         """Handle POST requests — validate a TQL config against the TC API and return results."""
-        tql_config = TqlConfigPostModel.model_validate(req.media or {})
+        try:
+            tql_config = TqlConfigPostModel.model_validate(req.media or {})
+        except ValidationError as ex:
+            raise falcon.HTTPBadRequest(description=str(ex)) from ex
         owners = (f'"{o}"' for o in tql_config.owners)
 
         types = {f'"{t.split(":")[0]}"' for t in tql_config.types}

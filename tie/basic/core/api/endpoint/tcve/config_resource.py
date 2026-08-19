@@ -7,6 +7,7 @@ from threading import Lock
 
 # third-party
 import falcon
+from pydantic import ValidationError
 
 # first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
@@ -35,13 +36,17 @@ class ConfigResource(EndpointBaseABC):
             for r in records
         ]
 
-    def on_post(self, req: falcon.Request, _resp: falcon.Response):
+    def on_post(self, req: falcon.Request, resp: falcon.Response):
         """Handle POST requests — replace all TQL config records."""
         with self.save_lock:
             raw = req.media or []
-            configs: list[TqlConfigPostModel] = [
-                TqlConfigPostModel.model_validate(c) for c in (raw if isinstance(raw, list) else [])
-            ]
+            try:
+                configs: list[TqlConfigPostModel] = [
+                    TqlConfigPostModel.model_validate(c)
+                    for c in (raw if isinstance(raw, list) else [])
+                ]
+            except ValidationError as ex:
+                raise falcon.HTTPUnprocessableEntity(description=str(ex)) from ex
             self.log.warning(f'configs: {configs}')
 
             # delete all existing TQL config records
@@ -66,3 +71,5 @@ class ConfigResource(EndpointBaseABC):
                         version=c.version,
                     )
                     self.db.save(record)
+
+            resp.media = {'saved': len(configs)}
