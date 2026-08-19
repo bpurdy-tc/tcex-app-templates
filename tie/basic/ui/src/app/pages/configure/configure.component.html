@@ -261,6 +261,10 @@
                     </label>
                 </div>
 
+                @if (validationError) {
+                    <app-error-message [message]="validationError" />
+                }
+
                 <div
                     class="d-flex justify-content-end"
                     style="gap: var(--tcl-spacing-5)">

@@ -21,4 +21,4 @@ class TaskStatusCollection(EndpointBaseABC):
             if isinstance(task, TaskPathPipeABC):
                 status.append(task.task_settings.status_active.title())
                 status.append(task.task_settings.status_complete.title())
-        resp.media = sorted(status)
+        resp.media = {'data': sorted(status)}

@@ -55,6 +55,7 @@ export enum DrawerMode {
 })
 export class ConfigureComponent implements OnInit {
     protected readonly featureVersion: FeatureVersion = 'new-design';
+    protected readonly Array = Array;
     protected readonly ButtonIcon = ButtonIcon;
     protected readonly ButtonTheme = ButtonTheme;
     protected readonly DrawerMode = DrawerMode;
@@ -274,15 +275,26 @@ export class ConfigureComponent implements OnInit {
         this.configService
             .testConfig(config)
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((result: any) => {
-                this.validating = false;
-                if (result?.status !== 'Success') {
-                    this.validationError = result?.message || JSON.stringify(result, null, 2);
+            .subscribe({
+                next: (result: any) => {
+                    this.validating = false;
+                    if (result?.status !== 'Success') {
+                        this.validationError = result?.message || JSON.stringify(result, null, 2);
+                        this.tqlValidated = false;
+                    } else {
+                        this.tqlValidated = true;
+                        this.tqlMatchCount = typeof result.count === 'number' ? result.count : null;
+                    }
+                },
+                error: (err: any) => {
+                    this.validating = false;
                     this.tqlValidated = false;
-                } else {
-                    this.tqlValidated = true;
-                    this.tqlMatchCount = typeof result.count === 'number' ? result.count : null;
-                }
+                    this.validationError =
+                        err?.error?.description ||
+                        err?.error?.message ||
+                        err?.message ||
+                        'Validation request failed.';
+                },
             });
     }
 
@@ -315,6 +327,7 @@ export class ConfigureComponent implements OnInit {
         this.selectedSaveMode = 'delta';
         this.drawerMode = DrawerMode.SAVE_CONFIRM;
         this.drawerTitle = 'Save Changes';
+        this.validationError = null;
         this.showSideDrawer = true;
     }
 
@@ -327,10 +340,21 @@ export class ConfigureComponent implements OnInit {
         this.configService
             .saveConfig(payload, startOver)
             .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-                this.saving = false;
-                this.hasPendingChanges = false;
-                this.showSideDrawer = false;
+            .subscribe({
+                next: (result: any) => {
+                    this.saving = false;
+                    if (result === null) {
+                        // error was already surfaced by the service's errorHandler
+                        this.validationError = 'Failed to save changes.';
+                        return;
+                    }
+                    this.hasPendingChanges = false;
+                    this.showSideDrawer = false;
+                },
+                error: () => {
+                    this.saving = false;
+                    this.validationError = 'Failed to save changes.';
+                },
             });
     }
 
