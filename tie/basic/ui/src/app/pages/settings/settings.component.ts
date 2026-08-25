@@ -153,9 +153,22 @@ export class SettingsComponent implements OnInit {
 
     private settleDiscard(discard: boolean) {
         this.showDiscardConfirm = false;
-        // `showStepper` is not cleared on `true`: the navigation proceeds and this whole
-        // component is destroyed. Clearing it would be a write to a dying instance.
-        //
+        if (discard) {
+            // Cleared EXPLICITLY, not left to component destruction.
+            //
+            // This used to assume "the navigation proceeds and this component is destroyed,
+            // so clearing would be a write to a dying instance". That assumption fails for
+            // the only navigation this guard actually sees. While onboarding is incomplete
+            // `onboardingGuard` bounces every other route back to `settings` — so the router
+            // leaves `/settings` and is immediately redirected to `/settings`. Angular's
+            // default `onSameUrlNavigation: 'ignore'` drops that as a no-op: the component is
+            // never destroyed, `showStepper` stays true, and the operator sits in the same
+            // stepper with the same values. Discard appeared to do nothing.
+            //
+            // Clearing it here also destroys OnboardingComponent (it lives behind
+            // `@if (showStepper)`), which is what actually discards the collected values.
+            this.showStepper = false;
+        }
         // Completing and nulling the subject on BOTH answers is load-bearing — a second
         // navigation attempt would otherwise subscribe to a dead subject and hang the
         // router with no visible cause.
