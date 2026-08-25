@@ -1524,15 +1524,15 @@
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.html"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.scss": {
-    "last_commit": "565db231471f2d571b9b56e73d4dbcfaf2ef0961",
+    "last_commit": "285a84668b24e45b9847488417cdf4a097ecac79",
     "managed": false,
-    "sha256": "17a493458d7b826072bd1aeba881eee359805f8a0f7d32c877d1fb26448efc8f",
+    "sha256": "c1108bcc4ddc6039d15866283235cfba467876718ceff1edb33f39456a2f333c",
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.scss"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.ts": {
-    "last_commit": "565db231471f2d571b9b56e73d4dbcfaf2ef0961",
+    "last_commit": "285a84668b24e45b9847488417cdf4a097ecac79",
     "managed": false,
-    "sha256": "32bf462304a816b7a22286b6baed533f97168ad62ea1087b03628902c88f58c9",
+    "sha256": "41df72746270f62a329db18ac91e60641416908a44ecd9e75da454094e0c7f2e",
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.ts"
   },
   "ui/src/app/components/error-message/error-message.component.html": {
@@ -1950,9 +1950,9 @@
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.scss"
   },
   "ui/src/app/pages/settings/settings.component.ts": {
-    "last_commit": "d57ff380663729720776d57216858ad2abeff3aa",
+    "last_commit": "285a84668b24e45b9847488417cdf4a097ecac79",
     "managed": false,
-    "sha256": "f9bfb04c03dcc122822ced50879ebe6d02d255a54853f33b048dd6ebaa829116",
+    "sha256": "eb8deeb0f5d0367fd016828004d68b345689410b05834d80dfb51d83748377b3",
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.ts"
   },
   "ui/src/app/pages/tasks/tasks.component.html": {
