@@ -1,9 +1,8 @@
 """ThreatConnect Job App"""
 
+from external_app import ExternalApp  # Import default External App Class (Required)
 from tcex import TcEx
 from tcex.exit import ExitCode
-
-from external_app import ExternalApp  # Import default External App Class (Required)
 
 
 class App(ExternalApp):

@@ -8,11 +8,11 @@ from time import sleep, time
 from typing import cast
 
 import schedule
-from app_inputs import AppBaseModel
 from tcex.api.tc.v3.tql.tql_operator import TqlOperator
 from tcex.exit import ExitCode
 from tcex.logger.trace_logger import TraceLogger
 
+from app_inputs import AppBaseModel
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC

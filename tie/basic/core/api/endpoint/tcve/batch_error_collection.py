@@ -2,11 +2,11 @@
 
 # third-party
 import falcon
-from model.pipe_error_model import PipeErrorModel, PipeErrorPaginatedResponseModel
 from records.pipe_error_record import PipeErrorRecord
 
 # first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
+from model.pipe_error_model import PipeErrorModel, PipeErrorPaginatedResponseModel
 
 
 class BatchErrorCollection(EndpointBaseABC):

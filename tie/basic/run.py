@@ -11,8 +11,9 @@ current_dir = Path(__file__).resolve().parent
 sys.path.insert(0, str(current_dir))
 
 if TYPE_CHECKING:
-    from app import App  # must be imported later, but also needed typing hints
     from tcex import TcEx  # must be imported later, but also needed typing hints
+
+    from app import App  # must be imported later, but also needed typing hints
 
 
 class Run:

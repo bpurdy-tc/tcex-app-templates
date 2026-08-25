@@ -2,9 +2,8 @@
 
 import json
 
-from tcex.app.playbook import Playbook
-
 from service_app import ServiceApp
+from tcex.app.playbook import Playbook
 
 
 class App(ServiceApp):

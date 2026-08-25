@@ -6,6 +6,8 @@ from datetime import UTC, datetime, timedelta
 from functools import cached_property
 from pathlib import Path
 
+from tcex import TcEx
+
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB, where
 from core.json_db.dao import JsonDBDAO
@@ -17,7 +19,6 @@ from core.model.tie.task_setting_model import TaskSettingModel
 from core.service.error_handling import app_exception
 from core.task.task_abc import TaskABC
 from core.task.tasks import Tasks
-from tcex import TcEx
 
 
 class TaskSettingCustomModel(TaskSettingModel):
