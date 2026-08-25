@@ -16,6 +16,7 @@ from tcex.exit import ExitCode
 from core.beacon import inject
 from core.dao.job_dao import JobRequestDAO
 from core.json_db import JsonDB
+from core.model.onboarding_model import is_onboarding_complete
 from core.model.settings_model_base import SettingModelBase
 from core.service.notification_helper import NotificationHelper
 from core.service.notification_service import NOTIFICATION_BY_CATEGORY
@@ -54,6 +55,11 @@ class Tasks:
         self.settings = settings
         self.db = db
 
+        # The URL this app is actually served at, learned from the first request to arrive
+        # (api_service_falcon_abc._record_app_base_url). None until then — a background
+        # task has no request of its own to read it from. See _onboarding_link.
+        self.app_base_url: str | None = None
+
         # Create JobRequestDAO for Supervisor
         self.job_dao = JobRequestDAO(db, settings)
 
@@ -66,10 +72,8 @@ class Tasks:
         )
 
         # Notification state tracking (disabled when notification_digest_interval is None)
-        self.notifications_enabled = settings.notification_digest_interval is not None
-        self.notification_helper = (
-            NotificationHelper(settings, tcex, db) if self.notifications_enabled else None
-        )
+        self.notifications_enabled = settings.app_settings.notification_digest_interval is not None
+        self.notification_helper = NotificationHelper(settings, tcex, db)
         self.last_digest_time = datetime.now(UTC)
         self.reported_retrying: set[str] = set()  # job IDs already reported as retrying
         self.reported_resolved: set[str] = set()  # job IDs already reported as perm_fail/recovered
@@ -89,11 +93,12 @@ class Tasks:
         """Send startup notification. Call after preflight checks pass."""
         if self.notifications_enabled:
             notification_config = NOTIFICATION_BY_CATEGORY['app_startup']
-            notification_types = self.settings.notification_types or []
+            notification_types = self.settings.app_settings.notification_types or []
             self.notification_helper.notify(
                 notification_config,
                 send_now='app_startup' in notification_types,
             )
+        self._maybe_send_setup_required_reminder()
 
     def send_preflight_failure_notification(self, reason: str) -> None:
         """Send a notification when preflight checks fail."""
@@ -233,7 +238,7 @@ class Tasks:
                     self.log.warning(
                         f'task-event=kill-task, task-name={task.task_settings.name}, '
                         f'process-id={task.process.pid}, '
-                        f'metadata={task.process.metadata.model_dump()}, '
+                        f'metadata={task.process.metadata.dict()}, '
                     )
                     self.kill(task)
                     if task.process.is_alive():
@@ -264,10 +269,11 @@ class Tasks:
         # Check if digest interval has elapsed and send digest if needed
         if self.notifications_enabled:
             now = datetime.now(UTC)
-            digest_interval = self.settings.notification_digest_interval
+            digest_interval = self.settings.app_settings.notification_digest_interval
             elapsed = now - self.last_digest_time
             if elapsed >= digest_interval:
                 self._send_digest(now)
+                self._maybe_send_setup_required_reminder()
 
     def pause_all(self):
         """Pause all tasks.
@@ -372,7 +378,7 @@ class Tasks:
             f'recovered={len(recovered)}'
         )
 
-        notification_types = self.settings.notification_types or []
+        notification_types = self.settings.app_settings.notification_types or []
 
         digest_buckets = [
             ('job_retrying', retrying, self.reported_retrying),
@@ -394,6 +400,65 @@ class Tasks:
             tracking_set.update(ids)
 
         self.last_digest_time = now
+
+    def _maybe_send_setup_required_reminder(self) -> None:
+        """Send a 'finish setup' reminder while onboarding is incomplete.
+
+        Truly unconditional: send_now=True always, never gated on
+        'setup_required' in settings.app_settings.notification_types (matching
+        _graceful_shutdown's 'app_shutdown' send), AND — unlike every other category in
+        this file, app_shutdown included — never gated on self.notifications_enabled
+        either. There is no `if not self.notifications_enabled: return` guard here on
+        purpose: __init__ now constructs self.notification_helper unconditionally (see
+        the note there), so there is no None-helper hazard to guard against, and no
+        reason left to withhold this one notification just because the operator turned
+        off the digest/master switch — an admin who disabled notifications entirely
+        should still be told that ingestion has never started.
+
+        Checked live on every call — Tasks is a long-lived singleton constructed once at
+        boot (core/app/api_service_falcon_abc.py:55), so caching this result in __init__
+        (like notifications_enabled) would freeze the very first check and never notice
+        onboarding completing later. Piggybacks on the existing digest cadence
+        (last_digest_time, advanced unconditionally by _send_digest) rather than tracking
+        its own timer.
+        """
+        if is_onboarding_complete(self.db):
+            return
+        notification_config = NOTIFICATION_BY_CATEGORY['setup_required']
+        self.notification_helper.notify(
+            notification_config,
+            send_now=True,
+            link=self._onboarding_link(),
+        )
+
+    def _onboarding_link(self) -> str:
+        """Return a URL to this app's Settings page, where setup is started.
+
+        Prefers the address the platform actually served a request to, captured from the
+        `request_url` the service message carries (see
+        `api_service_falcon_abc._record_app_base_url`). That is the same source the TAXII
+        service app builds its discovery URLs from, and it is authoritative: it is the URL
+        a browser really reached this app on.
+
+        Falls back to reconstructing the path from `tc_api_path`, `displayPath` and the
+        package version — the '/services/{displayPath}/v{major}' shape the platform's own
+        admin "App Services" list uses. That fallback only matters before the first HTTP
+        request arrives, because until then the app has not been told its own address.
+
+        NO TRAILING SLASH after `settings`, and this matters. `ui/src/index.html` carries a
+        relative `<base href="./">`, so a trailing slash makes the browser resolve every
+        bundle against `.../settings/` — and the Falcon static route answers an unmatched
+        path with `fallback_filename='index.html'` at HTTP 200. The browser then gets HTML
+        where JavaScript was expected: a blank page, no console error, no server error.
+        (`falcon_app.py`'s `strip_url_path_trailing_slash` normalises the SERVER's view of
+        the path only; it does not change what `<base>` resolves against.)
+        """
+        if self.app_base_url:
+            return f'{self.app_base_url}/settings'
+
+        ij = self.tcex.app.ij.model
+        base = f'{self.tcex.inputs.model.tc_api_path}/services/{ij.display_path}'
+        return f'{base}/{ij.package_version}/settings'
 
     @property
     def status_reset_mapping(self) -> dict[str, str]:

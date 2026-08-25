@@ -7,7 +7,7 @@ from uuid import uuid4
 # third-party
 import arrow
 import falcon
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, validator
 from tcex.util import Util
 
 # first-party
@@ -26,8 +26,7 @@ class PostBodyModel(BaseModel, arbitrary_types_allowed=True):
     range_start: arrow.Arrow = Field(alias='rangeStart')
     range_end: arrow.Arrow = Field(alias='rangeEnd')
 
-    @field_validator('range_start', 'range_end', mode='before')
-    @classmethod
+    @validator('range_start', 'range_end', pre=True)
     def validate_time_input(cls, value: str) -> 'arrow.Arrow':
         """Validate time input. All date inputs are assumed to be in UTC."""
         return Util().any_to_datetime(value, 'UTC')
@@ -70,22 +69,23 @@ class JobRequestCollection(EndpointBaseABC):
         total_count = len(records)
         page = records[offset : offset + limit]
 
-        data = [JobRequestModel.model_validate(r, from_attributes=True) for r in page]
+        # JobRequestModel inherits orm_mode = True from JobRequestBaseModel.Config.
+        data = [JobRequestModel.from_orm(r) for r in page]
 
         response = JobRequestPaginatedResponseModel(
             data=data,
             count=len(data),
             total_count=total_count,
         )
-        resp.media = response.model_dump(by_alias=by_alias, exclude_none=True)
+        resp.media = response.dict(by_alias=by_alias, exclude_none=True)
 
     def on_post(self, req: falcon.Request, resp: falcon.Response):
         """Handle POST requests — create ad-hoc job records for the given date range."""
-        body = PostBodyModel.model_validate(req.media or {})
+        body = PostBodyModel.parse_obj(req.media or {})
         self.log.debug(f'body={body}')
 
         response_media = []
-        for start, end in self.tcex.utils.chunk_date_range(
+        for start, end in self.tcex.util.chunk_date_range(
             body.range_start,
             body.range_end,
             self.settings.time_chunk_size_hours_backfill,

@@ -66,7 +66,7 @@ class TaskCollection(EndpointBaseABC):
                 resp.status = falcon.HTTP_404
                 return
 
-            resp.media = item.model_dump(by_alias=by_alias, exclude_none=True)
+            resp.media = item.dict(by_alias=by_alias, exclude_none=True)
         else:
             items = [self._task_item(task, include_type_index=True) for task in self.tasks.all()]
             items = sorted(items, key=lambda i: (i.type, i.index, i.name))
@@ -76,7 +76,7 @@ class TaskCollection(EndpointBaseABC):
                 count=len(items),
                 total_count=len(items),
             )
-            resp.media = response.model_dump(by_alias=by_alias, exclude_none=True)
+            resp.media = response.dict(by_alias=by_alias, exclude_none=True)
 
     def on_delete(
         self,

@@ -27,13 +27,11 @@ class ConfigResource(EndpointBaseABC):
             self.db.load_all(TqlConfigRecord),
             key=lambda r: r.rank,
         )
+        # NOTE: `from_orm` requires TqlConfigModel to declare `orm_mode = True` in its
+        # Config. TqlConfigModel is supplied by the app (model/tql_config_model.py), not
+        # by this template -- it must set it.
         resp.media = [
-            json.loads(
-                TqlConfigModel.model_validate(r, from_attributes=True).model_dump_json(
-                    by_alias=by_alias
-                )
-            )
-            for r in records
+            json.loads(TqlConfigModel.from_orm(r).json(by_alias=by_alias)) for r in records
         ]
 
     def on_post(self, req: falcon.Request, resp: falcon.Response):
@@ -42,8 +40,7 @@ class ConfigResource(EndpointBaseABC):
             raw = req.media or []
             try:
                 configs: list[TqlConfigPostModel] = [
-                    TqlConfigPostModel.model_validate(c)
-                    for c in (raw if isinstance(raw, list) else [])
+                    TqlConfigPostModel.parse_obj(c) for c in (raw if isinstance(raw, list) else [])
                 ]
             except ValidationError as ex:
                 raise falcon.HTTPUnprocessableEntity(description=str(ex)) from ex

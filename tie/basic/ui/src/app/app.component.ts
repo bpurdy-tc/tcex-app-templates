@@ -1,4 +1,4 @@
-import { BehaviorSubject, interval } from 'rxjs';
+import { BehaviorSubject, catchError, first, of, timeout } from 'rxjs';
 
 import { Component, DestroyRef, inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -17,6 +17,7 @@ import {
 } from '@tc-eng/component-library';
 
 import { AppConfig, AppService } from './service/app-service/app.service';
+import { OnboardingService } from './service/onboarding-service/onboarding.service';
 import { PendoService } from './service/pendo-service/pendo.service';
 import { ThemeService } from './service/theme-service/theme.service';
 
@@ -57,6 +58,7 @@ export class AppComponent implements OnInit {
         private router: Router,
         private appService: AppService,
         private iconRegistry: IconRegistry,
+        private onboardingService: OnboardingService,
         private pendoService: PendoService,
         private themeService: ThemeService,
         private renderer: Renderer2,
@@ -80,7 +82,21 @@ export class AppComponent implements OnInit {
             console.warn('Pendo initialization failed:', e);
         }
 
-        setTimeout(() => (this.showContent = true), 100);
+        // The nav waits on the gate RESOLVING so it never renders for a frame and then gets
+        // redirected out from under the operator. WHAT the status says is `onboardingGuard`'s
+        // business, not this component's — all that is needed here is the moment an answer
+        // exists. `first()` is required: the source is a ReplaySubject that never completes.
+        // The timeout and catchError are belt-and-braces on top of the service already
+        // failing open, so a hung request cannot leave the app blank forever.
+        this.onboardingService
+            .getStatus()
+            .pipe(
+                first(),
+                timeout(10_000),
+                takeUntilDestroyed(this.destroyRef),
+                catchError(() => of(null)),
+            )
+            .subscribe(() => (this.showContent = true));
 
         // Load app config
         this.appService
@@ -105,13 +121,11 @@ export class AppComponent implements OnInit {
         }
         this.updateLogo();
 
-        this.router.events
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((event: Event) => {
-                if (event instanceof NavigationEnd && event.url.indexOf('/job-execution') != -1) {
-                    this.hideSideNav = true;
-                }
-            });
+        this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event: Event) => {
+            if (event instanceof NavigationEnd && event.url.indexOf('/job-execution') != -1) {
+                this.hideSideNav = true;
+            }
+        });
 
         this.appConfig$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((config) => {
             document.title = config?.ui?.title;

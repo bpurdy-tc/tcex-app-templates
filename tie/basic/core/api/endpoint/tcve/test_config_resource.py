@@ -18,7 +18,7 @@ class TestConfigResource(EndpointBaseABC):
     def on_post(self, req: falcon.Request, resp: falcon.Response):
         """Handle POST requests — validate a TQL config against the TC API and return results."""
         try:
-            tql_config = TqlConfigPostModel.model_validate(req.media or {})
+            tql_config = TqlConfigPostModel.parse_obj(req.media or {})
         except ValidationError as ex:
             raise falcon.HTTPBadRequest(description=str(ex)) from ex
         owners = (f'"{o}"' for o in tql_config.owners)
