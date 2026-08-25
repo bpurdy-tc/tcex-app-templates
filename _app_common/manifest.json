@@ -20,8 +20,8 @@
         "template_path": "_app_common/README.md"
     },
     "pyproject.toml": {
-        "sha256": "29e592b08d1119c316927e4d2ef65a7a3ffaab73d871bfb5588024fbad33a8fa",
-        "last_commit": "d38749742b355ecdee6977b86d8e00eeb295c58c",
+        "sha256": "ed80da808ce01236d8d1ec35e56e76dfaa5fd096c6819fffeefdabbc888d6f66",
+        "last_commit": "d57ff380663729720776d57216858ad2abeff3aa",
         "template_path": "_app_common/pyproject.toml"
     },
     "requirements.txt": {
