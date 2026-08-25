@@ -427,8 +427,19 @@ class Tasks:
         constructed once at boot — so the reminder stops as soon as setup completes.
         Piggybacks on the existing digest cadence (last_digest_time) rather than tracking
         its own timer.
+
+        Held back until the app knows its own address. The whole point of this message is
+        the link, and that link can only come from `request_url` (see `_onboarding_link`),
+        which does not exist until the first HTTP request arrives. Sending early would mean
+        sending a guessed URL that 404s, which is worse than sending nothing. The trade-off
+        is real: an app that is never opened in a browser never sends this reminder at all.
         """
         if is_onboarding_complete(self.db):
+            return
+        if not self.app_base_url:
+            self.log.debug(
+                'action=setup-required-reminder, status=deferred, reason=app-base-url-unknown'
+            )
             return
         notification_config = NOTIFICATION_BY_CATEGORY['setup_required']
         self.notification_helper.notify(
@@ -440,16 +451,22 @@ class Tasks:
     def _onboarding_link(self) -> str:
         """Return a URL to this app's Settings page, where setup is started.
 
-        Prefers the address the platform actually served a request to, captured from the
-        `request_url` the service message carries (see
-        `api_service_falcon_abc._record_app_base_url`). That is the same source the TAXII
-        service app builds its discovery URLs from, and it is authoritative: it is the URL
-        a browser really reached this app on.
+        The ONLY source is the address the platform actually served a request to, captured
+        from the `request_url` the service message carries (see
+        `api_service_falcon_abc._record_app_base_url`). This is the same thing the TAXII
+        service app does — it builds every discovery URL from `request_url` and never
+        reconstructs one (`api/endpoint/taxii/resources/taxii_resource.py`,
+        `services/taxii_service.py`).
 
-        Falls back to reconstructing the path from `tc_api_path`, `displayPath` and the
-        package version — the '/services/{displayPath}/v{major}' shape the platform's own
-        admin "App Services" list uses. That fallback only matters before the first HTTP
-        request arrives, because until then the app has not been told its own address.
+        Do NOT reconstruct this from `tc_api_path` + `displayPath` + package version. It
+        looks plausible and is always wrong for a deployed service. `displayPath` comes
+        from install.json and is App-level, so it yields '/services/my_app/v1'; the
+        platform actually serves the app at '/services/my_app_<instance>/v1', where
+        `<instance>` is assigned per deployment. That suffix appears nowhere in install.json
+        or in the startup inputs (`tc_svc_id` is an unrelated integer) — `request_url` is
+        the only place it exists. A reconstructed link 404s.
+
+        Callers must check `app_base_url` before calling; this raises rather than guess.
 
         NO TRAILING SLASH after `settings`, and this matters. `ui/src/index.html` carries a
         relative `<base href="./">`, so a trailing slash makes the browser resolve every
@@ -459,12 +476,10 @@ class Tasks:
         (`falcon_app.py`'s `strip_url_path_trailing_slash` normalises the SERVER's view of
         the path only; it does not change what `<base>` resolves against.)
         """
-        if self.app_base_url:
-            return f'{self.app_base_url}/settings'
-
-        ij = self.tcex.app.ij.model
-        base = f'{self.tcex.inputs.model.tc_api_path}/services/{ij.display_path}'
-        return f'{base}/{ij.package_version}/settings'
+        if not self.app_base_url:
+            ex_msg = '_onboarding_link called before app_base_url was recorded'
+            raise RuntimeError(ex_msg)
+        return f'{self.app_base_url}/settings'
 
     @property
     def status_reset_mapping(self) -> dict[str, str]:
