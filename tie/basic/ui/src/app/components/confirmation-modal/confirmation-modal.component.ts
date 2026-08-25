@@ -33,7 +33,7 @@ export class ConfirmationModalComponent {
         cancelText: 'Cancel',
         confirmTheme: ButtonTheme.Primary,
         cancelTheme: ButtonTheme.Secondary,
-        maxWidth: '33%',
+        maxWidth: '32rem',
         modalSize: 'small',
     };
 
@@ -71,7 +71,7 @@ export class ConfirmationModalComponent {
             cancelText: this.config.cancelText || 'Cancel',
             confirmTheme: this.config.confirmTheme || ButtonTheme.Primary,
             cancelTheme: this.config.cancelTheme || ButtonTheme.Secondary,
-            maxWidth: this.config.maxWidth || '33%',
+            maxWidth: this.config.maxWidth || '32rem',
             modalSize: this.config.modalSize || 'small',
             icon: this.config.icon || undefined,
         };
