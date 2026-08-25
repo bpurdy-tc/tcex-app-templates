@@ -1025,12 +1025,6 @@
     "sha256": "d583e865a20b5f677242b324a8f6f94a013ef8d44aad6cc431b040062f290123",
     "template_path": "tie/basic/core/util/process_metadata.py"
   },
-  "docs/migrations/settings-onboarding-migration.md": {
-    "last_commit": "",
-    "managed": false,
-    "sha256": "a81746a9ea0945708006a361efeacb358ce997ad8c3037253c3c8ee64e831543",
-    "template_path": "tie/basic/docs/migrations/settings-onboarding-migration.md"
-  },
   "docs/user-guide.md": {
     "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
     "managed": false,
