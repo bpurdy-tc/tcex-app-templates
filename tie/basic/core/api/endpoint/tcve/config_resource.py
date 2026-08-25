@@ -7,12 +7,12 @@ from threading import Lock
 
 # third-party
 import falcon
+from model.tql_config_model import TqlConfigModel, TqlConfigPostModel
 from pydantic import ValidationError
 from records.tql_config_record import TqlConfigRecord
 
 # first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
-from model.tql_config_model import TqlConfigModel, TqlConfigPostModel
 
 
 class ConfigResource(EndpointBaseABC):
