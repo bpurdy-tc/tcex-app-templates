@@ -120,15 +120,15 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/__init__.py"
   },
   "core/api/endpoint/tcve/batch_error_collection.py": {
-    "last_commit": "efd9da777982fce8717e04455dd9211d91a66bb9",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "dc6e55bcfcb0a9bd9ab6911a1a50644b14537d9405a6a1006a33c4a5a01a1079",
+    "sha256": "2fbf5b9fb5fd3b70999f614adfdbe6db56486886e9e436696ef3440c74a9d740",
     "template_path": "tie/basic/core/api/endpoint/tcve/batch_error_collection.py"
   },
   "core/api/endpoint/tcve/config_resource.py": {
-    "last_commit": "e87b3bfb56d4b12f7e085999931c60fe27e7649f",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "c47dd9f92ed00a6e1224da53110b234e6d86ac237c95f7f11efa933045636204",
+    "sha256": "c5236eadf63a091e5a6239b1fb9abf4bd0c93f6229b829376dfbd480631cd13c",
     "template_path": "tie/basic/core/api/endpoint/tcve/config_resource.py"
   },
   "core/api/endpoint/tcve/job_request_collection.py": {
@@ -150,9 +150,9 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/task_status_collection.py"
   },
   "core/api/endpoint/tcve/test_config_resource.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "f2ecc7bb19a78c49b7e19433d0703d87c23cb42e855209eeb9e5f404f6cb0991",
+    "sha256": "8de7c65e6eea2fc5ac831e4205b63c0333e50bf38f66c12704fa6743165dcdf7",
     "template_path": "tie/basic/core/api/endpoint/tcve/test_config_resource.py"
   },
   "core/api/endpoint/tcvf/__init__.py": {
@@ -1424,7 +1424,7 @@
   "ui/.angular/cache/18.1.4/tmp/.tsbuildinfo": {
     "last_commit": "",
     "managed": false,
-    "sha256": "c5458dd8c515a5be087dd0a58bb131228b9a74d7a54b50daeb8b62182d333941",
+    "sha256": "2c7ee3da8b0d286f262698557bc6dbdce3b0701224e4c55bf1897ca9fec13ab5",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/.tsbuildinfo"
   },
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db": {
@@ -1436,7 +1436,7 @@
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock": {
     "last_commit": "",
     "managed": false,
-    "sha256": "ba0854a4a002a2fdded26018d26f43a08e668c8a76415e768e448335681ae8e0",
+    "sha256": "668682b5d2ab553ad12f9655ce3f6944bdab1b28f06581d029cee3fefe89fbef",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock"
   },
   "ui/.eslintrc.json": {
@@ -1518,9 +1518,9 @@
     "template_path": "tie/basic/ui/src/app/app.module.ts"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.html": {
-    "last_commit": "4c8ad4c1b4cd4a451b00d4371ac952676348840e",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "99fd5459820bc9255dd2c7f1bd78e13d677a4c0a39c3aa7503b22c6ab042187b",
+    "sha256": "bb8dc81ecd040fb49f13c2d2e5b2aab8133589ddf13846de85c76554f40c602b",
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.html"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.scss": {
@@ -1530,9 +1530,9 @@
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.scss"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.ts": {
-    "last_commit": "722d6b3d4b15764c25e2379c7caebd0e8969676e",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "41df72746270f62a329db18ac91e60641416908a44ecd9e75da454094e0c7f2e",
+    "sha256": "606519cb9c862f59744bac539596434a7cd224ccbf1ec6c3cdd839269f4ab3ef",
     "template_path": "tie/basic/ui/src/app/components/confirmation-modal/confirmation-modal.component.ts"
   },
   "ui/src/app/components/error-message/error-message.component.html": {
@@ -1564,12 +1564,6 @@
     "managed": false,
     "sha256": "a149f94fbbf5627837f0555435503b3a8ba276adde0dad0cd681aebec7b492b2",
     "template_path": "tie/basic/ui/src/app/components/formatted-field/formatted-field.component.html"
-  },
-  "ui/src/app/components/formatted-field/formatted-field.component.scss": {
-    "last_commit": "ecf4428a4cddbe903fcc7b9da35a02fce3bfd6ab",
-    "managed": false,
-    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "template_path": "tie/basic/ui/src/app/components/formatted-field/formatted-field.component.scss"
   },
   "ui/src/app/components/formatted-field/formatted-field.component.ts": {
     "last_commit": "00012ec98f8a32a668d5ffc5ffa8a9f29dbad420",
@@ -1674,9 +1668,9 @@
     "template_path": "tie/basic/ui/src/app/error-handler/global-error-handler.ts"
   },
   "ui/src/app/guard/onboarding.guard.ts": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "3bb40b3de01da6863459e1f0e90256801f80742777715418f441fbf2a891c146",
+    "sha256": "f33a7cc278b82117b06b1d79e325c7d0480ae8d40491cc224fe3f6341cd2800b",
     "template_path": "tie/basic/ui/src/app/guard/onboarding.guard.ts"
   },
   "ui/src/app/interceptors/auth-interceptor-service/auth.interceptor.ts": {
@@ -1944,9 +1938,9 @@
     "template_path": "tie/basic/ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.ts"
   },
   "ui/src/app/pages/settings/settings.component.html": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "9cf6188887d5dd745132f6e608157f645a075026551743f79d7ae4a555a75104",
+    "sha256": "ccc94c841f08396298d5f2844b4d4750a864dcb2b46e15e8f3fedb0ea8fc2e4b",
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.html"
   },
   "ui/src/app/pages/settings/settings.component.scss": {
@@ -1956,9 +1950,9 @@
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.scss"
   },
   "ui/src/app/pages/settings/settings.component.ts": {
-    "last_commit": "722d6b3d4b15764c25e2379c7caebd0e8969676e",
+    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
     "managed": false,
-    "sha256": "eb8deeb0f5d0367fd016828004d68b345689410b05834d80dfb51d83748377b3",
+    "sha256": "d5ab8f8aa7421c57486164691c512d8e858ed8876d4935d07371aa4b9f4e0dd8",
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.ts"
   },
   "ui/src/app/pages/tasks/tasks.component.html": {
