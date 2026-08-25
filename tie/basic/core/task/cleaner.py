@@ -26,7 +26,6 @@ class TaskSettingCustomModel(TaskSettingModel):
 
     max_disk_percent_usage: int
     max_jobs: int
-    max_batch_errors: int
     max_notification_age_days: int
 
 
@@ -98,11 +97,18 @@ class Cleaner(TaskABC):
             ):
                 self.batch_error_dao.delete(batch_error)
 
-            # Cap total batch errors to prevent unbounded growth
+            # Cap total batch errors to prevent unbounded growth. Read live off settings,
+            # not task_settings — task_settings is a @cached_property and Cleaner is a
+            # long-lived singleton, so baking a settings value in there would freeze it
+            # at first access (same bug class as Scheduler.frequency).
+            max_batch_errors = self.settings.app_settings.max_batch_errors
             for path in self.db.get_paths(BatchErrorModel, sort_order=SortOrder.DESC)[
-                self.task_settings.max_batch_errors :
+                max_batch_errors:
             ]:
-                path.unlink()
+                try:
+                    path.unlink(missing_ok=True)
+                except OSError as ex:
+                    app_exception(ex, f'failure=failed-capping-batch-error, path={path}')
         except Exception as ex:
             # log exception
             app_exception(ex, 'failure=failed-cleaning-batch-errors')
@@ -203,7 +209,6 @@ class Cleaner(TaskABC):
             schedule_unit='hours',
             max_disk_percent_usage=60,
             max_jobs=500,
-            max_batch_errors=20_000,
             max_ttl_batch_error=(60 * 60 * 24 * 90),  # 90 days
             max_notification_age_days=30,
         )

@@ -3,20 +3,15 @@
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+from core.service.notification_service import DIGEST_INTERVAL_MAP
 
 # Default failure threshold for jobs and pipeline staleness
 DEFAULT_FAILURE_THRESHOLD = timedelta(hours=48)
 
-
-class MessageBrokerSettings(BaseModel):
-    """Settings for the message broker."""
-
-    schema_version: str
-    active: bool = True
-    provider_id: str
-    topic: str
-    features: list[str] = []
+# Default cap on total stored batch errors before the oldest are pruned
+DEFAULT_MAX_BATCH_ERRORS = 20_000
 
 
 class FileSettings(BaseModel):
@@ -44,6 +39,84 @@ class JobSettings(BaseModel):
     throttle_limit: int = 3
 
 
+class AppSettingsBase(BaseModel):
+    """The admin-editable settings, and the only thing written to the JSON DB.
+
+    Being a separate model IS the boundary: credentials and runtime state live on
+    `SettingModelBase` and so cannot be persisted or reached by a settings payload. An
+    app subclasses this to add its own settings and to build the record from the app
+    inputs on first boot — see `AppSettings.load`.
+    """
+
+    #: Singleton record id. Also satisfies `JsonDB.get_index_field()`, which needs either
+    #: an `Index()`-marked field or a field literally named `id`.
+    id: str = 'app_settings'
+
+    notification_digest_interval: timedelta | None = None
+    notification_types: list[str] | None = None
+
+    # Scheduling and retry. FLAT, and named exactly as the settings form posts them, so an
+    # update is `type(record)(**{**record.model_dump(), **payload})` and nothing has to map one
+    # shape onto another. `rate_limit_constraints` is deliberately absent — it is not
+    # admin-editable, so it stays on the app inputs rather than in this record.
+    frequency: int = Field(1, ge=1)
+    failure_threshold: timedelta = DEFAULT_FAILURE_THRESHOLD
+    max_retries: int = Field(10, ge=0)
+
+    # Not on the settings form (api/ui_config_builder.py::advanced_settings_inputs is an
+    # explicit whitelist that omits this) — internal tuning, changeable via PUT /api/settings
+    # without a redeploy for support/engineering, not meant for the admin-facing UI.
+    max_batch_errors: int = Field(DEFAULT_MAX_BATCH_ERRORS, ge=0)
+
+    @field_validator('failure_threshold', mode='before')
+    @classmethod
+    def parse_failure_threshold(cls, value: str | float | timedelta) -> timedelta:
+        """Accept whole hours from the form, seconds from the JSON DB, or a timedelta."""
+        if isinstance(value, timedelta):
+            return value
+        if isinstance(value, float):
+            # From JSON deserialization (stored as total_seconds)
+            return timedelta(seconds=value)
+        # From user input (hours as int or string)
+        return timedelta(hours=int(value))
+
+    @field_validator('notification_digest_interval', mode='before')
+    @classmethod
+    def parse_digest_interval(cls, value):
+        """Accept the label the form offers, seconds from the JSON DB, or a timedelta.
+
+        The select is built from `DIGEST_INTERVAL_MAP` and posts back the label it
+        displayed, so this is the inverse of how `notification_inputs` renders the
+        default. Empty means notifications are disabled — see `core/task/tasks.py`.
+
+        An unrecognised non-empty value raises rather than resolving to `None`: silently
+        turning notifications off because a label did not match is exactly the kind of
+        failure nobody notices until an incident goes unreported.
+        """
+        if value is None or value == '':
+            return None
+        if isinstance(value, timedelta):
+            return value
+        if isinstance(value, int | float):
+            # 0 is neither "disabled" nor a usable cadence: it leaves notifications
+            # enabled (the field is not None) while `elapsed >= timedelta(0)` is always
+            # true, so the digest fires on every watchdog tick. Reject it — '' and None
+            # are how notifications are turned off.
+            if value <= 0:
+                msg = (
+                    f'notification_digest_interval must be greater than zero '
+                    f'(got {value!r}); use an empty value to disable notifications'
+                )
+                raise ValueError(msg)
+            return timedelta(seconds=value)
+
+        interval = DIGEST_INTERVAL_MAP.get(str(value))
+        if interval is None:
+            msg = f'Unknown notification digest interval: {value!r}'
+            raise ValueError(msg)
+        return interval
+
+
 class SettingModelBase(BaseModel):
     """Base model for settings."""
 
@@ -53,11 +126,11 @@ class SettingModelBase(BaseModel):
     tc_owner: str
     date_started: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
-    notification_digest_interval: timedelta | None = None
+    #: The persisted settings. Loaded from the JSON DB at startup and mutated in place by
+    #: the settings API, so every holder of this object sees an edit without a restart.
+    app_settings: AppSettingsBase = AppSettingsBase()
     notification_display_name: str | None = None
-    notification_types: list[str] | None = None
 
-    mb: MessageBrokerSettings | None = None
     file: FileSettings = FileSettings()
     job: JobSettings = JobSettings()
 

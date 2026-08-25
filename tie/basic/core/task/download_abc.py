@@ -185,7 +185,7 @@ class DownloadABC(TaskPathPipeABC):
 
         # Scheduled jobs: apply backoff/retry logic
         now = datetime.now(UTC)
-        max_retries = self.settings.advanced_settings.max_retries
+        max_retries = self.settings.app_settings.max_retries
 
         # Track failure timestamp for logging/debugging
         if job.date_failed is None:

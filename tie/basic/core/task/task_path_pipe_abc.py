@@ -399,7 +399,7 @@ class TaskPathPipeABC(TaskABC, ABC):
 
         # Scheduled jobs: apply backoff/retry logic with reset to Pending
         now = datetime.now(UTC)
-        max_retries = self.settings.advanced_settings.max_retries
+        max_retries = self.settings.app_settings.max_retries
 
         # Track failure timestamp for logging/debugging
         if job.date_failed is None:
@@ -450,10 +450,34 @@ class TaskPathPipeABC(TaskABC, ABC):
         Runs in the main process because SIGKILL prevents the child from reaching handle_run_error.
         request_id and request_dir are read from process metadata — set at launch time — so there
         is no ambiguity about which job is being cleaned up.
+
+        A timeout means the task published no heartbeat for max_execution_minutes. Every work
+        loop beats while it runs, so this is a hang, not slow progress — it is treated as an
+        ordinary failure and CONSUMES one retry, which is what lets a permanently wedged job
+        reach max_retries and fail for good instead of relaunching forever.
         """
         try:
             request_id = self.process._metadata['request_id']  # noqa: SLF001
-            request_dir = Path(self.process._metadata['request_dir'])  # noqa: SLF001
+            raw_request_dir = self.process._metadata.get('request_dir')  # noqa: SLF001
+            if not raw_request_dir:
+                self.log.error(
+                    f'task-event=timeout-cleanup-no-request-dir, '
+                    f'task-name={self.task_settings.name}, request_id={request_id}'
+                )
+                return
+            request_dir = Path(raw_request_dir)
+
+            # The task can finish between the watchdog's staleness check and the kill.
+            # Failing an already-terminal job would report work that reached ThreatConnect
+            # as failed, so re-read the record and leave it alone if it is already done.
+            job = self.job_dao.get(request_id)
+            if job.date_completed is not None or job.date_failed is not None:
+                self.log.info(
+                    f'task-event=timeout-cleanup-skip, '
+                    f'task-name={self.task_settings.name}, '
+                    f'request_id={request_id}, status={job.status}, reason=already-terminal'
+                )
+                return
 
             self.log.warning(
                 f'task-event=timeout-cleanup, '
@@ -475,7 +499,9 @@ class TaskPathPipeABC(TaskABC, ABC):
             ),
             kwargs=kwargs,
             request_id=request_id,
-            request_dir=str(request_dir),
+            # `str(None)` would store the literal 'None', which on_timeout would then
+            # turn into Path('None') and operate on a bogus relative path.
+            request_dir=str(request_dir) if request_dir is not None else None,
         )
         self.process.start()
 

@@ -25,6 +25,7 @@ class NotificationTypeConfig(NamedTuple):
     category: str
     priority: str
     message_template: str | None
+    description: str | None = None
 
 
 NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
@@ -32,37 +33,86 @@ NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
         category='app_startup',
         priority='Low',
         message_template='App starting',
+        description=(
+            'Sent every time the app starts, including after a ThreatConnect restart or a '
+            'redeploy. Useful as a heartbeat for confirming a deployment landed; noisy if '
+            'the server restarts on a schedule.'
+        ),
     ),
     'App Startup Failed': NotificationTypeConfig(
         category='app_startup_failed',
         priority='High',
         message_template='App failed to start — {reason}',
+        description=(
+            'The app could not start — usually bad credentials, an unreachable vendor API, '
+            'or a failed preflight check. Nothing will be ingested until it is fixed, so '
+            'this is the one type worth keeping on even in a quiet environment.'
+        ),
     ),
     'App Shutdown': NotificationTypeConfig(
         category='app_shutdown',
         priority='High',
         message_template='App shutting down — {reason}',
+        description=(
+            'The app is stopping, with the reason it was given. Expected during a redeploy '
+            'or a server restart; unexpected otherwise, and paired with a missing App '
+            'Startup it tells you ingestion has stopped rather than paused.'
+        ),
+    ),
+    'Setup Required': NotificationTypeConfig(
+        category='setup_required',
+        priority='High',
+        message_template=(
+            'Setup is incomplete — no ingestion will run until it is finished. '
+            '<a href="{link}">Click here to finish setup</a>'
+        ),
+        description=(
+            'Setup has never been completed, so no ingestion is running at all. Repeats '
+            'daily with a link straight to the Settings page until it is finished, and '
+            'stops on its own once it is.'
+        ),
     ),
     'Job Retrying': NotificationTypeConfig(
         category='job_retrying',
         priority='Medium',
         message_template='{count} job(s) failed and are retrying',
+        description=(
+            'One or more jobs failed and are being retried automatically. Usually a '
+            'transient vendor error that resolves itself, so this is the type to turn off '
+            'first if the notification center is too busy — a job that never recovers '
+            'raises Job Failed anyway.'
+        ),
     ),
     'Job Failed': NotificationTypeConfig(
         category='job_failed',
         priority='High',
         message_template='{count} job(s) retried 10 times and failed'
         ' - job(s) stopped and will not be retried',
+        description=(
+            'A job exhausted all ten retries and has stopped for good. Nothing further is '
+            'automatic — the data for that window will be missing until someone looks at '
+            'the job and reruns it.'
+        ),
     ),
     'Job Recovered': NotificationTypeConfig(
         category='job_recovered',
         priority='Low',
         message_template='{count} failed job(s) have recovered and completed',
+        description=(
+            'A job that had been failing has now completed. The counterpart to Job '
+            'Retrying: keep both on to see a problem close, or neither to hear only about '
+            'jobs that gave up.'
+        ),
     ),
     'Manual': NotificationTypeConfig(
         category='manual',
         priority='Low',
         message_template=None,
+        description=(
+            'Messages raised deliberately by app code rather than by the pipeline itself, '
+            'for anything an integration decides is worth telling an operator about. What '
+            'these say is entirely up to the app.'
+        ),
     ),
 }
 

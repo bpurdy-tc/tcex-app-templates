@@ -385,7 +385,7 @@ class TaskABC(ABC, Generic[T]):
         except Exception:
             self.log.exception(f'task-event=task-failed, task-name={self.task_settings.name}')
             last_success = self.ns.last_task_success
-            threshold = self.settings.advanced_settings.failure_threshold
+            threshold = self.settings.app_settings.failure_threshold
             if last_success is not None and (datetime.now(UTC) - last_success) > threshold:
                 self.log.error(  # noqa: TRY400
                     f'task-event=failure-threshold-exceeded, '

@@ -1,8 +1,5 @@
 """Test config resource for /api/tql-config/test endpoint."""
 
-# standard library
-import contextlib
-
 # third-party
 import falcon
 from pydantic import ValidationError
@@ -42,8 +39,25 @@ class TestConfigResource(EndpointBaseABC):
 
         indicators = self.tcex.api.tc.v3.indicators(params=params)
         indicators.tql.set_raw_tql(tql)
-        with contextlib.suppress(Exception):
+        # A failing TQL must not report success. `contextlib.suppress(Exception)` swallowed
+        # tcex's handle_error, then returned TC's raw error body — internals and all — under
+        # a 200, so a validation endpoint answered "failed" with "OK". Surface it as a 400
+        # with a clean message instead, and let a genuinely missing response be a 502 rather
+        # than an AttributeError on `.request`.
+        try:
             next(iter(indicators))
+        except StopIteration:
+            pass  # no matching records is a valid result, not an error
+        except Exception as ex:
+            self.log.warning(f'action=test-tql-config, status=failed, error={ex}')
+            raise falcon.HTTPBadRequest(
+                title='TQL validation failed',
+                description='The query was rejected by ThreatConnect. Check the TQL syntax.',
+            ) from ex
 
-        response = indicators.request.json()
-        resp.media = response
+        request = getattr(indicators, 'request', None)
+        if request is None:
+            raise falcon.HTTPBadGateway(
+                description='ThreatConnect returned no response for the query.'
+            )
+        resp.media = request.json()
