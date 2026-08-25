@@ -8,9 +8,9 @@ and the app silently re-seeds from the app inputs on the next boot.
 The parent `SettingModelBase`/`AppSettingsBase` classes should never be edited.
 """
 
+from app_inputs import AdvancedSettingsModel
 from pydantic import Field
 
-from app_inputs import AdvancedSettingsModel
 from core.json_db import Embedded
 from core.model.settings_model_base import AppSettingsBase, SettingModelBase
 

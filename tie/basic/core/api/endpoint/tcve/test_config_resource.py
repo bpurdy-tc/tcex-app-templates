@@ -5,11 +5,11 @@ import contextlib
 
 # third-party
 import falcon
+from model.tql_config_model import TqlConfigPostModel
 from pydantic import ValidationError
 
 # first-party
 from core.api.endpoint.endpoint_base_abc import EndpointBaseABC
-from model.tql_config_model import TqlConfigPostModel
 
 
 class TestConfigResource(EndpointBaseABC):

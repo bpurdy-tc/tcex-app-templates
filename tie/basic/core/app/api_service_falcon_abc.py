@@ -9,6 +9,10 @@ from typing import cast
 
 import schedule
 from app_inputs import AppBaseModel
+from tcex.api.tc.v3.tql.tql_operator import TqlOperator
+from tcex.exit import ExitCode
+from tcex.logger.trace_logger import TraceLogger
+
 from core.api.falcon_app import FalconApp
 from core.api.spec import spec
 from core.app.api_service_app_abc import ApiServiceAppABC
@@ -27,9 +31,6 @@ from core.supervisor import Supervisor
 from core.task.tasks import Tasks
 from core.util.custom_handler import CustomHandler
 from model.settings_model import SettingModel
-from tcex.api.tc.v3.tql.tql_operator import TqlOperator
-from tcex.exit import ExitCode
-from tcex.logger.trace_logger import TraceLogger
 
 try:
     from migrations import Migrations

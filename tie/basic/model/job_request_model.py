@@ -2,9 +2,9 @@
 
 from datetime import datetime
 
+from app_inputs import AdvancedSettingsModel
 from pydantic import Field
 
-from app_inputs import AdvancedSettingsModel
 from core.json_db import Embedded
 from core.model.response.paginated_response import PaginatedResponseModel
 from core.model.tie.job_request_base_model import JobRequestBaseModel
