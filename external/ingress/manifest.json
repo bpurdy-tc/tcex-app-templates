@@ -1,8 +1,8 @@
 {
   "app.py": {
-    "last_commit": "4b491ad9c887023d3d83feb103e08394750895df",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "713a6e5cc3a630e05f08371530e290b282bb8c8e9eb337c643bbfc538c0c51d7",
+    "sha256": "9bbff1190a4a8d830be93b0af1f2781f8dc5d0a613d546250b63442506f923e4",
     "template_path": "external/ingress/app.py"
   },
   "app_config.json": {

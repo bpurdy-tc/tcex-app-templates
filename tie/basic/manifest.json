@@ -72,9 +72,9 @@
     "template_path": "tie/basic/api/ui_config_builder.py"
   },
   "api_service_app.py": {
-    "last_commit": "f0e6daa9df44e23d8b0f2d4005a12f064688bda7",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "f66d01410ef97c4fae06a2213ab2b5ba1590afe832e90c3f2e1ddf0fbfde959f",
+    "sha256": "78f712757d46ca7776081513cee802530d59c90716896a64227538634fae4f92",
     "template_path": "tie/basic/api_service_app.py"
   },
   "attributes.json": {
@@ -120,15 +120,15 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/__init__.py"
   },
   "core/api/endpoint/tcve/batch_error_collection.py": {
-    "last_commit": "d57ff380663729720776d57216858ad2abeff3aa",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "4035f37d1bb436075c55d3acd6c11cf8163c2e0bf674ffa4db128b78a6885e94",
+    "sha256": "0787760d43c525c4f7bf4e1ccc435c92c5b9424d43fb730a42d66f7162a57414",
     "template_path": "tie/basic/core/api/endpoint/tcve/batch_error_collection.py"
   },
   "core/api/endpoint/tcve/config_resource.py": {
-    "last_commit": "d57ff380663729720776d57216858ad2abeff3aa",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "1225aa3c5b723a42251f2ac39d2d79e3845050e86176f43b97c712b97eddf8ca",
+    "sha256": "84bde7d14d06c68f0f1f9460888d2926a93f0bf0f4abc25055fdfa9ffc719563",
     "template_path": "tie/basic/core/api/endpoint/tcve/config_resource.py"
   },
   "core/api/endpoint/tcve/job_request_collection.py": {
@@ -150,9 +150,9 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/task_status_collection.py"
   },
   "core/api/endpoint/tcve/test_config_resource.py": {
-    "last_commit": "b2ae5f3eb98e80a1e717fbb392734dadc2a09e73",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "d27588ecf638166b49d373c4eff08039d25017c2f3586e2aa4d2dbcd4af68a67",
+    "sha256": "c953245d42ab29f1d501ed343e8ecbfa01c19683db6c50a67360728acb80dbdf",
     "template_path": "tie/basic/core/api/endpoint/tcve/test_config_resource.py"
   },
   "core/api/endpoint/tcvf/__init__.py": {
@@ -384,9 +384,9 @@
     "template_path": "tie/basic/core/api/tcex/__init__.py"
   },
   "core/api/tcex/middleware.py": {
-    "last_commit": "f0e6daa9df44e23d8b0f2d4005a12f064688bda7",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "8d6ce8e46bcee1ae134bf4232f3348057ccdd120ed5f6c4cc5251bd2709f7ead",
+    "sha256": "fb07ac6bcab506564c33225cc0007850bb1708b90132ab40e879482e1635420d",
     "template_path": "tie/basic/core/api/tcex/middleware.py"
   },
   "core/api/ui_config_builder_abc.py": {
@@ -450,15 +450,15 @@
     "template_path": "tie/basic/core/app/__init__.py"
   },
   "core/app/api_service_app_abc.py": {
-    "last_commit": "f0e6daa9df44e23d8b0f2d4005a12f064688bda7",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "17d9946500c6d63c4dc5de8f547774755de84a4b7e1d597a8b0940afdfb517c1",
+    "sha256": "f194eb2a44e371ed2c70b66019e68644415eddca6d335bfc139e6e7e579a94a3",
     "template_path": "tie/basic/core/app/api_service_app_abc.py"
   },
   "core/app/api_service_falcon_abc.py": {
-    "last_commit": "b2ae5f3eb98e80a1e717fbb392734dadc2a09e73",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "311481ce94eb26ff6710607613cd9f65bd50486f6a7078e0d107e2f1db40df38",
+    "sha256": "2fd59d82a8494b937afec708b66bb82b4494533eca6baec6935de7b6ac11ef52",
     "template_path": "tie/basic/core/app/api_service_falcon_abc.py"
   },
   "core/app/enums.py": {
@@ -918,9 +918,9 @@
     "template_path": "tie/basic/core/task/cal_auth.py"
   },
   "core/task/cleaner.py": {
-    "last_commit": "b2ae5f3eb98e80a1e717fbb392734dadc2a09e73",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "98e45a0df8c0eb4bd992fd845f3632a8a442a23e86e5201d1a1800358f9acc81",
+    "sha256": "f48c603986dd7eeae44243f9952abc946cc29e3462945a1981262d6f975fc65d",
     "template_path": "tie/basic/core/task/cleaner.py"
   },
   "core/task/convert_egress_abc.py": {
@@ -1056,15 +1056,15 @@
     "template_path": "tie/basic/model/__init__.py"
   },
   "model/job_request_model.py": {
-    "last_commit": "f0e6daa9df44e23d8b0f2d4005a12f064688bda7",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "8f9a18ed33cab6cdac97604939fbb44edd94ed7c464e9ff4c1bfbe9627077160",
+    "sha256": "94b0fe8577975ccfee34455b9390d6ac49f3b26b2ca50ff47c7116f73f21ffc9",
     "template_path": "tie/basic/model/job_request_model.py"
   },
   "model/settings_model.py": {
-    "last_commit": "b2ae5f3eb98e80a1e717fbb392734dadc2a09e73",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "4ac1ad0cc4b319ca479b6d04fa75c80ad7ca1a24fb5b135b4717403fb4e5b98f",
+    "sha256": "8cfccc66ac947e47f949b7218bd8eaa5e448dedc50bcb095004614ad9f748e76",
     "template_path": "tie/basic/model/settings_model.py"
   },
   "more/__init__.py": {
@@ -1098,9 +1098,9 @@
     "template_path": "tie/basic/requirements.txt"
   },
   "run.py": {
-    "last_commit": "d57ff380663729720776d57216858ad2abeff3aa",
+    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
     "managed": false,
-    "sha256": "6fb870cfb84ce28ff8c855f1dc7133f9444dd866a55e2b29e1fc09b16e08f793",
+    "sha256": "3a7a68c4d81583a465aad92ac1b0533416b256a730afa9e41593f126399d17b2",
     "template_path": "tie/basic/run.py"
   },
   "sdk/__init__.py": {
@@ -1424,7 +1424,7 @@
   "ui/.angular/cache/18.1.4/tmp/.tsbuildinfo": {
     "last_commit": "",
     "managed": false,
-    "sha256": "8d8b95c6c9e0844ded6ba8afcc34a11be6f4d50751192f6ec8c49a0ddfa36f63",
+    "sha256": "c5458dd8c515a5be087dd0a58bb131228b9a74d7a54b50daeb8b62182d333941",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/.tsbuildinfo"
   },
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db": {
@@ -1436,7 +1436,7 @@
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock": {
     "last_commit": "",
     "managed": false,
-    "sha256": "3ffebf2f9cd8ecae2c516a88965c24a76273fa6fcad4ad09acd942368148054f",
+    "sha256": "ba0854a4a002a2fdded26018d26f43a08e668c8a76415e768e448335681ae8e0",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock"
   },
   "ui/.eslintrc.json": {
