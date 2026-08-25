@@ -978,9 +978,9 @@
     "template_path": "tie/basic/core/task/task_path_pipe_injectables.py"
   },
   "core/task/tasks.py": {
-    "last_commit": "b2ae5f3eb98e80a1e717fbb392734dadc2a09e73",
+    "last_commit": "27a0c4398d926c660f164ed2f8cf374d694824b0",
     "managed": false,
-    "sha256": "012b4e5074bb4f47d57234e70f780d8de9a10aded0dccdb099562792f60506db",
+    "sha256": "ad9aa900702ad619ca895df44a7916013180b21a2720f1c0267e619c159e5fae",
     "template_path": "tie/basic/core/task/tasks.py"
   },
   "core/task/upload_abc.py": {
