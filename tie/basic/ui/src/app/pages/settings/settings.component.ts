@@ -1,4 +1,4 @@
-import { catchError, EMPTY, finalize, first, Observable, Subject, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, tap } from 'rxjs';
 
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -53,9 +53,8 @@ export class SettingsComponent implements OnInit {
     /** True while the operator is actually in the stepper. Read by `discardStepperGuard`. */
     showStepper = false;
 
-    /** The discard confirmation, reusing the app's existing confirmation modal. */
+    /** The "finish setup first" notice, reusing the app's existing confirmation modal. */
     showDiscardConfirm = false;
-    private discardDecision: Subject<boolean> | null = null;
 
     private values: { [key: string]: any } = {};
 
@@ -131,50 +130,21 @@ export class SettingsComponent implements OnInit {
     }
 
     /**
-     * Called by `discardStepperGuard`. Resolves when the operator answers the modal.
+     * Called by `discardStepperGuard`. Shows the explanation and denies the navigation.
      *
-     * A Subject is not an abstraction here — `CanDeactivateFn` must return something
-     * subscribable and the answer arrives from a later DOM event, so a subject is the only
-     * shape that works.
+     * Returns a plain `false`, not an Observable. This used to hand back a Subject so the
+     * guard could wait for a Discard/Keep-editing answer, but neither answer could change
+     * the outcome — see the guard's docstring — so there is nothing to wait for. Deny
+     * immediately and let the modal be purely informational.
      */
-    confirmDiscard(): Observable<boolean> {
-        this.discardDecision = new Subject<boolean>();
+    blockNavDuringSetup(): boolean {
         this.showDiscardConfirm = true;
-        return this.discardDecision.asObservable().pipe(first());
+        return false;
     }
 
-    handleDiscardConfirmed() {
-        this.settleDiscard(true);
-    }
-
-    handleDiscardCancelled() {
-        this.settleDiscard(false);
-    }
-
-    private settleDiscard(discard: boolean) {
+    /** Dismiss the "finish setup first" modal. The operator stays in the stepper either way. */
+    handleSetupBlockAcknowledged() {
         this.showDiscardConfirm = false;
-        if (discard) {
-            // Cleared EXPLICITLY, not left to component destruction.
-            //
-            // This used to assume "the navigation proceeds and this component is destroyed,
-            // so clearing would be a write to a dying instance". That assumption fails for
-            // the only navigation this guard actually sees. While onboarding is incomplete
-            // `onboardingGuard` bounces every other route back to `settings` — so the router
-            // leaves `/settings` and is immediately redirected to `/settings`. Angular's
-            // default `onSameUrlNavigation: 'ignore'` drops that as a no-op: the component is
-            // never destroyed, `showStepper` stays true, and the operator sits in the same
-            // stepper with the same values. Discard appeared to do nothing.
-            //
-            // Clearing it here also destroys OnboardingComponent (it lives behind
-            // `@if (showStepper)`), which is what actually discards the collected values.
-            this.showStepper = false;
-        }
-        // Completing and nulling the subject on BOTH answers is load-bearing — a second
-        // navigation attempt would otherwise subscribe to a dead subject and hang the
-        // router with no visible cause.
-        this.discardDecision?.next(discard);
-        this.discardDecision?.complete();
-        this.discardDecision = null;
     }
 
     /** Green when passed, amber for a non-blocking warning, red for a real failure. */

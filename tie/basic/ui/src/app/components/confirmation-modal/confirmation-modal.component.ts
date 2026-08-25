@@ -11,6 +11,14 @@ export interface ConfirmationModalConfig {
     cancelTheme?: ButtonTheme;
     maxWidth?: string;
     modalSize?: 'small' | 'medium' | 'large';
+    /**
+     * Drop the cancel button, leaving only the confirm one.
+     *
+     * For the acknowledge case: a dialog that reports something rather than asking a
+     * question. Two buttons imply a choice, so offering one that does not change the
+     * outcome is worse than offering none.
+     */
+    hideCancel?: boolean;
     icon?: {
         name: string;
         color?: string;
@@ -73,6 +81,9 @@ export class ConfirmationModalComponent {
             cancelTheme: this.config.cancelTheme || ButtonTheme.Secondary,
             maxWidth: this.config.maxWidth || '32rem',
             modalSize: this.config.modalSize || 'small',
+            // `?? false`, not `|| false`: a boolean must not go through the same
+            // falsy-means-default treatment the strings above rely on.
+            hideCancel: this.config.hideCancel ?? false,
             icon: this.config.icon || undefined,
         };
     }

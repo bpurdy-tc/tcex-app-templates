@@ -24,12 +24,14 @@
         </div>
 
         <div class="confirmation-modal-footer">
-            <tcl-button
-                [featureVersion]="featureVersion"
-                [theme]="effectiveConfig.cancelTheme"
-                (onClick)="onCancel()">
-                {{ effectiveConfig.cancelText }}
-            </tcl-button>
+            @if (!effectiveConfig.hideCancel) {
+                <tcl-button
+                    [featureVersion]="featureVersion"
+                    [theme]="effectiveConfig.cancelTheme"
+                    (onClick)="onCancel()">
+                    {{ effectiveConfig.cancelText }}
+                </tcl-button>
+            }
 
             <tcl-button
                 [featureVersion]="featureVersion"
