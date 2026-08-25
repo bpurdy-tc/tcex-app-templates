@@ -6,9 +6,9 @@
     "template_path": "webhook_trigger_service/basic/README.md"
   },
   "app.py": {
-    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
+    "last_commit": "5287d686bf833d41b815dba82a9075aa0b342a07",
     "managed": false,
-    "sha256": "503cfd8829d57500cfc70dfaab44fc74f2c6c4e7002f0eaf2960ac2a36d38fc8",
+    "sha256": "911a5f365873247fc69b2c57c1d0c1ad41c0430b6309714a7bedd5494e38c91d",
     "template_path": "webhook_trigger_service/basic/app.py"
   },
   "app_inputs.json": {

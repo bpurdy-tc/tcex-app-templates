@@ -120,15 +120,15 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/__init__.py"
   },
   "core/api/endpoint/tcve/batch_error_collection.py": {
-    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
+    "last_commit": "5287d686bf833d41b815dba82a9075aa0b342a07",
     "managed": false,
-    "sha256": "0787760d43c525c4f7bf4e1ccc435c92c5b9424d43fb730a42d66f7162a57414",
+    "sha256": "4035f37d1bb436075c55d3acd6c11cf8163c2e0bf674ffa4db128b78a6885e94",
     "template_path": "tie/basic/core/api/endpoint/tcve/batch_error_collection.py"
   },
   "core/api/endpoint/tcve/config_resource.py": {
-    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
+    "last_commit": "5287d686bf833d41b815dba82a9075aa0b342a07",
     "managed": false,
-    "sha256": "84bde7d14d06c68f0f1f9460888d2926a93f0bf0f4abc25055fdfa9ffc719563",
+    "sha256": "1225aa3c5b723a42251f2ac39d2d79e3845050e86176f43b97c712b97eddf8ca",
     "template_path": "tie/basic/core/api/endpoint/tcve/config_resource.py"
   },
   "core/api/endpoint/tcve/job_request_collection.py": {
@@ -150,9 +150,9 @@
     "template_path": "tie/basic/core/api/endpoint/tcve/task_status_collection.py"
   },
   "core/api/endpoint/tcve/test_config_resource.py": {
-    "last_commit": "9467a6c37e0457efc64824d51f29a7ec6bb09ea8",
+    "last_commit": "5287d686bf833d41b815dba82a9075aa0b342a07",
     "managed": false,
-    "sha256": "c953245d42ab29f1d501ed343e8ecbfa01c19683db6c50a67360728acb80dbdf",
+    "sha256": "d27588ecf638166b49d373c4eff08039d25017c2f3586e2aa4d2dbcd4af68a67",
     "template_path": "tie/basic/core/api/endpoint/tcve/test_config_resource.py"
   },
   "core/api/endpoint/tcvf/__init__.py": {
@@ -1424,7 +1424,7 @@
   "ui/.angular/cache/18.1.4/tmp/.tsbuildinfo": {
     "last_commit": "",
     "managed": false,
-    "sha256": "c5458dd8c515a5be087dd0a58bb131228b9a74d7a54b50daeb8b62182d333941",
+    "sha256": "2c7ee3da8b0d286f262698557bc6dbdce3b0701224e4c55bf1897ca9fec13ab5",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/.tsbuildinfo"
   },
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db": {
@@ -1436,7 +1436,7 @@
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock": {
     "last_commit": "",
     "managed": false,
-    "sha256": "ba0854a4a002a2fdded26018d26f43a08e668c8a76415e768e448335681ae8e0",
+    "sha256": "668682b5d2ab553ad12f9655ce3f6944bdab1b28f06581d029cee3fefe89fbef",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock"
   },
   "ui/.eslintrc.json": {
