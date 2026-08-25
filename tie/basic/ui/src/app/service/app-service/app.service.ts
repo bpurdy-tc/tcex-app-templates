@@ -34,21 +34,30 @@ export interface FormField {
    * Field prose. Four INDEPENDENT keys — a field may carry any combination, and they
    * render in this order. None is an alias for another and none suppresses another:
    *
-   * - `shortText`   — one terse line, to keep a dense Settings page scannable. The only
-   *                   mode-dependent key: dropped in the stepper, which has room for the
-   *                   full `description` instead.
+   * - `shortText`   — one terse line, to keep a dense Settings page scannable. Rendered
+   *                   under the label in `settings`; dropped in the stepper, which has
+   *                   room for the full `description` instead.
    * - `description` — plain body text. The explanation itself.
-   * - `info`        — an info box. An aside the operator may want and may skip.
+   * - `info`        — an aside the operator may want and may skip.
    * - `warning`     — a warning box. Content that must not be skippable, which is why it
-   *                   is never rendered as a muted line.
+   *                   is never rendered as a muted line, and never folded into a tooltip.
    *
    * A field wanting "explain it, then caution about it" sets `description` and `warning`
    * and gets both. That is where a field differs from a section, which picks ONE key by
    * precedence.
    *
-   * In `form` mode — the ad-hoc, download-TI and job-filter forms — no prose block
-   * renders, because those forms are `display: contents` and own their layout. There
-   * `info` keeps its original meaning as the control's ⓘ tooltip.
+   * WHERE each lands depends on the mode — see `proseFor` in generated-form.component.ts,
+   * which is the single place that decides:
+   *
+   * - `stepper`  — `description` and `info` render as blocks (body text, info box). The
+   *                stepper is teaching one decision per screen and has the room.
+   * - `settings` — `description` and `info` are JOINED into the ⓘ beside the label and
+   *                neither renders as a block. A settings page is a form an operator
+   *                returns to; rendering both inline gave every field a callout and
+   *                pushed the controls off-screen.
+   * - `form`     — the ad-hoc, download-TI and job-filter forms. No prose block renders,
+   *                because those forms are `display: contents` and own their layout.
+   *                There `info` keeps its original meaning as the control's ⓘ tooltip.
    */
   shortText?: string;
   description?: string;

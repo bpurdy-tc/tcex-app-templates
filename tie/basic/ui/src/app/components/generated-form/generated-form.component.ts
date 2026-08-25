@@ -26,18 +26,22 @@ import { ValidatorsService } from 'src/app/service/validators-service/validators
  *                callout. The control draws its own label and `info` stays the ⓘ tooltip.
  *                The ad-hoc, download-TI and job-filter forms are `display: contents` and
  *                depend on the field emitting nothing of its own.
- * - `settings` — the form draws no heading for a normal control (the control has one), but
- *                does for a card type, which has no label input. `description` is a plain
- *                paragraph, `warning` a callout, `info` the control's ⓘ.
+ * - `settings` — the form draws the heading for EVERY field, followed by `shortText`, then
+ *                `warning` if there is one, then the control. `description` and `info` are
+ *                joined into the ⓘ beside the label rather than rendered as blocks. A
+ *                settings page is a form an operator comes back to and scans, so the label,
+ *                its one-line gist and its control stay together; the long-form prose is one
+ *                hover away.
  * - `stepper`  — the form draws the heading, then the description, then the callouts, then
  *                the control. There is deliberately NO ⓘ anywhere: a stepper is one
  *                decision per screen with no surrounding page to lean on, so everything
  *                worth reading is on the page.
+ *
+ * Both structured modes draw their OWN label, at one weight. Settings previously let the
+ * library control draw its label for everything except card types, so a single page mixed
+ * two label weights for no reason a reader could infer.
  */
 export type GeneratedFormMode = 'form' | 'settings' | 'stepper';
-
-/** Field types whose control draws no label of its own, so the form must draw it. */
-const CARD_TYPES = new Set(['radio', 'multi-options']);
 
 @Component({
     selector: 'app-generated-form',
@@ -236,19 +240,20 @@ export class GeneratedFormComponent implements OnChanges {
     /**
      * Does the CONTROL draw the label, or do we?
      *
-     * `form` mode is always `true`: those forms are `display: contents` (see the .scss), so
-     * the form must never emit a heading of its own — the ad-hoc, download-TI and
-     * job-filter forms depend on that contract.
+     * `form` mode is `true`: those forms are `display: contents` (see the .scss), so the
+     * form must never emit a heading of its own — the ad-hoc, download-TI and job-filter
+     * forms depend on that contract.
      *
-     * Otherwise the form draws the heading when the stepper needs the label above the
-     * description, or when the field is a card type whose control has no label input at all
-     * — a settings-mode card would otherwise lose its label entirely.
+     * BOTH structured modes are `false`, and uniformly so. Settings used to be `true`
+     * except for card types, which meant a settings page mixed two different labels: the
+     * library control's (lighter, drawn inside the control) for most fields and this
+     * component's `.form-field__label` (600 weight, drawn above) for the card types. Same
+     * page, same kind of thing, two weights — it read as if the bold ones meant something.
+     * Drawing every structured label here is what makes them consistent, and it is also
+     * what puts the label above its help text instead of below it.
      */
-    private ownLabelFor(field): boolean {
-        if (this.mode === 'form') {
-            return true;
-        }
-        return this.mode !== 'stepper' && !CARD_TYPES.has(field.type);
+    private ownLabelFor(_field): boolean {
+        return this.mode === 'form';
     }
 
     /**
@@ -267,6 +272,16 @@ export class GeneratedFormComponent implements OnChanges {
      * `form` mode is the ad-hoc, download-TI and job-filter forms. They are
      * `display: contents` and own their own layout, so no prose block renders; there
      * `info` keeps its original meaning as the control's ⓘ tooltip.
+     *
+     * SETTINGS collapses `description` and `info` into `labelInfo`, the ⓘ beside the label,
+     * and renders NEITHER as a block. The stepper is teaching and has the room for prose;
+     * the settings page is a form an operator returns to, and rendering both there gave
+     * every field a multi-line callout — seven fields became seven boxes, and the controls
+     * they described were pushed off-screen. The words are not lost, they are one hover
+     * away, and `shortText` still states the gist in the open.
+     *
+     * `warning` stays a block in BOTH modes and is deliberately never folded into the ⓘ:
+     * its whole point is that it must not be skippable, and a tooltip is skippable.
      */
     private proseFor(field): {
         shortText: string | null;
@@ -274,6 +289,7 @@ export class GeneratedFormComponent implements OnChanges {
         info: string | null;
         warning: string | null;
         tooltip: string | null;
+        labelInfo: string | null;
     } {
         if (this.mode === 'form') {
             return {
@@ -282,15 +298,32 @@ export class GeneratedFormComponent implements OnChanges {
                 info: null,
                 warning: null,
                 tooltip: field.info ?? null,
+                labelInfo: null,
+            };
+        }
+
+        if (this.mode === 'settings') {
+            return {
+                shortText: field.shortText ?? null,
+                description: null,
+                info: null,
+                warning: field.warning ?? null,
+                tooltip: null,
+                // Joined, not picked: the keys are independent and a field may carry both,
+                // so choosing one would silently drop the other. Blank line between them
+                // because `tclTooltip` renders text, and they are separate thoughts.
+                labelInfo:
+                    [field.description, field.info].filter(Boolean).join('\n\n') || null,
             };
         }
 
         return {
-            shortText: this.mode === 'stepper' ? null : field.shortText ?? null,
+            shortText: null,
             description: field.description ?? null,
             info: field.info ?? null,
             warning: field.warning ?? null,
             tooltip: null,
+            labelInfo: null,
         };
     }
 

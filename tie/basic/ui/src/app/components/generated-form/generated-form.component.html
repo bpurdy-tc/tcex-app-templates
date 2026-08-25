@@ -9,13 +9,32 @@
            The four prose keys are independent and a field may carry any combination:
            `shortText` a terse line, `description` body text, `info` an info box,
            `warning` a warning box. `proseFor` decides what surfaces for this mode; this
-           template just renders whatever came back, in this order.
+           template just renders whatever came back, in this order. In `settings` mode
+           `description` and `info` arrive as `labelInfo` — the ⓘ below — so neither block
+           renders and the label, its one-line gist, and the control stay together.
 
            The whole block is empty in `form` mode: `ownLabel` is unconditionally true
            there and every prose key resolves to null, so a `display: contents` field
            emits nothing of its own. See `proseFor` / `ownLabelFor`. -->
       @if (!field.ownLabel) {
-        <span class="form-field__label">{{ field.label }}</span>
+        <span class="form-field__label-row">
+          <span class="form-field__label">{{ field.label }}</span>
+          <!-- Same control, options and a11y story as the ⓘ beside the Configure page
+               title (pages/configure/configure.component.html) — this is that pattern
+               applied per field, not a new one. `escape` is true because `labelInfo` is
+               app-authored prose, not markup. -->
+          @if (field.labelInfo) {
+            <tcl-svg-icon
+              class="form-field__info-icon"
+              color="var(--tcl-iconsActionable)"
+              name="info"
+              size="1rem"
+              tooltipPosition="right"
+              tooltipZIndex="10000"
+              [escape]="true"
+              [tclTooltip]="field.labelInfo" />
+          }
+        </span>
       }
       @if (field.shortText) {
         <p class="form-field__helper">{{ field.shortText }}</p>

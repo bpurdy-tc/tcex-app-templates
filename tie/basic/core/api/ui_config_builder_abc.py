@@ -201,19 +201,26 @@ class UIConfigBuilderABC:
             warning = '...'  # a warning box
 
         Pick by what the words ARE, not by how much room there is. `description` is the
-        explanation itself. `info` is a box because its content is an aside the operator
-        may want and may skip. `warning` is a box because its content must not be
-        skippable. A field wanting "explain it, then caution about it" sets `description`
-        and `warning` and gets both.
+        explanation itself. `info` is an aside the operator may want and may skip.
+        `warning` must not be skippable, which is why it is always a box and is never
+        folded into a tooltip. A field wanting "explain it, then caution about it" sets
+        `description` and `warning` and gets both.
 
-        `short_text` is the only mode-dependent one: it renders on the Settings page,
-        where seven fields have to stay scannable, and is omitted from the stepper, which
-        has room for the full `description` instead. Everything else renders the same in
-        both structured modes.
+        WHERE each one lands is the UI's decision, not this builder's — `proseFor` in
+        `ui/src/app/components/generated-form/generated-form.component.ts` is the single
+        place that decides, and it differs per mode:
 
-        In `form` mode — the ad-hoc, download-TI and job-filter forms — none of the prose
-        blocks render at all, because those forms are `display: contents` and own their own
-        layout. There `info` keeps its original meaning: the control's ⓘ tooltip.
+        - Settings page: `label ⓘ` / `short_text` / `warning` / control. `description` and
+          `info` are joined into that ⓘ and do NOT render as blocks. Write them expecting
+          to be read on demand.
+        - Onboarding stepper: label / `description` / `warning` / `info` / control, all as
+          blocks, and `short_text` is dropped — the stepper has room for the full prose.
+        - `form` mode (ad-hoc, download-TI, job-filter): no prose block renders at all,
+          because those forms are `display: contents` and own their own layout. There
+          `info` keeps its original meaning: the control's ⓘ tooltip.
+
+        So `short_text` is the terse line for the Settings page and `description` is the
+        long form for the stepper; a field used in both should set both.
 
         `disabled` shows the field and its current value but does not let an admin change
         it — for a setting fixed at deploy time, or one this install is not permitted to

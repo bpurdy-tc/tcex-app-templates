@@ -82,11 +82,16 @@
 
 
 // Said once for the group rather than repeated on every field it applies to.
+//
+// `44rem`, matching `.settings-form` above and `--field-measure` in
+// generated-form.component.scss. These used to be `68ch` (≈34rem at this font-size) while
+// the section rule ran to 44rem and the fields to 42rem, so a section header, its warning
+// callout and the inputs under it each stopped at a different right edge.
 .settings-form__description {
     font-size: 0.8125rem;
     line-height: 1.5;
     margin: 0 0 1.5rem;
-    max-width: 68ch;
+    max-width: 44rem;
     opacity: 0.72;
 }
 
@@ -94,5 +99,5 @@
 .settings-form__callout {
     display: block;
     margin-bottom: 1.5rem;
-    max-width: 68ch;
+    max-width: 44rem;
 }
