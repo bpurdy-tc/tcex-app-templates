@@ -27,19 +27,24 @@ export const onboardingGuard: CanActivateFn = () => {
 };
 
 /**
- * Confirm before in-app navigation discards an open stepper.
+ * Block in-app navigation away from an open stepper, and say why.
  *
- * `onboardingGuard` bounces every other route back to `settings`, and that navigation
- * destroys and recreates SettingsComponent — which resets `showStepper` and destroys
- * OnboardingComponent along with every value collected. An operator four steps in who
- * clicks "Dashboard" would otherwise land on the empty state with nothing entered and no
- * warning. The stepper used to be a full-page overlay with the nav HIDDEN precisely so this
- * could not happen; un-gating the nav is what creates the exposure.
+ * This is a hard block, NOT a confirmation, because there was never a real choice to
+ * offer. `onboardingGuard` bounces every other route straight back to `settings`, so
+ * "leave anyway" could not have taken the operator anywhere — the router would return
+ * them to this same page. Presenting Discard/Keep-editing implied a decision that did not
+ * exist, and picking Discard appeared to do nothing: Angular's default
+ * `onSameUrlNavigation: 'ignore'` drops the settings->settings redirect, so the component
+ * was never destroyed and the stepper stayed exactly as it was.
+ *
+ * So: always deny, and show an informational modal explaining that setup has to be
+ * finished first. The operator can still abandon setup — that is what the stepper's own
+ * controls are for; this only stops the side nav from looking like an exit that works.
  *
  * Deliberately scoped to in-app navigation only. No `beforeunload`: browser close and
- * refresh are out of scope, and nothing is persisted — this is a confirmation, not a draft.
+ * refresh are out of scope, and nothing here is persisted.
  *
- * The component owns the prompt because the component owns the modal.
+ * The component owns the message because the component owns the modal.
  */
 export const discardStepperGuard: CanDeactivateFn<SettingsComponent> = (component) =>
-    component.showStepper ? component.confirmDiscard() : true;
+    component.showStepper ? component.blockNavDuringSetup() : true;

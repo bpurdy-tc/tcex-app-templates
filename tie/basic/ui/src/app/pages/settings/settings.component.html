@@ -121,18 +121,21 @@
 
 <!-- Reuses the app's existing confirmation modal (components/confirmation-modal, already
      declared in app.module.ts and wrapping tcl-modal). Nothing new is built for this.
-     `ConfirmationModalComponent` maps `onClose` (mask click / Escape) onto `cancelled`, so
-     dismissing the modal keeps the stepper — the safe default. -->
+
+     INFORMATIONAL, not a confirmation — `hideCancel` leaves a single acknowledge button.
+     It used to offer Discard / Keep editing, but the guard denies the navigation either
+     way (see `discardStepperGuard`), so both buttons led to the same place and Discard
+     looked broken. Every exit from this modal returns to the stepper, which is why
+     `cancelled` (mask click / Escape) and `confirmed` share one handler. -->
 <app-confirmation-modal
     [config]="{
-        title: 'Discard setup?',
-        message: 'The settings you have entered will be discarded. Setup will start again from the first step.',
-        confirmText: 'Discard',
-        cancelText: 'Keep editing',
-        confirmTheme: ButtonTheme.Destructive,
-        cancelTheme: ButtonTheme.Secondary,
+        title: 'Finish setup first',
+        message: 'Setup has to be completed before you can leave this page. Your progress is kept — continue where you left off.',
+        confirmText: 'Continue setup',
+        confirmTheme: ButtonTheme.Primary,
+        hideCancel: true,
         modalSize: 'small'
     }"
     [visible]="showDiscardConfirm"
-    (cancelled)="handleDiscardCancelled()"
-    (confirmed)="handleDiscardConfirmed()"></app-confirmation-modal>
+    (cancelled)="handleSetupBlockAcknowledged()"
+    (confirmed)="handleSetupBlockAcknowledged()"></app-confirmation-modal>
