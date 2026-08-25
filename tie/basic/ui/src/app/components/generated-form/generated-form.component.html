@@ -118,7 +118,7 @@
           <tcl-toggle
             [disabled]="!!field.disabled"
             class="mr-medium"
-            [checked]="field.default"
+            [checked]="isToggleChecked(field)"
             [label]="field.ownLabel ? field.label : ''"
             [showLabel]="field.ownLabel"
             [infoMessage]="field.tooltip ?? ''"

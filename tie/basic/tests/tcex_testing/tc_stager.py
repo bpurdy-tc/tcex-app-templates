@@ -75,7 +75,11 @@ class TcStager:
             'tc_api_secret_key': os.environ['TC_API_SECRET_KEY'],
             'tc_log_level': 'warning',
         })
-        return tcex.session.external
+        # `session.tc`, NOT `session.external`. The external session is the plain vendor
+        # session — retries and proxies but no TC HMAC signing — so every staging call
+        # 401'd while the three TC credentials above were read only to build a TcEx whose
+        # authenticated session was then discarded.
+        return tcex.session.tc
 
     # -- Public interface ------------------------------------------------------
 

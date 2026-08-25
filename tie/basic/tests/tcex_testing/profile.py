@@ -30,6 +30,18 @@ class Stage(BaseModel):
 
 
 class Expected(BaseModel):
+    """Base assertions common to every app type.
+
+    NOTE the `extra = 'forbid'` below. `outputs=` belongs to `PlaybookExpected`, not
+    here, and pydantic v1's default `Extra.ignore` used to drop it silently — so
+    `Expected(exit_codes=[0], outputs={...})` constructed fine, asserted nothing, and
+    passed on exit code alone. Forbidding extras turns that into a loud error at
+    construction instead of a green test that checked nothing.
+    """
+
+    class Config:
+        extra = 'forbid'
+
     exit_codes: list[int] = Field(default_factory=lambda: [0])
     exit_message: str | None = None
 

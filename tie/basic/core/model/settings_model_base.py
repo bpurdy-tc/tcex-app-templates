@@ -61,14 +61,14 @@ class AppSettingsBase(BaseModel):
     # update is `type(record)(**{**record.dict(), **payload})` and nothing has to map one
     # shape onto another. `rate_limit_constraints` is deliberately absent — it is not
     # admin-editable, so it stays on the app inputs rather than in this record.
-    frequency: int = 1
+    frequency: int = Field(1, ge=1)
     failure_threshold: timedelta = DEFAULT_FAILURE_THRESHOLD
-    max_retries: int = 10
+    max_retries: int = Field(10, ge=0)
 
     # Not on the settings form (api/ui_config_builder.py::advanced_settings_inputs is an
     # explicit whitelist that omits this) — internal tuning, changeable via PUT /api/settings
     # without a redeploy for support/engineering, not meant for the admin-facing UI.
-    max_batch_errors: int = DEFAULT_MAX_BATCH_ERRORS
+    max_batch_errors: int = Field(DEFAULT_MAX_BATCH_ERRORS, ge=0)
 
     @validator('failure_threshold', pre=True)
     def parse_failure_threshold(cls, value: str | float | timedelta) -> timedelta:
@@ -76,7 +76,9 @@ class AppSettingsBase(BaseModel):
         if isinstance(value, timedelta):
             return value
         if isinstance(value, float):
+            # From JSON deserialization (stored as total_seconds)
             return timedelta(seconds=value)
+        # From user input (hours as int or string)
         return timedelta(hours=int(value))
 
     @validator('notification_digest_interval', pre=True)
@@ -96,6 +98,16 @@ class AppSettingsBase(BaseModel):
         if isinstance(value, timedelta):
             return value
         if isinstance(value, int | float):
+            # 0 is neither "disabled" nor a usable cadence: it leaves notifications
+            # enabled (the field is not None) while `elapsed >= timedelta(0)` is always
+            # true, so the digest fires on every watchdog tick. Reject it — '' and None
+            # are how notifications are turned off.
+            if value <= 0:
+                msg = (
+                    f'notification_digest_interval must be greater than zero '
+                    f'(got {value!r}); use an empty value to disable notifications'
+                )
+                raise ValueError(msg)
             return timedelta(seconds=value)
 
         interval = DIGEST_INTERVAL_MAP.get(str(value))

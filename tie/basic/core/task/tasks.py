@@ -192,7 +192,7 @@ class Tasks:
         for task in self.all():
             self.kill(task)
 
-    def watchdog(self) -> None:  # noqa: C901, PLR0912
+    def watchdog(self) -> None:  # noqa: C901
         """Monitor tasks and perform health checks.
 
         Per-job backoff is handled directly on JobRequestModel fields.
@@ -242,13 +242,18 @@ class Tasks:
                     )
                     self.kill(task)
                     if task.process.is_alive():
+                        # kill() has already done SIGALRM -> SIGKILL -> join(10). A child
+                        # still alive here is in uninterruptible I/O and will exit shortly.
+                        # is_alive() is unreliable at this point, so it must NOT gate
+                        # cleanup: by the next tick the process is reaped and the outer
+                        # guard skips this block for good, leaving the job stuck
+                        # "In Progress" and relaunching forever.
                         self.log.warning(
                             f'task-event=timeout-process-still-alive, '
                             f'task-name={task.task_settings.name}, '
                             f'process-id={task.process.pid}'
                         )
-                    else:
-                        task.on_timeout()
+                    task.on_timeout()
 
                 # Handle setting our api limit hit metric since its forked
                 # We only care about the value for the DownloadPathPipe task
@@ -404,22 +409,23 @@ class Tasks:
     def _maybe_send_setup_required_reminder(self) -> None:
         """Send a 'finish setup' reminder while onboarding is incomplete.
 
-        Truly unconditional: send_now=True always, never gated on
-        'setup_required' in settings.app_settings.notification_types (matching
-        _graceful_shutdown's 'app_shutdown' send), AND — unlike every other category in
-        this file, app_shutdown included — never gated on self.notifications_enabled
-        either. There is no `if not self.notifications_enabled: return` guard here on
-        purpose: __init__ now constructs self.notification_helper unconditionally (see
-        the note there), so there is no None-helper hazard to guard against, and no
-        reason left to withhold this one notification just because the operator turned
-        off the digest/master switch — an admin who disabled notifications entirely
-        should still be told that ingestion has never started.
+        Deliberately bypasses both notification switches: it passes a config OBJECT to
+        notify(), which takes the branch that skips the `notification_digest_interval`
+        master switch and the per-category `notification_types` opt-in. The rationale is
+        that an admin who never finished setup should be told ingestion has not started,
+        even with notifications turned off.
 
-        Checked live on every call — Tasks is a long-lived singleton constructed once at
-        boot (core/app/api_service_falcon_abc.py:55), so caching this result in __init__
-        (like notifications_enabled) would freeze the very first check and never notice
-        onboarding completing later. Piggybacks on the existing digest cadence
-        (last_digest_time, advanced unconditionally by _send_digest) rather than tracking
+        The resulting cadence is NOT uniform, and the difference is worth knowing:
+          - the startup call (send_startup_notification) is ungated, so this fires once
+            per boot regardless of notification settings;
+          - the recurring call sits inside `if self.notifications_enabled:` in watchdog(),
+            so it only repeats while notifications are enabled.
+        With notifications disabled it is therefore one reminder per restart, not a
+        repeating one.
+
+        Onboarding state is checked live on every call — Tasks is a long-lived singleton
+        constructed once at boot — so the reminder stops as soon as setup completes.
+        Piggybacks on the existing digest cadence (last_digest_time) rather than tracking
         its own timer.
         """
         if is_onboarding_complete(self.db):

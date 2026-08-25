@@ -52,7 +52,12 @@ class UploadExpected(FetchExpected):
             if isinstance(check, ScopedCheck):
                 check.assert_against(resolved or {})
             elif callable(check):
-                check(resolved or {})
+                outcome = check(resolved or {})
+                if outcome is not None:
+                    assert outcome, (
+                        f'check {getattr(check, "__name__", check)!r} returned '
+                        f'{outcome!r} (expected a truthy value or None)'
+                    )
 
 
 class PipelineExpected(Expected):
@@ -83,7 +88,17 @@ class PipelineExpected(Expected):
         resolved: dict[str, Any] = {}
 
         for record in self.records:
-            matched = sorted(f for f in output_dir.iterdir() if fnmatch.fnmatch(f.name, record.file))
+            # rglob, not iterdir: TIE Download tasks commonly write per-type
+            # subdirectories under the stage output dir. iterdir() yielded those
+            # directories, fnmatch'd their names against '*.json.gz', matched nothing,
+            # and left this key as an empty list — a pipeline that produced hundreds of
+            # files looked like one that produced none. Matches `DownloadResult.files`,
+            # which already uses rglob.
+            matched = sorted(
+                f
+                for f in output_dir.rglob('*')
+                if f.is_file() and fnmatch.fnmatch(f.name, record.file)
+            )
             items: list[Any] = []
             for path in matched:
                 if path.suffix == '.gz':
@@ -107,11 +122,17 @@ class PipelineExpected(Expected):
             if isinstance(check, ScopedCheck):
                 check.assert_against(resolved or {})
             elif callable(check):
-                check(resolved or {})
+                outcome = check(resolved or {})
+                if outcome is not None:
+                    assert outcome, (
+                        f'check {getattr(check, "__name__", check)!r} returned '
+                        f'{outcome!r} (expected a truthy value or None)'
+                    )
 
 
 class PipelineTask(BaseModel):
-    model_config = {'arbitrary_types_allowed': True}
+    class Config:
+        arbitrary_types_allowed = True
 
     task_cls: type
     expected: Expected = Field(default_factory=PipelineExpected)
@@ -120,7 +141,8 @@ class PipelineTask(BaseModel):
 
 
 class Profile(BaseModel):
-    model_config = {'arbitrary_types_allowed': True}
+    class Config:
+        arbitrary_types_allowed = True
 
     job_request: Any  # JobRequestModel — app-specific, saved to DB by run()
     pipeline: list[PipelineTask]

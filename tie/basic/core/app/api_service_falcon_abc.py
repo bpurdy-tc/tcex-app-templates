@@ -297,7 +297,6 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         except Exception as ex:
             self.tasks_obj.send_preflight_failure_notification(str(ex)[:80])
             raise
-        self.tasks_obj.send_startup_notification()
         if self.migrations:
             self.migrations.migration_service.preform_migrations()
 
@@ -307,6 +306,13 @@ class ApiServiceFalconABC(ApiServiceAppABC, ABC):
         # _remove_pending_jobs() (which deletes job records) and before the
         # schedule.run_pending() loop, so no scheduler tick sees the ungated state.
         self.startup_state_service.reconcile()
+
+        # AFTER reconcile(), not before: send_startup_notification() also sends the
+        # "Setup Required" reminder, which reads onboarding state. Running it first meant
+        # every upgraded install — onboarding auto-completed by reconcile() a few lines
+        # down — sent a High-priority "no ingestion will run" alert to every operator on
+        # first boot, for an app that was already configured and about to resume.
+        self.tasks_obj.send_startup_notification()
 
         self._remove_pending_jobs()
 

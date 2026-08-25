@@ -62,7 +62,21 @@ class ScopedCheck:
     def assert_against(self, resolved: dict) -> None:
         """Run this check against a resolved records dict."""
         if self.scope == 'on':
-            self.check(resolved.get(self.target or '', []))
+            # A missing key is a BROKEN TEST, not an empty result. Defaulting to []
+            # made them indistinguishable, so a typo'd key, a glob that matched nothing,
+            # or a stage writing to a subdirectory silently satisfied every bounded or
+            # negative check — length(0), length_lte(n), not_contains(x), all_match(...)
+            # all pass vacuously on an empty list.
+            key = self.target or ''
+            if key not in resolved:
+                msg = (
+                    f'ScopedCheck(on={key!r}) has no record to check. '
+                    f'Available keys: {sorted(resolved)}. '
+                    f'If the stage genuinely produced nothing, assert on a key that '
+                    f'exists and resolves to an empty list.'
+                )
+                raise AssertionError(msg)
+            self.check(resolved[key])
         elif self.scope == 'all':
             for data in resolved.values():
                 self.check(data)

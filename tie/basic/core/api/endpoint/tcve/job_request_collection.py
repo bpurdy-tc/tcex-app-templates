@@ -7,7 +7,7 @@ from uuid import uuid4
 # third-party
 import arrow
 import falcon
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, ValidationError, validator
 from tcex.util import Util
 
 # first-party
@@ -81,7 +81,12 @@ class JobRequestCollection(EndpointBaseABC):
 
     def on_post(self, req: falcon.Request, resp: falcon.Response):
         """Handle POST requests — create ad-hoc job records for the given date range."""
-        body = PostBodyModel.parse_obj(req.media or {})
+        try:
+            body = PostBodyModel.parse_obj(req.media or {})
+        except ValidationError as ex:
+            # Every sibling endpoint wraps this; unwrapped, a malformed body escaped as a
+            # 500 instead of telling the caller what was wrong with their request.
+            raise falcon.HTTPBadRequest(description=str(ex)) from ex
         self.log.debug(f'body={body}')
 
         response_media = []

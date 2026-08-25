@@ -28,11 +28,17 @@ class JobExpected(FetchExpected):
             if isinstance(check, ScopedCheck):
                 check.assert_against(resolved or {})
             elif callable(check):
-                check(resolved or {})
+                outcome = check(resolved or {})
+                if outcome is not None:
+                    assert outcome, (
+                        f'check {getattr(check, "__name__", check)!r} returned '
+                        f'{outcome!r} (expected a truthy value or None)'
+                    )
 
 
 class Profile(BaseModel):
-    model_config = {'arbitrary_types_allowed': True}
+    class Config:
+        arbitrary_types_allowed = True
 
     inputs: dict[str, Any]
     expected: JobExpected = Field(default_factory=JobExpected)

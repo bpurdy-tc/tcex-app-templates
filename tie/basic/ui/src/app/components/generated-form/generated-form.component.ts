@@ -295,6 +295,18 @@ export class GeneratedFormComponent implements OnChanges {
     }
 
     /** True when `option` is the field's current value, or is in it for a multi field. */
+    /**
+     * A toggle's checked state, read from live form state.
+     *
+     * `[checked]="field.default"` bound to the static server-sent default instead, which
+     * `handleChange` never writes back — so the control could revert to the server value
+     * on a change-detection pass while `form[name].value` held the user's choice. Every
+     * other stateful type reads live state via `isSelected`; this matches.
+     */
+    protected isToggleChecked(field): boolean {
+        return !!this.form[field.name]?.value;
+    }
+
     protected isSelected(field, option): boolean {
         const value = this.form[field.name]?.value;
         return Array.isArray(value) ? value.includes(option.value) : value === option.value;

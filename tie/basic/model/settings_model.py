@@ -8,11 +8,15 @@ and the app silently re-seeds from the app inputs on the next boot.
 The parent `SettingModelBase`/`AppSettingsBase` classes should never be edited.
 """
 
+import logging
+
 from app_inputs import AdvancedSettingsModel
 from pydantic import Field
 
 from core.json_db import Embedded
 from core.model.settings_model_base import AppSettingsBase, SettingModelBase
+
+logger = logging.getLogger('tcex')
 
 
 class AppSettings(AppSettingsBase):
@@ -63,7 +67,19 @@ class AppSettings(AppSettingsBase):
         """
         try:
             return db.load(cls, cls.__fields__['id'].default)
-        except FileNotFoundError:
+        except (OSError, ValueError) as ex:
+            # FileNotFoundError is the ordinary first-boot case. The rest are a record
+            # that EXISTS but cannot be read — a truncated .gz from a disk-full write
+            # (gzip.BadGzipFile), invalid JSON, or a payload the current schema rejects.
+            # `JsonDB.load()` has no invalid-JSON handling (only `load_all` does), so
+            # those used to propagate: `settings` is a cached_property reached during app
+            # init, so an unreadable record stopped the app booting with a gzip traceback
+            # instead of re-seeding, which is what the module docstring promises.
+            if not isinstance(ex, FileNotFoundError):
+                logger.warning(
+                    f'event=app-settings-unreadable, action=reseeding-from-app-inputs, '
+                    f'error={type(ex).__name__}: {ex}'
+                )
             advanced = inputs.advanced_settings
             record = cls(
                 sample_types=sorted(inputs.sample_types or []),

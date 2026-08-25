@@ -9,6 +9,7 @@ onboarding gate, so a rename would lock every existing install back into the ste
 Leave both exactly where they are.
 """
 
+import logging
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
 
@@ -16,6 +17,8 @@ from pydantic import BaseModel, Field
 
 if TYPE_CHECKING:
     from core.json_db import JsonDB
+
+logger = logging.getLogger('tcex')
 
 # Singleton record id. Also satisfies JsonDB.get_index_field(), which needs either an
 # Index()-marked field or a field literally named `id`.
@@ -46,4 +49,19 @@ def is_onboarding_complete(db: 'JsonDB') -> bool:
         db.load(OnboardingModel, RECORD_ID)
     except FileNotFoundError:
         return False
+    except (OSError, ValueError) as ex:
+        # The record exists but cannot be read (truncated .gz, invalid JSON, schema
+        # drift). `JsonDB.load()` raises rather than returning None for these, and this
+        # predicate is called from the schedulers and from `settings_resource.on_put`
+        # — letting it propagate turned an unreadable byte into a 500 on every settings
+        # save and an exception on the ingest path.
+        #
+        # Fail OPEN: a record that exists means this install was onboarded at some
+        # point, and re-gating a working app would stop ingestion outright. That matches
+        # `auto_complete_onboarding`'s rule that ingestion is never blocked on config.
+        logger.warning(
+            f'event=onboarding-record-unreadable, action=treating-as-complete, '
+            f'error={type(ex).__name__}: {ex}'
+        )
+        return True
     return True

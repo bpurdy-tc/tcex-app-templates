@@ -130,7 +130,7 @@ class JobTestCase(TestCaseBase):
 
         self._call_app_run(app, profile)
 
-        exit_code = getattr(self.tcex, '_exit_code', 0)
+        exit_code = int(self.tcex.exit.code)
         msg_path = self._output_dir / 'message.tc'
         exit_message = msg_path.read_text(encoding='utf-8') if msg_path.is_file() else None
         result = JobResult(

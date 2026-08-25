@@ -43,7 +43,17 @@ class UploadResult:
         return getattr(getattr(self.tcex, 'exit', None), 'code', 0) or 0
 
     def assert_no_errors(self) -> None:
-        """Assert the upload completed without hard failures."""
+        """Assert the upload collected no errors and did not hard-fail.
+
+        The `errors` check is the load-bearing one. Upload runs as a pipeline stage and
+        never calls `tcex.exit`, so `exit_code` stays SUCCESS no matter what happens —
+        checking it alone made this method (which is NAMED for the errors field) pass
+        for an upload that reported every batch rejected.
+        """
+        assert not self.errors, (
+            f'Upload reported {len(self.errors)} error(s):\n  '
+            + '\n  '.join(str(error) for error in self.errors)
+        )
         hard_failure = 4  # ExitCode.HARD_FAILURE
         assert self.exit_code != hard_failure, (
             f'Upload exited with hard failure (code {self.exit_code}). See logs for details.'

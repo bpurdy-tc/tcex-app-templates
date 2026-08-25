@@ -11,11 +11,11 @@ class IS the harness — no fixture parameters needed anywhere.
         def test_single(self):
             result = self.run(Profile(
                 inputs={'tc_action': 'Hash', 'input_binary': b'hello world'},
-                expected=Expected(
+                expected=PlaybookExpected(
                     exit_codes=[0],
                     outputs={
                         'outputs.binary.action': 'Hash',
-                        'outputs.binary.md5.0': Check.is_string,
+                        'outputs.binary.md5.0': Check.is_string(),
                     },
                 ),
             ))
@@ -34,7 +34,7 @@ TC staging is handled via Profile.stage — class-level TC objects go in stage()
                     'tc_action': 'Enrich Indicator',
                     'indicator_id': self.staged['target']['data']['id'],
                 },
-                expected=Expected(exit_codes=[0]),
+                expected=PlaybookExpected(exit_codes=[0]),
             ))
 
 Apps that call a vendor SDK can opt into mock/live mode:
@@ -52,7 +52,7 @@ Apps that call a vendor SDK can opt into mock/live mode:
         def test_known_malicious(self):
             result = self.run(Profile(
                 inputs={'tc_action': 'Lookup Hash', 'file_hash': 'abc123...'},
-                expected=Expected(
+                expected=PlaybookExpected(
                     exit_codes=[0],
                     outputs={'outputs.is_malicious': 'true'},
                 ),

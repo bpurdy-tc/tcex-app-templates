@@ -23,7 +23,8 @@ class PlaybookExpected(Expected):
 
 
 class Profile(BaseModel):
-    model_config = {'arbitrary_types_allowed': True}
+    class Config:
+        arbitrary_types_allowed = True
 
     inputs: dict[str, Any]
     expected: PlaybookExpected = Field(default_factory=PlaybookExpected)

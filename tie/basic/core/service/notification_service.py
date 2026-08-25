@@ -64,7 +64,7 @@ NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
         priority='High',
         message_template=(
             'Setup is incomplete — no ingestion will run until it is finished. '
-            '<a href="{link}">Click here to finish setup</a> ({link})'
+            '<a href="{link}">Click here to finish setup</a>'
         ),
         description=(
             'Setup has never been completed, so no ingestion is running at all. Repeats '
