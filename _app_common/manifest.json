@@ -14,7 +14,7 @@
   ".pre-commit-config.yaml": {
     "last_commit": "565db231471f2d571b9b56e73d4dbcfaf2ef0961",
     "managed": true,
-    "sha256": "4e73ed0481e83d2849d648629e408b96e39c61e42008b61a6d58e72cfe22dcc7",
+    "sha256": "e0c39fda33238a68bc09531e8ecd6efc797a4af82fb5945881676919d4badcf5",
     "template_path": "_app_common/.pre-commit-config.yaml"
   },
   "README.md": {
