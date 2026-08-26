@@ -33,6 +33,24 @@ def build_candidate(record, payload: dict):
     return type(record)(**{**record.model_dump(), **payload})
 
 
+def validation_errors(ex: ValidationError) -> list[dict]:
+    """Return `ex.errors()` as something `resp.media` can actually serialize.
+
+    Pydantic 2 defaults `include_context=True`, and a validator that raises `ValueError`
+    (`AppSettingsBase.parse_digest_interval`, `parse_failure_threshold`) puts the live
+    exception object in `ctx['error']`. Falcon's media handler is
+    `json.dumps(cls=CustomHandler)`, which maps only Arrow/date/datetime/timedelta/set by
+    exact type, so a ValueError falls through to `TypeError: not JSON serializable`. No
+    handler is registered for that, so the client gets a 500 with an empty body instead of
+    the 400 and the field errors — and the UI, which reads `error.error.errors`, shows a
+    bare rejection with nothing to act on.
+
+    `url` and `input` go too: the first leaks errors.pydantic.dev links into the browser,
+    the second echoes back submitted values. The UI only ever reads `loc` and `msg`.
+    """
+    return ex.errors(include_context=False, include_url=False, include_input=False)
+
+
 class SettingsResource(EndpointBase):
     """GET/PUT /api/settings"""
 
@@ -51,7 +69,7 @@ class SettingsResource(EndpointBase):
             candidate = build_candidate(record, req.media or {})
         except ValidationError as ex:
             resp.status = '400 Bad Request'
-            resp.media = {'applied': False, 'errors': ex.errors()}
+            resp.media = {'applied': False, 'errors': validation_errors(ex)}
             return
 
         before = record.model_dump()

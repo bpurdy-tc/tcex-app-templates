@@ -61,7 +61,7 @@ class UploadABC(TaskPathPipeABC, ABC):
     def handle_run_error(
         self,
         request_id: str,
-        request_dir: Path,
+        request_dir: Path | None,
         exception: Exception | None = None,  # noqa: ARG002
     ):
         """Handle upload errors - mark as failed (no retry from Download)."""

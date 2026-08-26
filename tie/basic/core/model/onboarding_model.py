@@ -49,12 +49,17 @@ def is_onboarding_complete(db: 'JsonDB') -> bool:
         db.load(OnboardingModel, RECORD_ID)
     except FileNotFoundError:
         return False
-    except (OSError, ValueError) as ex:
+    except Exception as ex:
         # The record exists but cannot be read (truncated .gz, invalid JSON, schema
         # drift). `JsonDB.load()` raises rather than returning None for these, and this
         # predicate is called from the schedulers and from `settings_resource.on_put`
         # — letting it propagate turned an unreadable byte into a 500 on every settings
         # save and an exception on the ingest path.
+        #
+        # Caught broadly on purpose. The narrower (OSError, ValueError) missed EOFError,
+        # which is exactly what a gzip truncated by a disk-full write or a container killed
+        # mid-save raises — so the failure this handler was written for was the one that
+        # still escaped it. FileNotFoundError is handled above and never reaches here.
         #
         # Fail OPEN: a record that exists means this install was onboarded at some
         # point, and re-gating a working app would stop ingestion outright. That matches

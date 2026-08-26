@@ -66,31 +66,38 @@ class AppSettings(AppSettingsBase):
         `settings -> db -> db_path -> settings`.
         """
         try:
-            return db.load(cls, cls.__fields__['id'].default)
-        except (OSError, ValueError) as ex:
-            # FileNotFoundError is the ordinary first-boot case. The rest are a record
-            # that EXISTS but cannot be read — a truncated .gz from a disk-full write
-            # (gzip.BadGzipFile), invalid JSON, or a payload the current schema rejects.
-            # `JsonDB.load()` has no invalid-JSON handling (only `load_all` does), so
-            # those used to propagate: `settings` is a cached_property reached during app
-            # init, so an unreadable record stopped the app booting with a gzip traceback
-            # instead of re-seeding, which is what the module docstring promises.
-            if not isinstance(ex, FileNotFoundError):
-                logger.warning(
-                    f'event=app-settings-unreadable, action=reseeding-from-app-inputs, '
-                    f'error={type(ex).__name__}: {ex}'
-                )
-            advanced = inputs.advanced_settings
-            record = cls(
-                sample_types=sorted(inputs.sample_types or []),
-                frequency=advanced.frequency,
-                failure_threshold=advanced.failure_threshold,
-                max_retries=advanced.max_retries,
-                notification_digest_interval=inputs.notification_digest_interval,
-                notification_types=inputs.notification_types,
+            return db.load(cls, cls.model_fields['id'].default)
+        except FileNotFoundError:
+            pass  # ordinary first boot — no record written yet
+        except Exception as ex:
+            # The record EXISTS but cannot be read: a .gz truncated by a disk-full write or
+            # a container killed mid-save, a corrupt gzip header, invalid JSON, or a payload
+            # the current schema rejects. `JsonDB.load()` has no invalid-JSON handling (only
+            # `load_all` does), so these used to propagate — and `settings` is a
+            # cached_property reached during app init, so an unreadable record stopped the
+            # app booting instead of re-seeding, which is what the module docstring promises.
+            #
+            # Caught broadly on purpose. Enumerating types is what went wrong before: the
+            # list read (OSError, ValueError), which covers BadGzipFile and JSONDecodeError
+            # but NOT the EOFError a truncated gzip actually raises — so the one failure the
+            # comment named was the one that still crashed the app. Re-seeding from app
+            # inputs is the correct response to any unreadable record, whatever the type.
+            logger.warning(
+                f'event=app-settings-unreadable, action=reseeding-from-app-inputs, '
+                f'error={type(ex).__name__}: {ex}'
             )
-            db.save(record)
-            return record
+
+        advanced = inputs.advanced_settings
+        record = cls(
+            sample_types=sorted(inputs.sample_types or []),
+            frequency=advanced.frequency,
+            failure_threshold=advanced.failure_threshold,
+            max_retries=advanced.max_retries,
+            notification_digest_interval=inputs.notification_digest_interval,
+            notification_types=inputs.notification_types,
+        )
+        db.save(record)
+        return record
 
 
 class SettingModel(SettingModelBase):

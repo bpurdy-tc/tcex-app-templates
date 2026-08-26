@@ -10,7 +10,7 @@ from collections.abc import Callable
 from pydantic import ValidationError
 
 from core.api.endpoint.tcvf.endpoint_base import EndpointBase
-from core.api.endpoint.tcvf.settings_resource import build_candidate
+from core.api.endpoint.tcvf.settings_resource import build_candidate, validation_errors
 from core.api.falcon_request import FalconRequest
 from core.api.falcon_response import FalconResponse
 
@@ -89,7 +89,7 @@ class SettingsValidateResourceBase(EndpointBase):
             candidate = build_candidate(self.settings.app_settings, req.media or {})
         except ValidationError as ex:
             resp.status = '400 Bad Request'
-            resp.media = {'passed': False, 'checks': [], 'errors': ex.errors()}
+            resp.media = {'passed': False, 'checks': [], 'errors': validation_errors(ex)}
             return
 
         checks = self.validations(candidate)
