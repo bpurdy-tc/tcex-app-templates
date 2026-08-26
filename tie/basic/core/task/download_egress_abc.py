@@ -276,7 +276,7 @@ class DownloadEgressABC(DownloadABC, ABC):
             # Build per-page TQL
             page_tql = tql
             if highest_id is not None:
-                page_tql = f'({tql}) AND id > {highest_id}'
+                page_tql = f'({tql}) AND id > {highest_id}' if tql else f'id > {highest_id}'
 
             page_limit = sizer.limit if sizer else result_limit
             params: dict = {

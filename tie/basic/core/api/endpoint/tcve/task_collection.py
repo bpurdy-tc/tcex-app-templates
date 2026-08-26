@@ -69,7 +69,14 @@ class TaskCollection(EndpointBaseABC):
             resp.media = item.dict(by_alias=by_alias, exclude_none=True)
         else:
             items = [self._task_item(task, include_type_index=True) for task in self.tasks.all()]
-            items = sorted(items, key=lambda i: (i.type, i.index, i.name))
+            # `index` is None for any task that is not a path_pipe, and for a path_pipe
+            # registered outside `Tasks.add_task_path_pipe` (which is what assigns it).
+            # Mixing None and int in the sort key raises TypeError and 500s this endpoint,
+            # so unindexed tasks sort ahead of indexed ones within their type.
+            items = sorted(
+                items,
+                key=lambda i: (i.type, i.index if i.index is not None else -1, i.name),
+            )
 
             response = TaskPaginatedResponseModel(
                 data=items,

@@ -67,9 +67,10 @@ NOTIFICATION_TYPES: dict[str, NotificationTypeConfig] = {
             '<a href="{link}">Click here to finish setup</a>'
         ),
         description=(
-            'Setup has never been completed, so no ingestion is running at all. Repeats '
-            'daily with a link straight to the Settings page until it is finished, and '
-            'stops on its own once it is.'
+            'Setup has never been completed, so no ingestion is running at all. Sent when '
+            'the app starts and then on the notification digest interval until setup is '
+            'finished, and stops on its own once it is. Includes a direct link to the '
+            'Settings page when one is available; until then it tells you where to go.'
         ),
     ),
     'Job Retrying': NotificationTypeConfig(

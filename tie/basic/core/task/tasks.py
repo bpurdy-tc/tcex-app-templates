@@ -71,10 +71,13 @@ class Tasks:
             exit_service=self.exit_service,
         )
 
-        # Notification state tracking (disabled when notification_digest_interval is None)
-        self.notifications_enabled = settings.app_settings.notification_digest_interval is not None
+        # Notification state tracking (disabled when notification_digest_interval is None).
+        # Read live via the property below — see its docstring.
         self.notification_helper = NotificationHelper(settings, tcex, db)
         self.last_digest_time = datetime.now(UTC)
+        # Own timer, not last_digest_time — that never advances with notifications off.
+        # None until a reminder actually sends, which is what makes the watchdog retry.
+        self.last_setup_reminder_time: datetime | None = None
         self.reported_retrying: set[str] = set()  # job IDs already reported as retrying
         self.reported_resolved: set[str] = set()  # job IDs already reported as perm_fail/recovered
 
@@ -88,6 +91,19 @@ class Tasks:
 
         # schedule watchdog for tasks
         schedule.every(1).minute.do(self.watchdog)
+
+    @property
+    def notifications_enabled(self) -> bool:
+        """Whether notifications are on, resolved live on every read.
+
+        `PUT /api/settings` rebinds `settings.app_settings`, so this must not be cached on
+        `Tasks` (a singleton built once at boot). A cached value fails both ways: enabling
+        notifications through the UI would never take effect until restart, and disabling
+        them would leave this True while `notification_digest_interval` is None, which
+        `watchdog` then compares a timedelta against. Same reasoning as
+        `Scheduler.frequency` and `Cleaner.max_batch_errors`.
+        """
+        return self.settings.app_settings.notification_digest_interval is not None
 
     def send_startup_notification(self) -> None:
         """Send startup notification. Call after preflight checks pass."""
@@ -271,14 +287,22 @@ class Tasks:
                 # )
                 self.log.debug(f'API Limit Hit: {api_limit.get("reached")}')
 
-        # Check if digest interval has elapsed and send digest if needed
-        if self.notifications_enabled:
+        # Check if digest interval has elapsed and send digest if needed.
+        # Read the interval ONCE: `PUT /api/settings` can rebind app_settings between a
+        # `notifications_enabled` check and a separate re-read, which would pair True with
+        # a None interval and raise TypeError on the comparison below — inside
+        # `schedule.run_pending()`, which `loop_forever` does not guard, killing the
+        # watchdog, the supervisor tick and every task tick with it.
+        digest_interval = self.settings.app_settings.notification_digest_interval
+        if digest_interval is not None:
             now = datetime.now(UTC)
-            digest_interval = self.settings.app_settings.notification_digest_interval
             elapsed = now - self.last_digest_time
             if elapsed >= digest_interval:
                 self._send_digest(now)
-                self._maybe_send_setup_required_reminder()
+
+        # Every tick, not just when the digest fires — it has to keep retrying until a
+        # request arrives and reveals app_base_url.
+        self._send_setup_reminder_if_due()
 
     def pause_all(self):
         """Pause all tasks.
@@ -409,44 +433,75 @@ class Tasks:
     def _maybe_send_setup_required_reminder(self) -> None:
         """Send a 'finish setup' reminder while onboarding is incomplete.
 
-        Deliberately bypasses both notification switches: it passes a config OBJECT to
-        notify(), which takes the branch that skips the `notification_digest_interval`
-        master switch and the per-category `notification_types` opt-in. The rationale is
-        that an admin who never finished setup should be told ingestion has not started,
-        even with notifications turned off.
+        Silent when notifications are disabled — that usually means the TC instance does
+        not support them, so there is nowhere to send. Bypasses only the per-category
+        opt-in, by passing a config OBJECT to notify(): 'Setup Required' is not one of the
+        categories an admin can select, so it would never be opted into.
 
-        The resulting cadence is NOT uniform, and the difference is worth knowing:
-          - the startup call (send_startup_notification) is ungated, so this fires once
-            per boot regardless of notification settings;
-          - the recurring call sits inside `if self.notifications_enabled:` in watchdog(),
-            so it only repeats while notifications are enabled.
-        With notifications disabled it is therefore one reminder per restart, not a
-        repeating one.
+        Onboarding is checked live on every call — Tasks is a long-lived singleton built
+        once at boot — so the reminder stops itself once setup completes.
 
-        Onboarding state is checked live on every call — Tasks is a long-lived singleton
-        constructed once at boot — so the reminder stops as soon as setup completes.
-        Piggybacks on the existing digest cadence (last_digest_time) rather than tracking
-        its own timer.
-
-        Held back until the app knows its own address. The whole point of this message is
-        the link, and that link can only come from `request_url` (see `_onboarding_link`),
-        which does not exist until the first HTTP request arrives. Sending early would mean
-        sending a guessed URL that 404s, which is worse than sending nothing. The trade-off
-        is real: an app that is never opened in a browser never sends this reminder at all.
+        Sends with a link when `app_base_url` is known and without one when it is not.
+        Measured on the platform: nothing reaches the app's HTTP surface until a human
+        opens the UI, so waiting for a link meant an unconfigured app sat silent
+        indefinitely. A guessed URL is still never sent — see `_onboarding_link`.
         """
+        if not self.notifications_enabled:
+            return
         if is_onboarding_complete(self.db):
             return
-        if not self.app_base_url:
-            self.log.debug(
-                'action=setup-required-reminder, status=deferred, reason=app-base-url-unknown'
-            )
-            return
+
+        try:
+            self._send_setup_required_reminder()
+        except Exception:
+            # A reminder must never take the app down. Both callers run inside
+            # `schedule.run_pending()` (watchdog) or app startup, and run_pending does not
+            # guard its jobs — an exception here would kill the watchdog, the supervisor
+            # tick and every task tick with it. The HTTP layer is already safe
+            # (`NotificationService.send` never raises), but `notify()` above it still can:
+            # `message_template.format()` raises KeyError on a missing placeholder, there is
+            # an explicit `raise ValueError` when no template and no message are supplied,
+            # and the NotificationModel build plus DB write can both fail.
+            self.log.exception('action=setup-required-reminder, status=failed')
+
+    def _send_setup_required_reminder(self) -> None:
+        """Build and send the reminder. See `_maybe_send_setup_required_reminder`."""
         notification_config = NOTIFICATION_BY_CATEGORY['setup_required']
-        self.notification_helper.notify(
-            notification_config,
-            send_now=True,
-            link=self._onboarding_link(),
-        )
+        if self.app_base_url:
+            link = self._onboarding_link()
+            send_kwargs = {'link': link}
+            detail = link
+        else:
+            # The template hardcodes <a href="{link}">, so format() would KeyError.
+            # Clearing it lets notify() use the message= override. Category and priority
+            # are untouched, so it still files and filters the same in the UI.
+            notification_config = notification_config._replace(message_template=None)
+            send_kwargs = {
+                'message': (
+                    'Setup is incomplete — no ingestion will run until it is finished. '
+                    'Open this service in ThreatConnect and complete setup on the '
+                    'Settings page.'
+                )
+            }
+            detail = 'no-link'
+
+        self.last_setup_reminder_time = datetime.now(UTC)
+        self.notification_helper.notify(notification_config, send_now=True, **send_kwargs)
+        self.log.info(f'action=setup-required-reminder, status=sent, link={detail}')
+
+    def _send_setup_reminder_if_due(self) -> None:
+        """Send the setup-required reminder if the digest interval has elapsed.
+
+        `last_setup_reminder_time` is None until something sends, so with no URL yet this is
+        due every watchdog tick — a retry once a minute. After the first send it settles
+        onto the digest interval.
+        """
+        interval = self.settings.app_settings.notification_digest_interval
+        if interval is None:
+            return
+        last_reminder = self.last_setup_reminder_time
+        if last_reminder is None or datetime.now(UTC) - last_reminder >= interval:
+            self._maybe_send_setup_required_reminder()
 
     def _onboarding_link(self) -> str:
         """Return a URL to this app's Settings page, where setup is started.
