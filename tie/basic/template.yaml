@@ -10,9 +10,7 @@ template_files:
   - core
   - ui
   - model
-  - message_service
   - more
-  - scheduled_action
   - sdk
   - task
   - api
