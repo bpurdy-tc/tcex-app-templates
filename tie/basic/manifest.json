@@ -42,9 +42,9 @@
     "template_path": "tie/basic/api/endpoint/__init__.py"
   },
   "api/endpoint/adhoc_job_request_resource.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "79ce415877942f487dd4d1fbfc5642860d3e7fe79a4fc9ffbd84711fb68d82a3",
+    "sha256": "b02b2b0628b704fff1410797ddf155fd229da3be8740762123d47b7077b06fb3",
     "template_path": "tie/basic/api/endpoint/adhoc_job_request_resource.py"
   },
   "api/endpoint/download_ti_resource.py": {
@@ -66,9 +66,9 @@
     "template_path": "tie/basic/api/spec_tags.py"
   },
   "api/ui_config_builder.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "7cc3f80e413f2972a3288ffcd63d345b19ba4f980bb5e1668c61e54f84f18c93",
+    "sha256": "b9ed0c49d42950ef1eef95f7be545606f5f5d621ab82dd95156169a497901fb1",
     "template_path": "tie/basic/api/ui_config_builder.py"
   },
   "api_service_app.py": {
@@ -636,9 +636,9 @@
     "template_path": "tie/basic/core/model/response/response_model.py"
   },
   "core/model/settings_model_base.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "754d82b409caeab4cab97270ff340d924c691262368f33f680ff37824237e4f7",
+    "sha256": "999c9f0f195dc389620aa673fe0ed6cf1f08ccf7c9f205ac004c63d325a01cff",
     "template_path": "tie/basic/core/model/settings_model_base.py"
   },
   "core/model/settings_revision_model.py": {
@@ -1050,15 +1050,15 @@
     "template_path": "tie/basic/model/__init__.py"
   },
   "model/job_request_model.py": {
-    "last_commit": "00012ec98f8a32a668d5ffc5ffa8a9f29dbad420",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "94b0fe8577975ccfee34455b9390d6ac49f3b26b2ca50ff47c7116f73f21ffc9",
+    "sha256": "18e3f0d967a6f4de57272580d7952ec200864e58a109a76b7dd64222d86e1837",
     "template_path": "tie/basic/model/job_request_model.py"
   },
   "model/settings_model.py": {
-    "last_commit": "3df984d4c10fe8b5c7998ddddf049bc1595228e9",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "95cf4a5d6013eda2b135a1f10fde120fb66c8e2c68b708ce171b32f146c63ca1",
+    "sha256": "e7a7adac15c05287a872017c7408870384c02667ff8bf6f5cd41ab6f09ceea9e",
     "template_path": "tie/basic/model/settings_model.py"
   },
   "more/__init__.py": {
@@ -1152,9 +1152,9 @@
     "template_path": "tie/basic/task/egress/download.py"
   },
   "task/egress/scheduler.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "8217a4932f7148bcb2f4831957e913152cd6737b726c1f412f985e66b544f14d",
+    "sha256": "461fc61ee1054b5f70b2ad57fb68210c9df54cb60b0f6862742f21638a94dcb0",
     "template_path": "tie/basic/task/egress/scheduler.py"
   },
   "task/egress/upload.py": {
@@ -1182,9 +1182,9 @@
     "template_path": "tie/basic/task/ingest/download.py"
   },
   "task/ingest/scheduler.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "d268f24914940730ffcfc60474a0aba457c3de83fd52b40ab4a20ee8ac3435d7",
+    "sha256": "c59255549725beff62d2a235b62f2364010053dc8f8c16f803e3f30054211db0",
     "template_path": "tie/basic/task/ingest/scheduler.py"
   },
   "task/ingest/upload.py": {
@@ -1230,9 +1230,9 @@
     "template_path": "tie/basic/tests/harness/__init__.py"
   },
   "tests/harness/base.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "34ad12e2e4b56b09aa997926f446d30de6a50b53",
     "managed": false,
-    "sha256": "cc8fd9f90fbc4c1148aed91f11d6c8823294ee231bb9eda30db535b1fef69d8b",
+    "sha256": "7db6e1f0816dc58fa02e15c552428b8ff49dd50c0d1f992e7bc7b695c5b71c40",
     "template_path": "tie/basic/tests/harness/base.py"
   },
   "tests/harness/mock_sdk.py": {
