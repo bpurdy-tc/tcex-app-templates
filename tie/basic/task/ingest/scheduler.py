@@ -17,8 +17,20 @@ class Scheduler(TaskABC):
         super().__init__(settings, tcex, db)
         self.pipeline = pipeline
 
-        self.backfill = timedelta(hours=settings.advanced_settings.backfill)
-        self.backfill_frequency = timedelta(hours=settings.advanced_settings.backfill_frequency)
+    @property
+    def backfill(self) -> timedelta:
+        """Return how far back the first scheduled run reaches.
+
+        A property, not a cached value, for the same reason as `frequency` below: this
+        moved onto `app_settings` and is now editable from the Settings UI, so caching it
+        in __init__ would pin the boot-time value on this long-lived singleton.
+        """
+        return timedelta(hours=self.settings.app_settings.backfill)
+
+    @property
+    def backfill_frequency(self) -> timedelta:
+        """Return the chunk size a scheduled time range is split into. Read live."""
+        return timedelta(hours=self.settings.app_settings.backfill_frequency)
 
     @property
     def frequency(self) -> timedelta:

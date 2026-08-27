@@ -77,7 +77,7 @@ class AdHocRequestResource(EndpointBaseABC):
         """Add backfill jobs to the database."""
         start_time = body.start_time
         end_date = body.end_time
-        backfill_frequency = timedelta(hours=self.settings.advanced_settings.backfill_frequency)
+        backfill_frequency = timedelta(hours=self.settings.app_settings.backfill_frequency)
         jobs = []
 
         while start_time < end_date:

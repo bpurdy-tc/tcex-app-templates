@@ -341,6 +341,43 @@ class UIConfigBuilder(UIConfigBuilderABC):
                     'lower one surfaces a persistent problem sooner.'
                 ),
             ),
+            self.generate_settings_input(
+                name='backfill',
+                label='Initial Backfill (hours)',
+                type_='number',
+                required=True,
+                additional_validators=[
+                    {'name': 'gte', 'config': {'value': 1}},
+                    {'name': 'lte', 'config': {'value': 8760}},
+                ],
+                default=advanced.backfill,
+                short_text='How much history the very first run reaches back for.',
+                description=(
+                    'Only used when there is no previous job — after that each run resumes '
+                    'from where the last one ended, so changing this later has no effect on '
+                    'an engine that is already running. Accepts 1 to 8760 hours (one year). '
+                    'The window is split into jobs of Backfill Chunk Size, so a large value '
+                    'with a small chunk size queues a great many jobs at once.'
+                ),
+            ),
+            self.generate_settings_input(
+                name='backfill_frequency',
+                label='Backfill Chunk Size (hours)',
+                type_='number',
+                required=True,
+                additional_validators=[
+                    {'name': 'gte', 'config': {'value': 1}},
+                    {'name': 'lte', 'config': {'value': 168}},
+                ],
+                default=advanced.backfill_frequency,
+                short_text='The largest time span a single job is allowed to cover.',
+                description=(
+                    'Any range longer than this is divided into consecutive jobs — both the '
+                    'initial backfill and an ordinary catch-up after downtime. Accepts 1 to '
+                    '168 hours. Smaller chunks mean more, smaller requests to the vendor, '
+                    'which is gentler on rate limits but slower to work through a backlog.'
+                ),
+            ),
         ]
 
     def settings_form(self):

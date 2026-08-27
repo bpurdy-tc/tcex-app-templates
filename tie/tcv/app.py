@@ -156,7 +156,6 @@ class App(ApiServiceFalconABC):
         return SettingModel(
             tc_owner=self.model.tc_owner,
             base_path=self.model.tc_out_path,
-            advanced_settings=self.model.advanced_settings,
             all_sample_types=['Event', 'URL', 'File', 'Host'],
             app_settings=AppSettings.load(self.db, self.model),
             name='Sample API Service',

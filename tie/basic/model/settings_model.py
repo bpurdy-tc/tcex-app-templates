@@ -12,8 +12,6 @@ import logging
 
 from pydantic import Field
 
-from app_inputs import AdvancedSettingsModel
-from core.json_db import Embedded
 from core.model.settings_model_base import AppSettingsBase, SettingModelBase
 
 logger = logging.getLogger('tcex')
@@ -93,6 +91,8 @@ class AppSettings(AppSettingsBase):
             frequency=advanced.frequency,
             failure_threshold=advanced.failure_threshold,
             max_retries=advanced.max_retries,
+            backfill=advanced.backfill,
+            backfill_frequency=advanced.backfill_frequency,
             notification_digest_interval=inputs.notification_digest_interval,
             notification_types=inputs.notification_types,
         )
@@ -102,8 +102,6 @@ class AppSettings(AppSettingsBase):
 
 class SettingModel(SettingModelBase):
     """Custom Setting Model"""
-
-    advanced_settings: AdvancedSettingsModel = Embedded()
 
     # Deploy-time configuration. Read from the app inputs on every boot and never
     # persisted, so a settings payload can never reach them — `build_candidate` drops any
