@@ -65,6 +65,22 @@ class AppSettingsBase(BaseModel):
     failure_threshold: timedelta = DEFAULT_FAILURE_THRESHOLD
     max_retries: int = Field(10, ge=0)
 
+    #: How far back the FIRST scheduled run reaches, in hours. Only consulted when there is
+    #: no previous job — after that the scheduler resumes from the last job's end_time.
+    backfill: int = Field(8, ge=1, le=8760)
+    #: Chunk size, in hours, that a time range is split into when queueing jobs. Both the
+    #: first backfill and (for ingest) every ordinary catch-up are divided by this, so
+    #: `backfill / backfill_frequency` is roughly how many jobs the first run queues.
+    backfill_frequency: int = Field(8, ge=1, le=168)
+    # `backfill` and `backfill_frequency` moved here from the app inputs
+    # (`AdvancedSettingsModel`), which is where `load()` still seeds them from on first
+    # boot. An install upgrading past that move has a stored record with no key for either,
+    # so both take the defaults above and the deploy-time values are dropped — the same
+    # thing that happened when `frequency`, `failure_threshold` and `max_retries` moved, and
+    # deliberately not special-cased here. `backfill` is only read when there is no previous
+    # job, so an install with history never consults it again; `backfill_frequency` only
+    # changes how a catch-up is chunked. Re-set either from the Settings page if it matters.
+
     # Not on the settings form (api/ui_config_builder.py::advanced_settings_inputs is an
     # explicit whitelist that omits this) — internal tuning, changeable via PUT /api/settings
     # without a redeploy for support/engineering, not meant for the admin-facing UI.

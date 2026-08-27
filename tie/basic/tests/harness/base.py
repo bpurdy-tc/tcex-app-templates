@@ -54,7 +54,6 @@ class AppTestCase(TieTestCase):
         setting up sys.path before app modules are importable. Every app import
         in this file follows that rule.
         """
-        from app_inputs import AdvancedSettingsModel  # noqa: PLC0415
         from model.settings_model import AppSettings, SettingModel  # noqa: PLC0415
 
         return SettingModel(
@@ -62,8 +61,6 @@ class AppTestCase(TieTestCase):
             name='Test App',
             description='Test settings',
             tc_owner='TCI',
-            # Required — SettingModel declares it as Embedded() with no default.
-            advanced_settings=AdvancedSettingsModel(),
             # TODO: match this app's SettingModel fields.
             api_url='https://api.example.test',
             api_key='test-api-key',
@@ -107,7 +104,6 @@ class AppTestCase(TieTestCase):
         window. `status` and `date_queued` are required by JobRequestBaseModel;
         the rest come from this app's JobRequestModel.
         """
-        from app_inputs import AdvancedSettingsModel  # noqa: PLC0415
         from model.job_request_model import JobRequestModel  # noqa: PLC0415
 
         return JobRequestModel(
@@ -115,7 +111,6 @@ class AppTestCase(TieTestCase):
             date_queued=datetime.now(UTC),
             start_time=updated_since,
             end_time=updated_till,
-            advanced_settings=AdvancedSettingsModel(),
         )
 
     # -- Settings overrides ----------------------------------------------------
