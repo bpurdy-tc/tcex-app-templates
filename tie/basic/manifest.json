@@ -906,9 +906,9 @@
     "template_path": "tie/basic/core/task/__init__.py"
   },
   "core/task/backfill_missing_report_abc.py": {
-    "last_commit": "00012ec98f8a32a668d5ffc5ffa8a9f29dbad420",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "7c18b6311c57baf82c460c31e8098f6632e1a02683a8a82c4fd07fb638e4d1e1",
+    "sha256": "66ed0c122cd4bea4dc2eaa85825ae998b4c9a59004db70db886caa8486758650",
     "template_path": "tie/basic/core/task/backfill_missing_report_abc.py"
   },
   "core/task/cal_auth.py": {
@@ -960,9 +960,9 @@
     "template_path": "tie/basic/core/task/metric_reporter_redis.py"
   },
   "core/task/task_abc.py": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "355c29ee9d7d54d6410e7214a46dcc1dfa55ac363417e443b81ee6cd157d5348",
+    "sha256": "6ba3715f45766cd7d689c55a4078c75e948ad7f942c07441825487eafda10105",
     "template_path": "tie/basic/core/task/task_abc.py"
   },
   "core/task/task_path_pipe_abc.py": {
@@ -1418,7 +1418,7 @@
   "ui/.angular/cache/18.1.4/tmp/.tsbuildinfo": {
     "last_commit": "",
     "managed": false,
-    "sha256": "2c7ee3da8b0d286f262698557bc6dbdce3b0701224e4c55bf1897ca9fec13ab5",
+    "sha256": "cbe7a2a58c4d7e2e15f89110cfc466954c6c3b8c406e4d1fcd2925c56a0db8b3",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/.tsbuildinfo"
   },
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db": {
@@ -1430,7 +1430,7 @@
   "ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock": {
     "last_commit": "",
     "managed": false,
-    "sha256": "668682b5d2ab553ad12f9655ce3f6944bdab1b28f06581d029cee3fefe89fbef",
+    "sha256": "d5a6fe8d5181121f9ac95e3eb19ae3b3b69c24c02093a877d6a87ad296e69558",
     "template_path": "tie/basic/ui/.angular/cache/18.1.4/tmp/angular-compiler.db-lock"
   },
   "ui/.eslintrc.json": {
@@ -1482,15 +1482,15 @@
     "template_path": "tie/basic/ui/src/app/app-routing.module.ts"
   },
   "ui/src/app/app.component.html": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "1cb619f52256fe1d1f7a698e544076ec12c3599d08ffc3983d6647debc400e15",
+    "sha256": "7d150067cd5e6d41e0bf12cd12afa43fa1426c8daf0db28ed3863a878a431dd1",
     "template_path": "tie/basic/ui/src/app/app.component.html"
   },
   "ui/src/app/app.component.scss": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "f2438a3f0ffec564bd22c4ccc463349aa5b4b199b1ce9461f13488f9ad1d2c5e",
+    "sha256": "0bd718d67eb0e93befa402b6f95c4bcdf13ca72d009b166488ce079468a0df00",
     "template_path": "tie/basic/ui/src/app/app.component.scss"
   },
   "ui/src/app/app.component.spec.ts": {
@@ -1506,9 +1506,9 @@
     "template_path": "tie/basic/ui/src/app/app.component.ts"
   },
   "ui/src/app/app.module.ts": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "8045f355df823c5d591e42495053468da4d0ac91f4cbc60f9168b30f3618a470",
+    "sha256": "aeabe5f2d75c71592d606f0b7ce383c8408299f736600d91a4785f12235b655e",
     "template_path": "tie/basic/ui/src/app/app.module.ts"
   },
   "ui/src/app/components/confirmation-modal/confirmation-modal.component.html": {
@@ -1872,9 +1872,9 @@
     "template_path": "tie/basic/ui/src/app/pages/notifications/notifications.component.ts"
   },
   "ui/src/app/pages/onboarding/onboarding.component.html": {
-    "last_commit": "3cfcfe719448b992410a0521cd975f0904448a34",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "4efa8d7427cf9147c6e2536ae82cc58832865f4c9a34ef0cf42927a8bbb50b32",
+    "sha256": "5af82998e0d28b45095fd9bb99231aedf56ce5c5db71ea0a0de47fc8a2aa6e68",
     "template_path": "tie/basic/ui/src/app/pages/onboarding/onboarding.component.html"
   },
   "ui/src/app/pages/onboarding/onboarding.component.scss": {
@@ -1932,9 +1932,9 @@
     "template_path": "tie/basic/ui/src/app/pages/report-pdf-tracker/report-pdf-tracker.component.ts"
   },
   "ui/src/app/pages/settings/settings.component.html": {
-    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "ccc94c841f08396298d5f2844b4d4750a864dcb2b46e15e8f3fedb0ea8fc2e4b",
+    "sha256": "0e7c32d3c24997189b08b981e6bff1dd7261b1e575dbc486b0737c732a5a8ec6",
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.html"
   },
   "ui/src/app/pages/settings/settings.component.scss": {
@@ -1944,9 +1944,9 @@
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.scss"
   },
   "ui/src/app/pages/settings/settings.component.ts": {
-    "last_commit": "53c3b9077da8bb87bd51a1dd2aeceb138c2cc045",
+    "last_commit": "9834fd118a5a52be789340e4db9f630bf11a1196",
     "managed": false,
-    "sha256": "d5ab8f8aa7421c57486164691c512d8e858ed8876d4935d07371aa4b9f4e0dd8",
+    "sha256": "dbbc1d7d760ad9f6136c98f853e5856f6ba34fbd784f7829e3d807b8eb740224",
     "template_path": "tie/basic/ui/src/app/pages/settings/settings.component.ts"
   },
   "ui/src/app/pages/tasks/tasks.component.html": {
